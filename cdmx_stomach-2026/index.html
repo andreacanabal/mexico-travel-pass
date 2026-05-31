@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>CDMX Stomach Guide 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #D42B2B;
+    --blue: #1A3FAA;
+    --gold: #F5C518;
+    --green: #1A7A4A;
+    --orange: #EA580C;
+    --black: #0A0A0A;
+    --white: #FFFFFF;
+    --cream: #FFFBF0;
+    --dark-bg: #050D1F;
+    --dark-card: #111827;
+    --safe: #1A7A4A;
+    --caution: #D97706;
+    --danger: #D42B2B;
+    --shadow: 3px 3px 0 #0A0A0A;
+    --border: 2px solid #0A0A0A;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+  body {
+    font-family: 'Nunito', sans-serif;
+    background: linear-gradient(160deg, #050D1F, #0D1F3C);
+    color: var(--white);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── TOP HEADER ── */
+  #top-header {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: 56px;
+    background: var(--blue);
+    border-bottom: var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 12px;
+    box-shadow: 0 3px 0 #0A0A0A;
+  }
+  .header-brand {
+    display: flex; align-items: center; gap: 7px;
+    font-family: 'Bangers', cursive;
+    font-size: 15px; color: var(--white);
+    letter-spacing: 0.5px;
+    text-shadow: 2px 2px 0 #0A0A0A;
+    flex-shrink: 0;
+  }
+  .header-brand svg { width: 22px; height: 22px; flex-shrink: 0; }
+  #tab-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px; color: rgba(255,255,255,0.75);
+    text-align: center; flex: 1; padding: 0 8px;
+    overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  #sos-btn {
+    background: var(--red); color: var(--white);
+    font-family: 'Bangers', cursive; font-size: 16px;
+    border: var(--border); border-radius: 99px;
+    padding: 4px 13px; cursor: pointer;
+    box-shadow: var(--shadow);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+  }
+
+  /* ── BOTTOM NAV ── */
+  #bottom-nav {
+    position: fixed; bottom: 0; left: 0; right: 0; z-index: 100;
+    height: 62px;
+    background: #0B1629;
+    border-top: var(--border);
+    display: flex;
+    box-shadow: 0 -3px 0 #0A0A0A;
+  }
+  .nav-tab {
+    flex: 1; display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 3px; cursor: pointer;
+    border: none; background: transparent; color: #6B7280;
+    font-family: 'Nunito', sans-serif;
+    font-size: 10px; font-weight: 700;
+    transition: color 0.15s;
+    padding: 0;
+  }
+  .nav-tab svg { width: 22px; height: 22px; }
+  .nav-tab.active {
+    color: var(--black);
+  }
+  .nav-tab.active .nav-pill {
+    background: var(--gold);
+    border-radius: 99px;
+    padding: 4px 10px;
+    border: 1.5px solid #0A0A0A;
+    box-shadow: 2px 2px 0 #0A0A0A;
+    display: flex; flex-direction: column; align-items: center; gap: 2px;
+  }
+
+  /* ── MAIN CONTENT ── */
+  #content {
+    padding-top: 64px;
+    padding-bottom: 74px;
+    min-height: 100vh;
+  }
+  .tab-section { display: none; }
+  .tab-section.active { display: block; }
+
+  /* ── SECTION HEADERS ── */
+  .zone-header {
+    padding: 14px 16px;
+    margin: 0 0 0 0;
+  }
+  .zone-header.green { background: var(--green); border-bottom: var(--border); }
+  .zone-header.yellow { background: #B45309; border-bottom: var(--border); }
+  .zone-header.red { background: var(--red); border-bottom: var(--border); }
+
+  .zone-title {
+    font-family: 'Bangers', cursive;
+    font-size: 22px; color: var(--white);
+    text-shadow: 2px 2px 0 #0A0A0A;
+    letter-spacing: 1px;
+  }
+  .zone-sub {
+    font-size: 11px; color: rgba(255,255,255,0.85);
+    margin-top: 2px; font-weight: 600;
+  }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 10px 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .card-expandable { cursor: pointer; }
+  .card-header {
+    padding: 12px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .card-header.green-accent { border-left: 4px solid var(--green); }
+  .card-header.yellow-accent { border-left: 4px solid var(--gold); }
+  .card-header.red-accent { border-left: 4px solid var(--red); }
+  .card-header.blue-accent { border-left: 4px solid var(--blue); }
+  .card-header.gold-accent { border-left: 4px solid var(--gold); background: rgba(245,197,24,0.08); }
+
+  .card-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px; color: var(--white);
+  }
+  .verdict {
+    font-size: 11px; font-weight: 700; margin-top: 2px;
+    color: rgba(255,255,255,0.75);
+  }
+  .expand-arrow {
+    color: #6B7280; font-size: 14px; transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .card-expandable.open .expand-arrow { transform: rotate(180deg); }
+
+  .card-body {
+    display: none;
+    padding: 0 14px 14px 14px;
+    border-top: 1px solid rgba(255,255,255,0.07);
+  }
+  .card-body.open { display: block; }
+
+  .info-row {
+    margin-top: 8px;
+    font-size: 13px; line-height: 1.5;
+    color: rgba(255,255,255,0.85);
+  }
+  .info-label {
+    font-weight: 700; color: var(--gold);
+    font-size: 11px; text-transform: uppercase;
+    letter-spacing: 0.5px; margin-top: 8px; display: block;
+  }
+
+  /* ── HERO CARD ── */
+  .hero-card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 12px 12px 6px;
+    padding: 16px;
+    box-shadow: var(--shadow);
+  }
+  .hero-title {
+    font-family: 'Bangers', cursive;
+    font-size: 26px; color: var(--white);
+    text-shadow: var(--shadow);
+    line-height: 1.1;
+  }
+  .hero-sub { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 6px; line-height: 1.5; }
+  .gold-stat {
+    background: var(--gold);
+    border: var(--border); border-radius: 10px;
+    padding: 10px 12px; margin-top: 12px;
+    box-shadow: var(--shadow);
+  }
+  .gold-stat-text {
+    font-size: 13px; color: var(--black); font-weight: 700; line-height: 1.4;
+  }
+  .gold-stat-icon { font-size: 20px; margin-bottom: 4px; }
+
+  /* ── ALTITUDE CARD ── */
+  .altitude-card {
+    background: rgba(245,197,24,0.12);
+    border: 2px solid var(--gold);
+    border-radius: 12px;
+    margin: 10px 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .altitude-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px; color: var(--gold);
+    margin-bottom: 6px;
+  }
+  .altitude-text { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+
+  /* ── WARNING CARD ── */
+  .warning-card {
+    background: rgba(212,43,43,0.12);
+    border: 2px solid var(--red);
+    border-radius: 12px;
+    margin: 10px 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .warning-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px; color: var(--red);
+    margin-bottom: 8px;
+  }
+  .warning-text { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.6; }
+  .warning-text li { margin-top: 5px; list-style: none; padding-left: 0; }
+
+  /* ── MED CARD ── */
+  .med-card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 10px 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .med-header {
+    background: rgba(26,122,74,0.2);
+    border-left: 4px solid var(--green);
+    padding: 12px 14px;
+  }
+  .med-name {
+    font-family: 'Bangers', cursive;
+    font-size: 20px; color: var(--gold);
+    letter-spacing: 0.5px;
+  }
+  .med-equiv { font-size: 11px; color: rgba(255,255,255,0.6); font-weight: 600; margin-top: 2px; }
+  .med-body { padding: 12px 14px; }
+  .med-row { font-size: 13px; color: rgba(255,255,255,0.85); line-height: 1.5; margin-bottom: 8px; }
+  .med-price {
+    display: inline-block;
+    background: var(--green); color: var(--white);
+    font-weight: 700; font-size: 12px;
+    border-radius: 99px; padding: 2px 10px;
+    border: 1.5px solid #0A0A0A;
+  }
+
+  /* ── SECTION SUBHEADER ── */
+  .section-head {
+    padding: 14px 16px 6px;
+  }
+  .section-head-title {
+    font-family: 'Bangers', cursive;
+    font-size: 24px; color: var(--white);
+    text-shadow: 2px 2px 0 #0A0A0A;
+    letter-spacing: 0.5px;
+  }
+  .section-head-sub { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 3px; font-weight: 600; }
+
+  /* ── STEP CARDS ── */
+  .step-card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 10px 12px;
+    display: flex;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+  }
+  .step-num {
+    background: var(--blue);
+    min-width: 44px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Bangers', cursive;
+    font-size: 26px; color: var(--white);
+    text-shadow: 1px 1px 0 #0A0A0A;
+    border-right: var(--border);
+  }
+  .step-num.green { background: var(--green); }
+  .step-num.gold { background: #B45309; }
+  .step-body { padding: 12px 13px; flex: 1; }
+  .step-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px; color: var(--white); margin-bottom: 5px;
+  }
+  .step-text { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.55; }
+
+  /* ── PHRASE CARDS ── */
+  .phrase-filters {
+    display: flex; gap: 7px; padding: 10px 12px 0;
+    overflow-x: auto; scrollbar-width: none; flex-wrap: wrap;
+  }
+  .phrase-filter {
+    background: var(--dark-card); border: var(--border);
+    border-radius: 99px; padding: 5px 12px;
+    font-size: 12px; font-weight: 700; color: #9CA3AF;
+    cursor: pointer; white-space: nowrap;
+    transition: all 0.15s;
+  }
+  .phrase-filter.active {
+    background: var(--gold); color: var(--black);
+    box-shadow: 2px 2px 0 #0A0A0A;
+  }
+  .phrase-group { display: none; }
+  .phrase-group.active { display: block; }
+  .phrase-group-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 14px; color: var(--gold);
+    padding: 14px 16px 6px;
+  }
+  .phrase-card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 6px 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #0A0A0A;
+    transition: transform 0.1s;
+    position: relative;
+  }
+  .phrase-card:active { transform: translate(2px, 2px); box-shadow: none; }
+  .phrase-es {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px; color: var(--white); margin-bottom: 2px;
+  }
+  .phrase-phonetic { font-size: 11px; color: var(--gold); font-style: italic; margin-bottom: 3px; }
+  .phrase-en { font-size: 12px; color: rgba(255,255,255,0.6); }
+  .copy-hint { font-size: 10px; color: #6B7280; position: absolute; top: 10px; right: 12px; }
+  .copied-toast {
+    position: fixed; bottom: 80px; left: 50%; transform: translateX(-50%);
+    background: var(--green); color: white;
+    font-weight: 700; font-size: 13px;
+    border: var(--border); border-radius: 99px;
+    padding: 8px 20px; box-shadow: var(--shadow);
+    z-index: 999; opacity: 0; transition: opacity 0.2s;
+    pointer-events: none;
+  }
+
+  /* ── SPICE SCALE ── */
+  .spice-scale {
+    background: var(--dark-card);
+    border: var(--border);
+    border-radius: 12px;
+    margin: 10px 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .spice-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 16px; color: var(--white); margin-bottom: 10px;
+  }
+  .spice-row {
+    display: flex; align-items: center; gap: 10px;
+    margin-bottom: 8px; padding: 8px 10px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 8px; border: 1px solid rgba(255,255,255,0.06);
+  }
+  .spice-level {
+    font-size: 20px; flex-shrink: 0; width: 28px; text-align: center;
+  }
+  .spice-info { flex: 1; }
+  .spice-name { font-weight: 700; font-size: 13px; color: var(--white); }
+  .spice-desc { font-size: 11px; color: rgba(255,255,255,0.6); }
+
+  /* ── PHARMACY SECTION ── */
+  .pharmacy-info-card {
+    background: rgba(26,63,170,0.2);
+    border: 2px solid var(--blue);
+    border-radius: 12px;
+    margin: 10px 12px;
+    padding: 14px;
+    box-shadow: var(--shadow);
+  }
+  .pharmacy-title {
+    font-family: 'Fredoka One', cursive;
+    font-size: 15px; color: #60A5FA; margin-bottom: 6px;
+  }
+  .pharmacy-text { font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.6; }
+
+  /* ── SOS OVERLAY ── */
+  #sos-overlay {
+    display: none;
+    position: fixed; inset: 0; z-index: 999;
+    background: rgba(212,43,43,0.97);
+    flex-direction: column; align-items: center; justify-content: center;
+    padding: 30px 20px;
+    text-align: center;
+  }
+  #sos-overlay.open { display: flex; }
+  .sos-title {
+    font-family: 'Bangers', cursive;
+    font-size: 48px; color: var(--white);
+    text-shadow: 3px 3px 0 #0A0A0A;
+    letter-spacing: 2px; margin-bottom: 8px;
+  }
+  .sos-sub { font-size: 13px; color: rgba(255,255,255,0.8); margin-bottom: 24px; }
+  .sos-btn {
+    display: block; width: 100%; max-width: 320px;
+    background: var(--white); color: var(--red);
+    font-family: 'Bangers', cursive; font-size: 28px;
+    letter-spacing: 1px;
+    border: var(--border); border-radius: 12px;
+    padding: 14px; margin-bottom: 12px;
+    cursor: pointer; text-decoration: none;
+    box-shadow: 4px 4px 0 #0A0A0A;
+    text-align: center;
+  }
+  .sos-btn.blue {
+    background: #1E3A8A; color: var(--white);
+  }
+  .sos-phrase {
+    font-size: 12px; color: rgba(255,255,255,0.75);
+    margin: 6px 0 20px;
+    line-height: 1.5;
+  }
+  .sos-close {
+    background: transparent; border: 2px solid rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.7); border-radius: 99px;
+    padding: 8px 24px; font-size: 14px; font-weight: 700;
+    cursor: pointer; font-family: 'Nunito', sans-serif;
+  }
+
+  /* ── ALLERGY PHRASE CARDS ── */
+  .allergy-card {
+    background: var(--dark-card);
+    border: var(--border);
+    border-left: 4px solid var(--orange);
+    border-radius: 12px;
+    margin: 6px 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #0A0A0A;
+  }
+
+  /* ── FIND PHARMACY ── */
+  .find-pharmacy-btn {
+    display: block;
+    background: var(--green); color: var(--white);
+    font-family: 'Fredoka One', cursive; font-size: 16px;
+    border: var(--border); border-radius: 12px;
+    padding: 13px 16px; margin: 10px 12px;
+    text-align: center; text-decoration: none;
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+
+  /* scrollbar hide */
+  .phrase-filters::-webkit-scrollbar { display: none; }
+
+  /* section divider */
+  .section-divider {
+    height: 2px; background: rgba(255,255,255,0.06);
+    margin: 6px 12px;
+  }
+
+  .tag-pill {
+    display: inline-block;
+    background: rgba(245,197,24,0.15);
+    border: 1px solid rgba(245,197,24,0.3);
+    color: var(--gold);
+    border-radius: 99px; padding: 2px 9px;
+    font-size: 11px; font-weight: 700;
+    margin-top: 4px;
+  }
+</style>
+</head>
+<body>
+
+<!-- TOP HEADER -->
+<header id="top-header">
+  <div class="header-brand">
+    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="12" cy="12" r="10" fill="white" opacity="0.15"/>
+      <path d="M8 8 Q8 5 11 5 L11 10 Q11 12 9.5 13 Q8 14 8 16 L16 16 Q16 14 14.5 13 Q13 12 13 10 L13 5 Q16 5 16 8" stroke="white" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+      <path d="M7 18 L17 18" stroke="white" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    CDMX STOMACH GUIDE
+  </div>
+  <div id="tab-title">Food Safety</div>
+  <button id="sos-btn" onclick="openSOS()">SOS</button>
+</header>
+
+<!-- MAIN CONTENT -->
+<main id="content">
+
+  <!-- ════════════════════════════════════════════
+       TAB 1: FOOD TRAFFIC LIGHT
+  ════════════════════════════════════════════ -->
+  <section id="tab-food" class="tab-section active">
+
+    <div class="hero-card">
+      <div class="hero-title">WHAT TO EAT IN MEXICO CITY</div>
+      <div class="hero-sub">20–50% of travelers get sick. These are the rules that keep you eating <em>everything</em>.</div>
+      <div class="gold-stat">
+        <div class="gold-stat-icon">💡</div>
+        <div class="gold-stat-text">The #1 rule: if locals are lined up for it — it's safe. Empty stall = skip it.</div>
+      </div>
+    </div>
+
+    <!-- GREEN ZONE -->
+    <div class="zone-header green">
+      <div class="zone-title">🟢 EAT FREELY</div>
+      <div class="zone-sub">These are safe — hot, fresh, high turnover</div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🌮 Tacos al Pastor</div>
+          <div class="verdict">✅ Safe at any busy taquería</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why safe</span>
+        <div class="info-row">Protein cooked on a rotating vertical spit at high heat continuously. One of the safest street foods in Mexico City.</div>
+        <span class="info-label">How to order</span>
+        <div class="info-row">"<strong>Tres tacos de pastor, por favor</strong>"</div>
+        <span class="info-label">Watch for</span>
+        <div class="info-row">See the trompo (spit) spinning yourself. If there's no visible spit — it's not real al pastor.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🧺 Tacos de Canasta</div>
+          <div class="verdict">✅ Safe — a CDMX morning tradition</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why safe</span>
+        <div class="info-row">Steamed in baskets, kept hot. Very high turnover. Look for the cyclist with the basket bike.</div>
+        <span class="info-label">Best spots</span>
+        <div class="info-row">Roma Norte and Condesa markets, mornings only.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🫔 Tamales</div>
+          <div class="verdict">✅ Safe — steamed, sealed, hot</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why safe</span>
+        <div class="info-row">Cooked inside corn husk = protected from contamination. Very safe street food.</div>
+        <span class="info-label">When to get them</span>
+        <div class="info-row">Mornings only — sold from pots of steam.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🧀 Quesadillas (cooked to order)</div>
+          <div class="verdict">✅ Safe when made fresh in front of you</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why safe</span>
+        <div class="info-row">Cooked on comal directly in front of you at high heat. Ask for 'con queso' — melted cheese = hot.</div>
+        <span class="info-label">CDMX pro tip 🔥</span>
+        <div class="info-row">In CDMX, quesadillas <em>don't automatically come with cheese</em>. Say "<strong>con queso</strong>" or you won't get it. Yes, this is an ongoing national argument.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🍲 Soups / Caldos</div>
+          <div class="verdict">✅ Extremely safe — boiling hot liquid</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Examples</span>
+        <div class="info-row">Caldo de pollo, pozole, menudo</div>
+        <span class="info-label">Note</span>
+        <div class="info-row">Menudo (tripe soup) is the legendary hangover cure. Don't be scared of what it is.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🍽️ Enchiladas / Chilaquiles</div>
+          <div class="verdict">✅ Safe at any sit-down restaurant</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why safe</span>
+        <div class="info-row">Cooked sauce, cooked tortilla, cooked protein. Very low risk food.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header green-accent">
+        <div>
+          <div class="card-title">🥤 Agua de Horchata / Jamaica</div>
+          <div class="verdict">✅ Safe at established places</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Caveat</span>
+        <div class="info-row">Only from restaurants using purified water. Not from open barrels at street stalls without ice.</div>
+      </div>
+    </div>
+
+    <!-- YELLOW ZONE -->
+    <div class="zone-header yellow" style="margin-top:16px;">
+      <div class="zone-title">🟡 USE CAUTION</div>
+      <div class="zone-sub">Read before eating these</div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header yellow-accent">
+        <div>
+          <div class="card-title">🌶️ Street Salsas</div>
+          <div class="verdict">⚠️ First 2 days — go easy</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why risky</span>
+        <div class="info-row">Raw chiles, raw onion, sometimes unfiltered water in prep. Your gut needs time to adjust. After Day 3, you're more adapted.</div>
+        <span class="info-label">Safe approach</span>
+        <div class="info-row">Ask for cooked salsa (<strong>salsa cocida</strong>) instead of raw (<strong>salsa cruda</strong>) your first 2 days.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header yellow-accent">
+        <div>
+          <div class="card-title">🥗 Raw Salads at Street Stalls</div>
+          <div class="verdict">⚠️ Skip at stalls, fine at restaurants</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why risky</span>
+        <div class="info-row">Washed in what water? At sit-down restaurants with filtered water — fine. Street stall raw veg — higher risk.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header yellow-accent">
+        <div>
+          <div class="card-title">🍹 Fresh Juices</div>
+          <div class="verdict">⚠️ Only from places using filtered water</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">How to check</span>
+        <div class="info-row">Ask: "<strong>¿Usa agua purificada?</strong>" (Do you use purified water?) Any serious juice bar says yes immediately.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header yellow-accent">
+        <div>
+          <div class="card-title">🦐 Ceviche</div>
+          <div class="verdict">⚠️ Restaurant only, not street stalls</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Why</span>
+        <div class="info-row">CDMX is not a coastal city. Seafood travels. At a good restaurant with high turnover = fine. At a random street stall = risky.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header yellow-accent">
+        <div>
+          <div class="card-title">🧊 Ice</div>
+          <div class="verdict">⚠️ Restaurants = safe, random stalls = skip</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <span class="info-label">Rule</span>
+        <div class="info-row">Restaurants use commercial ice from purified water. Say "<strong>sin hielo</strong>" (without ice) only if you're unsure about the source.</div>
+      </div>
+    </div>
+
+    <!-- RED ZONE -->
+    <div class="zone-header red" style="margin-top:16px;">
+      <div class="zone-title">🔴 SKIP THESE</div>
+      <div class="zone-sub">Not worth the risk</div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header red-accent">
+        <div>
+          <div class="card-title">🦞 Seafood from Street Stalls</div>
+          <div class="verdict">❌ Avoid</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">CDMX is 400km from the ocean. Street-stall mariscos have a supply chain problem. Eat seafood at proper marisquerías only.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header red-accent">
+        <div>
+          <div class="card-title">☀️ Food Sitting in Sun</div>
+          <div class="verdict">❌ Avoid if not steaming or refrigerated</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">The danger zone is 5°C–60°C — exactly where street food sits on a hot Mexico City afternoon. If it's not steaming hot or visibly refrigerated: skip it.</div>
+      </div>
+    </div>
+
+    <div class="card card-expandable" onclick="toggleCard(this)">
+      <div class="card-header red-accent">
+        <div>
+          <div class="card-title">🧈 Unrefrigerated Dairy</div>
+          <div class="verdict">❌ Avoid at street stalls in heat</div>
+        </div>
+        <div class="expand-arrow">▼</div>
+      </div>
+      <div class="card-body">
+        <div class="info-row">Crema, cheese, sour cream sitting open in sun. Fine inside restaurants. Street stall crema in 30°C heat = skip it or eat immediately.</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-header red-accent">
+        <div>
+          <div class="card-title">🚰 Tap Water — EVER</div>
+          <div class="verdict">❌ Non-negotiable. Never drink it.</div>
+        </div>
+      </div>
+      <div style="padding: 0 14px 14px; font-size: 13px; color: rgba(255,255,255,0.8); line-height: 1.5;">
+        CDMX tap water is not potable. Brush your teeth with it only. Drinking = guaranteed stomach problems within 24 hours.
+      </div>
+    </div>
+
+    <div class="altitude-card">
+      <div class="altitude-title">⛰️ Your Stomach at 2,240m (7,350ft)</div>
+      <div class="altitude-text">
+        Digestion slows at altitude. You may feel full faster, experience more bloating, or feel nauseous even from food that would normally be fine. <strong>This is normal.</strong><br><br>
+        Eat smaller portions your first 2 days. Avoid heavy meals late at night for the first 3 days.
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       TAB 2: PHARMACY
+  ════════════════════════════════════════════ -->
+  <section id="tab-pharmacy" class="tab-section">
+
+    <div class="section-head">
+      <div class="section-head-title">FARMACIAS DEL AHORRO</div>
+      <div class="section-head-sub">The red pharmacy chain. 200+ locations in CDMX. Many open 24hrs. Doctor on duty ~$50–100 MXN.</div>
+    </div>
+
+    <div class="pharmacy-info-card">
+      <div class="pharmacy-title">🔍 How to Find One</div>
+      <div class="pharmacy-text">
+        Search <strong>"Farmacias del Ahorro"</strong> on Google Maps — red signage, everywhere.<br><br>
+        <strong>Farmacias Similares</strong> — Dr. Simi mascot, cheapest prices.<br>
+        <strong>Farmacia San Pablo</strong> — green signage, premium, more English-speaking staff.
+      </div>
+    </div>
+
+    <a href="https://maps.google.com/?q=Farmacias+del+Ahorro+CDMX" target="_blank" class="find-pharmacy-btn">
+      📍 Find Nearest Farmacia on Maps
+    </a>
+
+    <!-- MED CARDS -->
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">SUERO ORAL / PEDIALYTE</div>
+        <div class="med-equiv">Oral Rehydration Salts</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Suero oral, por favor"</div>
+        <div class="med-row">Replaces electrolytes and fluids lost from diarrhea or vomiting. <strong>MORE IMPORTANT than any medication.</strong> Take this first before anything else.</div>
+        <div class="med-row"><strong>Also:</strong> ELECTROLIT — best electrolyte drink in Mexico. Sold at OXXO, pharmacies, everywhere.</div>
+        <div class="med-row"><strong>Dose:</strong> Drink one full packet dissolved in water. Repeat every time you have diarrhea.</div>
+        <div class="med-row">⚠️ Dehydration at altitude is faster and more dangerous than at sea level.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$30–50 MXN</span> <span class="med-price" style="margin-left:6px;background:#EA580C;">Electrolit ~$25 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">LOPERAMIDA</div>
+        <div class="med-equiv">Imodium (loperamide) · Stops diarrhea</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Loperamida, por favor"</div>
+        <div class="med-row">Slows intestinal movement. Stops diarrhea. Brands: Imodium, Lopex, Lomotil.</div>
+        <div class="med-row"><strong>Dose:</strong> 2mg initial dose, then 2mg after each loose stool. Maximum 8mg per day.</div>
+        <div class="med-row" style="color: #FCA5A5;">⚠️ Do NOT take if you have fever or blood in stool — see a doctor instead. Does not cure infection — just stops symptoms. Always combine with Suero Oral.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$25–40 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">METOCLOPRAMIDA</div>
+        <div class="med-equiv">Reglan (metoclopramide) · Stops nausea</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Metoclopramida para náuseas"</div>
+        <div class="med-row">Stops nausea and vomiting.</div>
+        <div class="med-row"><strong>Alternative:</strong> Dramamine (dimenhydrinato) — widely available, also helps with nausea.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$30–50 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">PARACETAMOL / IBUPROFENO</div>
+        <div class="med-equiv">Acetaminophen / Ibuprofen · Pain & Fever</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Paracetamol para el dolor"</div>
+        <div class="med-row">For stomach issues, paracetamol is gentler than ibuprofen. Avoid ibuprofen on an empty stomach.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$20–35 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">FLORASTOR / LACTEOL FORT</div>
+        <div class="med-equiv">Probiotic · Restores gut bacteria</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Probiótico para diarrea del viajero"</div>
+        <div class="med-row">Take during and after a stomach episode. Also good to take before you suspect risky food.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$80–150 MXN</span></div>
+      </div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">OMEPRAZOL / PEPTO-BISMOL</div>
+        <div class="med-equiv">Antacid · Heartburn & indigestion</div>
+      </div>
+      <div class="med-body">
+        <div class="med-row"><strong>Spanish ask:</strong> "Omeprazol" or "Pepto Bismol"</div>
+        <div class="med-row">Reduces stomach acid. Good for heartburn and indigestion from spicy food. Pepto Bismol has mild antibacterial properties too.</div>
+        <div style="margin-top:8px;"><span class="med-price">~$30–60 MXN</span></div>
+      </div>
+    </div>
+
+    <!-- Pharmacy phrases -->
+    <div style="padding: 14px 16px 4px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:16px;color:var(--white);">What to say at the pharmacy</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;">Tap any phrase to copy it</div>
+    </div>
+
+    <div class="phrase-card" onclick="copyPhrase(this,'Tengo diarrea y náuseas — ¿qué me recomienda?')">
+      <div class="phrase-es">Tengo diarrea y náuseas — ¿qué me recomienda?</div>
+      <div class="phrase-en">I have diarrhea and nausea — what do you recommend?</div>
+      <div class="copy-hint">tap to copy</div>
+    </div>
+    <div class="phrase-card" onclick="copyPhrase(this,'¿Hay doctor en turno?')">
+      <div class="phrase-es">¿Hay doctor en turno?</div>
+      <div class="phrase-en">Is there a doctor on duty?</div>
+      <div class="copy-hint">tap to copy</div>
+    </div>
+    <div class="phrase-card" onclick="copyPhrase(this,'Necesito suero oral y loperamida')">
+      <div class="phrase-es">Necesito suero oral y loperamida</div>
+      <div class="phrase-en">I need oral rehydration salts and loperamide</div>
+      <div class="copy-hint">tap to copy</div>
+    </div>
+    <div class="phrase-card" onclick="copyPhrase(this,'Tengo intoxicación alimentaria')">
+      <div class="phrase-es">Tengo intoxicación alimentaria</div>
+      <div class="phrase-en">I have food poisoning</div>
+      <div class="copy-hint">tap to copy</div>
+    </div>
+
+    <!-- When to see a doctor -->
+    <div class="warning-card" style="margin-top:14px;">
+      <div class="warning-title">🏥 When to See a Doctor — Not the Pharmacy</div>
+      <div class="warning-text">
+        <li>❌ Fever over 38.5°C (101.3°F)</li>
+        <li>❌ Blood in stool</li>
+        <li>❌ Symptoms lasting more than 48 hours</li>
+        <li>❌ You cannot keep any fluids down</li>
+        <li>❌ Extreme thirst, no urination for 8+ hours, dizziness on standing</li>
+      </div>
+      <div style="margin-top:12px;padding-top:10px;border-top:1px solid rgba(212,43,43,0.3);">
+        <div style="font-family:'Fredoka One',cursive;font-size:14px;color:#FCA5A5;margin-bottom:6px;">Hospital ABC — Best International Care</div>
+        <a href="tel:+525552308000" style="display:block;background:var(--red);color:white;text-align:center;padding:10px;border-radius:8px;border:var(--border);font-family:'Fredoka One',cursive;font-size:15px;text-decoration:none;box-shadow:2px 2px 0 #0A0A0A;">
+          📞 +52 55 5230-8000
+        </a>
+        <div style="font-size:11px;color:rgba(255,255,255,0.5);text-align:center;margin-top:5px;">English staff · International insurance accepted</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       TAB 3: RECOVERY
+  ════════════════════════════════════════════ -->
+  <section id="tab-recovery" class="tab-section">
+
+    <div class="section-head">
+      <div class="section-head-title">YOU'RE SICK.</div>
+      <div class="section-head-sub">Step by step. In order. Starting now.</div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">1</div>
+      <div class="step-body">
+        <div class="step-title">💧 HYDRATE FIRST (most important)</div>
+        <div class="step-text">Before ANY medication: drink Suero Oral or Electrolit. Half a liter right now. Another half liter in 1 hour. <strong>This is more important than Imodium.</strong> Dehydration at 2,240m altitude hits faster.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">2</div>
+      <div class="step-body">
+        <div class="step-title">🚫 Stop Eating Solid Food</div>
+        <div class="step-text">For 4–6 hours: nothing solid. Clear liquids only: water, electrolytes, clear broth. Your gut needs to rest.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num green">3</div>
+      <div class="step-body">
+        <div class="step-title">💊 Take Medication</div>
+        <div class="step-text">Once you've hydrated:<br>
+          • Loperamida 2mg — stop diarrhea<br>
+          • Metoclopramida — if nauseous<br>
+          • Paracetamol — if fever or pain</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num gold">4</div>
+      <div class="step-body">
+        <div class="step-title">🍌 BRAT Diet (when ready to eat)</div>
+        <div class="step-text">After 6–8 hours: <strong>Bananas · Rice · Applesauce · Toast</strong><br>In Mexico: plátano + arroz blanco + pan tostado. Low fiber, easy to digest.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num gold">5</div>
+      <div class="step-body">
+        <div class="step-title">😴 Rest — Seriously</div>
+        <div class="step-text">You need to sleep. This is not optional. A World Cup match is not worth a hospital visit. Sleep 8 hours: you'll feel 80% better.</div>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num gold">6</div>
+      <div class="step-body">
+        <div class="step-title">🍜 Reintroduce Food Slowly</div>
+        <div class="step-text">After 12 hours feeling better: start with soup (caldo), crackers, banana.<br><br>Avoid for 24 more hours: spicy food, alcohol, dairy, raw vegetables.</div>
+      </div>
+    </div>
+
+    <div class="warning-card">
+      <div class="warning-title">❌ What NOT to Do</div>
+      <div class="warning-text">
+        <li>❌ Don't "push through" and go to the match if you have a fever</li>
+        <li>❌ Don't drink alcohol — dehydrates you more</li>
+        <li>❌ Don't take antibiotics without a doctor</li>
+        <li>❌ Don't eat spicy food to "reset" your stomach</li>
+        <li>❌ Don't ignore blood in stool or high fever</li>
+      </div>
+    </div>
+
+    <div class="altitude-card">
+      <div class="altitude-title">⏱️ The 48-Hour Test</div>
+      <div class="altitude-text">If you are <strong>NOT improving after 48 hours</strong>: you need a doctor. This could be bacterial, not viral.<br><br>
+        <a href="tel:+525552308000" style="display:inline-block;background:var(--red);color:white;padding:8px 16px;border-radius:8px;border:var(--border);font-family:'Fredoka One',cursive;font-size:14px;text-decoration:none;box-shadow:2px 2px 0 #0A0A0A;margin-top:8px;">📞 Hospital ABC: +52 55 5230-8000</a>
+      </div>
+    </div>
+
+    <!-- Allergy phrases -->
+    <div style="padding: 16px 16px 6px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:16px;color:var(--white);">🚨 Allergy Emergencies</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.5);margin-top:3px;">Tap to copy</div>
+    </div>
+
+    <div class="allergy-card" onclick="copyPhrase(this,'Soy alérgico/a al mariscos')">
+      <div class="phrase-es">Soy alérgico/a al mariscos</div>
+      <div class="phrase-en">I'm allergic to shellfish</div>
+    </div>
+    <div class="allergy-card" onclick="copyPhrase(this,'Soy alérgico/a al maní / cacahuate')">
+      <div class="phrase-es">Soy alérgico/a al maní / cacahuate</div>
+      <div class="phrase-en">I'm allergic to peanuts</div>
+    </div>
+    <div class="allergy-card" onclick="copyPhrase(this,'Soy vegetariano/a — sin carne')">
+      <div class="phrase-es">Soy vegetariano/a — sin carne</div>
+      <div class="phrase-en">I'm vegetarian — no meat</div>
+    </div>
+    <div class="allergy-card" onclick="copyPhrase(this,'Soy celíaco/a — sin gluten, sin trigo')">
+      <div class="phrase-es">Soy celíaco/a — sin gluten, sin trigo</div>
+      <div class="phrase-en">I'm celiac — no gluten, no wheat</div>
+    </div>
+    <div class="allergy-card" onclick="copyPhrase(this,'No como cerdo')">
+      <div class="phrase-es">No como cerdo</div>
+      <div class="phrase-en">I don't eat pork</div>
+    </div>
+    <div class="allergy-card" onclick="copyPhrase(this,'Tengo una reacción alérgica — necesito ayuda')">
+      <div class="phrase-es">Tengo una reacción alérgica — necesito ayuda</div>
+      <div class="phrase-en">I'm having an allergic reaction — I need help</div>
+    </div>
+
+    <!-- Spice scale -->
+    <div class="spice-scale" style="margin-top:14px;">
+      <div class="spice-title">🌶️ CDMX Spice Scale</div>
+      <div class="spice-row"><div class="spice-level">😌</div><div class="spice-info"><div class="spice-name">Nivel 0 — Sin picante</div><div class="spice-desc">"Sin chile / sin picante" — no heat at all</div></div></div>
+      <div class="spice-row"><div class="spice-level">🙂</div><div class="spice-info"><div class="spice-name">Nivel 1 — Poco picante</div><div class="spice-desc">Mild · chile güero / pimiento</div></div></div>
+      <div class="spice-row"><div class="spice-level">😅</div><div class="spice-info"><div class="spice-name">Nivel 2 — Picante</div><div class="spice-desc">Medium · jalapeño level</div></div></div>
+      <div class="spice-row"><div class="spice-level">🥵</div><div class="spice-info"><div class="spice-name">Nivel 3 — Muy picante</div><div class="spice-desc">Hot · serrano chile</div></div></div>
+      <div class="spice-row" style="border:1px solid rgba(212,43,43,0.4);background:rgba(212,43,43,0.08);"><div class="spice-level">🔥</div><div class="spice-info"><div class="spice-name" style="color:#FCA5A5;">Nivel 4 — Habanero</div><div class="spice-desc" style="color:#FCA5A5;">CDMX salsas can be Nivel 3–4 by default. Ask before you pour.</div></div></div>
+    </div>
+
+  </section>
+
+  <!-- ════════════════════════════════════════════
+       TAB 4: PHRASES
+  ════════════════════════════════════════════ -->
+  <section id="tab-phrases" class="tab-section">
+
+    <div class="section-head">
+      <div class="section-head-title">FOOD & HEALTH PHRASES</div>
+      <div class="section-head-sub">Tap any phrase to copy to clipboard</div>
+    </div>
+
+    <div class="phrase-filters">
+      <button class="phrase-filter active" onclick="filterPhrases('ordering',this)">🍽️ Ordering</button>
+      <button class="phrase-filter" onclick="filterPhrases('pharmacy',this)">💊 Pharmacy</button>
+      <button class="phrase-filter" onclick="filterPhrases('sick',this)">🤢 I'm Sick</button>
+      <button class="phrase-filter" onclick="filterPhrases('spice',this)">🌶️ Spice</button>
+      <button class="phrase-filter" onclick="filterPhrases('allergy',this)">🥗 Allergies</button>
+      <button class="phrase-filter" onclick="filterPhrases('emergency',this)">🏥 Emergency</button>
+    </div>
+
+    <!-- ORDERING -->
+    <div class="phrase-group active" id="pg-ordering">
+      <div class="phrase-group-title">🍽️ Ordering Food</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'La carta, por favor')"><div class="phrase-es">La carta, por favor</div><div class="phrase-phonetic">la KAR-ta, por fa-VOR</div><div class="phrase-en">The menu, please</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Sin picante, por favor')"><div class="phrase-es">Sin picante, por favor</div><div class="phrase-phonetic">sin pi-KAN-te, por fa-VOR</div><div class="phrase-en">Without spice, please</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Usa agua purificada?')"><div class="phrase-es">¿Usa agua purificada?</div><div class="phrase-phonetic">OO-sa A-gwa poo-ri-fi-KA-da?</div><div class="phrase-en">Do you use purified water?</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Agua embotellada, sin hielo')"><div class="phrase-es">Agua embotellada, sin hielo</div><div class="phrase-phonetic">A-gwa em-bo-te-YA-da, sin YE-lo</div><div class="phrase-en">Bottled water, no ice</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Está recién hecho?')"><div class="phrase-es">¿Está recién hecho?</div><div class="phrase-phonetic">es-TA re-SYEN E-cho?</div><div class="phrase-en">Is it freshly made?</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'La cuenta, por favor')"><div class="phrase-es">La cuenta, por favor</div><div class="phrase-phonetic">la KWEN-ta, por fa-VOR</div><div class="phrase-en">The bill, please</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Con queso, por favor')"><div class="phrase-es">Con queso, por favor</div><div class="phrase-phonetic">kon KE-so, por fa-VOR</div><div class="phrase-en">With cheese, please (for quesadillas!)</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Dónde está la farmacia más cercana?')"><div class="phrase-es">¿Dónde está la farmacia más cercana?</div><div class="phrase-phonetic">DON-de es-TA la far-MA-sya mas ser-KA-na?</div><div class="phrase-en">Where is the nearest pharmacy?</div><div class="copy-hint">tap</div></div>
+    </div>
+
+    <!-- PHARMACY -->
+    <div class="phrase-group" id="pg-pharmacy">
+      <div class="phrase-group-title">💊 At the Pharmacy</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo diarrea y náuseas')"><div class="phrase-es">Tengo diarrea y náuseas</div><div class="phrase-phonetic">TEN-go dya-RE-a ee NAU-se-as</div><div class="phrase-en">I have diarrhea and nausea</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Necesito suero oral')"><div class="phrase-es">Necesito suero oral</div><div class="phrase-phonetic">ne-se-SI-to SWE-ro o-RAL</div><div class="phrase-en">I need oral rehydration salts</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Loperamida, por favor')"><div class="phrase-es">Loperamida, por favor</div><div class="phrase-phonetic">lo-pe-ra-MI-da, por fa-VOR</div><div class="phrase-en">Loperamide, please</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Hay doctor en turno?')"><div class="phrase-es">¿Hay doctor en turno?</div><div class="phrase-phonetic">ai dok-TOR en TUR-no?</div><div class="phrase-en">Is there a doctor on duty?</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo intoxicación alimentaria')"><div class="phrase-es">Tengo intoxicación alimentaria</div><div class="phrase-phonetic">TEN-go in-tok-si-ka-SYON a-li-men-TA-rya</div><div class="phrase-en">I have food poisoning</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Cuánto cuesta?')"><div class="phrase-es">¿Cuánto cuesta?</div><div class="phrase-phonetic">KWAN-to KWES-ta?</div><div class="phrase-en">How much does it cost?</div><div class="copy-hint">tap</div></div>
+    </div>
+
+    <!-- SICK -->
+    <div class="phrase-group" id="pg-sick">
+      <div class="phrase-group-title">🤢 I'm Sick</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Me siento muy mal del estómago')"><div class="phrase-es">Me siento muy mal del estómago</div><div class="phrase-phonetic">me SYEN-to mwi mal del es-TO-ma-go</div><div class="phrase-en">I feel very sick to my stomach</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo vómitos y diarrea')"><div class="phrase-es">Tengo vómitos y diarrea</div><div class="phrase-phonetic">TEN-go VO-mi-tos ee dya-RE-a</div><div class="phrase-en">I have vomiting and diarrhea</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Necesito un médico')"><div class="phrase-es">Necesito un médico</div><div class="phrase-phonetic">ne-se-SI-to un ME-di-ko</div><div class="phrase-en">I need a doctor</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Dónde está el hospital más cercano?')"><div class="phrase-es">¿Dónde está el hospital más cercano?</div><div class="phrase-phonetic">DON-de es-TA el os-pi-TAL mas ser-KA-no?</div><div class="phrase-en">Where is the nearest hospital?</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo fiebre')"><div class="phrase-es">Tengo fiebre</div><div class="phrase-phonetic">TEN-go FYE-bre</div><div class="phrase-en">I have a fever</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Habla inglés el doctor?')"><div class="phrase-es">¿Habla inglés el doctor?</div><div class="phrase-phonetic">A-bla in-GLES el dok-TOR?</div><div class="phrase-en">Does the doctor speak English?</div><div class="copy-hint">tap</div></div>
+    </div>
+
+    <!-- SPICE -->
+    <div class="phrase-group" id="pg-spice">
+      <div class="phrase-group-title">🌶️ Controlling the Spice</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Sin picante, por favor')"><div class="phrase-es">Sin picante, por favor</div><div class="phrase-phonetic">sin pi-KAN-te</div><div class="phrase-en">No spice, please</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Muy poco picante')"><div class="phrase-es">Muy poco picante</div><div class="phrase-phonetic">mwi PO-ko pi-KAN-te</div><div class="phrase-en">Very little spice</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'¿Qué tan picante está?')"><div class="phrase-es">¿Qué tan picante está?</div><div class="phrase-phonetic">ke tan pi-KAN-te es-TA?</div><div class="phrase-en">How spicy is it?</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'La salsa aparte, por favor')"><div class="phrase-es">La salsa aparte, por favor</div><div class="phrase-phonetic">la SAL-sa a-PAR-te, por fa-VOR</div><div class="phrase-en">The salsa on the side, please</div><div class="copy-hint">tap</div></div>
+    </div>
+
+    <!-- ALLERGY -->
+    <div class="phrase-group" id="pg-allergy">
+      <div class="phrase-group-title">🥗 Dietary & Allergies</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Soy alérgico/a al mariscos')"><div class="phrase-es">Soy alérgico/a al mariscos</div><div class="phrase-phonetic">soi a-LER-hi-ko al ma-RIS-kos</div><div class="phrase-en">I'm allergic to shellfish</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Soy alérgico/a al cacahuate')"><div class="phrase-es">Soy alérgico/a al cacahuate</div><div class="phrase-phonetic">soi a-LER-hi-ko al ka-ka-WA-te</div><div class="phrase-en">I'm allergic to peanuts</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Soy vegetariano/a — sin carne')"><div class="phrase-es">Soy vegetariano/a — sin carne</div><div class="phrase-phonetic">soi ve-he-ta-RYA-no — sin KAR-ne</div><div class="phrase-en">I'm vegetarian — no meat</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Sin gluten, sin trigo')"><div class="phrase-es">Sin gluten, sin trigo</div><div class="phrase-phonetic">sin GLOO-ten, sin TRI-go</div><div class="phrase-en">No gluten, no wheat</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'No como cerdo')"><div class="phrase-es">No como cerdo</div><div class="phrase-phonetic">no KO-mo SER-do</div><div class="phrase-en">I don't eat pork</div><div class="copy-hint">tap</div></div>
+    </div>
+
+    <!-- EMERGENCY -->
+    <div class="phrase-group" id="pg-emergency">
+      <div class="phrase-group-title">🏥 Emergency Phrases</div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo una reacción alérgica — necesito ayuda')"><div class="phrase-es">Tengo una reacción alérgica — necesito ayuda</div><div class="phrase-phonetic">TEN-go una re-ak-SYON a-LER-hi-ka</div><div class="phrase-en">I'm having an allergic reaction — I need help</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Llame a una ambulancia')"><div class="phrase-es">Llame a una ambulancia</div><div class="phrase-phonetic">YA-me a UNA am-bu-LAN-sya</div><div class="phrase-en">Call an ambulance</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Necesito ayuda médica')"><div class="phrase-es">Necesito ayuda médica</div><div class="phrase-phonetic">ne-se-SI-to a-YU-da ME-di-ka</div><div class="phrase-en">I need medical help</div><div class="copy-hint">tap</div></div>
+      <div class="phrase-card" onclick="copyPhrase(this,'Tengo intoxicación alimentaria')"><div class="phrase-es">Tengo intoxicación alimentaria</div><div class="phrase-phonetic">TEN-go in-tok-si-ka-SYON a-li-men-TA-rya</div><div class="phrase-en">I have food poisoning</div><div class="copy-hint">tap</div></div>
+
+      <div style="margin: 14px 12px 6px;">
+        <a href="tel:911" style="display:block;background:var(--red);color:white;text-align:center;padding:14px;border-radius:12px;border:var(--border);font-family:'Bangers',cursive;font-size:28px;letter-spacing:2px;text-decoration:none;box-shadow:var(--shadow);margin-bottom:10px;">
+          📞 911 — All Emergencies
+        </a>
+        <a href="tel:+525552308000" style="display:block;background:#1E3A8A;color:white;text-align:center;padding:12px;border-radius:12px;border:var(--border);font-family:'Fredoka One',cursive;font-size:16px;text-decoration:none;box-shadow:var(--shadow);">
+          🏥 Hospital ABC: +52 55 5230-8000
+        </a>
+      </div>
+    </div>
+
+  </section>
+</main>
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav">
+  <button class="nav-tab active" id="nav-food" onclick="switchTab('food')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 3"/>
+      </svg>
+      <span>Safety</span>
+    </div>
+  </button>
+  <button class="nav-tab" id="nav-pharmacy" onclick="switchTab('pharmacy')">
+    <div class="nav-pill" style="padding:4px 10px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <rect x="7" y="2" width="10" height="20" rx="3"/><line x1="12" y1="8" x2="12" y2="14"/><line x1="9" y1="11" x2="15" y2="11"/>
+      </svg>
+      <span>Pharmacy</span>
+    </div>
+  </button>
+  <button class="nav-tab" id="nav-recovery" onclick="switchTab('recovery')">
+    <div class="nav-pill" style="padding:4px 10px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+      </svg>
+      <span>Recovery</span>
+    </div>
+  </button>
+  <button class="nav-tab" id="nav-phrases" onclick="switchTab('phrases')">
+    <div class="nav-pill" style="padding:4px 10px;">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>Phrases</span>
+    </div>
+  </button>
+</nav>
+
+<!-- SOS OVERLAY -->
+<div id="sos-overlay">
+  <div class="sos-title">🚨 SOS</div>
+  <div class="sos-sub">Mexico City Emergency Contacts</div>
+
+  <a href="tel:911" class="sos-btn">📞 911 — All Emergencies</a>
+  <div class="sos-phrase">Police · Ambulance · Fire — all at 911</div>
+
+  <a href="tel:+525552308000" class="sos-btn blue">🏥 Hospital ABC<br><span style="font-size:16px;font-family:'Nunito',sans-serif;">+52 55 5230-8000</span></a>
+  <div class="sos-phrase">Best international care in CDMX<br>English staff · Insurance accepted<br><br>Say: <strong>"Tengo intoxicación alimentaria"</strong><br>(food poisoning)<br>or <strong>"Necesito ayuda médica"</strong><br>(I need medical help)</div>
+
+  <button class="sos-close" onclick="closeSOS()">✕ Close</button>
+</div>
+
+<!-- COPY TOAST -->
+<div class="copied-toast" id="copy-toast">✓ Copied!</div>
+
+<script>
+  const tabs = ['food','pharmacy','recovery','phrases'];
+  const tabTitles = { food:'Food Safety', pharmacy:'Pharmacy', recovery:'Recovery', phrases:'Phrases' };
+
+  function switchTab(name) {
+    tabs.forEach(t => {
+      document.getElementById('tab-'+t).classList.remove('active');
+      document.getElementById('nav-'+t).classList.remove('active');
+    });
+    document.getElementById('tab-'+name).classList.add('active');
+    document.getElementById('nav-'+name).classList.add('active');
+    document.getElementById('tab-title').textContent = tabTitles[name];
+    document.getElementById('content').scrollTop = 0;
+    window.scrollTo(0,0);
+  }
+
+  function toggleCard(el) {
+    el.classList.toggle('open');
+    const body = el.querySelector('.card-body');
+    body.classList.toggle('open');
+  }
+
+  function filterPhrases(group, btn) {
+    document.querySelectorAll('.phrase-filter').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.phrase-group').forEach(g => g.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('pg-'+group).classList.add('active');
+  }
+
+  function copyPhrase(el, text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).catch(() => fallbackCopy(text));
+    } else { fallbackCopy(text); }
+    showToast();
+    el.style.background = 'rgba(26,122,74,0.25)';
+    setTimeout(() => el.style.background = '', 600);
+  }
+
+  function fallbackCopy(text) {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.focus(); ta.select();
+    try { document.execCommand('copy'); } catch(e){}
+    document.body.removeChild(ta);
+  }
+
+  function showToast() {
+    const t = document.getElementById('copy-toast');
+    t.style.opacity = '1';
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.style.opacity = '0', 1400);
+  }
+
+  function openSOS() {
+    document.getElementById('sos-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeSOS() {
+    document.getElementById('sos-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  // Close SOS on outside tap
+  document.getElementById('sos-overlay').addEventListener('click', function(e) {
+    if (e.target === this) closeSOS();
+  });
+</script>
+</body>
+</html>
