@@ -1,0 +1,1805 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GDL Stomach Guide — FIFA World Cup 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --chivas: #CC0000;
+    --chivas-dark: #990000;
+    --chivas-light: #ff3333;
+    --gold: #F5A623;
+    --gold-light: #FFD166;
+    --green: #2ECC71;
+    --green-dark: #1a9e53;
+    --yellow: #F39C12;
+    --red: #E74C3C;
+    --bg: #0A0A0A;
+    --bg2: #111111;
+    --bg3: #1A1A1A;
+    --card: #181818;
+    --card-border: #2a2a2a;
+    --text: #F0EDE8;
+    --text-muted: #888880;
+    --text-dim: #555550;
+    --white: #FFFFFF;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 24px rgba(0,0,0,0.5);
+    --shadow-chivas: 0 4px 32px rgba(204,0,0,0.25);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── HEADER ── */
+  .app-header {
+    background: var(--chivas);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    padding: 0 16px;
+    box-shadow: var(--shadow-chivas);
+  }
+
+  .header-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    gap: 12px;
+  }
+
+  .header-title {
+    font-family: 'Bangers', cursive;
+    font-size: 26px;
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1;
+    flex: 1;
+  }
+
+  .header-title span {
+    display: block;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.7);
+    margin-top: 1px;
+  }
+
+  .sos-btn {
+    background: var(--white);
+    color: var(--chivas);
+    font-family: 'Bebas Neue', cursive;
+    font-size: 15px;
+    letter-spacing: 1.5px;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .sos-btn:hover { background: #ffecec; transform: scale(1.03); }
+  .sos-btn .sos-dot {
+    width: 7px; height: 7px;
+    background: var(--chivas);
+    border-radius: 50%;
+    animation: pulse-red 1.2s infinite;
+  }
+
+  @keyframes pulse-red {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.5); }
+  }
+
+  /* ── NAV TABS ── */
+  .nav-tabs {
+    background: var(--bg2);
+    border-bottom: 1px solid var(--card-border);
+    position: sticky;
+    top: 60px;
+    z-index: 99;
+  }
+
+  .nav-inner {
+    max-width: 680px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .nav-tab {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 12px 4px 10px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .nav-tab .tab-icon { font-size: 16px; }
+  .nav-tab:hover { color: var(--text); }
+  .nav-tab.active {
+    color: var(--chivas-light);
+    border-bottom-color: var(--chivas);
+  }
+
+  /* ── MAIN ── */
+  .main {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 20px 16px 100px;
+  }
+
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  /* ── CARDS ── */
+  .card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+  }
+
+  .card-hero {
+    background: linear-gradient(135deg, #1a0000 0%, #2a0505 50%, #1a0000 100%);
+    border-color: rgba(204,0,0,0.4);
+    padding: 22px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .card-hero::before {
+    content: '🌮';
+    position: absolute;
+    right: -10px;
+    top: -10px;
+    font-size: 80px;
+    opacity: 0.08;
+    transform: rotate(15deg);
+  }
+
+  .card-hero .hero-label {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--chivas-light);
+    margin-bottom: 6px;
+  }
+
+  .card-hero h2 {
+    font-family: 'Bangers', cursive;
+    font-size: 28px;
+    letter-spacing: 1px;
+    color: var(--white);
+    line-height: 1.1;
+    margin-bottom: 10px;
+  }
+
+  .card-hero p {
+    font-size: 14px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.6;
+  }
+
+  .card-gold {
+    background: linear-gradient(135deg, #1a1000 0%, #221500 100%);
+    border-color: rgba(245,166,35,0.4);
+    border-left: 4px solid var(--gold);
+  }
+
+  .card-gold .gold-label {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: var(--gold);
+    margin-bottom: 8px;
+  }
+
+  .card-gold p, .card-gold li {
+    font-size: 13.5px;
+    color: rgba(240,237,232,0.85);
+    line-height: 1.65;
+  }
+
+  /* ── ZONE HEADERS ── */
+  .zone-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 24px 0 12px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .zone-badge {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 13px;
+    letter-spacing: 2px;
+    padding: 4px 12px;
+    border-radius: 4px;
+  }
+
+  .zone-badge.green { background: rgba(46,204,113,0.2); color: var(--green); border: 1px solid rgba(46,204,113,0.3); }
+  .zone-badge.yellow { background: rgba(243,156,18,0.2); color: var(--yellow); border: 1px solid rgba(243,156,18,0.3); }
+  .zone-badge.red-zone { background: rgba(231,76,60,0.2); color: var(--red); border: 1px solid rgba(231,76,60,0.3); }
+
+  .zone-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: var(--text);
+  }
+
+  /* ── EXPANDABLE FOOD CARDS ── */
+  .food-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .food-card:hover { border-color: #3a3a3a; }
+
+  .food-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .food-emoji { font-size: 24px; flex-shrink: 0; }
+
+  .food-info { flex: 1; }
+
+  .food-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 3px;
+  }
+
+  .food-verdict {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+  }
+
+  .food-chevron {
+    color: var(--text-dim);
+    font-size: 12px;
+    transition: transform 0.25s;
+    flex-shrink: 0;
+  }
+
+  .food-card.open .food-chevron { transform: rotate(180deg); }
+
+  .food-body {
+    display: none;
+    padding: 0 16px 16px;
+    border-top: 1px solid var(--card-border);
+  }
+
+  .food-card.open .food-body { display: block; }
+
+  .food-row {
+    margin-top: 12px;
+  }
+
+  .food-row-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 4px;
+  }
+
+  .food-row p, .food-row-label + p {
+    font-size: 13.5px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.65;
+  }
+
+  .order-phrase {
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: 6px;
+    padding: 10px 14px;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--gold-light);
+    margin-top: 4px;
+  }
+
+  .rec-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(204,0,0,0.15);
+    border: 1px solid rgba(204,0,0,0.3);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    color: rgba(240,237,232,0.85);
+    margin-top: 4px;
+    line-height: 1.5;
+  }
+
+  .alert-spice {
+    background: rgba(231,76,60,0.12);
+    border: 2px solid rgba(231,76,60,0.4);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-top: 12px;
+  }
+
+  .alert-spice .alert-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+    letter-spacing: 1px;
+    color: var(--red);
+    margin-bottom: 6px;
+  }
+
+  .alert-spice p {
+    font-size: 13px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.6;
+  }
+
+  /* ── SIMPLE FOOD TILES (non-expandable) ── */
+  .food-tile {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 12px 14px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .food-tile .tile-emoji { font-size: 20px; flex-shrink: 0; }
+  .food-tile .tile-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 15px;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    margin-bottom: 3px;
+  }
+
+  .food-tile .tile-desc {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+
+  /* ── VERDICT CHIPS ── */
+  .verdict { display: inline-block; font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 4px; margin-bottom: 6px; }
+  .verdict.safe { background: rgba(46,204,113,0.2); color: #2ECC71; }
+  .verdict.caution { background: rgba(243,156,18,0.2); color: #F39C12; }
+  .verdict.danger { background: rgba(231,76,60,0.2); color: #E74C3C; }
+
+  /* ── PHARMACY TAB ── */
+  .pharma-intro {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 16px;
+  }
+
+  .pharma-chain {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--card-border);
+    font-size: 13.5px;
+    color: var(--text);
+  }
+
+  .pharma-chain:last-child { border-bottom: none; }
+  .pharma-chain strong { color: var(--white); }
+
+  .med-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 10px;
+  }
+
+  .med-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+  }
+
+  .med-name {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    line-height: 1;
+  }
+
+  .med-english { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .med-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .med-ask {
+    background: var(--bg3);
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    color: var(--gold-light);
+    margin: 8px 0;
+  }
+
+  .med-desc {
+    font-size: 13px;
+    color: rgba(240,237,232,0.75);
+    line-height: 1.6;
+  }
+
+  .med-card.featured {
+    border-color: rgba(204,0,0,0.4);
+    background: linear-gradient(135deg, #1a0000 0%, var(--card) 60%);
+  }
+
+  .featured-tag {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: var(--chivas-light);
+    margin-bottom: 6px;
+  }
+
+  .doctor-card {
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-top: 20px;
+  }
+
+  .doctor-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .hospital-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .hospital-row:last-child { border-bottom: none; }
+
+  .hospital-name { font-size: 13.5px; font-weight: 600; color: var(--text); }
+  .hospital-note { font-size: 11px; color: var(--text-muted); margin-top: 2px; }
+
+  .call-btn {
+    background: var(--chivas);
+    color: var(--white);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 7px 10px;
+    border-radius: 6px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.15s;
+  }
+
+  .call-btn:hover { background: var(--chivas-dark); }
+
+  .when-doctor {
+    background: rgba(231,76,60,0.1);
+    border: 1px solid rgba(231,76,60,0.3);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-top: 14px;
+  }
+
+  .when-doctor h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--red);
+    margin-bottom: 10px;
+  }
+
+  .when-doctor li {
+    font-size: 13.5px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.6;
+    margin-left: 18px;
+    margin-bottom: 4px;
+  }
+
+  /* ── RECOVERY TAB ── */
+  .step-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+
+  .step-num {
+    font-family: 'Bangers', cursive;
+    font-size: 32px;
+    color: var(--chivas);
+    line-height: 1;
+    flex-shrink: 0;
+    width: 32px;
+    text-align: center;
+  }
+
+  .step-body h3 {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 17px;
+    letter-spacing: 0.5px;
+    color: var(--white);
+    margin-bottom: 5px;
+  }
+
+  .step-body p, .step-body li {
+    font-size: 13.5px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.65;
+  }
+
+  .step-body ul { margin-left: 16px; margin-top: 6px; }
+
+  .diff-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 14px;
+  }
+
+  .diff-header {
+    background: var(--bg3);
+    padding: 12px 16px;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 16px;
+    letter-spacing: 1px;
+    color: var(--text);
+    border-bottom: 1px solid var(--card-border);
+  }
+
+  .diff-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--card-border);
+  }
+
+  .diff-cell {
+    background: var(--card);
+    padding: 12px 14px;
+  }
+
+  .diff-cell .diff-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 5px;
+  }
+
+  .diff-cell p {
+    font-size: 13px;
+    color: rgba(240,237,232,0.8);
+    line-height: 1.55;
+  }
+
+  .brat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  .brat-item {
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 12px;
+    text-align: center;
+  }
+
+  .brat-item .brat-emoji { font-size: 24px; margin-bottom: 4px; }
+  .brat-item .brat-name { font-family: 'Bebas Neue', cursive; font-size: 15px; color: var(--white); }
+  .brat-item .brat-where { font-size: 11px; color: var(--text-muted); margin-top: 3px; line-height: 1.4; }
+
+  .section-title {
+    font-family: 'Bangers', cursive;
+    font-size: 22px;
+    letter-spacing: 1.5px;
+    color: var(--chivas-light);
+    margin: 24px 0 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(204,0,0,0.2);
+  }
+
+  /* ── PHRASES TAB ── */
+  .phrase-cat {
+    margin-bottom: 20px;
+  }
+
+  .phrase-cat-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 14px;
+    letter-spacing: 2.5px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .phrase-item {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 12px 14px;
+    margin-bottom: 7px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    position: relative;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .phrase-item:hover { border-color: #3a3a3a; }
+
+  .phrase-es {
+    font-family: 'Space Mono', monospace;
+    font-size: 13.5px;
+    color: var(--gold-light);
+    margin-bottom: 4px;
+  }
+
+  .phrase-en {
+    font-size: 12.5px;
+    color: var(--text-muted);
+    margin-bottom: 4px;
+  }
+
+  .phrase-pron {
+    font-size: 11px;
+    color: var(--text-dim);
+    font-style: italic;
+  }
+
+  .copy-hint {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: var(--text-dim);
+    transition: color 0.15s;
+  }
+
+  .phrase-item:hover .copy-hint { color: var(--text-muted); }
+
+  .copy-toast {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    background: var(--gold);
+    color: #000;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 8px 20px;
+    border-radius: 6px;
+    opacity: 0;
+    transition: all 0.3s;
+    pointer-events: none;
+    z-index: 200;
+    white-space: nowrap;
+  }
+
+  .copy-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+
+  /* ── ALLERGY PHRASES ── */
+  .allergy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 14px;
+  }
+
+  .allergy-chip {
+    background: var(--bg3);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 10px 12px;
+    cursor: pointer;
+    transition: border-color 0.15s;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .allergy-chip:hover { border-color: var(--text-dim); }
+  .allergy-chip .chip-emoji { font-size: 18px; margin-bottom: 3px; }
+  .allergy-chip .chip-name { font-size: 12px; font-weight: 600; color: var(--text); margin-bottom: 2px; }
+  .allergy-chip .chip-phrase { font-family: 'Space Mono', monospace; font-size: 10.5px; color: var(--gold-light); line-height: 1.4; }
+
+  /* ── SPICE SCALE ── */
+  .spice-scale {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius);
+    padding: 16px;
+    margin-bottom: 14px;
+  }
+
+  .spice-title {
+    font-family: 'Bebas Neue', cursive;
+    font-size: 15px;
+    letter-spacing: 2px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+  }
+
+  .spice-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 8px;
+  }
+
+  .spice-dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  .spice-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+
+  .spice-dot.filled { background: var(--red); }
+  .spice-dot.empty { background: var(--bg3); border: 1px solid var(--card-border); }
+
+  .spice-label { font-size: 13px; color: var(--text); }
+  .spice-example { font-size: 12px; color: var(--text-muted); }
+
+  /* ── FOOTER NOTE ── */
+  .footer-note {
+    text-align: center;
+    padding: 20px;
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--card-border); border-radius: 3px; }
+
+  /* ── ANIMATIONS ── */
+  .tab-content.active {
+    animation: fadeUp 0.25s ease-out;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 400px) {
+    .nav-tab { font-size: 9px; padding: 10px 2px 8px; }
+    .header-title { font-size: 22px; }
+    .diff-row { grid-template-columns: 1fr; }
+    .brat-grid { grid-template-columns: 1fr 1fr; }
+    .allergy-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="app-header">
+  <div class="header-inner">
+    <div class="header-title">
+      GDL STOMACH GUIDE
+      <span>FIFA World Cup 2026 · Guadalajara</span>
+    </div>
+    <a href="tel:+523336488585" class="sos-btn">
+      <div class="sos-dot"></div>
+      SOS
+    </a>
+  </div>
+</header>
+
+<!-- NAV TABS -->
+<nav class="nav-tabs">
+  <div class="nav-inner">
+    <button class="nav-tab active" data-tab="traffic" onclick="switchTab('traffic')">
+      <span class="tab-icon">🚦</span>Food Guide
+    </button>
+    <button class="nav-tab" data-tab="pharmacy" onclick="switchTab('pharmacy')">
+      <span class="tab-icon">💊</span>Pharmacy
+    </button>
+    <button class="nav-tab" data-tab="recovery" onclick="switchTab('recovery')">
+      <span class="tab-icon">🛏️</span>Recovery
+    </button>
+    <button class="nav-tab" data-tab="phrases" onclick="switchTab('phrases')">
+      <span class="tab-icon">🗣️</span>Phrases
+    </button>
+  </div>
+</nav>
+
+<main class="main">
+
+  <!-- ══════════════════════════════════════════
+       TAB 1: FOOD TRAFFIC LIGHT
+  ══════════════════════════════════════════ -->
+  <div class="tab-content active" id="tab-traffic">
+
+    <!-- Hero card -->
+    <div class="card card-hero">
+      <div class="hero-label">🏟️ FIFA World Cup 2026</div>
+      <h2>GUADALAJARA — FOOD CAPITAL OF MEXICO</h2>
+      <p>You are in the right city. Guadalajara's food is extraordinary. This guide helps you eat everything without spending your match day in the bathroom.</p>
+    </div>
+
+    <!-- Gold insight card -->
+    <div class="card card-gold">
+      <div class="gold-label">💡 KEY INSIGHT</div>
+      <p>Guadalajara's signature dishes — birria, torta ahogada, pozole — are actually <strong style="color:var(--gold-light)">safer than average street food</strong> because they are served very hot from high-turnover places. Your biggest risk is not the iconic dishes. It's the raw salsas, unfiltered agua fresca, and enthusiastically ordering everything on Day 1.</p>
+    </div>
+
+    <!-- ── GREEN ZONE ── -->
+    <div class="zone-header">
+      <div class="zone-badge green">✅ GREEN</div>
+      <div class="zone-title">EAT FREELY</div>
+    </div>
+
+    <!-- BIRRIA -->
+    <div class="food-card" id="fc-birria">
+      <div class="food-card-header" onclick="toggleFood('fc-birria')">
+        <div class="food-emoji">🍲</div>
+        <div class="food-info">
+          <div class="food-name">BIRRIA</div>
+          <div class="food-verdict"><span class="verdict safe">✅ Safe at any busy birriería</span></div>
+        </div>
+        <div class="food-chevron">▼</div>
+      </div>
+      <div class="food-body">
+        <div class="food-row">
+          <div class="food-row-label">Why Safe</div>
+          <p>Slow-cooked for hours at high heat. The consomé (broth) is boiling. The meat falls off the bone. Very high turnover at popular spots = fresh daily. This is THE dish to eat in Guadalajara. Don't skip it.</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">How to Order</div>
+          <div class="order-phrase">"Birria de res/chivo con consomé, por favor"</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:4px;">Beef/goat birria with broth please</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">Recommended Spot</div>
+          <div class="rec-badge">📍 Birriería Las 9 Esquinas — Calle Leandro Valle 895, Centro. Iconic. Lines out the door. That line means the food is fresh and the kitchen is trusted.</div>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">Watch For</div>
+          <p>Avoid birria that smells overly sour or is served cold. It should arrive steaming.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- TORTA AHOGADA -->
+    <div class="food-card" id="fc-torta">
+      <div class="food-card-header" onclick="toggleFood('fc-torta')">
+        <div class="food-emoji">🥖</div>
+        <div class="food-info">
+          <div class="food-name">TORTA AHOGADA</div>
+          <div class="food-verdict"><span class="verdict safe">✅ Safe — cooked sauce, cooked protein</span></div>
+        </div>
+        <div class="food-chevron">▼</div>
+      </div>
+      <div class="food-body">
+        <div class="food-row">
+          <div class="food-row-label">Why Safe</div>
+          <p>The birote salado (crusty local bread) is fresh baked. The carnitas are slow-cooked pork. The sauce is cooked tomato and chile. All ingredients are processed. Low contamination risk despite looking chaotic.</p>
+        </div>
+        <div class="alert-spice">
+          <div class="alert-title">🌶️ SPICE WARNING</div>
+          <p>The 'ahogada' sauce is VERY spicy. If you have a sensitive stomach, ask for 'enchilada' (mild version).<br><br>
+          <strong style="color:var(--text)">On Day 1 in GDL:</strong> order enchilada.<br>
+          <strong style="color:var(--text)">On Day 3+:</strong> try the full ahogada.</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">How to Order</div>
+          <div class="order-phrase">"Una torta ahogada enchilada, por favor"</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:4px;">mild version</p>
+          <div class="order-phrase" style="margin-top:8px;">"Una torta ahogada, por favor"</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:4px;">full spicy version</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- POZOLE -->
+    <div class="food-card" id="fc-pozole">
+      <div class="food-card-header" onclick="toggleFood('fc-pozole')">
+        <div class="food-emoji">🍜</div>
+        <div class="food-info">
+          <div class="food-name">POZOLE</div>
+          <div class="food-verdict"><span class="verdict safe">✅ Very safe — soup at full boil</span></div>
+        </div>
+        <div class="food-chevron">▼</div>
+      </div>
+      <div class="food-body">
+        <div class="food-row">
+          <div class="food-row-label">Why Safe</div>
+          <p>Hominy corn cooked with pork or chicken in a boiling broth. Served very hot. High heat = low contamination risk.</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">How to Order</div>
+          <div class="order-phrase">"Pozole rojo con puerco, por favor"</div>
+          <p style="font-size:12px;color:var(--text-dim);margin-top:4px;">Red pozole with pork please — the most common Jalisco style</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Non-expandable green tiles -->
+    <div class="food-tile">
+      <div class="tile-emoji">🐷</div>
+      <div>
+        <div class="tile-name">TACOS DE CARNITAS</div>
+        <div class="tile-desc"><span class="verdict safe">✅ Safe at busy spots</span><br>Cooked in large copper pots of lard at high temperature. Extremely popular in Jalisco — high turnover.</div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🫔</div>
+      <div>
+        <div class="tile-name">TAMALES TAPATÍOS</div>
+        <div class="tile-desc"><span class="verdict safe">✅ Safe</span><br>Steamed, sealed, hot. Morning street food. Look for the vapor (steam) coming from the pot.</div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🍩</div>
+      <div>
+        <div class="tile-name">CHURROS / SWEET TREATS</div>
+        <div class="tile-desc"><span class="verdict safe">✅ Safe — fried at high heat fresh</span><br>Hot from the fryer = safe. Cold churros = skip.</div>
+      </div>
+    </div>
+
+    <!-- ── YELLOW ZONE ── -->
+    <div class="zone-header">
+      <div class="zone-badge yellow">⚠️ YELLOW</div>
+      <div class="zone-title">EAT WITH CAUTION</div>
+    </div>
+
+    <!-- TEJUINO -->
+    <div class="food-card" id="fc-tejuino">
+      <div class="food-card-header" onclick="toggleFood('fc-tejuino')">
+        <div class="food-emoji">🥤</div>
+        <div class="food-info">
+          <div class="food-name">TEJUINO</div>
+          <div class="food-verdict"><span class="verdict caution">⚠️ Safe from reputable vendors with ice</span></div>
+        </div>
+        <div class="food-chevron">▼</div>
+      </div>
+      <div class="food-body">
+        <div class="food-row">
+          <div class="food-row-label">Why Risky</div>
+          <p>Naturally fermented corn drink. Slight fermentation is normal and harmless. Risk: stalls that don't refrigerate or use bad water.</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">Safe Rule</div>
+          <p>Only from stalls with visible refrigeration or proper ice chest. Avoid tejuino sitting in sun.</p>
+        </div>
+        <div class="food-row">
+          <p style="color:var(--gold-light)">This drink is extraordinary. Don't skip it — just choose your vendor carefully.</p>
+        </div>
+        <div class="food-row">
+          <div class="food-row-label">How to Order</div>
+          <div class="order-phrase">"Un tejuino con limón"</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🏪</div>
+      <div>
+        <div class="tile-name">MERCADO SAN JUAN DE DIOS</div>
+        <div class="tile-desc"><span class="verdict caution">⚠️ Stick to cooked, hot items</span><br>Latin America's largest indoor market. Incredible food. Order: hot soups, freshly grilled meats, tortas. Skip: raw seafood, unrefrigerated items, open salsas.</div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🥃</div>
+      <div>
+        <div class="tile-name">TEQUILA + FOOD COMBINATION</div>
+        <div class="tile-desc"><span class="verdict caution">⚠️ The GDL-specific risk</span><br>You're in Jalisco — home of tequila. Drinking heavily then eating street food is the #1 way tourists get sick. Alcohol weakens stomach acid that kills bacteria. <strong style="color:var(--text)">Match day rule: eat a full meal BEFORE drinking tequila.</strong></div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🌺</div>
+      <div>
+        <div class="tile-name">AGUA FRESCA FROM STALLS</div>
+        <div class="tile-desc"><span class="verdict caution">⚠️ Restaurant = fine. Open barrel stalls = skip</span><br>Agua de jamaica, tamarindo, horchata from proper restaurants using purified water: absolutely fine. Open barrel at street stall with questionable ice: skip.</div>
+      </div>
+    </div>
+
+    <div class="food-tile">
+      <div class="tile-emoji">🌶️</div>
+      <div>
+        <div class="tile-name">TORTA AHOGADA — FULL SPICE ON DAY 1</div>
+        <div class="tile-desc"><span class="verdict caution">⚠️ Pace yourself</span><br>The árbol chile sauce is genuinely very hot. Your gut needs 2–3 days to adjust to Mexican chile levels. Start mild. Escalate by Day 3.</div>
+      </div>
+    </div>
+
+    <!-- ── RED ZONE ── -->
+    <div class="zone-header">
+      <div class="zone-badge red-zone">🚫 RED</div>
+      <div class="zone-title">AVOID</div>
+    </div>
+
+    <div class="food-tile" style="border-left:3px solid var(--red);">
+      <div class="tile-emoji">🦐</div>
+      <div>
+        <div class="tile-name">SEAFOOD AT MERCADO STALLS</div>
+        <div class="tile-desc">Guadalajara is not coastal. Street market seafood has a long supply chain. Eat seafood at proper marisquerías only, not at indoor market stalls.</div>
+      </div>
+    </div>
+
+    <div class="food-tile" style="border-left:3px solid var(--red);">
+      <div class="tile-emoji">🫙</div>
+      <div>
+        <div class="tile-name">UNREFRIGERATED CREMA / DAIRY</div>
+        <div class="tile-desc">Crema and cotija cheese are fine at restaurants. On a street stall where they've been sitting open in warm air: skip.</div>
+      </div>
+    </div>
+
+    <div class="food-tile" style="border-left:3px solid var(--red);">
+      <div class="tile-emoji">🚰</div>
+      <div>
+        <div class="tile-name">TAP WATER</div>
+        <div class="tile-desc">Not potable in Guadalajara. Bottled water only. Restaurants use filtered water for cooking and ice. Street stalls vary — ask <span style="font-family:'Space Mono',monospace;color:var(--gold-light);font-size:12px">"¿Usan agua purificada?"</span></div>
+      </div>
+    </div>
+
+    <div class="food-tile" style="border-left:3px solid var(--red);">
+      <div class="tile-emoji">🌙</div>
+      <div>
+        <div class="tile-name">EL PARIÁN — LATE-NIGHT FOOD</div>
+        <div class="tile-desc">El Parián cantina in Tlaquepaque is incredible. But food served at 2am from the slowest-moving stall has been sitting there for hours. At 2am, stick to drinks and anything made fresh to order.</div>
+      </div>
+    </div>
+
+    <div class="footer-note">
+      ⚠️ This guide is for general information only. It is not medical advice.<br>
+      When in doubt, see a doctor. Hospital Country 2000: <a href="tel:+523336488585" style="color:var(--chivas-light)">+52 33 3648-8585</a>
+    </div>
+
+  </div><!-- end tab-traffic -->
+
+  <!-- ══════════════════════════════════════════
+       TAB 2: PHARMACY
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-pharmacy">
+
+    <div class="card card-hero">
+      <div class="hero-label">💊 Farmacias in Guadalajara</div>
+      <h2>WHERE TO BUY MEDICINE</h2>
+      <p>All major chains have doctors on duty. Consultation is ~$50–100 MXN. No appointment needed.</p>
+    </div>
+
+    <div class="pharma-intro">
+      <div class="pharma-chain"><span>🔴</span> <div><strong>Farmacias del Ahorro</strong> — red signage, everywhere</div></div>
+      <div class="pharma-chain"><span>🟢</span> <div><strong>Farmacias Guadalajara</strong> — the local chain, very common</div></div>
+      <div class="pharma-chain"><span>💙</span> <div><strong>Farmacias Similares</strong> — cheapest, Dr. Simi mascot</div></div>
+      <div class="pharma-chain"><span>🟡</span> <div><strong>OXXO</strong> — Electrolit & Pedialyte available 24/7</div></div>
+    </div>
+
+    <div class="section-title">ESSENTIAL MEDICATIONS</div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">SUERO ORAL / PEDIALYTE</div>
+          <div class="med-english">Oral rehydration salts</div>
+        </div>
+        <div class="med-price">~$30–50 MXN</div>
+      </div>
+      <div class="med-ask">"Suero oral, por favor"</div>
+      <div class="med-desc">First thing to take. Restores electrolytes lost from diarrhea or vomiting. Available at every pharmacy and OXXO.</div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">ELECTROLIT</div>
+          <div class="med-english">Electrolyte drink</div>
+        </div>
+        <div class="med-price">~$25 MXN</div>
+      </div>
+      <div class="med-ask">"Un Electrolit"</div>
+      <div class="med-desc">The most popular rehydration option in Mexico. Comes in multiple flavors. Grab one at any OXXO, even at 3am.</div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">LOPERAMIDA</div>
+          <div class="med-english">Loperamide / Imodium equivalent</div>
+        </div>
+        <div class="med-price">~$25–40 MXN</div>
+      </div>
+      <div class="med-ask">"Loperamida para diarrea"</div>
+      <div class="med-desc">Stops diarrhea. Useful for travel — allows you to attend the match. Do NOT use if you have fever + diarrhea (possible infection that needs to exit).</div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">METOCLOPRAMIDA</div>
+          <div class="med-english">Metoclopramide — anti-nausea</div>
+        </div>
+        <div class="med-price">~$30–50 MXN</div>
+      </div>
+      <div class="med-ask">"Metoclopramida para náuseas"</div>
+      <div class="med-desc">Anti-nausea medication. Works fast. Good for vomiting or intense nausea. Also helps stomach settle before a match.</div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">PARACETAMOL</div>
+          <div class="med-english">Acetaminophen / Paracetamol</div>
+        </div>
+        <div class="med-price">~$20–35 MXN</div>
+      </div>
+      <div class="med-ask">"Paracetamol, por favor"</div>
+      <div class="med-desc">For fever and general pain. Available everywhere. Do NOT use ibuprofen on an upset stomach — it makes things worse.</div>
+    </div>
+
+    <div class="med-card">
+      <div class="med-header">
+        <div>
+          <div class="med-name">PROBIÓTICO</div>
+          <div class="med-english">Lacteol Fort / Florastor</div>
+        </div>
+        <div class="med-price">~$80–150 MXN</div>
+      </div>
+      <div class="med-ask">"Un probiótico para el estómago"</div>
+      <div class="med-desc">Restores healthy gut bacteria. Useful after a stomach episode or if you've been taking antibiotics. Take with food.</div>
+    </div>
+
+    <!-- GDL FEATURED MED -->
+    <div class="med-card featured">
+      <div class="featured-tag">⭐ GDL SPECIALTY — MEXICANS' FIRST CHOICE</div>
+      <div class="med-header">
+        <div>
+          <div class="med-name">BUSCAPINA / BUSCOPAN</div>
+          <div class="med-english">Hyoscine butylbromide — antispasmodic</div>
+        </div>
+        <div class="med-price">~$30–50 MXN</div>
+      </div>
+      <div class="med-ask">"Buscapina para cólicos estomacales"</div>
+      <div class="med-desc">Stops stomach cramps and intestinal spasms. Extremely common in Mexico for stomach pain. Works within 30 minutes. This is the medication Mexicans reach for first. More targeted for cramps than paracetamol.</div>
+    </div>
+
+    <!-- When to see doctor -->
+    <div class="when-doctor">
+      <h3>🚨 WHEN TO SEE A DOCTOR</h3>
+      <ul>
+        <li>Fever above 38.5°C / 101°F</li>
+        <li>Blood in stool or vomit</li>
+        <li>Symptoms lasting more than 48 hours</li>
+        <li>Severe dehydration (no urination for 8+ hours)</li>
+        <li>Severe abdominal pain, especially right side</li>
+        <li>You can't keep liquids down for 4+ hours</li>
+      </ul>
+    </div>
+
+    <div class="doctor-card">
+      <div class="doctor-title">🏥 HOSPITALS — GUADALAJARA</div>
+      <div class="hospital-row">
+        <div>
+          <div class="hospital-name">Hospital Country 2000</div>
+          <div class="hospital-note">International patients, English spoken</div>
+        </div>
+        <a href="tel:+523336488585" class="call-btn">📞 Call</a>
+      </div>
+      <div class="hospital-row">
+        <div>
+          <div class="hospital-name">Hospital San Javier</div>
+          <div class="hospital-note">Major private hospital</div>
+        </div>
+        <a href="tel:+523336690222" class="call-btn">📞 Call</a>
+      </div>
+    </div>
+
+  </div><!-- end tab-pharmacy -->
+
+  <!-- ══════════════════════════════════════════
+       TAB 3: RECOVERY
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-recovery">
+
+    <div class="card card-hero">
+      <div class="hero-label">🛏️ Recovery Protocol</div>
+      <h2>YOU'LL BE OKAY.<br>HERE'S WHAT TO DO.</h2>
+      <p>Most traveler's stomach issues resolve in 24–48 hours. Follow these steps.</p>
+    </div>
+
+    <div class="section-title">STEP-BY-STEP RECOVERY</div>
+
+    <div class="step-card">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>STOP EATING SOLID FOOD</h3>
+        <p>Give your stomach a 4–6 hour break. No solid food. This lets your digestive system recover without adding new load.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>HYDRATE AGGRESSIVELY</h3>
+        <p>Drink Electrolit, Suero Oral, or clean water constantly. Small sips, frequently. Dehydration is your main enemy — not the bacteria itself.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>REST — SERIOUSLY</h3>
+        <p>Lie down. Sleep if you can. Your body needs energy to recover, not to walk around the city.</p>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>TAKE MEDICATION IF NEEDED</h3>
+        <ul>
+          <li>Cramps → Buscapina</li>
+          <li>Nausea → Metoclopramida</li>
+          <li>Diarrhea (no fever) → Loperamida</li>
+          <li>Fever → Paracetamol</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-card">
+      <div class="step-num">5</div>
+      <div class="step-body">
+        <h3>REINTRODUCE FOOD SLOWLY</h3>
+        <p>After 4–6 hours with no symptoms: crackers, white rice, banana. Then escalate slowly. No spice, no dairy, no alcohol for 24 hours.</p>
+      </div>
+    </div>
+
+    <!-- SPICE CRASH -->
+    <div class="section-title">THE TORTA AHOGADA AFTERMATH</div>
+
+    <div class="card" style="border-color:rgba(231,76,60,0.3);">
+      <p style="font-size:14px;color:var(--red);font-weight:700;margin-bottom:8px;">🌶️ Chile Irritation — NOT Food Poisoning</p>
+      <p style="font-size:13.5px;line-height:1.65;color:rgba(240,237,232,0.85);">
+        If you ordered the full spicy version and your stomach is burning — this is chile irritation, not food poisoning.<br><br>
+        <strong style="color:var(--text)">Symptoms:</strong> intense stomach burning, urgency, discomfort.<br>
+        <strong style="color:var(--text)">What helps:</strong> milk (if available), bread, rice, no more chile.<br>
+        <strong style="color:var(--text)">What doesn't help:</strong> more food, alcohol, antacids alone.<br>
+        <strong style="color:var(--text)">Duration:</strong> 2–6 hours. Drink water. Rest. You'll survive.
+      </p>
+    </div>
+
+    <!-- TEQUILA vs FOOD POISONING -->
+    <div class="section-title">TEQUILA STOMACH vs FOOD POISONING</div>
+
+    <div class="diff-card">
+      <div class="diff-header">HOW TO TELL THE DIFFERENCE</div>
+      <div class="diff-row">
+        <div class="diff-cell">
+          <div class="diff-label">🥃 Tequila / Alcohol</div>
+          <p>Starts 1–4 hours after drinking. Headache + nausea + NO fever. Recovery: hydration + rest.</p>
+        </div>
+        <div class="diff-cell">
+          <div class="diff-label">🦠 Food Poisoning</div>
+          <p>Starts 4–12 hours after eating. May have fever, chills, more severe symptoms. May need medical attention.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- BRAT DIET -->
+    <div class="section-title">THE BRAT DIET — GDL VERSION</div>
+
+    <div class="brat-grid">
+      <div class="brat-item">
+        <div class="brat-emoji">🍌</div>
+        <div class="brat-name">PLÁTANO</div>
+        <div class="brat-where">Any market or OXXO</div>
+      </div>
+      <div class="brat-item">
+        <div class="brat-emoji">🍚</div>
+        <div class="brat-name">ARROZ BLANCO</div>
+        <div class="brat-where">Any restaurant<br>"arroz blanco solo"</div>
+      </div>
+      <div class="brat-item">
+        <div class="brat-emoji">🍘</div>
+        <div class="brat-name">GALLETAS SALADAS</div>
+        <div class="brat-where">Any OXXO ~$20 MXN</div>
+      </div>
+      <div class="brat-item">
+        <div class="brat-emoji">🍞</div>
+        <div class="brat-name">PAN TOSTADO</div>
+        <div class="brat-where">Any café or breakfast spot</div>
+      </div>
+    </div>
+
+    <!-- ALLERGY PHRASES -->
+    <div class="section-title">ALLERGY PHRASES</div>
+
+    <div class="allergy-grid">
+      <div class="allergy-chip" onclick="copyText('Soy alérgico al gluten')">
+        <div class="chip-emoji">🌾</div>
+        <div class="chip-name">Gluten</div>
+        <div class="chip-phrase">"Soy alérgico al gluten"</div>
+      </div>
+      <div class="allergy-chip" onclick="copyText('Soy alérgico a los mariscos')">
+        <div class="chip-emoji">🦐</div>
+        <div class="chip-name">Seafood</div>
+        <div class="chip-phrase">"Soy alérgico a los mariscos"</div>
+      </div>
+      <div class="allergy-chip" onclick="copyText('Soy alérgico a los cacahuates')">
+        <div class="chip-emoji">🥜</div>
+        <div class="chip-name">Peanuts</div>
+        <div class="chip-phrase">"Soy alérgico a los cacahuates"</div>
+      </div>
+      <div class="allergy-chip" onclick="copyText('Soy vegetariano / No como carne')">
+        <div class="chip-emoji">🥦</div>
+        <div class="chip-name">Vegetarian</div>
+        <div class="chip-phrase">"Soy vegetariano / No como carne"</div>
+      </div>
+      <div class="allergy-chip" onclick="copyText('Soy alérgico a los lácteos')">
+        <div class="chip-emoji">🥛</div>
+        <div class="chip-name">Dairy</div>
+        <div class="chip-phrase">"Soy alérgico a los lácteos"</div>
+      </div>
+      <div class="allergy-chip" onclick="copyText('Sin chile, por favor')">
+        <div class="chip-emoji">🌶️</div>
+        <div class="chip-name">No Chile</div>
+        <div class="chip-phrase">"Sin chile, por favor"</div>
+      </div>
+    </div>
+
+    <!-- SPICE SCALE -->
+    <div class="spice-scale">
+      <div class="spice-title">🌶️ GUADALAJARA SPICE SCALE</div>
+      <div class="spice-row">
+        <div class="spice-dots">
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+        </div>
+        <div>
+          <div class="spice-label">Sin picante</div>
+          <div class="spice-example">No spice — pozole blanco, tamales</div>
+        </div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-dots">
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+        </div>
+        <div>
+          <div class="spice-label">Poco picante</div>
+          <div class="spice-example">Mild — torta ahogada enchilada</div>
+        </div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-dots">
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot empty"></div>
+          <div class="spice-dot empty"></div>
+        </div>
+        <div>
+          <div class="spice-label">Mediano</div>
+          <div class="spice-example">Medium — birria with salsa</div>
+        </div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-dots">
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot empty"></div>
+        </div>
+        <div>
+          <div class="spice-label">Picante</div>
+          <div class="spice-example">Hot — torta ahogada full sauce</div>
+        </div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-dots">
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+          <div class="spice-dot filled"></div>
+        </div>
+        <div>
+          <div class="spice-label">Muy picante</div>
+          <div class="spice-example">Day 3+ only. You've been warned.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- end tab-recovery -->
+
+  <!-- ══════════════════════════════════════════
+       TAB 4: PHRASES
+  ══════════════════════════════════════════ -->
+  <div class="tab-content" id="tab-phrases">
+
+    <div class="card card-hero">
+      <div class="hero-label">🗣️ Español Survival Kit</div>
+      <h2>TAP ANY PHRASE<br>TO COPY IT</h2>
+      <p>Show your phone to locals or vendors. Guadalajara is incredibly friendly — any effort in Spanish is appreciated.</p>
+    </div>
+
+    <!-- ORDERING -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>🍽️</span> Ordering Food</div>
+
+      <div class="phrase-item" onclick="copyText('Una birria de res con consomé, por favor')">
+        <div class="phrase-es">Una birria de res con consomé, por favor</div>
+        <div class="phrase-en">One beef birria with broth, please</div>
+        <div class="phrase-pron">OO-nah BEE-rree-ah deh ress kon kon-so-MEH</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Una torta ahogada enchilada, por favor')">
+        <div class="phrase-es">Una torta ahogada enchilada, por favor</div>
+        <div class="phrase-en">One mild torta ahogada, please</div>
+        <div class="phrase-pron">OO-nah TOR-tah ah-oh-GAH-dah en-chee-LAH-dah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Pozole rojo con puerco, por favor')">
+        <div class="phrase-es">Pozole rojo con puerco, por favor</div>
+        <div class="phrase-en">Red pozole with pork, please</div>
+        <div class="phrase-pron">po-SO-leh ROH-ho kon PWER-ko</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Un tejuino con limón')">
+        <div class="phrase-es">Un tejuino con limón</div>
+        <div class="phrase-en">A tejuino with lime</div>
+        <div class="phrase-pron">oon teh-HWEE-no kon lee-MON</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Sin salsa de chile, por favor')">
+        <div class="phrase-es">Sin salsa de chile, por favor</div>
+        <div class="phrase-en">Without chile sauce, please</div>
+        <div class="phrase-pron">seen SAL-sah deh CHEE-leh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('¿Es muy picante?')">
+        <div class="phrase-es">¿Es muy picante?</div>
+        <div class="phrase-en">Is it very spicy?</div>
+        <div class="phrase-pron">EHS mwee pee-KAN-teh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Con todo, por favor')">
+        <div class="phrase-es">Con todo, por favor</div>
+        <div class="phrase-en">With everything (all toppings), please</div>
+        <div class="phrase-pron">kon TOH-doh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('¿Usan agua purificada?')">
+        <div class="phrase-es">¿Usan agua purificada?</div>
+        <div class="phrase-en">Do you use purified water?</div>
+        <div class="phrase-pron">OO-sahn AH-gwah poo-ree-fee-KAH-dah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Agua embotellada, por favor')">
+        <div class="phrase-es">Agua embotellada, por favor</div>
+        <div class="phrase-en">Bottled water, please</div>
+        <div class="phrase-pron">AH-gwah em-bo-teh-YAH-dah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+    <!-- PHARMACY -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>💊</span> At the Pharmacy</div>
+
+      <div class="phrase-item" onclick="copyText('Suero oral, por favor')">
+        <div class="phrase-es">Suero oral, por favor</div>
+        <div class="phrase-en">Oral rehydration salts, please</div>
+        <div class="phrase-pron">SWEH-ro oh-RAL</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Loperamida para diarrea')">
+        <div class="phrase-es">Loperamida para diarrea</div>
+        <div class="phrase-en">Loperamide for diarrhea</div>
+        <div class="phrase-pron">lo-peh-rah-MEE-dah pah-rah dee-ah-REH-ah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Buscapina para cólicos estomacales')">
+        <div class="phrase-es">Buscapina para cólicos estomacales</div>
+        <div class="phrase-en">Buscopan for stomach cramps</div>
+        <div class="phrase-pron">boos-kah-PEE-nah pah-rah KO-lee-kos</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Metoclopramida para náuseas')">
+        <div class="phrase-es">Metoclopramida para náuseas</div>
+        <div class="phrase-en">Metoclopramide for nausea</div>
+        <div class="phrase-pron">meh-to-klo-prah-MEE-dah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Paracetamol, por favor')">
+        <div class="phrase-es">Paracetamol, por favor</div>
+        <div class="phrase-en">Paracetamol / Acetaminophen, please</div>
+        <div class="phrase-pron">pah-rah-seh-tah-MOL</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+    <!-- I'M SICK -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>🤢</span> I'm Sick</div>
+
+      <div class="phrase-item" onclick="copyText('Me duele el estómago')">
+        <div class="phrase-es">Me duele el estómago</div>
+        <div class="phrase-en">My stomach hurts</div>
+        <div class="phrase-pron">meh DWEH-leh el es-TOH-mah-go</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Tengo diarrea')">
+        <div class="phrase-es">Tengo diarrea</div>
+        <div class="phrase-en">I have diarrhea</div>
+        <div class="phrase-pron">TEN-go dee-ah-REH-ah</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Tengo náuseas / vómitos')">
+        <div class="phrase-es">Tengo náuseas / vómitos</div>
+        <div class="phrase-en">I have nausea / I'm vomiting</div>
+        <div class="phrase-pron">TEN-go NAW-seh-as / VO-mee-tos</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Tengo fiebre')">
+        <div class="phrase-es">Tengo fiebre</div>
+        <div class="phrase-en">I have a fever</div>
+        <div class="phrase-pron">TEN-go FYEH-breh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Necesito ver a un médico')">
+        <div class="phrase-es">Necesito ver a un médico</div>
+        <div class="phrase-en">I need to see a doctor</div>
+        <div class="phrase-pron">neh-seh-SEE-to vehr ah oon MEH-dee-ko</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+    <!-- SPICE -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>🌶️</span> Spice Level</div>
+
+      <div class="phrase-item" onclick="copyText('Sin picante, por favor')">
+        <div class="phrase-es">Sin picante, por favor</div>
+        <div class="phrase-en">Without spice, please</div>
+        <div class="phrase-pron">seen pee-KAN-teh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Poco picante, por favor')">
+        <div class="phrase-es">Poco picante, por favor</div>
+        <div class="phrase-en">A little spicy, please</div>
+        <div class="phrase-pron">PO-ko pee-KAN-teh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Muy picante, por favor')">
+        <div class="phrase-es">Muy picante, por favor</div>
+        <div class="phrase-en">Very spicy, please</div>
+        <div class="phrase-pron">mwee pee-KAN-teh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+    <!-- ALLERGIES -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>🥗</span> Allergies</div>
+
+      <div class="phrase-item" onclick="copyText('Tengo alergia a los cacahuates / mariscos / gluten / lácteos')">
+        <div class="phrase-es">Tengo alergia a los…</div>
+        <div class="phrase-en">I'm allergic to…</div>
+        <div class="phrase-pron">cacahuates (peanuts) · mariscos (seafood) · gluten · lácteos (dairy)</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('No puedo comer carne. Soy vegetariano.')">
+        <div class="phrase-es">No puedo comer carne. Soy vegetariano.</div>
+        <div class="phrase-en">I can't eat meat. I'm vegetarian.</div>
+        <div class="phrase-pron">no PWEH-do ko-MEHR KAR-neh</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+    <!-- EMERGENCY -->
+    <div class="phrase-cat">
+      <div class="phrase-cat-title"><span>🏥</span> Emergency</div>
+
+      <div class="phrase-item" onclick="copyText('Llame a una ambulancia, por favor')">
+        <div class="phrase-es">Llame a una ambulancia, por favor</div>
+        <div class="phrase-en">Call an ambulance, please</div>
+        <div class="phrase-pron">YAH-meh ah oo-nah am-boo-LAN-sya</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Es una emergencia')">
+        <div class="phrase-es">Es una emergencia</div>
+        <div class="phrase-en">It's an emergency</div>
+        <div class="phrase-pron">es OO-nah eh-mer-HEN-sya</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('¿Dónde está el hospital más cercano?')">
+        <div class="phrase-es">¿Dónde está el hospital más cercano?</div>
+        <div class="phrase-en">Where is the nearest hospital?</div>
+        <div class="phrase-pron">DON-deh es-TAH el os-pee-TAL mas ser-KAH-no</div>
+        <div class="copy-hint">📋</div>
+      </div>
+
+      <div class="phrase-item" onclick="copyText('Necesito un médico que hable inglés')">
+        <div class="phrase-es">Necesito un médico que hable inglés</div>
+        <div class="phrase-en">I need a doctor who speaks English</div>
+        <div class="phrase-pron">neh-seh-SEE-to oon MEH-dee-ko keh AH-bleh een-GLES</div>
+        <div class="copy-hint">📋</div>
+      </div>
+    </div>
+
+  </div><!-- end tab-phrases -->
+
+</main>
+
+<!-- COPY TOAST -->
+<div class="copy-toast" id="copyToast">✓ Copied!</div>
+
+<script>
+  // ── TAB SWITCHING ──
+  function switchTab(tab) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.nav-tab').forEach(el => el.classList.remove('active'));
+    document.getElementById('tab-' + tab).classList.add('active');
+    document.querySelector('[data-tab="' + tab + '"]').classList.add('active');
+    window.scrollTo(0, 0);
+  }
+
+  // ── EXPANDABLE FOOD CARDS ──
+  function toggleFood(id) {
+    const card = document.getElementById(id);
+    card.classList.toggle('open');
+  }
+
+  // ── COPY TO CLIPBOARD ──
+  function copyText(text) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(() => showToast());
+    } else {
+      // Fallback
+      const el = document.createElement('textarea');
+      el.value = text;
+      el.style.position = 'fixed';
+      el.style.opacity = '0';
+      document.body.appendChild(el);
+      el.select();
+      document.execCommand('copy');
+      document.body.removeChild(el);
+      showToast();
+    }
+  }
+
+  function showToast() {
+    const toast = document.getElementById('copyToast');
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 1800);
+  }
+</script>
+
+</body>
+</html>
