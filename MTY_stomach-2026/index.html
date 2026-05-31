@@ -1,0 +1,1729 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MTY Stomach Guide — 2026 World Cup</title>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=DM+Sans:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --purple: #6B21A8;
+    --purple-light: #7C3AED;
+    --purple-dark: #4C1D95;
+    --purple-bg: #F5F0FF;
+    --green: #16A34A;
+    --green-bg: #F0FDF4;
+    --green-border: #BBF7D0;
+    --yellow: #CA8A04;
+    --yellow-bg: #FEFCE8;
+    --yellow-border: #FEF08A;
+    --red: #DC2626;
+    --red-bg: #FEF2F2;
+    --red-border: #FECACA;
+    --gold: #D97706;
+    --gold-bg: #FFFBEB;
+    --gold-border: #FDE68A;
+    --white: #FFFFFF;
+    --gray-50: #F9FAFB;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+    --gray-400: #9CA3AF;
+    --gray-600: #4B5563;
+    --gray-800: #1F2937;
+    --gray-900: #111827;
+    --font-display: 'Bangers', cursive;
+    --font-body: 'DM Sans', sans-serif;
+    --font-mono: 'DM Mono', monospace;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 2px 12px rgba(107,33,168,0.10);
+    --shadow-lg: 0 8px 32px rgba(107,33,168,0.15);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: var(--font-body);
+    background: var(--gray-50);
+    color: var(--gray-900);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* ─── HEADER ─── */
+  .header {
+    background: var(--purple);
+    padding: 20px 20px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 4px 24px rgba(107,33,168,0.3);
+  }
+  .header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 16px;
+  }
+  .header-title {
+    font-family: var(--font-display);
+    font-size: 32px;
+    letter-spacing: 2px;
+    color: var(--white);
+    line-height: 1;
+  }
+  .header-subtitle {
+    font-size: 11px;
+    color: rgba(255,255,255,0.7);
+    font-family: var(--font-mono);
+    margin-top: 2px;
+    letter-spacing: 0.5px;
+  }
+  .sos-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #DC2626;
+    color: white;
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 8px rgba(220,38,38,0.4);
+    transition: transform 0.15s, box-shadow 0.15s;
+    white-space: nowrap;
+  }
+  .sos-btn:active { transform: scale(0.97); }
+  .sos-dot {
+    width: 8px; height: 8px;
+    background: white;
+    border-radius: 50%;
+    animation: pulse-red 1.4s infinite;
+  }
+  @keyframes pulse-red {
+    0%,100% { opacity:1; transform:scale(1); }
+    50% { opacity:0.5; transform:scale(1.4); }
+  }
+
+  /* ─── TABS ─── */
+  .tabs {
+    display: flex;
+    gap: 2px;
+  }
+  .tab {
+    flex: 1;
+    padding: 10px 4px 14px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: var(--font-body);
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.55);
+    text-align: center;
+    border-bottom: 3px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+    letter-spacing: 0.3px;
+    line-height: 1.3;
+  }
+  .tab.active {
+    color: white;
+    border-bottom-color: #E879F9;
+  }
+  .tab:hover:not(.active) { color: rgba(255,255,255,0.8); }
+
+  /* ─── CONTENT ─── */
+  .content {
+    padding: 20px 16px 100px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .tab-panel { display: none; }
+  .tab-panel.active { display: block; }
+
+  /* ─── CARDS ─── */
+  .card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--gray-200);
+  }
+  .card-title {
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    line-height: 1.1;
+  }
+  .card p {
+    font-size: 14px;
+    line-height: 1.65;
+    color: var(--gray-600);
+  }
+  .card p + p { margin-top: 8px; }
+
+  /* ─── DUAL WARNING CARD ─── */
+  .dual-warning {
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-lg);
+  }
+  .dual-warning-header {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 80px;
+  }
+  .dw-heat {
+    background: #DC2626;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dw-food {
+    background: #D97706;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .dw-icon { font-size: 28px; flex-shrink: 0; }
+  .dw-label {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 1px;
+    color: white;
+    line-height: 1.1;
+  }
+  .dw-body {
+    background: var(--gray-900);
+    padding: 18px;
+  }
+  .dw-title {
+    font-family: var(--font-display);
+    font-size: 22px;
+    color: white;
+    letter-spacing: 1.5px;
+    margin-bottom: 12px;
+  }
+  .dw-body p {
+    font-size: 13.5px;
+    color: rgba(255,255,255,0.8);
+    line-height: 1.65;
+    margin-bottom: 6px;
+  }
+  .dw-rules {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-top: 12px;
+  }
+  .dw-rule {
+    background: rgba(255,255,255,0.08);
+    border-radius: var(--radius-sm);
+    padding: 10px 14px;
+    font-size: 13px;
+    color: white;
+    border-left: 3px solid #E879F9;
+    line-height: 1.5;
+  }
+  .rule-num {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: #E879F9;
+    margin-right: 6px;
+  }
+
+  /* ─── HEAT-FOOD INTERACTION BOX ─── */
+  .interaction-box {
+    background: var(--gold-bg);
+    border: 2px solid var(--gold-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .interaction-box-title {
+    font-family: var(--font-display);
+    font-size: 16px;
+    color: var(--gold);
+    letter-spacing: 0.8px;
+    margin-bottom: 10px;
+  }
+  .interaction-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+  }
+  .interaction-list li {
+    font-size: 13.5px;
+    color: var(--gray-800);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.55;
+  }
+  .interaction-list li::before {
+    content: '→';
+    color: var(--gold);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  /* ─── ZONE HEADERS ─── */
+  .zone-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 18px;
+    border-radius: var(--radius);
+    margin-bottom: 10px;
+    margin-top: 20px;
+  }
+  .zone-header:first-of-type { margin-top: 0; }
+  .zone-green { background: var(--green-bg); border: 2px solid var(--green-border); }
+  .zone-yellow { background: var(--yellow-bg); border: 2px solid var(--yellow-border); }
+  .zone-red { background: var(--red-bg); border: 2px solid var(--red-border); }
+  .zone-icon { font-size: 22px; }
+  .zone-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    letter-spacing: 1px;
+  }
+  .zone-green .zone-title { color: var(--green); }
+  .zone-yellow .zone-title { color: var(--yellow); }
+  .zone-red .zone-title { color: var(--red); }
+  .zone-subtitle {
+    font-size: 11.5px;
+    font-weight: 600;
+    margin-left: auto;
+    font-family: var(--font-mono);
+  }
+  .zone-green .zone-subtitle { color: var(--green); }
+  .zone-yellow .zone-subtitle { color: var(--yellow); }
+  .zone-red .zone-subtitle { color: var(--red); }
+
+  /* ─── FOOD ITEM CARD ─── */
+  .food-card {
+    background: white;
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--gray-200);
+    transition: transform 0.15s;
+  }
+  .food-card:active { transform: scale(0.99); }
+  .food-card-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 16px;
+    cursor: pointer;
+    user-select: none;
+  }
+  .food-verdict {
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .food-name {
+    font-family: var(--font-display);
+    font-size: 19px;
+    letter-spacing: 0.8px;
+    color: var(--gray-900);
+    flex: 1;
+  }
+  .food-badge {
+    font-size: 10.5px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    padding: 3px 9px;
+    border-radius: 999px;
+  }
+  .badge-green { background: var(--green-bg); color: var(--green); }
+  .badge-yellow { background: var(--yellow-bg); color: var(--yellow); }
+  .badge-red { background: var(--red-bg); color: var(--red); }
+  .food-chevron {
+    color: var(--gray-400);
+    font-size: 14px;
+    transition: transform 0.2s;
+    flex-shrink: 0;
+  }
+  .food-card.open .food-chevron { transform: rotate(180deg); }
+  .food-body {
+    display: none;
+    padding: 0 16px 16px;
+  }
+  .food-card.open .food-body { display: block; }
+  .food-why {
+    font-size: 13.5px;
+    color: var(--gray-600);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .food-tip {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+  .food-tip-icon { font-size: 14px; flex-shrink: 0; margin-top: 1px; }
+  .food-tip-text { font-size: 12.5px; color: var(--gray-800); line-height: 1.55; }
+  .food-tip.warning { background: #FFF7ED; }
+  .food-tip.warning .food-tip-text { color: #92400E; }
+  .food-order {
+    background: var(--purple-bg);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    margin-top: 8px;
+  }
+  .food-order-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--purple);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .food-order-phrase {
+    font-size: 14px;
+    font-family: var(--font-mono);
+    color: var(--purple-dark);
+    font-weight: 500;
+  }
+  .food-divider {
+    height: 1px;
+    background: var(--gray-100);
+    margin: 10px 0;
+  }
+
+  /* ─── PHARMACY TAB ─── */
+  .pharmacy-intro {
+    background: var(--purple-bg);
+    border: 2px solid #DDD6FE;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 14px;
+  }
+  .pharmacy-intro p {
+    font-size: 13.5px;
+    color: var(--gray-700);
+    line-height: 1.65;
+  }
+  .med-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+    border-left: 4px solid var(--purple);
+  }
+  .med-card.highlight { border-left-color: #E879F9; }
+  .med-card.heat { border-left-color: #F97316; }
+  .med-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    gap: 10px;
+  }
+  .med-name {
+    font-family: var(--font-display);
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    color: var(--gray-900);
+    line-height: 1.1;
+  }
+  .med-price {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 500;
+    background: var(--green-bg);
+    padding: 3px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+  .med-body p {
+    font-size: 13.5px;
+    color: var(--gray-600);
+    line-height: 1.65;
+  }
+  .med-ask {
+    margin-top: 10px;
+    background: var(--gray-50);
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+  }
+  .med-ask-label {
+    font-size: 10px;
+    font-family: var(--font-mono);
+    color: var(--gray-400);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+  }
+  .med-ask-phrase {
+    font-size: 14px;
+    font-family: var(--font-mono);
+    color: var(--purple-dark);
+  }
+  .must-buy-banner {
+    background: linear-gradient(135deg, var(--purple), #7C3AED);
+    color: white;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 16px;
+    box-shadow: var(--shadow-lg);
+  }
+  .must-buy-title {
+    font-family: var(--font-display);
+    font-size: 15px;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+    opacity: 0.85;
+  }
+  .must-buy-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .must-buy-list li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    line-height: 1.45;
+  }
+  .must-buy-list li::before {
+    content: '✓';
+    font-size: 12px;
+    background: rgba(255,255,255,0.2);
+    width: 20px; height: 20px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    font-weight: 700;
+  }
+  .hospital-card {
+    background: var(--red-bg);
+    border: 2px solid var(--red-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-top: 8px;
+  }
+  .hospital-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--red);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .hospital-entry {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--red-border);
+  }
+  .hospital-entry:last-of-type { border-bottom: none; }
+  .hospital-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--gray-900);
+  }
+  .hospital-phone {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--red);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  .heat-stroke-warning {
+    background: var(--gray-900);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-top: 12px;
+  }
+  .heat-stroke-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: #F97316;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  .heat-stroke-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .heat-stroke-list li {
+    font-size: 13px;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    line-height: 1.5;
+  }
+  .heat-stroke-list li::before {
+    content: '⚠';
+    color: #F97316;
+    flex-shrink: 0;
+  }
+  .call-911 {
+    margin-top: 12px;
+    text-align: center;
+    background: #DC2626;
+    color: white;
+    border-radius: var(--radius-sm);
+    padding: 10px;
+    font-family: var(--font-display);
+    font-size: 20px;
+    letter-spacing: 2px;
+  }
+
+  /* ─── RECOVERY TAB ─── */
+  .scenario-card {
+    background: var(--gray-900);
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 14px;
+    box-shadow: var(--shadow-lg);
+  }
+  .scenario-title {
+    font-family: var(--font-display);
+    font-size: 19px;
+    color: #F87171;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .scenario-body p {
+    font-size: 13px;
+    color: rgba(255,255,255,0.75);
+    line-height: 1.65;
+    margin-bottom: 10px;
+  }
+  .diff-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin: 12px 0;
+  }
+  .diff-box {
+    background: rgba(255,255,255,0.06);
+    border-radius: var(--radius-sm);
+    padding: 12px;
+  }
+  .diff-box-title {
+    font-family: var(--font-display);
+    font-size: 14px;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+  }
+  .diff-heat .diff-box-title { color: #F97316; }
+  .diff-food .diff-box-title { color: #FBBF24; }
+  .diff-box ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .diff-box ul li {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    display: flex;
+    align-items: flex-start;
+    gap: 6px;
+    line-height: 1.45;
+  }
+  .diff-box ul li::before { content: '·'; flex-shrink: 0; }
+  .both-case {
+    background: rgba(220,38,38,0.2);
+    border-left: 3px solid #F87171;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    font-size: 12.5px;
+    color: #FCA5A5;
+    line-height: 1.6;
+  }
+
+  .protocol-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .protocol-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--purple);
+    letter-spacing: 1px;
+    margin-bottom: 14px;
+  }
+  .protocol-steps {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .step {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .step-num {
+    width: 28px; height: 28px;
+    background: var(--purple);
+    color: white;
+    border-radius: 50%;
+    font-family: var(--font-display);
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .step-text {
+    font-size: 13.5px;
+    color: var(--gray-700);
+    line-height: 1.6;
+    padding-top: 4px;
+  }
+  .step-phrase {
+    display: inline-block;
+    margin-top: 4px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    background: var(--purple-bg);
+    color: var(--purple-dark);
+    padding: 3px 8px;
+    border-radius: var(--radius-sm);
+  }
+
+  .brat-card {
+    background: var(--green-bg);
+    border: 2px solid var(--green-border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+  }
+  .brat-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--green);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .brat-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .brat-item {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .brat-emoji { font-size: 20px; }
+  .brat-name { font-size: 14px; font-weight: 600; color: var(--gray-800); }
+  .brat-sub { font-size: 11px; color: var(--gray-400); }
+  .horchata-tip {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 12px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .horchata-emoji { font-size: 24px; flex-shrink: 0; }
+  .horchata-text { font-size: 13px; color: var(--gray-700); line-height: 1.6; }
+
+  .allergy-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+  .allergy-item {
+    background: white;
+    border-radius: var(--radius-sm);
+    padding: 10px 12px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .allergy-name { font-weight: 600; font-size: 13px; color: var(--gray-900); margin-bottom: 4px; }
+  .allergy-phrase { font-family: var(--font-mono); font-size: 12px; color: var(--purple-dark); }
+
+  .spice-scale {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .spice-title {
+    font-family: var(--font-display);
+    font-size: 18px;
+    color: var(--gray-900);
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .spice-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--gray-100);
+  }
+  .spice-row:last-child { border-bottom: none; }
+  .spice-level {
+    font-size: 20px;
+    flex-shrink: 0;
+    width: 40px;
+    text-align: center;
+  }
+  .spice-desc { font-size: 13px; color: var(--gray-700); line-height: 1.45; }
+  .spice-word { font-family: var(--font-mono); font-size: 12px; color: var(--purple); background: var(--purple-bg); padding: 2px 7px; border-radius: 4px; margin-right: 6px; }
+
+  /* ─── PHRASES TAB ─── */
+  .phrase-section-title {
+    font-family: var(--font-display);
+    font-size: 17px;
+    color: var(--purple);
+    letter-spacing: 1px;
+    padding: 6px 0 10px;
+    border-bottom: 2px solid var(--purple-bg);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .phrase-card {
+    background: white;
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    box-shadow: var(--shadow);
+  }
+  .phrase-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+  .phrase-item {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--gray-100);
+    cursor: pointer;
+    transition: background 0.1s;
+  }
+  .phrase-item:last-child { border-bottom: none; }
+  .phrase-es {
+    font-family: var(--font-mono);
+    font-size: 14px;
+    color: var(--purple-dark);
+    font-weight: 500;
+  }
+  .phrase-en {
+    font-size: 12.5px;
+    color: var(--gray-400);
+  }
+  .phrase-copied {
+    font-size: 11px;
+    color: var(--green);
+    font-family: var(--font-mono);
+    display: none;
+  }
+  .phrase-item.copied .phrase-copied { display: inline; }
+
+  /* ─── TEMP BADGE ─── */
+  .temp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: #FEF2F2;
+    border: 1.5px solid #FECACA;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: #DC2626;
+    font-weight: 500;
+    margin-bottom: 16px;
+  }
+
+  /* ─── SECTION LABEL ─── */
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--gray-400);
+    margin-bottom: 10px;
+    margin-top: 20px;
+    padding-left: 2px;
+  }
+  .section-label:first-of-type { margin-top: 0; }
+
+  /* ─── SCROLL TOP ─── */
+  .fab {
+    position: fixed;
+    bottom: 24px;
+    right: 16px;
+    width: 44px; height: 44px;
+    background: var(--purple);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 18px;
+    cursor: pointer;
+    box-shadow: 0 4px 16px rgba(107,33,168,0.4);
+    display: flex; align-items: center; justify-content: center;
+    transition: opacity 0.2s, transform 0.2s;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .fab.visible { opacity: 1; pointer-events: auto; }
+  .fab:active { transform: scale(0.93); }
+</style>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-top">
+    <div>
+      <div class="header-title">MTY STOMACH GUIDE</div>
+      <div class="header-subtitle">2026 FIFA WORLD CUP · MONTERREY</div>
+    </div>
+    <a href="tel:+528183696886" class="sos-btn">
+      <span class="sos-dot"></span>SOS
+    </a>
+  </div>
+  <nav class="tabs" role="tablist">
+    <button class="tab active" role="tab" onclick="switchTab(0)">🚦 Food<br>Traffic Light</button>
+    <button class="tab" role="tab" onclick="switchTab(1)">💊 Pharmacy</button>
+    <button class="tab" role="tab" onclick="switchTab(2)">🛌 Recovery</button>
+    <button class="tab" role="tab" onclick="switchTab(3)">💬 Phrases</button>
+  </nav>
+</header>
+
+<main class="content">
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TAB 1: FOOD TRAFFIC LIGHT -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="tab-panel active" id="panel-0">
+
+    <div class="temp-badge">🌡️ June avg: 34°C / 93°F · Feels up to 42°C</div>
+
+    <!-- DUAL WARNING -->
+    <div class="dual-warning">
+      <div class="dual-warning-header">
+        <div class="dw-heat">
+          <span class="dw-icon">☀️</span>
+          <div class="dw-label">HEAT<br>THREAT</div>
+        </div>
+        <div class="dw-food">
+          <span class="dw-icon">🍽️</span>
+          <div class="dw-label">FOOD<br>THREAT</div>
+        </div>
+      </div>
+      <div class="dw-body">
+        <div class="dw-title">TWO THREATS. ONE GUIDE.</div>
+        <p>Monterrey in June: 34°C (93°F) with humidity. Heat dehydrates you. Food issues dehydrate you. Together they can send you to the hospital.</p>
+        <div class="dw-rules">
+          <div class="dw-rule"><span class="rule-num">RULE 1</span> Hydrate before you're thirsty — always.</div>
+          <div class="dw-rule"><span class="rule-num">RULE 2</span> Eat smart so you can enjoy the heat.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HEAT-FOOD INTERACTION BOX -->
+    <div class="interaction-box">
+      <div class="interaction-box-title">⚡ HEAT + FOOD INTERACTION</div>
+      <ul class="interaction-list">
+        <li>Digestion slows in extreme heat — eat smaller portions</li>
+        <li>Alcohol dehydrates TWICE as fast in the heat</li>
+        <li>Spicy food + heat + sun = stomach emergency</li>
+        <li>Your appetite may decrease — eat anyway</li>
+      </ul>
+    </div>
+
+    <!-- GREEN ZONE -->
+    <div class="zone-header zone-green">
+      <span class="zone-icon">🟢</span>
+      <span class="zone-title">GREEN ZONE</span>
+      <span class="zone-subtitle">EAT FREELY</span>
+    </div>
+
+    <!-- Carne Asada -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">CARNE ASADA</span>
+        <span class="food-badge badge-green">MTY SIGNATURE</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Monterrey IS carne asada. Beef grilled directly on carbon (charcoal) at very high temperature — the most common food in the city. Grilled fresh to order means extremely safe.</p>
+        <div class="food-tip">
+          <span class="food-tip-icon">🔥</span>
+          <span class="food-tip-text">Arrachera (skirt steak) is the local favorite. Ask: <strong>"¿Tienen arrachera?"</strong> at any asadero.</span>
+        </div>
+        <div class="food-tip warning">
+          <span class="food-tip-icon">⚠️</span>
+          <span class="food-tip-text">Match day + afternoon heat + heavy carne asada meal = sluggishness. Eat carne asada <strong>after</strong> the match, not 2 hours before in the heat.</span>
+        </div>
+        <div class="food-order">
+          <div class="food-order-label">How to order</div>
+          <div class="food-order-phrase">Carne asada con tortillas, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cabrito -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">CABRITO</span>
+        <span class="food-badge badge-green">ICONIC MTY</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Whole-roasted young goat cooked at high heat for hours. Monterrey's most iconic dish. Very safe at any established restaurant. Expensive but worth it.</p>
+        <div class="food-tip">
+          <span class="food-tip-icon">📍</span>
+          <span class="food-tip-text">Find it at established restaurants in San Pedro Garza García or Barrio Antiguo.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tacos de Trompo -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">TACOS DE TROMPO</span>
+        <span class="food-badge badge-green">SAFE</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Vertical spit at high heat, continuous cooking. The Monterrey version of al pastor. Safe for the same reasons: heat kills contaminants instantly.</p>
+        <div class="food-order">
+          <div class="food-order-label">How to order</div>
+          <div class="food-order-phrase">Unos taquitos de trompo, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Agua de Limón -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">AGUA DE LIMÓN CON CHÍA</span>
+        <span class="food-badge badge-green">BEST HEAT DRINK</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Lime water with chia seeds. Very popular in Monterrey. Hydrating AND has natural electrolytes from the chia. Restaurants use purified water — completely safe.</p>
+        <div class="food-order">
+          <div class="food-order-label">How to order</div>
+          <div class="food-order-phrase">Agua de limón con chía, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Caldos -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">HOT SOUPS / CALDOS</span>
+        <span class="food-badge badge-green">HYDRATING</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Caldo de res (beef broth) is perfect in Monterrey. Despite the heat, hot soup hydrates you well. Locals eat caldo year-round including summer — there's a reason.</p>
+        <div class="food-order">
+          <div class="food-order-label">How to order</div>
+          <div class="food-order-phrase">Un caldo de res, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Machacado -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">✅</span>
+        <span class="food-name">MACHACADO CON HUEVO</span>
+        <span class="food-badge badge-green">MATCH DAY BREAKFAST</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Dried shredded beef scrambled with eggs. Fully cooked. Classic Monterrey breakfast — high protein for match day energy.</p>
+        <div class="food-order">
+          <div class="food-order-label">How to order</div>
+          <div class="food-order-phrase">Machacado con huevo, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- YELLOW ZONE -->
+    <div class="zone-header zone-yellow">
+      <span class="zone-icon">🟡</span>
+      <span class="zone-title">YELLOW ZONE</span>
+      <span class="zone-subtitle">EAT WITH CAUTION</span>
+    </div>
+
+    <!-- Street Food in Heat -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">⚠️</span>
+        <span class="food-name">STREET FOOD IN HEAT</span>
+        <span class="food-badge badge-yellow">STRICTER RULES</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">At 34°C+, the bacterial danger zone (5–60°C) is reached faster. Street food that's fine at 22°C becomes risky sooner in Monterrey's heat.</p>
+        <div class="food-tip warning">
+          <span class="food-tip-icon">🌡️</span>
+          <span class="food-tip-text">Extra MTY rule: if it's not <strong>steaming hot</strong> OR <strong>visibly cold</strong> — don't eat it.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mariscos -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">⚠️</span>
+        <span class="food-name">MARISCOS (SEAFOOD)</span>
+        <span class="food-badge badge-yellow">RESTAURANT ONLY</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Monterrey is not a coastal city. Any seafood has traveled from the coast. Fine at established restaurants with refrigerated supply chains.</p>
+        <div class="food-tip warning">
+          <span class="food-tip-icon">🚫</span>
+          <span class="food-tip-text">Street mariscos in Monterrey: skip entirely.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Spicy Sauces -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">⚠️</span>
+        <span class="food-name">SPICY SAUCES IN HEAT</span>
+        <span class="food-badge badge-yellow">MANAGE WISELY</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Your body's cooling system is already maxed. Very spicy food makes you sweat more — accelerating dehydration that's already happening from the heat.</p>
+        <div class="food-tip">
+          <span class="food-tip-icon">❄️</span>
+          <span class="food-tip-text">Enjoy spicy food in air-conditioned restaurants, not at midday in direct sun.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Beer -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">⚠️</span>
+        <span class="food-name">BEER AT THE MATCH</span>
+        <span class="food-badge badge-yellow">KNOW THE MATH</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Beer dehydrates. Heat dehydrates. Together they work fast. Cuauhtémoc Moctezuma brewery is local to Monterrey — the beer is excellent. Just manage it.</p>
+        <div class="food-tip warning">
+          <span class="food-tip-icon">💧</span>
+          <span class="food-tip-text"><strong>Rule: one glass of water for every beer.</strong> Non-negotiable in Monterrey heat.</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- RED ZONE -->
+    <div class="zone-header zone-red">
+      <span class="zone-icon">🔴</span>
+      <span class="zone-title">RED ZONE</span>
+      <span class="zone-subtitle">AVOID IN MTY</span>
+    </div>
+
+    <!-- Food in sun -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">🚫</span>
+        <span class="food-name">FOOD IN DIRECT SUN</span>
+        <span class="food-badge badge-red">HIGH RISK</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">In 34°C heat, bacteria double every 20 minutes in the danger temperature range. Food on a cart in direct Monterrey sun: skip it regardless of how good it looks.</p>
+      </div>
+    </div>
+
+    <!-- Skipping meals -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">🚫</span>
+        <span class="food-name">DRINKING ON EMPTY STOMACH</span>
+        <span class="food-badge badge-red">MEDICAL EMERGENCY</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Heat + alcohol + empty stomach in Monterrey is the fastest path to a medical emergency. Always eat a full meal before drinking at Barrio Antiguo.</p>
+      </div>
+    </div>
+
+    <!-- Tap water -->
+    <div class="food-card" onclick="toggleFood(this)">
+      <div class="food-card-header">
+        <span class="food-verdict">🚫</span>
+        <span class="food-name">TAP WATER</span>
+        <span class="food-badge badge-red">BOTTLED ONLY</span>
+        <span class="food-chevron">▼</span>
+      </div>
+      <div class="food-body">
+        <p class="food-why">Same rule as all of Mexico. Bottled only. In Monterrey's heat, you need 3–4L per day. Bottled water is cheap and available everywhere.</p>
+        <div class="food-tip">
+          <span class="food-tip-icon">🛒</span>
+          <span class="food-tip-text">Buy a large bottle at every OXXO you pass. Set a timer to drink every 30 minutes during outdoor activities.</span>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /panel-0 -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TAB 2: PHARMACY -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-1">
+
+    <div class="pharmacy-intro">
+      <p>🏪 <strong>Farmacias del Ahorro</strong> and <strong>Farmacias Benavides</strong> are the main chains. Both are everywhere in San Pedro and Barrio Antiguo. Both have doctors on duty (~$50–100 MXN consultation).</p>
+    </div>
+
+    <!-- MUST-BUY BANNER -->
+    <div class="must-buy-banner">
+      <div class="must-buy-title">📦 BUY BEFORE MATCH DAY</div>
+      <ul class="must-buy-list">
+        <li>Electrolit (3–4 bottles minimum)</li>
+        <li>Loperamida (diarrhea — just in case)</li>
+        <li>Metoclopramida (nausea)</li>
+        <li>Protector solar SPF 50 (sunburn accelerates dehydration)</li>
+        <li>1–2L of cold water per person</li>
+      </ul>
+    </div>
+
+    <div class="section-label">Essential medications</div>
+
+    <!-- ELECTROLIT -->
+    <div class="med-card highlight">
+      <div class="med-header">
+        <div class="med-name">ELECTROLIT ⚡</div>
+        <span class="med-price">~$25 MXN · OXXO</span>
+      </div>
+      <div class="med-body">
+        <p>This is <strong>non-negotiable in Monterrey</strong>. Buy 3–4 bottles before match day. Drink one in the morning, one at the match, one after. The heat and any beer will drain your electrolytes faster than you expect.</p>
+        <p>Available at every OXXO. Buy them everywhere you see them.</p>
+      </div>
+    </div>
+
+    <!-- SUERO ORAL -->
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">SUERO ORAL</div>
+        <span class="med-price">~$20–40 MXN</span>
+      </div>
+      <div class="med-body">
+        <p>Oral rehydration solution. For moderate dehydration from food issues or prolonged heat exposure. Also comes in Pedialyte sachets.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Suero oral para rehidratación</div>
+      </div>
+    </div>
+
+    <!-- SALES DE REHIDRATACIÓN -->
+    <div class="med-card heat">
+      <div class="med-header">
+        <div class="med-name">SALES DE REHIDRATACIÓN ORAL</div>
+        <span class="med-price">~$30 MXN</span>
+      </div>
+      <div class="med-body">
+        <p>Higher concentration than Pedialyte. For serious dehydration cases only — when regular suero isn't cutting it.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Sales de rehidratación oral para deshidratación severa</div>
+      </div>
+    </div>
+
+    <!-- LOPERAMIDA -->
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">LOPERAMIDA</div>
+        <span class="med-price">~$30 MXN</span>
+      </div>
+      <div class="med-body">
+        <p>For diarrhea. Slows intestinal movement. Take only if diarrhea is preventing normal activities — don't suppress diarrhea from a serious infection.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Loperamida para diarrea</div>
+      </div>
+    </div>
+
+    <!-- METOCLOPRAMIDA -->
+    <div class="med-card">
+      <div class="med-header">
+        <div class="med-name">METOCLOPRAMIDA</div>
+        <span class="med-price">~$35 MXN</span>
+      </div>
+      <div class="med-body">
+        <p>For nausea and vomiting. Works quickly. Common and widely available at all pharmacies.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Metoclopramida para náuseas</div>
+      </div>
+    </div>
+
+    <div class="section-label">Heat-specific additions</div>
+
+    <!-- PROTECTOR SOLAR -->
+    <div class="med-card heat">
+      <div class="med-header">
+        <div class="med-name">CREMA SOLAR SPF 50</div>
+        <span class="med-price">$80–150 MXN</span>
+      </div>
+      <div class="med-body">
+        <p>Sunburn accelerates dehydration. SPF 50 minimum. Buy before the match — you need it for outdoor queues, fan zones, and the stadium.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Protector solar, factor cincuenta</div>
+      </div>
+    </div>
+
+    <!-- PASTILLAS PARA EL CALOR -->
+    <div class="med-card heat">
+      <div class="med-header">
+        <div class="med-name">PASTILLAS PARA EL CALOR</div>
+        <span class="med-price">varies</span>
+      </div>
+      <div class="med-body">
+        <p>Some pharmacies sell electrolyte tablets specifically for heat exhaustion. Ask the pharmacist — they'll recommend the right product for your situation.</p>
+      </div>
+      <div class="med-ask">
+        <div class="med-ask-label">Ask for</div>
+        <div class="med-ask-phrase">Algo para el golpe de calor</div>
+      </div>
+    </div>
+
+    <div class="section-label">Emergency contacts</div>
+
+    <div class="hospital-card">
+      <div class="hospital-title">🏥 HOSPITALS IN MONTERREY</div>
+      <div class="hospital-entry">
+        <span class="hospital-name">Hospital San José</span>
+        <a href="tel:+528183696886" class="hospital-phone">+52 81 8369-6886</a>
+      </div>
+      <div class="hospital-entry">
+        <span class="hospital-name">Christus Muguerza</span>
+        <a href="tel:+528183993400" class="hospital-phone">+52 81 8399-3400</a>
+      </div>
+      <div class="hospital-entry">
+        <span class="hospital-name">Emergency (general)</span>
+        <a href="tel:911" class="hospital-phone">911</a>
+      </div>
+    </div>
+
+    <div class="heat-stroke-warning">
+      <div class="heat-stroke-title">🔥 HEAT STROKE — CALL 911 IMMEDIATELY IF:</div>
+      <ul class="heat-stroke-list">
+        <li>Hot dry skin (stopped sweating in the heat)</li>
+        <li>Confusion or disorientation</li>
+        <li>Rapid, strong pulse</li>
+        <li>Loss of consciousness</li>
+      </ul>
+      <div class="call-911">📞 CALL 911 — DO NOT WAIT</div>
+    </div>
+
+  </div><!-- /panel-1 -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TAB 3: RECOVERY -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-2">
+
+    <!-- COMBINED SCENARIO -->
+    <div class="scenario-card">
+      <div class="scenario-title">⚡ THE WORST CASE: BOTH AT ONCE</div>
+      <div class="scenario-body">
+        <p>Food poisoning AND heat exhaustion at the same time. More common than you think in Monterrey. Symptoms overlap: nausea, weakness, vomiting, dizziness.</p>
+        <div class="diff-grid">
+          <div class="diff-box diff-heat">
+            <div class="diff-box-title">🌡️ HEAT EXHAUSTION</div>
+            <ul>
+              <li>Started during/after sun exposure</li>
+              <li>Heavy sweating or NO sweating</li>
+              <li>No vomiting/diarrhea</li>
+            </ul>
+          </div>
+          <div class="diff-box diff-food">
+            <div class="diff-box-title">🦠 FOOD POISONING</div>
+            <ul>
+              <li>Started 4–12 hrs after eating</li>
+              <li>Vomiting + diarrhea together</li>
+              <li>Possible fever</li>
+            </ul>
+          </div>
+        </div>
+        <div class="both-case">
+          <strong>IF UNSURE: treat for BOTH simultaneously.</strong> Cool environment + Suero Oral + rest. If not improving in 30 minutes: call 911.
+        </div>
+      </div>
+    </div>
+
+    <!-- COOLING PROTOCOL -->
+    <div class="protocol-card">
+      <div class="protocol-title">❄️ COOLING PROTOCOL</div>
+      <ul class="protocol-steps">
+        <li class="step">
+          <span class="step-num">1</span>
+          <span class="step-text">Get to air conditioning immediately. Any hotel lobby, mall, or restaurant will work. <span class="step-phrase">Necesito aire acondicionado — me siento mal</span></span>
+        </li>
+        <li class="step">
+          <span class="step-num">2</span>
+          <span class="step-text">Apply cool water on neck, wrists, and forehead. Keep it there.</span>
+        </li>
+        <li class="step">
+          <span class="step-num">3</span>
+          <span class="step-text">Drink Electrolit or cold water immediately. Small sips if nauseous.</span>
+        </li>
+        <li class="step">
+          <span class="step-num">4</span>
+          <span class="step-text">Lie down with feet slightly elevated. Rest for at least 30 minutes.</span>
+        </li>
+        <li class="step">
+          <span class="step-num">5</span>
+          <span class="step-text">No more direct sun that day. Match or no match — your health is the priority.</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- BRAT RECOVERY -->
+    <div class="brat-card">
+      <div class="brat-title">🍚 RECOVERY FOOD SEQUENCE (BRAT)</div>
+      <div class="brat-grid">
+        <div class="brat-item">
+          <span class="brat-emoji">🍌</span>
+          <div>
+            <div class="brat-name">Bananas</div>
+            <div class="brat-sub">Plátanos</div>
+          </div>
+        </div>
+        <div class="brat-item">
+          <span class="brat-emoji">🍚</span>
+          <div>
+            <div class="brat-name">Rice</div>
+            <div class="brat-sub">Arroz blanco</div>
+          </div>
+        </div>
+        <div class="brat-item">
+          <span class="brat-emoji">🍎</span>
+          <div>
+            <div class="brat-name">Applesauce</div>
+            <div class="brat-sub">Puré de manzana</div>
+          </div>
+        </div>
+        <div class="brat-item">
+          <span class="brat-emoji">🍞</span>
+          <div>
+            <div class="brat-name">Toast</div>
+            <div class="brat-sub">Pan tostado</div>
+          </div>
+        </div>
+      </div>
+      <div class="horchata-tip">
+        <span class="horchata-emoji">🥛</span>
+        <div class="horchata-text"><strong>MTY special: Horchata de arroz.</strong> Rice milk drink — soothing, hydrating, easy on the stomach. Best recovery drink in Monterrey besides Suero Oral. <em>"Una horchata fría, por favor"</em></div>
+      </div>
+    </div>
+
+    <!-- ALLERGY PHRASES -->
+    <div class="protocol-card">
+      <div class="protocol-title">🚫 ALLERGY PHRASES</div>
+      <div class="allergy-grid">
+        <div class="allergy-item">
+          <div class="allergy-name">Gluten / Wheat</div>
+          <div class="allergy-phrase">Sin gluten, por favor</div>
+        </div>
+        <div class="allergy-item">
+          <div class="allergy-name">Dairy</div>
+          <div class="allergy-phrase">Sin lácteos, por favor</div>
+        </div>
+        <div class="allergy-item">
+          <div class="allergy-name">Shellfish</div>
+          <div class="allergy-phrase">Sin mariscos, por favor</div>
+        </div>
+        <div class="allergy-item">
+          <div class="allergy-name">Peanuts</div>
+          <div class="allergy-phrase">Sin cacahuates, por favor</div>
+        </div>
+        <div class="allergy-item">
+          <div class="allergy-name">Pork</div>
+          <div class="allergy-phrase">Sin cerdo, por favor</div>
+        </div>
+        <div class="allergy-item">
+          <div class="allergy-name">Spicy</div>
+          <div class="allergy-phrase">Sin picante, por favor</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SPICE SCALE -->
+    <div class="spice-scale">
+      <div class="spice-title">🌶️ SPICE SCALE</div>
+      <div class="spice-row">
+        <div class="spice-level">😊</div>
+        <div class="spice-desc"><span class="spice-word">Sin picante</span> No spice — always safe to ask</div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-level">🌶️</div>
+        <div class="spice-desc"><span class="spice-word">Un poquito picante</span> Just a little — mild heat</div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-level">🌶️🌶️</div>
+        <div class="spice-desc"><span class="spice-word">Picante</span> Spicy — moderate, most salsas</div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-level">🔥🔥</div>
+        <div class="spice-desc"><span class="spice-word">Muy picante</span> Very hot — not recommended in heat</div>
+      </div>
+      <div class="spice-row">
+        <div class="spice-level">☠️</div>
+        <div class="spice-desc"><span class="spice-word">Extra picante</span> Heat emergency risk in 34°C sun</div>
+      </div>
+    </div>
+
+  </div><!-- /panel-2 -->
+
+
+  <!-- ══════════════════════════════════════════ -->
+  <!-- TAB 4: PHRASES -->
+  <!-- ══════════════════════════════════════════ -->
+  <div class="tab-panel" id="panel-3">
+
+    <div class="phrase-card">
+      <div class="phrase-section-title">🍽️ Ordering</div>
+      <ul class="phrase-list">
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Carne asada con tortillas de harina</span>
+          <span class="phrase-en">Carne asada with flour tortillas — MTY style</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Tienen arrachera?</span>
+          <span class="phrase-en">Do you have skirt steak? (local MTY cut)</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Está bien fría?</span>
+          <span class="phrase-en">Is it properly cold?</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Agua fría, por favor</span>
+          <span class="phrase-en">Cold water, please</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Con mucha agua</span>
+          <span class="phrase-en">With lots of water</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Una horchata fría, por favor</span>
+          <span class="phrase-en">A cold horchata, please</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Agua de limón con chía, por favor</span>
+          <span class="phrase-en">Lime water with chia seeds, please</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Sin picante, por favor</span>
+          <span class="phrase-en">Without spice, please</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Con qué viene?</span>
+          <span class="phrase-en">What does it come with?</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phrase-card">
+      <div class="phrase-section-title">🌡️ Heat & Health</div>
+      <ul class="phrase-list">
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Me siento mal por el calor</span>
+          <span class="phrase-en">I feel sick from the heat</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Necesito sombra y agua</span>
+          <span class="phrase-en">I need shade and water</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Necesito aire acondicionado — me siento mal</span>
+          <span class="phrase-en">I need air conditioning — I feel sick</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Tengo un golpe de calor</span>
+          <span class="phrase-en">I have heat stroke (emergency)</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Dónde hay una farmacia?</span>
+          <span class="phrase-en">Where is a pharmacy?</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Necesito un médico</span>
+          <span class="phrase-en">I need a doctor</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phrase-card">
+      <div class="phrase-section-title">🤒 Stomach Issues</div>
+      <ul class="phrase-list">
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Me duele el estómago</span>
+          <span class="phrase-en">My stomach hurts</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Tengo diarrea</span>
+          <span class="phrase-en">I have diarrhea</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Tengo náuseas</span>
+          <span class="phrase-en">I feel nauseous</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Tienen suero oral?</span>
+          <span class="phrase-en">Do you have oral rehydration solution?</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Algo para el golpe de calor</span>
+          <span class="phrase-en">Something for heat exhaustion</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">Necesito una ambulancia</span>
+          <span class="phrase-en">I need an ambulance</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+      </ul>
+    </div>
+
+    <div class="phrase-card">
+      <div class="phrase-section-title">📍 Neighborhoods</div>
+      <ul class="phrase-list">
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Cómo llego a San Pedro Garza García?</span>
+          <span class="phrase-en">How do I get to San Pedro Garza García? (safest area)</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Dónde está el Barrio Antiguo?</span>
+          <span class="phrase-en">Where is Barrio Antiguo? (nightlife area)</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+        <li class="phrase-item" onclick="copyPhrase(this)">
+          <span class="phrase-es">¿Dónde queda el estadio?</span>
+          <span class="phrase-en">Where is the stadium?</span>
+          <span class="phrase-copied">✓ Copied!</span>
+        </li>
+      </ul>
+    </div>
+
+    <p style="text-align:center; font-size:12px; color:var(--gray-400); margin-top:8px; font-family:var(--font-mono);">Tap any phrase to copy to clipboard</p>
+
+  </div><!-- /panel-3 -->
+
+</main>
+
+<button class="fab" id="fab" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+  // ─── TAB SWITCHING ───
+  const panels = document.querySelectorAll('.tab-panel');
+  const tabs = document.querySelectorAll('.tab');
+
+  function switchTab(idx) {
+    panels.forEach((p, i) => p.classList.toggle('active', i === idx));
+    tabs.forEach((t, i) => t.classList.toggle('active', i === idx));
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  // ─── FOOD CARD TOGGLE ───
+  function toggleFood(card) {
+    card.classList.toggle('open');
+  }
+
+  // ─── PHRASE COPY ───
+  function copyPhrase(item) {
+    const phrase = item.querySelector('.phrase-es').textContent;
+    navigator.clipboard.writeText(phrase).catch(() => {});
+    item.classList.add('copied');
+    setTimeout(() => item.classList.remove('copied'), 1800);
+  }
+
+  // ─── SCROLL-TO-TOP FAB ───
+  const fab = document.getElementById('fab');
+  window.addEventListener('scroll', () => {
+    fab.classList.toggle('visible', window.scrollY > 300);
+  }, { passive: true });
+</script>
+
+</body>
+</html>
