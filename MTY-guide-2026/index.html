@@ -1,0 +1,1255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="theme-color" content="#6B21A8">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>MTY Travel Pass 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red:#D42B2B;--blue:#1A3FAA;--gold:#F5C518;--green:#1A7A4A;
+  --purple:#6B21A8;--black:#0A0A0A;--white:#FFFFFF;--cream:#FFFBF0;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-500:#6B7280;--gray-700:#374151;
+  --dark-bg:#050D1F;--dark-card:#111827;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+html,body{height:100%;overflow:hidden;background:var(--dark-bg)}
+body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direction:column}
+
+/* ── HEADER ── */
+#header{height:60px;background:var(--purple);display:flex;align-items:center;
+  justify-content:space-between;padding:0 14px;flex-shrink:0;
+  border-bottom:2px solid var(--black);position:relative;z-index:100}
+.hdr-brand{display:flex;align-items:center;gap:8px}
+.hdr-shield{width:28px;height:32px;background:var(--gold);
+  clip-path:polygon(50% 0%,100% 15%,100% 60%,50% 100%,0% 60%,0% 15%);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.hdr-title{font-family:'Bangers',cursive;font-size:18px;color:var(--white);letter-spacing:1px}
+#section-label{font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.85);
+  position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
+.sos-btn{background:var(--red);color:var(--white);font-family:'Bangers',cursive;
+  font-size:14px;letter-spacing:1px;border:none;border-radius:99px;padding:7px 16px;
+  cursor:pointer;box-shadow:2px 2px 0 var(--black);flex-shrink:0}
+.sos-btn:active{transform:scale(0.95)}
+
+/* ── CONTENT AREA ── */
+#content{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+.tab-section{display:none;padding:0 0 80px}
+.tab-section.active{display:block}
+
+/* ── BOTTOM NAV ── */
+#nav{height:64px;background:var(--dark-card);border-top:2px solid var(--black);
+  display:flex;align-items:center;justify-content:space-around;flex-shrink:0;
+  padding:0 8px;position:relative;z-index:100}
+.nav-btn{display:flex;flex-direction:column;align-items:center;gap:3px;
+  min-width:44px;min-height:44px;justify-content:center;cursor:pointer;
+  border-radius:12px;padding:6px 10px;transition:background 0.2s;border:none;background:transparent}
+.nav-btn.active{background:var(--gold)}
+.nav-btn.active .nav-label{color:var(--black)}
+.nav-btn.active .nav-icon{color:var(--black)}
+.nav-icon{font-size:20px;color:var(--gray-500)}
+.nav-label{font-family:'Fredoka One',cursive;font-size:10px;color:var(--gray-500)}
+.nav-btn.active .nav-icon,.nav-btn.active .nav-label{color:var(--black)}
+.nav-btn:nth-child(4) .nav-icon{color:#ff6b6b}
+.nav-btn:nth-child(4).active .nav-icon{color:var(--black)}
+
+/* ── CARDS ── */
+.card{background:var(--dark-card);border:2px solid var(--black);border-radius:12px;
+  box-shadow:3px 3px 0 var(--black);margin:12px;overflow:hidden}
+.card-inner{padding:14px}
+.pill{display:inline-block;border-radius:99px;padding:5px 12px;font-family:'Fredoka One',cursive;font-size:12px}
+
+/* ── HERO ── */
+.hero{background:linear-gradient(135deg,#1a0535,#6B21A8);
+  margin:12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;position:relative}
+.hero-flag{height:6px;display:flex}
+.hero-flag span{flex:1}
+.hero-mountain{position:absolute;bottom:0;left:0;right:0;height:80px;opacity:0.18}
+.hero-content{padding:18px 16px 16px;position:relative;z-index:2}
+.hero-pre{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);
+  letter-spacing:2px;text-transform:uppercase;margin-bottom:6px}
+.hero-title{font-family:'Bangers',cursive;font-size:38px;line-height:1;color:var(--white);
+  text-shadow:2px 2px 0 rgba(107,33,168,0.8);margin-bottom:4px}
+.hero-sub{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.4;margin-bottom:14px}
+.hero-dates{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.hero-date-pill{background:rgba(107,33,168,0.7);border:1px solid rgba(255,255,255,0.3);
+  color:var(--white);font-family:'Fredoka One',cursive;font-size:12px;
+  border-radius:99px;padding:5px 12px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat-box{text-align:center;background:rgba(0,0,0,0.3);border-radius:10px;padding:8px 4px}
+.stat-num{font-family:'Bangers',cursive;font-size:22px;color:var(--gold);line-height:1}
+.stat-lbl{font-family:'Fredoka One',cursive;font-size:10px;color:rgba(255,255,255,0.7);text-transform:uppercase}
+.countdown-pill{display:inline-flex;align-items:center;gap:6px;background:rgba(245,197,24,0.2);
+  border:1px solid var(--gold);border-radius:99px;padding:5px 12px;margin-bottom:12px}
+.countdown-pill span{font-family:'Bangers',cursive;font-size:14px;color:var(--gold)}
+
+/* ── HEAT WARNING ── */
+.heat-card{background:var(--gold);border:2px solid var(--black);border-radius:12px;
+  box-shadow:3px 3px 0 var(--black);margin:12px;border-left:6px solid var(--red) !important;overflow:hidden}
+.heat-header{padding:14px 16px;cursor:pointer;display:flex;align-items:flex-start;gap:10px}
+.heat-icon{font-size:28px;flex-shrink:0}
+.heat-title{font-family:'Fredoka One',cursive;font-size:15px;color:var(--black);margin-bottom:4px}
+.heat-body{font-size:13px;color:var(--black);line-height:1.5}
+.heat-expand{display:none;padding:0 16px 16px}
+
+/* ── RULE CARDS ── */
+.rules-header{font-family:'Bangers',cursive;font-size:22px;color:var(--purple);
+  padding:16px 14px 8px;letter-spacing:1px}
+.rule-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden}
+.rule-head{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.rule-num{font-family:'Bangers',cursive;font-size:22px;width:30px;flex-shrink:0}
+.rule-title{font-family:'Fredoka One',cursive;font-size:14px}
+.rule-body{font-size:12px;color:rgba(255,255,255,0.85);line-height:1.5;
+  padding:0 14px 12px}
+
+/* ── QUICK ACTION GRID ── */
+.qa-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px;margin-top:4px}
+.qa-btn{background:var(--dark-card);border:2px solid var(--black);border-radius:12px;
+  box-shadow:3px 3px 0 var(--black);padding:14px;cursor:pointer;text-align:center;
+  transition:transform 0.1s}
+.qa-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.qa-icon{font-size:22px;margin-bottom:4px}
+.qa-label{font-family:'Fredoka One',cursive;font-size:12px;color:var(--white)}
+
+/* ── SECTION HEADERS ── */
+.sec-header{font-family:'Bangers',cursive;letter-spacing:1px;padding:16px 14px 8px}
+
+/* ── HEAT PHASES ── */
+.phase-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden}
+.phase-head{padding:10px 14px;font-family:'Fredoka One',cursive;font-size:14px}
+.phase-body{padding:12px 14px;font-size:13px;line-height:1.6}
+
+/* ── NEIGHBORHOOD CARDS ── */
+.zone-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;cursor:pointer}
+.zone-head{display:flex;align-items:center;justify-content:space-between;
+  padding:12px 14px;background:var(--dark-card)}
+.zone-title{font-family:'Fredoka One',cursive;font-size:14px}
+.zone-badge{font-size:18px}
+.zone-arrow{font-size:16px;transition:transform 0.2s}
+.zone-body{display:none;padding:12px 14px;background:rgba(17,24,39,0.5);
+  font-size:13px;line-height:1.6;color:rgba(255,255,255,0.85)}
+.zone-card.open .zone-arrow{transform:rotate(90deg)}
+.zone-card.open .zone-body{display:block}
+
+/* ── ATM TABS ── */
+.atm-tabs{display:flex;gap:8px;padding:0 12px;margin-bottom:8px}
+.atm-tab{flex:1;text-align:center;padding:8px;border-radius:10px;font-family:'Fredoka One',cursive;
+  font-size:12px;cursor:pointer;border:2px solid var(--black);background:var(--dark-card);
+  color:rgba(255,255,255,0.6);transition:all 0.15s}
+.atm-tab.active{background:var(--purple);color:var(--white)}
+.atm-panel{display:none}
+.atm-panel.active{display:block}
+
+/* ── STADIUM ── */
+.stadium-hero{background:linear-gradient(135deg,#0d0120,#6B21A8 70%,#1A3FAA);
+  margin:12px;border-radius:12px;border:2px solid var(--black);box-shadow:3px 3px 0 var(--black);
+  padding:20px 16px;position:relative;overflow:hidden}
+.stadium-title{font-family:'Bangers',cursive;font-size:30px;color:var(--white);line-height:1}
+.stadium-sub{font-size:12px;color:rgba(255,255,255,0.75);margin:4px 0 12px}
+.stadium-stats{display:flex;gap:8px;flex-wrap:wrap}
+.s-stat{background:rgba(0,0,0,0.4);border-radius:8px;padding:6px 10px;
+  font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold)}
+
+/* ── MATCH CARDS ── */
+.match-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);background:var(--dark-card);overflow:hidden}
+.match-head{padding:12px 14px;display:flex;align-items:center;gap:10px}
+.match-date-box{background:var(--purple);border-radius:10px;padding:8px 10px;text-align:center;flex-shrink:0}
+.match-day{font-family:'Bangers',cursive;font-size:22px;color:var(--white);line-height:1}
+.match-month{font-family:'Fredoka One',cursive;font-size:10px;color:rgba(255,255,255,0.8)}
+.match-teams{font-family:'Fredoka One',cursive;font-size:15px;color:var(--white);flex:1}
+.match-meta{font-size:11px;color:var(--gray-500);margin-top:2px}
+.match-time{font-family:'Bangers',cursive;font-size:18px;color:var(--gold)}
+
+/* ── TRANSPORT OPTIONS ── */
+.transport-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;cursor:pointer}
+.transport-head{background:var(--dark-card);padding:12px 14px;display:flex;
+  align-items:center;justify-content:space-between}
+.transport-title{font-family:'Fredoka One',cursive;font-size:14px}
+.transport-badge{border-radius:99px;padding:4px 10px;font-family:'Fredoka One',cursive;
+  font-size:10px;color:var(--black)}
+.transport-body{display:none;padding:14px;font-size:13px;line-height:1.6;
+  background:rgba(17,24,39,0.5)}
+.transport-card.open .transport-body{display:block}
+.transport-step{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.step-num{background:var(--purple);color:var(--white);font-family:'Bangers',cursive;
+  font-size:14px;width:26px;height:26px;border-radius:99px;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0}
+.info-box{border-radius:10px;padding:10px 12px;margin:10px 0;font-size:12px;line-height:1.5}
+
+/* ── EMERGENCY ── */
+.emerg-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);background:var(--dark-card);
+  border-left:4px solid var(--red) !important;overflow:hidden}
+.emerg-inner{padding:12px 14px;display:flex;align-items:center;gap:12px}
+.emerg-info{flex:1}
+.emerg-name{font-family:'Fredoka One',cursive;font-size:14px;color:var(--white)}
+.emerg-desc{font-size:11px;color:var(--gray-500);margin-top:2px}
+.emerg-num{font-family:'Bangers',cursive;font-size:20px;color:var(--gold)}
+.call-btn{background:var(--red);color:var(--white);font-family:'Bangers',cursive;
+  font-size:14px;letter-spacing:1px;border:none;border-radius:99px;
+  padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-block;
+  box-shadow:2px 2px 0 var(--black);flex-shrink:0}
+.call-btn:active{transform:scale(0.95)}
+
+/* ── PROTOCOL ACCORDION ── */
+.proto-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;cursor:pointer}
+.proto-head{background:var(--dark-card);padding:12px 14px;display:flex;
+  align-items:center;justify-content:space-between}
+.proto-title{font-family:'Fredoka One',cursive;font-size:14px}
+.proto-arrow{font-size:14px;transition:transform 0.2s}
+.proto-body{display:none;padding:14px;font-size:13px;line-height:1.7;background:rgba(17,24,39,0.5)}
+.proto-card.open .proto-arrow{transform:rotate(90deg)}
+.proto-card.open .proto-body{display:block}
+.proto-step{display:flex;gap:8px;margin-bottom:8px}
+.pstep-num{background:var(--red);color:var(--white);font-family:'Bangers',cursive;
+  font-size:13px;width:22px;height:22px;border-radius:99px;display:flex;
+  align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+
+/* ── PHRASES ── */
+.phrase-cats{display:flex;gap:6px;overflow-x:auto;padding:12px 12px 8px;
+  scrollbar-width:none}
+.phrase-cats::-webkit-scrollbar{display:none}
+.pcat{flex-shrink:0;background:var(--dark-card);border:2px solid var(--black);
+  border-radius:99px;padding:7px 14px;font-family:'Fredoka One',cursive;font-size:12px;
+  cursor:pointer;transition:all 0.15s}
+.pcat.active{background:var(--purple);color:var(--white);border-color:var(--purple)}
+.phrase-group{display:none}
+.phrase-group.active{display:block}
+.phrase-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);background:var(--dark-card);
+  padding:12px 14px;cursor:pointer;transition:transform 0.1s}
+.phrase-card:active{transform:translate(1px,1px);box-shadow:2px 2px 0 var(--black)}
+.phrase-es{font-family:'Fredoka One',cursive;font-size:16px;color:var(--gold)}
+.phrase-pron{font-size:11px;color:var(--purple);margin:3px 0;font-style:italic}
+.phrase-en{font-size:13px;color:rgba(255,255,255,0.8)}
+
+/* ── TOAST ── */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%);
+  background:var(--gold);color:var(--black);font-family:'Fredoka One',cursive;
+  font-size:14px;padding:10px 20px;border-radius:99px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);z-index:9999;opacity:0;pointer-events:none;
+  transition:opacity 0.2s}
+#toast.show{opacity:1}
+
+/* ── SOS OVERLAY ── */
+#sos-overlay{display:none;position:fixed;inset:0;background:#1a0000;z-index:1000;
+  overflow-y:auto;padding:0 0 40px}
+.sos-overlay-header{background:var(--red);padding:20px 16px 14px;
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:3px solid var(--black);position:sticky;top:0;z-index:2}
+.sos-h-title{font-family:'Bangers',cursive;font-size:28px;color:var(--white);letter-spacing:2px}
+.sos-close{background:var(--white);color:var(--red);font-family:'Bangers',cursive;
+  font-size:14px;border:none;border-radius:99px;padding:8px 16px;cursor:pointer}
+.sos-911{margin:16px 12px;background:var(--red);border:3px solid var(--black);
+  border-radius:12px;box-shadow:4px 4px 0 var(--black);text-align:center;padding:20px}
+.sos-911-num{font-family:'Bangers',cursive;font-size:60px;color:var(--white);line-height:1}
+.sos-911-sub{font-family:'Fredoka One',cursive;font-size:16px;color:rgba(255,255,255,0.9)}
+.sos-call-big{display:block;background:var(--white);color:var(--red);
+  font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;text-align:center;
+  border:2px solid var(--black);border-radius:99px;padding:14px;margin-top:14px;
+  text-decoration:none;box-shadow:3px 3px 0 var(--black)}
+
+/* ── NIGHTLIFE CARD ── */
+.nightlife-card{margin:12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);background:linear-gradient(135deg,#0d0120,#1a0535);
+  overflow:hidden;cursor:pointer}
+.nightlife-head{padding:14px 16px;display:flex;align-items:center;justify-content:space-between}
+.nightlife-title{font-family:'Bangers',cursive;font-size:20px;color:var(--gold);letter-spacing:1px}
+.nightlife-body{display:none;padding:0 16px 16px}
+.time-row{display:flex;gap:8px;margin-bottom:8px;align-items:flex-start}
+.time-badge{background:var(--purple);color:var(--white);font-family:'Fredoka One',cursive;
+  font-size:10px;border-radius:6px;padding:4px 8px;flex-shrink:0;margin-top:1px}
+.nightlife-card.open .nightlife-body{display:block}
+
+/* ── INFO BANNER ── */
+.info-banner{margin:12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);padding:12px 14px;font-size:13px;line-height:1.5}
+.ib-title{font-family:'Fredoka One',cursive;font-size:14px;margin-bottom:4px}
+
+/* ── SOS FLOATING ── */
+#sos-float{position:fixed;bottom:80px;right:14px;background:var(--red);
+  width:50px;height:50px;border-radius:50%;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);display:flex;align-items:center;
+  justify-content:center;font-family:'Bangers',cursive;font-size:16px;
+  color:var(--white);cursor:pointer;z-index:200;letter-spacing:1px}
+#sos-float:active{transform:scale(0.9)}
+
+/* Scrollbar styling */
+#content::-webkit-scrollbar{width:3px}
+#content::-webkit-scrollbar-track{background:var(--dark-bg)}
+#content::-webkit-scrollbar-thumb{background:var(--purple);border-radius:99px}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div id="header">
+  <div class="hdr-brand">
+    <div class="hdr-shield"></div>
+    <span class="hdr-title">MTY GUIDE</span>
+  </div>
+  <span id="section-label">HOME</span>
+  <button class="sos-btn" onclick="openSOS()">SOS</button>
+</div>
+
+<!-- CONTENT -->
+<div id="content">
+
+  <!-- ════════════════════════════════════════
+       TAB 1: HOME
+       ════════════════════════════════════════ -->
+  <div id="tab-home" class="tab-section active">
+
+    <!-- Hero -->
+    <div class="hero">
+      <div class="hero-flag"><span style="background:#006847"></span><span style="background:#fff"></span><span style="background:#CE1126"></span></div>
+      <!-- Mountain SVG -->
+      <svg class="hero-mountain" viewBox="0 0 400 80" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="0,80 60,40 90,50 130,20 160,35 200,5 230,30 270,15 310,35 350,25 400,45 400,80" fill="#9333ea"/>
+        <polygon points="0,80 50,55 80,65 110,45 140,58 170,35 200,50 240,30 280,48 320,38 360,55 400,42 400,80" fill="#7e22ce"/>
+      </svg>
+      <div class="hero-content">
+        <div class="countdown-pill"><span>⚽</span><span id="countdown-text">Loading…</span></div>
+        <div class="hero-pre">Estadio BBVA · Summer 2026</div>
+        <div class="hero-title">MONTERREY<br>TRAVEL PASS</div>
+        <div class="hero-sub">Your complete guide to El Gigante de Acero<br>and the city of the Steel Giant</div>
+        <div class="hero-dates">
+          <span class="hero-date-pill">Jun 14</span>
+          <span class="hero-date-pill">Jun 20</span>
+          <span class="hero-date-pill">Jun 24</span>
+          <span class="hero-date-pill">Jun 29</span>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-box"><div class="stat-num">53,500</div><div class="stat-lbl">Capacity</div></div>
+          <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl">Matches</div></div>
+          <div class="stat-box"><div class="stat-num" style="color:var(--red)">34°C ⚠</div><div class="stat-lbl">June Heat</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Heat Warning -->
+    <div class="heat-card">
+      <div class="heat-header" onclick="toggleHeat()">
+        <div class="heat-icon">🌡️</div>
+        <div>
+          <div class="heat-title">Heat Warning — Read This First</div>
+          <div class="heat-body">Monterrey in June hits 34°C (93°F) with high humidity. Under direct sun it feels like 42°C (107°F). Heat exhaustion is a real risk. Tap to read your survival protocol.</div>
+        </div>
+      </div>
+      <div class="heat-expand" id="heat-expand">
+        <div style="background:rgba(0,0,0,0.1);border-radius:10px;padding:12px;font-size:13px;line-height:1.7;color:var(--black)">
+          <strong>The Day Before:</strong> Drink 3L water. Avoid alcohol — it dehydrates you.<br><br>
+          <strong>Match Morning:</strong> Eat a full meal. Apply SPF 50+. Start drinking water at breakfast. Don't wait for thirst — thirst means you're already dehydrated.<br><br>
+          <strong>At the Stadium:</strong> Buy water at every opportunity. Sit in shade if possible. If dizzy or you stop sweating — find medical staff immediately.<br><br>
+          <strong>Signs of heat exhaustion:</strong> heavy sweating, weakness, cold/pale skin, fast weak pulse, nausea.<br>
+          <strong style="color:var(--red)">Heat stroke (EMERGENCY):</strong> hot, red, dry skin + confusion + fast strong pulse → Call 911 immediately.<br><br>
+          <strong>Buy at Farmacias del Ahorro:</strong> Electrolit ($30 MXN), Suero Oral/Pedialyte ($30-50 MXN), SPF 50 ($80-150 MXN). Say: <em>"Me siento mal por el calor"</em>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 Rules -->
+    <div class="rules-header">⚡ THE 5 RULES</div>
+
+    <div class="rule-card" style="background:#3d0000">
+      <div class="rule-head">
+        <div class="rule-num" style="color:var(--red)">1</div>
+        <div class="rule-title" style="color:var(--red)">NEVER take an unofficial taxi</div>
+      </div>
+      <div class="rule-body">Uber and DiDi only. At MTY airport: Uber is fully legal — no restrictions. Use it.</div>
+    </div>
+
+    <div class="rule-card" style="background:#3d2d00">
+      <div class="rule-head">
+        <div class="rule-num" style="color:var(--gold)">2</div>
+        <div class="rule-title" style="color:var(--gold)">HEAT IS YOUR #1 ENEMY</div>
+      </div>
+      <div class="rule-body">2L of water minimum per match day. Electrolytes. Hat and sunscreen for daytime matches. This is not optional.</div>
+    </div>
+
+    <div class="rule-card" style="background:#00290f">
+      <div class="rule-head">
+        <div class="rule-num" style="color:var(--green)">3</div>
+        <div class="rule-title" style="color:#4ade80">STAY in San Pedro and Barrio Antiguo</div>
+      </div>
+      <div class="rule-body">San Pedro Garza García is the safest municipality in Latin America. It is your home base here.</div>
+    </div>
+
+    <div class="rule-card" style="background:#1a0535">
+      <div class="rule-head">
+        <div class="rule-num" style="color:var(--gold)">4</div>
+        <div class="rule-title" style="color:#c084fc">KNOW your neighborhoods</div>
+      </div>
+      <div class="rule-body">The city is enormous. Independencia and Niño Artillero are no-go zones. Two miles can be two different worlds.</div>
+    </div>
+
+    <div class="rule-card" style="background:#001428">
+      <div class="rule-head">
+        <div class="rule-num" style="color:#60a5fa)">5</div>
+        <div class="rule-title" style="color:#60a5fa">PRE-BOOK your post-match ride</div>
+      </div>
+      <div class="rule-body">Uber surge after 53,000 people leave BBVA is real. Arrange pickup or plan Metro before you enter the stadium.</div>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="rules-header" style="padding-top:12px">🚀 QUICK ACTIONS</div>
+    <div class="qa-grid">
+      <div class="qa-btn" onclick="switchTab('stadium')">
+        <div class="qa-icon">🏟️</div>
+        <div class="qa-label">Stadium Route</div>
+      </div>
+      <div class="qa-btn" onclick="switchTab('safety')">
+        <div class="qa-icon">🗺️</div>
+        <div class="qa-label">Safe Zones</div>
+      </div>
+      <div class="qa-btn" onclick="openSOS()">
+        <div class="qa-icon">🚨</div>
+        <div class="qa-label">Emergency Contacts</div>
+      </div>
+      <div class="qa-btn" onclick="switchTab('phrases')">
+        <div class="qa-icon">💬</div>
+        <div class="qa-label">Spanish Phrases</div>
+      </div>
+    </div>
+
+    <!-- Nightlife card -->
+    <div class="nightlife-card" onclick="this.classList.toggle('open')">
+      <div class="nightlife-head">
+        <div>
+          <div class="nightlife-title">🌙 AFTER THE MATCH — BARRIO ANTIGUO</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.6);font-family:'Fredoka One',cursive">Nightlife Guide</div>
+        </div>
+        <div style="font-size:20px">▶</div>
+      </div>
+      <div class="nightlife-body">
+        <div style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.6;margin-bottom:12px">
+          Cobblestone streets, colonial buildings, clubs, live music. Padre Mier is the main drag. Comes alive after 10pm, runs until 4am weekends.
+        </div>
+        <div class="time-row"><div class="time-badge">Before Midnight</div><div style="font-size:12px;color:rgba(255,255,255,0.8)">Any venue on Padre Mier. Plenty of people, well-lit, food available.</div></div>
+        <div class="time-row"><div class="time-badge">12–2am</div><div style="font-size:12px;color:rgba(255,255,255,0.8)">Stay on Padre Mier main strip. Don't wander quiet side streets. Keep group together.</div></div>
+        <div class="time-row"><div class="time-badge" style="background:var(--red)">After 2am</div><div style="font-size:12px;color:rgba(255,255,255,0.8)">Start heading back. Order Uber from inside the venue.</div></div>
+        <div style="margin-top:10px;font-size:12px;line-height:1.6;color:rgba(255,255,255,0.8)">
+          🎵 Electronic/house: <strong>Ambia Social Club</strong> (Padre Mier 1094)<br>
+          🎷 Jazz/rooftop: <strong>Maverick MTY</strong> in San Pedro (Rio Mississippi 103D)<br>
+          🥩 Street food: Carne asada from established vendors on Padre Mier — safe and excellent<br>
+          💳 Cover: $100–300 MXN · Drinks: $80–150 MXN
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /tab-home -->
+
+  <!-- ════════════════════════════════════════
+       TAB 2: SAFETY
+       ════════════════════════════════════════ -->
+  <div id="tab-safety" class="tab-section">
+
+    <div class="sec-header" style="font-size:20px;color:var(--red)">🌡️ HEAT SURVIVAL — MATCH DAY PROTOCOL</div>
+
+    <div class="phase-card">
+      <div class="phase-head" style="background:var(--blue);color:var(--white)">PHASE 1 — THE DAY BEFORE</div>
+      <div class="phase-body" style="background:rgba(26,63,170,0.15)">
+        Hydrate aggressively the day before. You cannot catch up once you're dehydrated on match day. Drink 3L of water the day before a daytime match. Avoid alcohol the night before — it dehydrates you.
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head" style="background:#8B6914;color:var(--white)">PHASE 2 — MATCH MORNING</div>
+      <div class="phase-body" style="background:rgba(139,105,20,0.15)">
+        Eat a real meal — your body needs fuel to regulate heat. Apply SPF 50+ sunscreen. Reapply every 2 hours. Buy a hat if you don't have one (stadium shops sell them). Start drinking water at breakfast. Don't wait for thirst — thirst means you're already dehydrated.
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head" style="background:var(--red);color:var(--white)">PHASE 3 — AT THE STADIUM</div>
+      <div class="phase-body" style="background:rgba(212,43,43,0.15)">
+        Buy water at every opportunity inside the stadium. Sit in shade if your seat allows. If you feel dizzy or stop sweating: that is a medical risk.<br><br>
+        <strong>Find stadium medical staff immediately — don't wait.</strong><br><br>
+        Signs of heat exhaustion: heavy sweating, weakness, cold/pale/clammy skin, fast/weak pulse, nausea.<br>
+        <span style="color:#ff6b6b;font-weight:700">HEAT STROKE (EMERGENCY): hot/red/dry skin, fast/strong pulse, confusion → Call 911 immediately.</span>
+      </div>
+    </div>
+
+    <div class="phase-card">
+      <div class="phase-head" style="background:var(--green);color:var(--white)">PHASE 4 — WHAT TO BUY AT PHARMACY</div>
+      <div class="phase-body" style="background:rgba(26,122,74,0.15)">
+        <strong>Farmacias del Ahorro</strong> — everywhere in Monterrey<br><br>
+        🥤 Suero Oral / Pedialyte — oral rehydration salts — <strong>$30–50 MXN</strong><br>
+        ⚡ Electrolit — best electrolyte drink in Mexico — <strong>$30 MXN</strong><br>
+        ☀️ Protector solar SPF 50 — sunscreen — <strong>$80–150 MXN</strong><br>
+        💊 Paracetamol — headache from heat — <strong>$25 MXN</strong><br><br>
+        Say: <em style="color:var(--gold)">"Me siento mal por el calor"</em> (I feel sick from the heat)
+      </div>
+    </div>
+
+    <div class="sec-header" style="font-size:20px;color:var(--purple)">🗺️ NEIGHBORHOOD SAFETY ZONES</div>
+    <div style="padding:0 14px 8px;font-size:12px;color:var(--gray-500)">🟢 Safe &nbsp;·&nbsp; 🟡 Caution &nbsp;·&nbsp; 🔴 Avoid — Tap to expand</div>
+
+    <!-- Zones -->
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">San Pedro Garza García</div><div style="font-size:11px;color:var(--gray-500)">Safest municipality in Latin America</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">The Beverly Hills of Latin America. Lowest crime index in the entire Monterrey metro (20.5/100). Private security patrols, luxury hotels, upscale restaurants. Calzada del Valle and Centrito Valle are the main strips. Jazz bars, rooftop terraces, international cuisine. Safe day and night including walking alone. <br><strong>Getting there:</strong> Uber from anywhere ~15–25 min.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Barrio Antiguo</div><div style="font-size:11px;color:var(--gray-500)">Historic quarter, best nightlife</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Monterrey's historic quarter. Cobblestone streets, colonial architecture, best nightlife in the city. Padre Mier is the main street — clubs, bars, live music. Safe with company. Don't wander empty side streets alone after 2am. Stay on the main strip.<br><strong>Getting there:</strong> Metro Line 1 → Padre Mier station or Uber.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Macroplaza / Centro</div><div style="font-size:11px;color:var(--gray-500)">Gran Plaza, Faro del Comercio</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">The Gran Plaza is one of the largest public plazas in the world. Government buildings, Faro del Comercio, Paseo Santa Lucía canal. Beautiful and safe by day. Fine on main streets at night. Avoid empty side streets after 10pm. Not a nightlife destination — use for tourism and transit.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Paseo Santa Lucía</div><div style="font-size:11px;color:var(--gray-500)">3.5km riverside promenade</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">3.5km riverside promenade connecting Macroplaza to Parque Fundidora. Well-lit, popular, families and tourists. Very safe even at night. Outdoor restaurants, boats, public art. One of the best urban walks in Mexico.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Valle Oriente</div><div style="font-size:11px;color:var(--gray-500)">Modern business district</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Modern business district with international hotels, upscale malls (Galerías Valle Oriente), restaurants. Safe, clean, very tourist-friendly. Good base for fans who want maximum safety and minimum adventure.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Guadalupe / Stadium Area</div><div style="font-size:11px;color:var(--gray-500)">Estadio BBVA zone</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟡</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Estadio BBVA is here. The stadium itself is safe. The main roads around it are fine for match days with the massive security presence. Do NOT explore residential areas around the stadium on foot. Take your designated exit route and leave. Avoid lingering after matches in unlit areas.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Independencia</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Do not visit. Highest crime area in Monterrey. No tourist reason to go here.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Niño Artillero</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Avoid entirely. Flagged by security analysts as a high-risk zone for tourists.</div>
+    </div>
+
+    <div class="zone-card" onclick="toggleZone(this)">
+      <div class="zone-head"><div><div class="zone-title">Solidaridad</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-body">Cartel-related activity reported. Not a tourist area.</div>
+    </div>
+
+    <div class="info-banner" style="background:rgba(26,122,74,0.2);border-color:var(--green)">
+      <div class="ib-title" style="color:#4ade80">ℹ️ US Embassy Travel Advisory</div>
+      The US Embassy lifted ALL movement restrictions for Monterrey on February 24, 2026. Nuevo León has a Level 3 state advisory but this reflects rural southern areas — not the tourist circuit.
+    </div>
+
+    <!-- ATMs -->
+    <div class="sec-header" style="color:var(--gold)">🏧 SAFE ATMs IN MONTERREY</div>
+    <div class="atm-tabs">
+      <div class="atm-tab active" onclick="switchATM('san-pedro',this)">San Pedro</div>
+      <div class="atm-tab" onclick="switchATM('centro',this)">Centro</div>
+      <div class="atm-tab" onclick="switchATM('stadium',this)">Near Stadium</div>
+    </div>
+    <div id="atm-san-pedro" class="atm-panel active">
+      <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
+        🏦 <strong>BBVA</strong> — Calzada del Valle (multiple branches)<br>
+        🏦 <strong>Banamex</strong> — Calzada del Valle 400<br>
+        🏦 <strong>Santander</strong> — inside Galerías Valle Oriente mall<br>
+        <br><div style="background:rgba(107,33,168,0.3);border-radius:8px;padding:10px;font-size:12px">San Pedro has the highest density of safe ATMs in the metro area. Use these over all others.</div>
+      </div></div>
+    </div>
+    <div id="atm-centro" class="atm-panel">
+      <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
+        🏦 <strong>Galerías Monterrey mall</strong> — safest option<br>
+        🏦 <strong>HSBC</strong> — Padre Mier near Macroplaza<br>
+        🏦 <strong>Banamex</strong> — inside Las Américas mall
+      </div></div>
+    </div>
+    <div id="atm-stadium" class="atm-panel">
+      <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
+        <div style="background:rgba(212,43,43,0.2);border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px;color:#ff9999">
+          ⚠️ There are NO safe standalone ATMs near Estadio BBVA. Withdraw cash BEFORE going to the stadium.
+        </div>
+        Take what you need — stadium accepts card for food/drinks.<br>
+        Recommended: <strong>$500 MXN cash max.</strong>
+      </div></div>
+    </div>
+
+    <div class="card" style="margin-top:8px">
+      <div class="card-inner" style="font-size:13px;line-height:1.6">
+        <div style="font-family:'Fredoka One',cursive;margin-bottom:6px;color:var(--gold)">💳 ATM Safety Tips</div>
+        Wiggle the card reader before inserting. Cover your PIN. Always choose to be charged in pesos (MXN), not dollars. Use ATMs inside malls or banks only.
+      </div>
+    </div>
+
+  </div><!-- /tab-safety -->
+
+  <!-- ════════════════════════════════════════
+       TAB 3: STADIUM
+       ════════════════════════════════════════ -->
+  <div id="tab-stadium" class="tab-section">
+
+    <div class="stadium-hero">
+      <div style="font-size:11px;color:rgba(255,255,255,0.6);font-family:'Fredoka One',cursive;margin-bottom:4px">⚽ FIFA WORLD CUP 2026</div>
+      <div class="stadium-title">EL GIGANTE<br>DE ACERO</div>
+      <div class="stadium-sub">Estadio BBVA · Guadalupe, Nuevo León</div>
+      <div class="stadium-stats">
+        <span class="s-stat">53,500 seats</span>
+        <span class="s-stat">4 matches</span>
+        <span class="s-stat">Opened 2015</span>
+        <span class="s-stat">Populous design</span>
+      </div>
+      <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">
+        🏔️ The stadium was built to frame <strong>Cerro de la Silla</strong>. One end is open toward the mountain — you can see it from the stands. It is spectacular.
+      </div>
+    </div>
+
+    <div class="sec-header" style="color:var(--gold)">📅 MATCH SCHEDULE</div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-date-box"><div class="match-day">14</div><div class="match-month">JUN SUN</div></div>
+        <div style="flex:1">
+          <div class="match-teams">🇸🇪 Sweden vs Tunisia 🇹🇳</div>
+          <div class="match-meta">Group F · Match 12</div>
+        </div>
+        <div class="match-time">20:00</div>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-date-box"><div class="match-day">20</div><div class="match-month">JUN SAT</div></div>
+        <div style="flex:1">
+          <div class="match-teams">🇯🇵 Japan vs Tunisia 🇹🇳</div>
+          <div class="match-meta">Group F · Match 33</div>
+        </div>
+        <div class="match-time">22:00</div>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-date-box"><div class="match-day">24</div><div class="match-month">JUN WED</div></div>
+        <div style="flex:1">
+          <div class="match-teams">🇿🇦 South Africa vs South Korea 🇰🇷</div>
+          <div class="match-meta">Group A · Match 48</div>
+        </div>
+        <div class="match-time">19:00</div>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-head">
+        <div class="match-date-box" style="background:var(--gold)"><div class="match-day" style="color:var(--black)">29</div><div class="match-month" style="color:var(--black)">JUN MON</div></div>
+        <div style="flex:1">
+          <div class="match-teams">🏆 Round of 32</div>
+          <div class="match-meta">Group F winner vs Group C runner-up</div>
+        </div>
+        <div class="match-time">19:00</div>
+      </div>
+    </div>
+
+    <div style="margin:4px 14px 12px;font-size:11px;color:var(--gray-500);font-style:italic">
+      All times are local Monterrey time (CST, UTC-6). Confirm official kickoff times at FIFA.com closer to date.
+    </div>
+
+    <div class="sec-header" style="color:var(--white)">🚇 HOW TO GET TO ESTADIO BBVA</div>
+
+    <div class="info-banner" style="background:rgba(107,33,168,0.3);border-color:var(--purple)">
+      <div class="ib-title" style="color:#c084fc">Important — Estadio BBVA Location</div>
+      Estadio BBVA is in Guadalupe — east of city center. There is NO direct metro stop at the stadium. Best route: Metro Line 1 → Exposición → 10–12 minute walk via pedestrian bridge. Alternatively: Uber, but expect severe match-day delays.
+    </div>
+
+    <div class="transport-card" onclick="this.classList.toggle('open')">
+      <div class="transport-head">
+        <div>
+          <div class="transport-title">🚇 Metrorrey Line 1 → Exposición</div>
+          <div style="font-size:11px;color:var(--gray-500)">Tap to expand route details</div>
+        </div>
+        <div><span class="transport-badge" style="background:var(--green)">MOST RELIABLE</span></div>
+      </div>
+      <div class="transport-body">
+        <div class="transport-step"><div class="step-num">1</div><div>Take Metrorrey <strong>Line 1</strong> from any central station. Direction: toward Exposición / Guadalupe.</div></div>
+        <div class="transport-step"><div class="step-num">2</div><div>Exit at <strong>Exposición station</strong> (Av. Exposición, Guadalupe).</div></div>
+        <div class="transport-step"><div class="step-num">3</div><div><strong>10–12 minute walk</strong> to stadium gates. Follow Av. Exposición → pedestrian bridge → entrance. Well-signed on match days.</div></div>
+        <div class="transport-step"><div class="step-num">4</div><div>Match day shuttles and feeder buses also run from Exposición — look for FIFA World Cup signs.</div></div>
+        <div class="info-box" style="background:rgba(26,122,74,0.2);border:1px solid var(--green)">
+          💰 $5 MXN Metro ticket · Free walk<br>
+          ⏱️ 25–40 min from central Monterrey<br>
+          ✅ Best for: Guaranteed arrival. No surge pricing. Safest option post-match.
+        </div>
+      </div>
+    </div>
+
+    <div class="transport-card" onclick="this.classList.toggle('open')">
+      <div class="transport-head">
+        <div>
+          <div class="transport-title">🚗 Uber or DiDi</div>
+          <div style="font-size:11px;color:var(--gray-500)">Tap to expand prices & tips</div>
+        </div>
+        <div><span class="transport-badge" style="background:var(--gold)">CONVENIENT</span></div>
+      </div>
+      <div class="transport-body">
+        <div style="font-family:'Fredoka One',cursive;font-size:13px;margin-bottom:6px;color:var(--white)">Normal conditions:</div>
+        📍 Downtown → BBVA: 25–35 min · <strong>$80–150 MXN</strong><br>
+        📍 San Pedro → BBVA: 20–30 min · <strong>$80–130 MXN</strong><br>
+        📍 Airport (MTY) → BBVA: 22 min · <strong>$200–300 MXN</strong><br><br>
+        <div style="font-family:'Fredoka One',cursive;font-size:13px;margin-bottom:6px;color:#ff9999">⚠️ Match day reality:</div>
+        Add 30–60 min for traffic around stadium. Surge pricing can double or triple normal fares. Use Metro for arrival. Uber is better for departure — walk 10 min away from stadium before requesting.<br><br>
+        <div class="info-box" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold)">
+          ✈️ <strong>MTY Airport Uber:</strong> Uber is FULLY LEGAL at Monterrey Airport. Unlike Cancún, Cabo, and Puerto Vallarta where Uber has restrictions — MTY has zero restrictions. Request directly from arrivals.
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-header" style="color:var(--white)">✈️ ARRIVING AT MTY AIRPORT</div>
+
+    <div class="card">
+      <div class="card-inner" style="font-size:13px;line-height:1.7">
+        MTY has <strong>3 terminals (A, B, C)</strong> — all connected by underground walkway and free shuttle. Most international flights: Terminal B. On arrival: follow signs to ground transport.
+      </div>
+    </div>
+
+    <div class="info-banner" style="background:rgba(212,43,43,0.2);border-color:var(--red)">
+      <div class="ib-title" style="color:#ff6b6b">⛔ Same Rule as Every Mexican Airport</div>
+      Do NOT accept rides from people approaching you in the arrivals hall. Use Uber app or the official taxi kiosk inside the terminal only.
+    </div>
+
+    <div class="card">
+      <div class="card-inner" style="font-size:13px;line-height:1.8">
+        🟢 <strong>Uber</strong> — Fully legal at MTY. Pickup area clearly marked outside Terminal B exit.<br>
+        🟡 <strong>Official Taxi</strong> — Taxi Aeropuerto kiosks inside terminal. Fixed rate by zone. Pay in advance, show voucher to driver.<br><br>
+        📍 To downtown: <strong>$250–350 MXN</strong> · ~25–40 min<br>
+        📍 To San Pedro: <strong>$200–280 MXN</strong> · ~20–30 min<br>
+        📍 To stadium: <strong>$200–300 MXN</strong> · ~22 min
+      </div>
+    </div>
+
+    <div class="sec-header" style="color:var(--white)">🏁 AFTER THE FINAL WHISTLE</div>
+
+    <div class="info-banner" style="background:rgba(245,197,24,0.15);border-color:var(--gold)">
+      <div class="ib-title" style="color:var(--gold)">⚠️ Post-Match Crowd Warning</div>
+      53,000 people leaving at once. The area around the stadium entrance is extremely crowded for 30–40 minutes post-match. Wait inside if you can. Pre-arrange your Uber pickup point BEFORE entering.
+    </div>
+
+    <div class="card">
+      <div class="card-inner" style="font-size:13px;line-height:1.7">
+        <div style="font-family:'Fredoka One',cursive;color:var(--blue);margin-bottom:6px">Strategy 1 — Metro back</div>
+        Walk to Exposición station (reverse of arrival). 10–12 min walk, then Line 1 to central Monterrey. Platform will be crowded — wait for second or third train. Trains run until midnight on match days.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner" style="font-size:13px;line-height:1.7">
+        <div style="font-family:'Fredoka One',cursive;color:var(--purple);margin-bottom:6px">Strategy 2 — Walk then Uber</div>
+        Walk 10–15 minutes away from the stadium before opening Uber. Head toward Av. Pablo Livas or Blvd. Díaz Ordaz. Surge pricing drops significantly once you're away from the immediate stadium zone.
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="card-inner" style="font-size:13px;line-height:1.7">
+        <div style="font-family:'Fredoka One',cursive;color:var(--gold);margin-bottom:6px">Strategy 3 — Pre-book private transport</div>
+        Most San Pedro Garza García hotels offer match-day transport packages. Book when you check in. Price: ~$400–800 MXN round trip. Driver waits for you regardless of final score time.
+      </div>
+    </div>
+
+  </div><!-- /tab-stadium -->
+
+  <!-- ════════════════════════════════════════
+       TAB 4: EMERGENCY
+       ════════════════════════════════════════ -->
+  <div id="tab-emergency" class="tab-section">
+
+    <div style="background:var(--red);padding:14px 14px 10px;margin-bottom:4px">
+      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px">🚨 EMERGENCY CONTACTS</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.8)">Tap any number to call instantly</div>
+    </div>
+
+    <!-- Primary -->
+    <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">ALL EMERGENCIES</div>
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">🚨</div>
+        <div class="emerg-info"><div class="emerg-name">All Emergencies</div><div class="emerg-num">911</div></div>
+        <a class="call-btn" href="tel:911">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">🗺️</div>
+        <div class="emerg-info"><div class="emerg-name">Tourist Assistance (English)</div><div class="emerg-num">078</div></div>
+        <a class="call-btn" href="tel:078">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">📞</div>
+        <div class="emerg-info"><div class="emerg-name">NL Tourist Hotline</div><div class="emerg-num" style="font-size:16px">800 987 8224</div></div>
+        <a class="call-btn" href="tel:8009878224">CALL</a>
+      </div>
+    </div>
+
+    <!-- Medical -->
+    <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">MEDICAL</div>
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">🚑</div>
+        <div class="emerg-info"><div class="emerg-name">Cruz Roja Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8345-1060</div></div>
+        <a class="call-btn" href="tel:+5281834510600">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">🏥</div>
+        <div class="emerg-info"><div class="emerg-name">Hospital San José</div><div class="emerg-desc">Top private hospital · Tec de Monterrey · English staff</div><div class="emerg-num" style="font-size:15px">+52 81 8369-6886</div></div>
+        <a class="call-btn" href="tel:+528183696886">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:28px">🏥</div>
+        <div class="emerg-info"><div class="emerg-name">Christus Muguerza</div><div class="emerg-desc">International patients · English staff</div><div class="emerg-num" style="font-size:15px">+52 81 8399-3400</div></div>
+        <a class="call-btn" href="tel:+528183993400">CALL</a>
+      </div>
+    </div>
+
+    <!-- Embassies -->
+    <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">EMBASSIES (Mexico City)</div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇺🇸</div>
+        <div class="emerg-info"><div class="emerg-name">US Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 2579-2000</div></div>
+        <a class="call-btn" href="tel:+525525792000">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇬🇧</div>
+        <div class="emerg-info"><div class="emerg-name">UK Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 1670-3200</div></div>
+        <a class="call-btn" href="tel:+525516703200">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇩🇪</div>
+        <div class="emerg-info"><div class="emerg-name">German Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5283-2200</div></div>
+        <a class="call-btn" href="tel:+525552832200">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇫🇷</div>
+        <div class="emerg-info"><div class="emerg-name">French Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 9171-9700</div></div>
+        <a class="call-btn" href="tel:+525591719700">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇳🇱</div>
+        <div class="emerg-info"><div class="emerg-name">Netherlands (WhatsApp only)</div><div class="emerg-num" style="font-size:15px">+31 857 737 400</div></div>
+        <a class="call-btn" href="https://wa.me/31857737400" target="_blank">WA</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇪🇸</div>
+        <div class="emerg-info"><div class="emerg-name">Spain Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5282-2977</div></div>
+        <a class="call-btn" href="tel:+525552822977">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇦🇷</div>
+        <div class="emerg-info"><div class="emerg-name">Argentina Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5520-9430</div></div>
+        <a class="call-btn" href="tel:+525555209430">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇧🇷</div>
+        <div class="emerg-info"><div class="emerg-name">Brazil Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5484-5484</div></div>
+        <a class="call-btn" href="tel:+525554845484">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">🇨🇴</div>
+        <div class="emerg-info"><div class="emerg-name">Colombia Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5202-8454</div></div>
+        <a class="call-btn" href="tel:+525552028454">CALL</a>
+      </div>
+    </div>
+
+    <!-- Card Cancel -->
+    <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">CANCEL YOUR CARD</div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">💳</div>
+        <div class="emerg-info"><div class="emerg-name">Visa Emergency</div><div class="emerg-desc">Reversed charges</div><div class="emerg-num" style="font-size:15px">+1 800 847-2911</div></div>
+        <a class="call-btn" href="tel:+18008472911">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">💳</div>
+        <div class="emerg-info"><div class="emerg-name">Mastercard Emergency</div><div class="emerg-num" style="font-size:15px">+1 636 722-7111</div></div>
+        <a class="call-btn" href="tel:+16367227111">CALL</a>
+      </div>
+    </div>
+
+    <div class="emerg-card">
+      <div class="emerg-inner">
+        <div style="font-size:22px">💳</div>
+        <div class="emerg-info"><div class="emerg-name">Amex Emergency</div><div class="emerg-num" style="font-size:15px">+1 800 528-4800</div></div>
+        <a class="call-btn" href="tel:+18005284800">CALL</a>
+      </div>
+    </div>
+
+    <!-- Protocols -->
+    <div class="sec-header" style="color:var(--red)">📋 EMERGENCY PROTOCOLS</div>
+
+    <div class="proto-card" onclick="this.classList.toggle('open')">
+      <div class="proto-head"><div class="proto-title">🔴 IF I'VE BEEN ROBBED</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-body">
+        <div class="proto-step"><div class="pstep-num">1</div><div>Do NOT resist — hand over belongings. Your life is worth more than your phone.</div></div>
+        <div class="proto-step"><div class="pstep-num">2</div><div>Move to a safe, public location immediately.</div></div>
+        <div class="proto-step"><div class="pstep-num">3</div><div>Call 911 or 078 (tourist assistance, English available).</div></div>
+        <div class="proto-step"><div class="pstep-num">4</div><div>File a police report (denuncia) — you need this for insurance claims. Ask for it specifically.</div></div>
+        <div class="proto-step"><div class="pstep-num">5</div><div>Cancel cards immediately — use numbers in this tab.</div></div>
+        <div class="proto-step"><div class="pstep-num">6</div><div>Contact your embassy if passport was stolen.</div></div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="this.classList.toggle('open')">
+      <div class="proto-head"><div class="proto-title">👮 IF POLICE STOP ME</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-body">
+        <div class="proto-step"><div class="pstep-num">1</div><div>Stay calm. Don't argue. Don't reach for anything without asking first.</div></div>
+        <div class="proto-step"><div class="pstep-num">2</div><div>Ask to call your embassy. This is your right.</div></div>
+        <div class="proto-step"><div class="pstep-num">3</div><div>Ask for the officer's name and badge number. Write it down.</div></div>
+        <div class="proto-step"><div class="pstep-num">4</div><div>If asked for a payment, calmly ask for a formal receipt (multa oficial). Corrupt officers avoid paper trails.</div></div>
+        <div style="background:rgba(107,33,168,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">
+          ✅ Tourist Police (Policía Turística) are deployed in San Pedro, Barrio Antiguo, and Macroplaza for the World Cup. They speak English and are there to help you.
+        </div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="this.classList.toggle('open')">
+      <div class="proto-head"><div class="proto-title">🌡️ IF I HAVE HEAT EXHAUSTION</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-body">
+        <div class="proto-step"><div class="pstep-num">1</div><div>Move to shade or air conditioning immediately.</div></div>
+        <div class="proto-step"><div class="pstep-num">2</div><div>Drink cold water or Electrolit slowly.</div></div>
+        <div class="proto-step"><div class="pstep-num">3</div><div>Apply cool water to neck, wrists, and armpits.</div></div>
+        <div class="proto-step"><div class="pstep-num">4</div><div>Lie down with feet slightly elevated.</div></div>
+        <div class="proto-step"><div class="pstep-num">5</div><div>If no improvement in 15 minutes — call 911.</div></div>
+        <div class="proto-step"><div class="pstep-num">6</div><div>Do NOT return to the sun that day.</div></div>
+        <div style="background:rgba(212,43,43,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px;color:#ff9999">
+          🚨 HEAT STROKE = MEDICAL EMERGENCY: confusion, hot dry skin (not sweating), rapid strong pulse → Call 911 immediately. Do not wait.
+        </div>
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="this.classList.toggle('open')">
+      <div class="proto-head"><div class="proto-title">🏥 IF I NEED A DOCTOR</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-body">
+        <strong>Hospital San José</strong><br>
+        Av. Morones Prieto #3000, Col. Los Doctores<br>
+        +52 81 8369-6886<br>
+        Best international care in Monterrey. Tec de Monterrey medical school. English staff. Accepts international insurance.<br><br>
+        <strong>Christus Muguerza Hospital</strong><br>
+        +52 81 8399-3400 · International patients · English staff<br><br>
+        <strong>For minor issues:</strong> Any Farmacias del Ahorro — doctor on duty, walk-in, no appointment needed. Very affordable.
+      </div>
+    </div>
+
+    <div class="proto-card" onclick="this.classList.toggle('open')">
+      <div class="proto-head"><div class="proto-title">🛂 IF I LOST MY PASSPORT</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-body">
+        <div class="proto-step"><div class="pstep-num">1</div><div>Report the loss to local police — get a denuncia (police report). You will need this.</div></div>
+        <div class="proto-step"><div class="pstep-num">2</div><div>Contact your embassy immediately — see embassy numbers above.</div></div>
+        <div class="proto-step"><div class="pstep-num">3</div><div>Your embassy can issue an Emergency Travel Document to allow you to travel home.</div></div>
+        <div class="proto-step"><div class="pstep-num">4</div><div>Keep digital copies of your passport in email or cloud storage — makes replacement much faster.</div></div>
+      </div>
+    </div>
+
+  </div><!-- /tab-emergency -->
+
+  <!-- ════════════════════════════════════════
+       TAB 5: PHRASES
+       ════════════════════════════════════════ -->
+  <div id="tab-phrases" class="tab-section">
+
+    <div style="padding:12px 14px 0">
+      <div style="font-family:'Bangers',cursive;font-size:22px;color:var(--purple);letter-spacing:1px">💬 SPANISH PHRASES</div>
+      <div style="font-size:12px;color:var(--gray-500)">Tap any phrase to copy to clipboard</div>
+    </div>
+
+    <div class="phrase-cats" id="phrase-cats">
+      <div class="pcat active" onclick="switchPhrase('emergency',this)">🚨 Emergency</div>
+      <div class="pcat" onclick="switchPhrase('transport',this)">🚕 Transport</div>
+      <div class="pcat" onclick="switchPhrase('food',this)">🍽️ Food</div>
+      <div class="pcat" onclick="switchPhrase('money',this)">💰 Money</div>
+      <div class="pcat" onclick="switchPhrase('police',this)">👮 Police</div>
+      <div class="pcat" onclick="switchPhrase('health',this)">💊 Health</div>
+      <div class="pcat" onclick="switchPhrase('matchday',this)">⚽ Match Day</div>
+    </div>
+
+    <!-- Emergency -->
+    <div id="phrases-emergency" class="phrase-group active">
+      <div class="phrase-card" onclick="copyPhrase('¡Ayuda!',this)"><div class="phrase-es">¡Ayuda!</div><div class="phrase-pron">(ah-YOO-dah)</div><div class="phrase-en">Help!</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Llame a la policía',this)"><div class="phrase-es">Llame a la policía</div><div class="phrase-pron">(YAH-meh ah la po-LEE-syah)</div><div class="phrase-en">Call the police</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Llame a una ambulancia',this)"><div class="phrase-es">Llame a una ambulancia</div><div class="phrase-pron">(YAH-meh AH oo-nah am-boo-LAN-syah)</div><div class="phrase-en">Call an ambulance</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Me robaron',this)"><div class="phrase-es">Me robaron</div><div class="phrase-pron">(meh ro-BAH-ron)</div><div class="phrase-en">I've been robbed</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Necesito un médico',this)"><div class="phrase-es">Necesito un médico</div><div class="phrase-pron">(neh-seh-SEE-toh oon MEH-dee-koh)</div><div class="phrase-en">I need a doctor</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde está el hospital?',this)"><div class="phrase-es">¿Dónde está el hospital?</div><div class="phrase-pron">(DON-deh es-TAH el os-pee-TAL)</div><div class="phrase-en">Where is the hospital?</div></div>
+    </div>
+
+    <!-- Transport -->
+    <div id="phrases-transport" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('Lléveme al Estadio BBVA, por favor',this)"><div class="phrase-es">Lléveme al Estadio BBVA, por favor</div><div class="phrase-pron">(YEH-veh-meh al es-TAH-dyoh...)</div><div class="phrase-en">Take me to Estadio BBVA, please</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Cuánto cuesta?',this)"><div class="phrase-es">¿Cuánto cuesta?</div><div class="phrase-pron">(KWAN-toh KWES-tah)</div><div class="phrase-en">How much does it cost?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Pare aquí, por favor',this)"><div class="phrase-es">Pare aquí, por favor</div><div class="phrase-pron">(PAH-reh ah-KEE, por fah-VOR)</div><div class="phrase-en">Stop here, please</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde está el Metro?',this)"><div class="phrase-es">¿Dónde está el Metro?</div><div class="phrase-pron">(DON-deh es-TAH el MEH-tro)</div><div class="phrase-en">Where is the Metro?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Solo uso Uber o DiDi',this)"><div class="phrase-es">Solo uso Uber o DiDi</div><div class="phrase-pron">(SO-lo OO-so...)</div><div class="phrase-en">I only use Uber or DiDi</div></div>
+    </div>
+
+    <!-- Food -->
+    <div id="phrases-food" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('La cuenta, por favor',this)"><div class="phrase-es">La cuenta, por favor</div><div class="phrase-pron">(la KWEN-tah, por fah-VOR)</div><div class="phrase-en">The bill, please</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Tiene menú en inglés?',this)"><div class="phrase-es">¿Tiene menú en inglés?</div><div class="phrase-pron">(TYEH-neh meh-NOO en een-GLAYS)</div><div class="phrase-en">Do you have a menu in English?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Sin picante, por favor',this)"><div class="phrase-es">Sin picante, por favor</div><div class="phrase-pron">(seen pee-KAN-teh, por fah-VOR)</div><div class="phrase-en">Without spice, please</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Soy alérgico a los mariscos',this)"><div class="phrase-es">Soy alérgico a los mariscos</div><div class="phrase-pron">(soy ah-LER-hee-koh ah los mah-REES-kohs)</div><div class="phrase-en">I'm allergic to seafood</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Una cerveza, por favor',this)"><div class="phrase-es">Una cerveza, por favor</div><div class="phrase-pron">(OO-nah ser-VEH-sah)</div><div class="phrase-en">One beer, please</div></div>
+    </div>
+
+    <!-- Money -->
+    <div id="phrases-money" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('¿Acepta tarjeta?',this)"><div class="phrase-es">¿Acepta tarjeta?</div><div class="phrase-pron">(ah-SEP-tah tar-HEH-tah)</div><div class="phrase-en">Do you accept cards?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('En pesos, por favor',this)"><div class="phrase-es">En pesos, por favor</div><div class="phrase-pron">(en PEH-sos, por fah-VOR)</div><div class="phrase-en">In pesos, please (at ATM)</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde hay un cajero automático?',this)"><div class="phrase-es">¿Dónde hay un cajero automático?</div><div class="phrase-pron">(DON-deh eye oon kah-HEH-ro...)</div><div class="phrase-en">Where is an ATM?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Tiene cambio?',this)"><div class="phrase-es">¿Tiene cambio?</div><div class="phrase-pron">(TYEH-neh KAM-byoh)</div><div class="phrase-en">Do you have change?</div></div>
+    </div>
+
+    <!-- Police -->
+    <div id="phrases-police" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('Quiero llamar a mi embajada',this)"><div class="phrase-es">Quiero llamar a mi embajada</div><div class="phrase-pron">(KYEH-ro yah-MAR ah mee em-bah-HAH-dah)</div><div class="phrase-en">I want to call my embassy</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Necesito un intérprete',this)"><div class="phrase-es">Necesito un intérprete</div><div class="phrase-pron">(neh-seh-SEE-toh oon een-TER-preh-teh)</div><div class="phrase-en">I need an interpreter</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Cuál es su nombre y número de placa?',this)"><div class="phrase-es">¿Cuál es su nombre y número de placa?</div><div class="phrase-pron">(kwal es soo NOM-breh ee NOO-meh-ro deh PLAH-kah)</div><div class="phrase-en">What is your name and badge number?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Necesito una denuncia',this)"><div class="phrase-es">Necesito una denuncia</div><div class="phrase-pron">(neh-seh-SEE-toh OO-nah deh-NOON-syah)</div><div class="phrase-en">I need a police report</div></div>
+    </div>
+
+    <!-- Health -->
+    <div id="phrases-health" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('Me siento mal',this)"><div class="phrase-es">Me siento mal</div><div class="phrase-pron">(meh SYEHN-toh mahl)</div><div class="phrase-en">I feel sick</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Me siento mal por el calor',this)"><div class="phrase-es">Me siento mal por el calor</div><div class="phrase-pron">(meh SYEHN-toh mahl por el kah-LOR)</div><div class="phrase-en">I feel sick from the heat</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Necesito sombra',this)"><div class="phrase-es">Necesito sombra</div><div class="phrase-pron">(neh-seh-SEE-toh SOHM-brah)</div><div class="phrase-en">I need shade</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Tiene agua fría?',this)"><div class="phrase-es">¿Tiene agua fría?</div><div class="phrase-pron">(TYEH-neh AH-gwah FREE-ah)</div><div class="phrase-en">Do you have cold water?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Tengo un golpe de calor',this)"><div class="phrase-es">Tengo un golpe de calor</div><div class="phrase-pron">(TEHN-goh oon GOL-peh deh kah-LOR)</div><div class="phrase-en">I have heat stroke</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Electrolit, por favor',this)"><div class="phrase-es">Electrolit, por favor</div><div class="phrase-pron">(elec-tro-LEET, por fah-VOR)</div><div class="phrase-en">Electrolit (electrolyte drink) — everyone knows this brand</div></div>
+      <div class="phrase-card" onclick="copyPhrase('Soy alérgico a',this)"><div class="phrase-es">Soy alérgico a…</div><div class="phrase-pron">(soy ah-LER-hee-koh ah)</div><div class="phrase-en">I'm allergic to…</div></div>
+    </div>
+
+    <!-- Match Day -->
+    <div id="phrases-matchday" class="phrase-group">
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde está la estación Exposición?',this)"><div class="phrase-es">¿Dónde está la estación Exposición?</div><div class="phrase-pron">(DON-deh es-TAH la es-ta-SYON...)</div><div class="phrase-en">Where is Exposición station?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿A qué hora cierra el Metro?',this)"><div class="phrase-es">¿A qué hora cierra el Metro?</div><div class="phrase-pron">(ah keh OH-rah SYEH-rah el MEH-tro)</div><div class="phrase-en">What time does the Metro close?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde puedo tomar el camión?',this)"><div class="phrase-es">¿Dónde puedo tomar el camión?</div><div class="phrase-pron">(DON-deh PWEH-doh to-MAR el ka-MYON)</div><div class="phrase-en">Where can I take the bus?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¿Dónde están mis asientos?',this)"><div class="phrase-es">¿Dónde están mis asientos?</div><div class="phrase-pron">(DON-deh es-TAN mees ah-SYEN-tohs)</div><div class="phrase-en">Where are my seats?</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¡Rayados!',this)"><div class="phrase-es">¡Rayados!</div><div class="phrase-pron">(rah-YAH-dohs)</div><div class="phrase-en">Go Monterrey! (fan chant — locals love this)</div></div>
+      <div class="phrase-card" onclick="copyPhrase('¡Vamos México!',this)"><div class="phrase-es">¡Vamos México!</div><div class="phrase-pron">(VAH-mohs MEH-hee-koh)</div><div class="phrase-en">Let's go Mexico!</div></div>
+    </div>
+
+  </div><!-- /tab-phrases -->
+
+</div><!-- /content -->
+
+<!-- BOTTOM NAV -->
+<div id="nav">
+  <button class="nav-btn active" id="nav-home" onclick="switchTab('home')">
+    <span class="nav-icon">🏠</span>
+    <span class="nav-label">Home</span>
+  </button>
+  <button class="nav-btn" id="nav-safety" onclick="switchTab('safety')">
+    <span class="nav-icon">🛡️</span>
+    <span class="nav-label">Safety</span>
+  </button>
+  <button class="nav-btn" id="nav-stadium" onclick="switchTab('stadium')">
+    <span class="nav-icon">🏟️</span>
+    <span class="nav-label">Stadium</span>
+  </button>
+  <button class="nav-btn" id="nav-emergency" onclick="switchTab('emergency')">
+    <span class="nav-icon">🚨</span>
+    <span class="nav-label">Emergency</span>
+  </button>
+  <button class="nav-btn" id="nav-phrases" onclick="switchTab('phrases')">
+    <span class="nav-icon">💬</span>
+    <span class="nav-label">Phrases</span>
+  </button>
+</div>
+
+<!-- SOS FLOATING BUTTON -->
+<div id="sos-float" onclick="openSOS()">SOS</div>
+
+<!-- TOAST -->
+<div id="toast">✅ Copied!</div>
+
+<!-- SOS OVERLAY -->
+<div id="sos-overlay">
+  <div class="sos-overlay-header">
+    <div class="sos-h-title">🚨 EMERGENCY SOS</div>
+    <button class="sos-close" onclick="closeSOS()">✕ Close</button>
+  </div>
+  <div class="sos-911">
+    <div style="font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:8px">ALL EMERGENCIES</div>
+    <div class="sos-911-num">911</div>
+    <div class="sos-911-sub">Works from any phone, any network</div>
+    <a href="tel:911" class="sos-call-big">📞 CALL 911 NOW</a>
+  </div>
+  <div style="margin:8px 12px;font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.6)">HOSPITALS</div>
+  <div class="emerg-card">
+    <div class="emerg-inner">
+      <div style="font-size:22px">🏥</div>
+      <div class="emerg-info"><div class="emerg-name">Hospital San José</div><div class="emerg-desc">English staff · Best in Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8369-6886</div></div>
+      <a class="call-btn" href="tel:+528183696886">CALL</a>
+    </div>
+  </div>
+  <div class="emerg-card">
+    <div class="emerg-inner">
+      <div style="font-size:22px">🏥</div>
+      <div class="emerg-info"><div class="emerg-name">Christus Muguerza</div><div class="emerg-desc">International patients</div><div class="emerg-num" style="font-size:15px">+52 81 8399-3400</div></div>
+      <a class="call-btn" href="tel:+528183993400">CALL</a>
+    </div>
+  </div>
+  <div class="emerg-card">
+    <div class="emerg-inner">
+      <div style="font-size:22px">🚑</div>
+      <div class="emerg-info"><div class="emerg-name">Cruz Roja Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8345-1060</div></div>
+      <a class="call-btn" href="tel:+528183451060">CALL</a>
+    </div>
+  </div>
+  <div style="margin:12px 12px 4px;font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.6)">TOURIST HELP</div>
+  <div class="emerg-card">
+    <div class="emerg-inner">
+      <div style="font-size:22px">🗺️</div>
+      <div class="emerg-info"><div class="emerg-name">Tourist Assistance (English)</div><div class="emerg-num">078</div></div>
+      <a class="call-btn" href="tel:078">CALL</a>
+    </div>
+  </div>
+</div>
+
+<script>
+// ── TAB NAVIGATION ──
+const sectionNames = {
+  home:'HOME',safety:'SAFETY',stadium:'STADIUM',emergency:'EMERGENCY',phrases:'PHRASES'
+};
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  document.getElementById('nav-'+tab).classList.add('active');
+  document.getElementById('section-label').textContent = sectionNames[tab];
+  document.getElementById('content').scrollTop = 0;
+}
+
+// ── HEAT EXPAND ──
+function toggleHeat() {
+  const el = document.getElementById('heat-expand');
+  el.style.display = el.style.display === 'block' ? 'none' : 'block';
+}
+
+// ── ZONE ACCORDION ──
+function toggleZone(card) {
+  card.classList.toggle('open');
+}
+
+// ── ATM SWITCHER ──
+function switchATM(panel, tab) {
+  document.querySelectorAll('.atm-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.atm-tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('atm-'+panel).classList.add('active');
+  tab.classList.add('active');
+}
+
+// ── PHRASE CATEGORIES ──
+function switchPhrase(cat, tab) {
+  document.querySelectorAll('.phrase-group').forEach(g => g.classList.remove('active'));
+  document.querySelectorAll('.pcat').forEach(c => c.classList.remove('active'));
+  document.getElementById('phrases-'+cat).classList.add('active');
+  tab.classList.add('active');
+}
+
+// ── COPY TO CLIPBOARD ──
+function copyPhrase(text, el) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => showToast());
+  } else {
+    // Fallback
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); showToast(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+  el.style.background = 'rgba(245,197,24,0.2)';
+  setTimeout(() => el.style.background = '', 600);
+}
+
+function showToast() {
+  const t = document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ── SOS OVERLAY ──
+function openSOS() {
+  document.getElementById('sos-overlay').style.display = 'block';
+  document.body.style.overflow = 'hidden';
+}
+function closeSOS() {
+  document.getElementById('sos-overlay').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// ── COUNTDOWN ──
+function updateCountdown() {
+  const target = new Date('2026-06-14T20:00:00-06:00');
+  const now = new Date();
+  const diff = target - now;
+  const el = document.getElementById('countdown-text');
+  if (!el) return;
+  if (diff <= 0) { el.textContent = '⚽ MATCH DAY IS HERE!'; return; }
+  const days = Math.floor(diff / 86400000);
+  const hours = Math.floor((diff % 86400000) / 3600000);
+  const mins = Math.floor((diff % 3600000) / 60000);
+  if (days > 0) {
+    el.textContent = days + 'd ' + hours + 'h to first match';
+  } else {
+    el.textContent = hours + 'h ' + mins + 'm to kick-off!';
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
+// ── HIDE FLOAT SOS WHEN OVERLAY OPEN ──
+document.getElementById('sos-float').addEventListener('click', openSOS);
+</script>
+</body>
+</html>
