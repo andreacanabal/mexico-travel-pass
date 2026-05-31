@@ -1,0 +1,1195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#D42B2B">
+<title>CDMX GUIDE — World Cup 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+:root{
+  --red:#D42B2B;--blue:#1A3FAA;--gold:#F5C518;--green:#1A7A4A;
+  --black:#0A0A0A;--white:#FFFFFF;--cream:#FFFBF0;
+  --gray-100:#F3F4F6;--gray-200:#E5E7EB;--gray-500:#6B7280;--gray-700:#374151;
+  --dark-bg:#050D1F;--dark-card:#111827;--safe:#1A7A4A;--warning:#F5C518;--danger:#D42B2B;
+}
+html,body{height:100%;overflow:hidden;background:var(--dark-bg)}
+body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0 auto;position:relative;background:var(--gray-100)}
+
+/* LAYOUT */
+#app{display:flex;flex-direction:column;height:100vh;height:100dvh}
+#top-header{flex-shrink:0;height:60px;background:var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 12px;z-index:50;position:relative}
+#content-area{flex:1;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;background:var(--gray-100);padding-bottom:8px}
+#bottom-nav{flex-shrink:0;height:64px;background:var(--dark-card);display:flex;align-items:center;border-top:2px solid var(--black);z-index:50}
+
+/* HEADER */
+.header-logo{display:flex;align-items:center;gap:6px}
+.logo-shield{width:28px;height:32px;position:relative}
+.logo-shield svg{width:100%;height:100%}
+.logo-text{font-family:'Bangers',cursive;font-size:18px;color:white;letter-spacing:1px}
+#header-title{font-family:'Bangers',cursive;font-size:16px;color:white;letter-spacing:1px;text-transform:uppercase;position:absolute;left:50%;transform:translateX(-50%)}
+.sos-btn{background:var(--black);color:white;border:2px solid white;border-radius:99px;padding:6px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;min-height:36px;transition:transform .1s}
+.sos-btn:active{transform:scale(.95)}
+
+/* BOTTOM NAV */
+.nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;height:100%;gap:2px;transition:all .15s;min-height:44px}
+.nav-tab svg{width:22px;height:22px;transition:all .15s}
+.nav-tab .nav-label{font-family:'Nunito',sans-serif;font-weight:700;font-size:10px;display:none;transition:all .15s}
+.nav-tab.active{background:transparent}
+.nav-tab.active .nav-pill{background:var(--gold);border-radius:99px;padding:4px 12px;display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav-tab.active .nav-pill svg{color:var(--black)}
+.nav-tab.active .nav-label{display:block;color:var(--black)}
+.nav-tab:not(.active) svg{color:var(--gray-500)}
+.nav-pill{display:flex;flex-direction:column;align-items:center;gap:2px}
+.nav-tab.emergency-tab svg{color:#ff6b6b!important}
+
+/* SECTIONS */
+.section{display:none;padding:12px 12px 16px}
+.section.active{display:block}
+
+/* CARDS */
+.card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;overflow:hidden}
+.card-dark{background:var(--dark-card);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;overflow:hidden}
+
+/* HERO */
+.hero-card{background:linear-gradient(135deg,#050D1F,#1A3FAA);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;overflow:hidden}
+.mexico-flag{display:flex;height:6px}
+.mexico-flag span:nth-child(1){flex:1;background:#006847}
+.mexico-flag span:nth-child(2){flex:1;background:white}
+.mexico-flag span:nth-child(3){flex:1;background:#CE1126}
+.hero-body{padding:16px}
+.hero-prelabel{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.hero-title{font-family:'Bangers',cursive;font-size:36px;color:white;line-height:1;filter:drop-shadow(2px 2px 0 var(--red));margin-bottom:4px}
+.hero-subtitle{font-family:'Nunito',sans-serif;font-size:14px;color:rgba(255,255,255,.8);margin-bottom:16px}
+.match-dates{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
+.date-pill{background:var(--blue);color:white;border-radius:99px;padding:4px 10px;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px}
+.hero-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.stat-item{text-align:center}
+.stat-value{font-family:'Bangers',cursive;font-size:20px;color:var(--gold)}
+.stat-label{font-family:'Nunito',sans-serif;font-size:9px;color:rgba(255,255,255,.6);text-transform:uppercase;letter-spacing:.5px}
+
+/* COUNTDOWN */
+.countdown-row{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+.cd-box{background:rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.2);border-radius:8px;padding:8px 12px;text-align:center;min-width:56px}
+.cd-num{font-family:'Bangers',cursive;font-size:24px;color:var(--gold);line-height:1}
+.cd-lbl{font-family:'Nunito',sans-serif;font-size:8px;color:rgba(255,255,255,.5);text-transform:uppercase;letter-spacing:.5px}
+
+/* ALTITUDE WARNING */
+.altitude-card{background:var(--gold);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;overflow:hidden;cursor:pointer}
+.altitude-header{display:flex;align-items:center;gap:10px;padding:14px;border-left:6px solid var(--red)}
+.altitude-title{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black)}
+.altitude-body{font-family:'Nunito',sans-serif;font-size:13px;color:var(--black);line-height:1.5}
+.altitude-expanded{display:none;padding:0 14px 14px;border-left:6px solid var(--red)}
+.altitude-card.open .altitude-expanded{display:block}
+
+/* RULES */
+.section-header{font-family:'Bangers',cursive;font-size:22px;color:var(--blue);margin-bottom:10px;letter-spacing:.5px}
+.rule-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:10px;display:flex;align-items:flex-start;padding:12px;gap:10px;cursor:pointer;transition:transform .1s}
+.rule-card:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.rule-num{font-family:'Bangers',cursive;font-size:32px;line-height:1;min-width:32px}
+.rule-content{flex:1}
+.rule-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--black);margin-bottom:2px}
+.rule-body{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.4}
+.rule-chevron{color:var(--gray-500);transition:transform .2s;margin-top:2px}
+
+/* QUICK ACTIONS */
+.quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.quick-btn{background:var(--dark-card);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);padding:16px 12px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:all .1s;min-height:80px;justify-content:center}
+.quick-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.quick-btn svg{color:var(--gold)}
+.quick-btn span{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:white;text-align:center}
+
+/* SAFETY */
+.zone-legend{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.legend-pill{display:flex;align-items:center;gap:4px;background:white;border:2px solid var(--black);border-radius:99px;padding:4px 10px;font-family:'Nunito',sans-serif;font-size:11px;font-weight:600}
+.zone-dot{width:10px;height:10px;border-radius:50%;border:1px solid rgba(0,0,0,.3)}
+.zone-dot.green{background:#22c55e}
+.zone-dot.yellow{background:#eab308}
+.zone-dot.red{background:var(--red)}
+
+.neighborhood-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:10px;overflow:hidden}
+.neighborhood-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;min-height:44px}
+.neighborhood-name{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black);flex:1}
+.neighborhood-desc{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500)}
+.nbh-chevron{color:var(--gray-500);transition:transform .25s;flex-shrink:0}
+.neighborhood-card.open .nbh-chevron{transform:rotate(180deg)}
+.neighborhood-expanded{display:none;padding:0 14px 14px;font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.6;border-top:1px solid var(--gray-200)}
+.neighborhood-card.open .neighborhood-expanded{display:block;padding-top:10px}
+
+/* ATM */
+.atm-tabs{display:flex;gap:6px;margin-bottom:10px}
+.atm-tab{background:white;border:2px solid var(--black);border-radius:99px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;cursor:pointer;transition:all .1s}
+.atm-tab.active{background:var(--blue);color:white}
+.atm-entry{background:white;border:2px solid var(--gray-200);border-radius:10px;padding:12px;margin-bottom:8px;display:none}
+.atm-entry.visible{display:block}
+.atm-bank{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black)}
+.atm-addr{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-top:2px}
+.atm-badge{display:inline-block;background:var(--green);color:white;border-radius:99px;padding:2px 8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;margin-top:4px}
+.skimmer-card{background:white;border:2px solid var(--red);border-radius:12px;box-shadow:3px 3px 0 var(--red);margin-bottom:12px;padding:14px}
+.skimmer-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--red);margin-bottom:6px}
+.skimmer-body{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5}
+
+/* GETTING THERE */
+.route-cards{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px}
+.route-card{border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);padding:14px;cursor:pointer;transition:all .1s;min-height:100px}
+.route-card:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.route-card.metro{background:var(--blue)}
+.route-card.uber{background:var(--dark-card)}
+.route-card-title{font-family:'Fredoka One',cursive;font-size:15px;color:white;margin:8px 0 4px}
+.route-card-sub{font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,.7)}
+.route-badge{display:inline-block;border-radius:99px;padding:3px 8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700}
+.badge-gold{background:var(--gold);color:var(--black)}
+.badge-red{background:var(--red);color:white}
+
+.steps-container{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;padding:16px;display:none}
+.steps-container.visible{display:block}
+.steps-title{font-family:'Fredoka One',cursive;font-size:15px;color:var(--black);margin-bottom:4px}
+.steps-subtitle{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-bottom:16px}
+.steps-flow{position:relative}
+.step-item{display:flex;gap:12px;margin-bottom:0;position:relative}
+.step-item:not(:last-child)::after{content:'';position:absolute;left:14px;top:32px;width:2px;height:calc(100% + 0px);background:var(--gray-200);z-index:0}
+.step-circle{width:28px;height:28px;border-radius:50%;background:var(--blue);color:white;display:flex;align-items:center;justify-content:center;font-family:'Bangers',cursive;font-size:14px;flex-shrink:0;position:relative;z-index:1;margin-top:2px}
+.step-body{flex:1;padding-bottom:16px}
+.step-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--black);margin-bottom:4px}
+.step-detail{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5}
+.cost-summary{background:var(--gold);border:2px solid var(--black);border-radius:10px;padding:12px;margin-top:4px}
+.cost-row{display:flex;justify-content:space-between;font-family:'Nunito',sans-serif;font-size:13px;font-weight:600;margin-bottom:4px}
+.cost-total{display:flex;justify-content:space-between;font-family:'Fredoka One',cursive;font-size:15px;color:var(--black);border-top:2px solid rgba(0,0,0,.2);margin-top:6px;padding-top:6px}
+
+/* TABLE */
+.ride-table{width:100%;border-collapse:collapse;margin-top:8px}
+.ride-table th{background:var(--blue);color:white;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;padding:6px 8px;text-align:left;border:1px solid var(--black)}
+.ride-table td{background:white;font-family:'Nunito',sans-serif;font-size:11px;padding:6px 8px;border:1px solid var(--gray-200)}
+.ride-table tr:nth-child(even) td{background:var(--gray-100)}
+
+.warning-card{background:white;border:2px solid var(--red);border-radius:12px;box-shadow:3px 3px 0 var(--red);margin-bottom:12px;padding:14px}
+.warning-card.gold-bg{background:var(--gold);border-color:var(--black);box-shadow:3px 3px 0 var(--black)}
+.warning-card.green-bg{background:#dcfce7;border-color:var(--green);box-shadow:3px 3px 0 var(--green)}
+.warning-title{font-family:'Fredoka One',cursive;font-size:14px;margin-bottom:6px}
+.warning-body{font-family:'Nunito',sans-serif;font-size:12px;line-height:1.5}
+
+.airport-warning{background:var(--red);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;padding:16px}
+.airport-warning-title{font-family:'Bangers',cursive;font-size:20px;color:white;margin-bottom:8px}
+.airport-warning-body{font-family:'Nunito',sans-serif;font-size:13px;color:white;line-height:1.6}
+.airport-warning-body strong{font-family:'Fredoka One',cursive;font-size:15px;display:block;margin:8px 0;background:rgba(0,0,0,.3);padding:8px;border-radius:8px;text-align:center;letter-spacing:.5px}
+
+/* AIRPORT TABLE */
+.airport-table{width:100%;border-collapse:collapse;margin-top:8px}
+.airport-table th{background:var(--dark-card);color:white;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;padding:6px 8px;text-align:left}
+.airport-table td{background:white;font-family:'Nunito',sans-serif;font-size:11px;padding:6px 8px;border:1px solid var(--gray-200)}
+.airport-table tr:nth-child(even) td{background:var(--gray-100)}
+
+/* MATCH OPTIONS */
+.option-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:10px;overflow:hidden}
+.option-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;min-height:44px}
+.option-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--black);flex:1}
+.option-expanded{display:none;padding:0 14px 14px;font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.6;border-top:1px solid var(--gray-200)}
+.option-card.open .option-expanded{display:block;padding-top:10px}
+.option-card.open .opt-chevron{transform:rotate(180deg)}
+.opt-chevron{color:var(--gray-500);transition:transform .25s}
+
+/* EMERGENCY */
+.emergency-section .section-header{color:var(--red)}
+.call-card{background:var(--dark-card);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px;border-left:4px solid var(--red)}
+.call-card.card-cancel{border-left-color:#f97316}
+.call-info{flex:1}
+.call-name{font-family:'Fredoka One',cursive;font-size:14px;color:white}
+.call-number{font-family:'Bangers',cursive;font-size:22px;color:var(--gold);line-height:1.2}
+.call-desc{font-family:'Nunito',sans-serif;font-size:11px;color:var(--gray-500);margin-top:2px}
+.call-btn{background:var(--red);color:white;border:2px solid rgba(255,255,255,.3);border-radius:99px;padding:8px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;text-decoration:none;white-space:nowrap;display:inline-block;transition:transform .1s;min-height:36px;display:flex;align-items:center}
+.call-btn:active{transform:scale(.95)}
+.call-btn.cancel-btn{background:#f97316}
+
+.cancel-section-header{background:#f97316;border-radius:10px;padding:10px 14px;margin-bottom:10px}
+.cancel-section-title{font-family:'Fredoka One',cursive;font-size:13px;color:white}
+
+/* SCENARIO ACCORDION */
+.scenario-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:10px;overflow:hidden}
+.scenario-header{display:flex;align-items:center;gap:10px;padding:12px 14px;cursor:pointer;min-height:44px;background:var(--gray-100)}
+.scenario-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--black);flex:1}
+.scenario-body{display:none;padding:14px;font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.7}
+.scenario-body ol{padding-left:18px}
+.scenario-body ol li{margin-bottom:6px}
+.scenario-card.open .sc-chevron{transform:rotate(180deg)}
+.scenario-card.open .scenario-body{display:block}
+.sc-chevron{color:var(--gray-500);transition:transform .25s}
+
+/* PHRASES */
+.category-pills{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.category-pills::-webkit-scrollbar{display:none}
+.cat-pill{flex-shrink:0;background:white;border:2px solid var(--black);border-radius:99px;padding:6px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;cursor:pointer;transition:all .1s;white-space:nowrap}
+.cat-pill.active{background:var(--gold);color:var(--black)}
+.cat-pill:active{transform:scale(.95)}
+
+.phrase-card{background:white;border:2px solid var(--gray-200);border-radius:10px;box-shadow:2px 2px 0 var(--gray-200);margin-bottom:10px;padding:14px;cursor:pointer;transition:all .2s;position:relative}
+.phrase-card.copied{background:var(--gold);border-color:var(--black);box-shadow:2px 2px 0 var(--black)}
+.phrase-cat-badge{display:inline-block;border-radius:99px;padding:2px 8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;margin-bottom:6px}
+.phrase-spanish{font-family:'Fredoka One',cursive;font-size:15px;color:var(--blue);margin-bottom:2px}
+.phrase-phonetic{font-family:'Nunito',sans-serif;font-style:italic;font-size:11px;color:var(--gray-500);margin-bottom:4px}
+.phrase-english{font-family:'Nunito',sans-serif;font-weight:700;font-size:13px;color:var(--black)}
+.phrase-copy-icon{position:absolute;bottom:12px;right:12px;color:var(--gray-500)}
+
+/* SOS FLOATING */
+#sos-float{position:fixed;bottom:80px;right:12px;z-index:100;width:52px;height:52px;border-radius:50%;background:var(--red);border:3px solid white;box-shadow:3px 3px 0 var(--black);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:transform .1s}
+#sos-float:active{transform:scale(.9)}
+#sos-float span{font-family:'Bangers',cursive;font-size:14px;color:white;letter-spacing:1px}
+
+/* SOS OVERLAY */
+#sos-overlay{display:none;position:fixed;inset:0;z-index:9999;background:var(--red);overflow-y:auto;padding:16px}
+#sos-overlay.visible{display:block}
+.sos-close{background:rgba(0,0,0,.3);border:2px solid rgba(255,255,255,.5);border-radius:99px;color:white;font-family:'Fredoka One',cursive;font-size:14px;padding:8px 20px;cursor:pointer;margin-bottom:16px;display:block}
+.sos-overlay-title{font-family:'Bangers',cursive;font-size:32px;color:white;margin-bottom:4px}
+.sos-overlay-sub{font-family:'Nunito',sans-serif;font-size:13px;color:rgba(255,255,255,.8);margin-bottom:20px}
+.sos-call-card{background:rgba(0,0,0,.4);border:2px solid rgba(255,255,255,.3);border-radius:12px;margin-bottom:10px;padding:14px;display:flex;align-items:center;gap:12px}
+.sos-call-num{font-family:'Bangers',cursive;font-size:28px;color:var(--gold)}
+.sos-call-name{font-family:'Fredoka One',cursive;font-size:14px;color:white}
+.sos-call-desc{font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,.7)}
+.sos-call-btn{background:white;color:var(--red);border:none;border-radius:99px;padding:10px 18px;font-family:'Fredoka One',cursive;font-size:14px;cursor:pointer;text-decoration:none;display:inline-block;white-space:nowrap;min-height:44px;display:flex;align-items:center}
+
+/* TOAST */
+#toast{position:fixed;bottom:80px;left:50%;transform:translateX(-50%) translateY(20px);background:var(--black);color:white;border-radius:99px;padding:8px 20px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;opacity:0;transition:all .3s;pointer-events:none;z-index:200;white-space:nowrap}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+/* MISC HELPERS */
+.chevron-svg{width:16px;height:16px;transition:transform .25s}
+.gold-text{color:var(--gold)}
+.red-text{color:var(--red)}
+.green-text{color:var(--green)}
+.mt8{margin-top:8px}
+.mb8{margin-bottom:8px}
+.sub-header{font-family:'Bangers',cursive;font-size:18px;color:var(--blue);margin:16px 0 8px;letter-spacing:.5px}
+.tip-box{background:var(--cream);border:2px solid var(--gold);border-radius:10px;padding:12px;margin-bottom:10px;font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5}
+.tip-box strong{font-family:'Fredoka One',cursive;color:var(--black)}
+.filter-btns{display:flex;gap:6px;margin-bottom:10px}
+.filter-btn{background:white;border:2px solid var(--black);border-radius:99px;padding:5px 12px;font-family:'Nunito',sans-serif;font-weight:700;font-size:11px;cursor:pointer}
+.filter-btn.active-g{background:#22c55e;color:white}
+.filter-btn.active-y{background:#eab308;color:white}
+.filter-btn.active-r{background:var(--red);color:white}
+.smart-card{background:#dcfce7;border:2px solid var(--green);border-radius:12px;box-shadow:3px 3px 0 var(--green);margin-bottom:12px;padding:14px}
+.smart-title{font-family:'Fredoka One',cursive;font-size:14px;color:var(--green);margin-bottom:6px}
+.smart-body{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5}
+</style>
+</head>
+<body>
+<div id="app">
+
+<!-- TOP HEADER -->
+<header id="top-header">
+  <div class="header-logo">
+    <div class="logo-shield">
+      <svg viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M14 1L2 6V16C2 23 8 29 14 31C20 29 26 23 26 16V6L14 1Z" fill="white" stroke="rgba(255,255,255,.5)" stroke-width="1"/>
+        <text x="14" y="21" font-family="Bangers,cursive" font-size="12" fill="#D42B2B" text-anchor="middle">WC</text>
+      </svg>
+    </div>
+    <span class="logo-text">CDMX GUIDE</span>
+  </div>
+  <span id="header-title">HOME</span>
+  <button class="sos-btn" onclick="openSOS()">SOS</button>
+</header>
+
+<!-- CONTENT AREA -->
+<main id="content-area">
+
+  <!-- ===== HOME ===== -->
+  <section id="sec-home" class="section active">
+
+    <!-- HERO -->
+    <div class="hero-card">
+      <div class="mexico-flag"><span></span><span></span><span></span></div>
+      <div class="hero-body">
+        <div class="hero-prelabel">SUMMER 2026 · WORLD CUP</div>
+        <div class="hero-title">MEXICO CITY<br>TRAVEL PASS</div>
+        <div class="hero-subtitle">Your complete safety guide for Estadio Azteca</div>
+
+        <!-- COUNTDOWN -->
+        <div class="countdown-row" id="countdown-row">
+          <div class="cd-box"><div class="cd-num" id="cd-days">--</div><div class="cd-lbl">Days</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-hrs">--</div><div class="cd-lbl">Hours</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-min">--</div><div class="cd-lbl">Mins</div></div>
+          <div class="cd-box"><div class="cd-num" id="cd-sec">--</div><div class="cd-lbl">Secs</div></div>
+        </div>
+
+        <div class="match-dates">
+          <span class="date-pill">Jun 11</span>
+          <span class="date-pill">Jun 17</span>
+          <span class="date-pill">Jun 24</span>
+          <span class="date-pill">Jun 30</span>
+          <span class="date-pill">Jul 5</span>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-item"><div class="stat-value">87,500</div><div class="stat-label">Capacity</div></div>
+          <div class="stat-item"><div class="stat-value" style="color:var(--gold)">2,240m</div><div class="stat-label">Altitude ⚠️</div></div>
+          <div class="stat-item"><div class="stat-value">5</div><div class="stat-label">Matches</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALTITUDE WARNING -->
+    <div class="altitude-card" onclick="this.classList.toggle('open')">
+      <div class="altitude-header">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3L1 21h22L15 3z"/><path d="M12 8v5"/><circle cx="12" cy="16" r="1" fill="currentColor"/></svg>
+        <div>
+          <div class="altitude-title">⚠️ Altitude Warning</div>
+          <div class="altitude-body">You are landing at 2,240m (7,350ft). Tap to prepare.</div>
+        </div>
+        <svg class="chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="altitude-expanded">
+        <div style="font-family:'Fredoka One',cursive;font-size:13px;color:var(--black);margin-bottom:8px">48-Hour Survival Plan</div>
+        <div style="font-family:'Nunito',sans-serif;font-size:12px;color:var(--black);line-height:1.6">
+          Higher than Denver, Colorado. Your body will feel it.<br><br>
+          <strong>Day 1:</strong> 3+ liters of water. Zero alcohol. Move slowly.<br>
+          <strong>Symptoms:</strong> Headache, fatigue, dizziness, shortness of breath.<br>
+          <strong>At pharmacy (Farmacias del Ahorro):</strong> Ask for <em>"Algo para el mal de altura"</em> or get paracetamol for headache.<br>
+          <strong>When to see a doctor:</strong> Severe headache, vomiting, confusion, or chest pain. Call Hospital ABC: +52 55 5230-8000.<br><br>
+          Most people feel normal within 24-48 hours. Stay hydrated and rest.
+        </div>
+      </div>
+    </div>
+
+    <!-- 5 RULES -->
+    <div class="section-header">THE 5 RULES</div>
+    <div class="rule-card" onclick="this.classList.toggle('open')">
+      <div class="rule-num" style="color:var(--red)">1</div>
+      <div class="rule-content">
+        <div class="rule-title">NEVER take a street taxi</div>
+        <div class="rule-body">Express kidnappings are real. Uber and DiDi only, always verify the car before getting in.</div>
+      </div>
+    </div>
+    <div class="rule-card" onclick="this.classList.toggle('open')">
+      <div class="rule-num" style="color:var(--blue)">2</div>
+      <div class="rule-content">
+        <div class="rule-title">NEVER drink tap water</div>
+        <div class="rule-body">Bottled water only. Look for: Bonafont, Ciel, or E-Pura. Ask for "agua embotellada" everywhere.</div>
+      </div>
+    </div>
+    <div class="rule-card" onclick="this.classList.toggle('open')">
+      <div class="rule-num" style="color:var(--green)">3</div>
+      <div class="rule-content">
+        <div class="rule-title">KNOW your safe neighborhoods</div>
+        <div class="rule-body">Polanco, Roma Norte, Condesa, Coyoacán. These are your home zones. Stay in them after dark.</div>
+      </div>
+    </div>
+    <div class="rule-card" onclick="this.classList.toggle('open')">
+      <div class="rule-num" style="color:#d97706">4</div>
+      <div class="rule-content">
+        <div class="rule-title">KEEP your phone in your bag</div>
+        <div class="rule-body">Phone snatch-and-grab from motorcycles is the #1 tourist crime. Pocket it when walking.</div>
+      </div>
+    </div>
+    <div class="rule-card" onclick="this.classList.toggle('open')">
+      <div class="rule-num" style="color:var(--blue)">5</div>
+      <div class="rule-content">
+        <div class="rule-title">DRINK water on Day 1</div>
+        <div class="rule-body">3 liters minimum. No alcohol first 24 hours. The altitude will dehydrate you faster than you expect.</div>
+      </div>
+    </div>
+
+    <!-- QUICK ACTIONS -->
+    <div class="section-header" style="margin-top:16px">QUICK ACCESS</div>
+    <div class="quick-grid">
+      <div class="quick-btn" onclick="switchTab('getting')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/><path d="M7 10l2 2 4-4"/></svg>
+        <span>Stadium Route</span>
+      </div>
+      <div class="quick-btn" onclick="switchTab('safety')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7z"/></svg>
+        <span>Safe Zones Map</span>
+      </div>
+      <div class="quick-btn" onclick="openSOS()">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+        <span>Emergency Contacts</span>
+      </div>
+      <div class="quick-btn" onclick="switchTab('phrases')">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Spanish Phrases</span>
+      </div>
+    </div>
+
+    <!-- MONEY TIP -->
+    <div class="tip-box">
+      <strong>💰 Money Tip:</strong> Always choose to be charged in PESOS at ATMs and card machines — never your home currency. Dynamic Currency Conversion (DCC) adds 5-10% markup. Always wiggle the card reader before inserting.
+    </div>
+
+  </section>
+
+  <!-- ===== SAFETY ===== -->
+  <section id="sec-safety" class="section">
+
+    <div class="section-header">NEIGHBORHOOD SAFETY ZONES</div>
+    <div class="zone-legend">
+      <div class="legend-pill"><div class="zone-dot green"></div>Safe day &amp; night</div>
+      <div class="legend-pill"><div class="zone-dot yellow"></div>Caution / day only</div>
+      <div class="legend-pill"><div class="zone-dot red"></div>Avoid entirely</div>
+    </div>
+
+    <!-- POLANCO -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot green"></div>
+        <div style="flex:1"><div class="neighborhood-name">Polanco</div><div class="neighborhood-desc">Embassy district · Safest area</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Mexico City's safest district. Embassy district with private security on every corner. Safe day and night including walking alone. Luxury hotels and restaurants. Paseo de la Reforma runs through it.<br><br><strong>Watch for:</strong> Petty theft in very crowded areas only.<br><strong>Getting there:</strong> Metro Polanco (Line 7, Orange) or Uber.</div>
+    </div>
+
+    <!-- ROMA NORTE -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot green"></div>
+        <div style="flex:1"><div class="neighborhood-name">Roma Norte</div><div class="neighborhood-desc">Most popular for visitors · Walkable</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">The most popular neighborhood for international visitors. Walkable, vibrant, full of cafés and restaurants. Tree-lined streets, well-lit at night. Safe day and night — best walking neighborhood in CDMX.<br><br><strong>Watch for:</strong> Phone snatching near busy traffic.<br><strong>Getting there:</strong> Metro Insurgentes (Line 1, Pink).</div>
+    </div>
+
+    <!-- CONDESA -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot green"></div>
+        <div style="flex:1"><div class="neighborhood-name">Condesa</div><div class="neighborhood-desc">Parks · Residential · Adjacent to Roma</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Adjacent to Roma Norte. More residential feel, parks, tree canopy. Safe day and night.<br><br><strong>Watch for:</strong> Same as Roma Norte.<br><strong>Getting there:</strong> Metro Chilpancingo (Line 9) or walk from Roma Norte (15 min).</div>
+    </div>
+
+    <!-- COYOACÁN -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot yellow"></div>
+        <div style="flex:1"><div class="neighborhood-name">Coyoacán</div><div class="neighborhood-desc">Colonial · Closest safe area to Azteca</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Historic colonial neighborhood. Closest safe area to Estadio Azteca. Safe during the day.<br><br><strong>Watch for:</strong> Walking alone after 10pm.<br><strong>Best for:</strong> Day trips, cultural tourism, Frida Kahlo Museum.</div>
+    </div>
+
+    <!-- CENTRO -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot yellow"></div>
+        <div style="flex:1"><div class="neighborhood-name">Centro Histórico</div><div class="neighborhood-desc">Historic center · Day only</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Historic center. Beautiful and worth visiting during the day. Be cautious at night. Main streets are fine. Avoid empty side streets after dark.<br><br><strong>Watch for:</strong> Pickpockets in crowded areas.<br><strong>Leave by 9pm.</strong></div>
+    </div>
+
+    <!-- ZONA ROSA -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot yellow"></div>
+        <div style="flex:1"><div class="neighborhood-name">Zona Rosa</div><div class="neighborhood-desc">Nightlife · LGBTQ+ friendly</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">International area between Condesa and Centro. Active nightlife, LGBTQ+ friendly.<br><br><strong>Watch for:</strong> More crowded = higher petty crime risk.<br>Safe with company, less ideal alone after midnight.</div>
+    </div>
+
+    <!-- TEPITO -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot red"></div>
+        <div style="flex:1"><div class="neighborhood-name">Tepito</div><div class="neighborhood-desc">Do NOT visit</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Do not visit. High crime area, no tourist reason to go here. Known for informal black markets.</div>
+    </div>
+
+    <!-- IZTAPALAPA -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot red"></div>
+        <div style="flex:1"><div class="neighborhood-name">Iztapalapa (residential)</div><div class="neighborhood-desc">Stadium area — do not explore</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Where Estadio Azteca is located, but the surrounding residential areas are not safe for tourists. Go to the stadium via Metro/Tren Ligero and leave immediately after the match. Do not explore on foot.</div>
+    </div>
+
+    <!-- DOCTORES -->
+    <div class="neighborhood-card">
+      <div class="neighborhood-header" onclick="toggleCard(this.parentElement)">
+        <div class="zone-dot red"></div>
+        <div style="flex:1"><div class="neighborhood-name">Doctores</div><div class="neighborhood-desc">Pass through only during day</div></div>
+        <svg class="nbh-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="neighborhood-expanded">Transitional area south of Centro. Do not visit at night. Pass through only during day.</div>
+    </div>
+
+    <!-- ATM SECTION -->
+    <div class="sub-header">SAFE ATM LOCATIONS</div>
+    <div class="atm-tabs">
+      <div class="atm-tab active" onclick="switchATM('polanco',this)">Polanco</div>
+      <div class="atm-tab" onclick="switchATM('roma',this)">Roma Norte</div>
+      <div class="atm-tab" onclick="switchATM('centro',this)">Centro</div>
+    </div>
+
+    <div class="atm-entry visible" data-zone="polanco"><div class="atm-bank">Banamex</div><div class="atm-addr">Presidente Masaryk 390</div><span class="atm-badge">Inside branch</span></div>
+    <div class="atm-entry visible" data-zone="polanco"><div class="atm-bank">BBVA</div><div class="atm-addr">Presidente Masaryk 210</div><span class="atm-badge">Inside branch</span></div>
+    <div class="atm-entry visible" data-zone="polanco"><div class="atm-bank">Santander</div><div class="atm-addr">Horacio 1855</div><span class="atm-badge">Inside branch</span></div>
+
+    <div class="atm-entry" data-zone="roma"><div class="atm-bank">BBVA</div><div class="atm-addr">Álvaro Obregón 192</div><span class="atm-badge">Inside branch</span></div>
+    <div class="atm-entry" data-zone="roma"><div class="atm-bank">Citibanamex</div><div class="atm-addr">Insurgentes Sur 216</div><span class="atm-badge">Inside branch</span></div>
+    <div class="atm-entry" data-zone="roma"><div class="atm-bank">HSBC</div><div class="atm-addr">Sonora 166</div><span class="atm-badge">Inside branch</span></div>
+
+    <div class="atm-entry" data-zone="centro"><div class="atm-bank">Palacio de Hierro</div><div class="atm-addr">Inside department store — safer option</div><span class="atm-badge">Inside mall</span></div>
+    <div class="atm-entry" data-zone="centro"><div class="atm-bank">Liverpool</div><div class="atm-addr">Inside Liverpool department store</div><span class="atm-badge">Inside mall</span></div>
+    <div class="atm-entry" data-zone="centro" style="background:#fef2f2"><div class="atm-bank" style="color:var(--red)">⚠️ Street ATMs</div><div class="atm-addr">Avoid standalone street ATMs in this area</div></div>
+
+    <div class="skimmer-card">
+      <div class="skimmer-title">🔴 ATM Skimmer Warning</div>
+      <div class="skimmer-body">Before using any ATM: Wiggle the card reader — real readers don't move. Cover your PIN always. Choose to be charged in <strong>PESOS</strong>, not your home currency.</div>
+    </div>
+
+  </section>
+
+  <!-- ===== GETTING THERE ===== -->
+  <section id="sec-getting" class="section">
+
+    <div class="section-header">HOW ARE YOU GETTING TO AZTECA?</div>
+
+    <div class="route-cards">
+      <div class="route-card metro" onclick="toggleRouteCard('metro-steps', this)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M6 21h12M12 17v4"/><circle cx="7.5" cy="10" r="1.5" fill="white"/><circle cx="16.5" cy="10" r="1.5" fill="white"/></svg>
+        <div class="route-card-title">Metro + Tren Ligero</div>
+        <span class="route-badge badge-gold">RECOMMENDED</span>
+        <div class="route-card-sub">Most reliable on match day</div>
+      </div>
+      <div class="route-card uber" onclick="toggleRouteCard('uber-steps', this)">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3"/><rect x="9" y="11" width="14" height="10" rx="2"/><circle cx="12" cy="21" r="1"/><circle cx="20" cy="21" r="1"/></svg>
+        <div class="route-card-title">Uber / DiDi</div>
+        <span class="route-badge badge-red">SLOWER MATCH DAY</span>
+        <div class="route-card-sub">Door-to-door comfort</div>
+      </div>
+    </div>
+
+    <!-- METRO STEPS -->
+    <div class="steps-container" id="metro-steps">
+      <div class="steps-title">Metro Line 2 → Tasqueña → Tren Ligero</div>
+      <div class="steps-subtitle">Total cost: ~$10 MXN · ~45-60 min</div>
+      <div class="steps-flow">
+        <div class="step-item">
+          <div class="step-circle">1</div>
+          <div class="step-body">
+            <div class="step-title">Board Metro Line 2 (Blue Line)</div>
+            <div class="step-detail">Direction: Tasqueña (southbound)<br>From Roma: Metro Insurgentes → Line 1 → Pino Suárez → Line 2<br>From Polanco: Line 7 → Auditorio → Line 2<br>From Centro: Zócalo station, Line 2 direct</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">2</div>
+          <div class="step-body">
+            <div class="step-title">Ride to TASQUEÑA — end of Line 2</div>
+            <div class="step-detail">This is where everyone transfers. Follow signs. Match day: trains are packed but safe. Watch your pockets.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle">3</div>
+          <div class="step-body">
+            <div class="step-title">Transfer to TREN LIGERO (Light Rail)</div>
+            <div class="step-detail">Look for: Tren Ligero / Estadio Azteca signs. Ticket: $5 MXN at the window.</div>
+          </div>
+        </div>
+        <div class="step-item">
+          <div class="step-circle" style="background:var(--green)">4</div>
+          <div class="step-body">
+            <div class="step-title">Exit at ESTADIO AZTECA station</div>
+            <div class="step-detail">5-minute walk to stadium entrance. Follow the crowd — impossible to miss.</div>
+          </div>
+        </div>
+      </div>
+      <div class="cost-summary">
+        <div class="cost-row"><span>Metro ticket</span><span>$5 MXN</span></div>
+        <div class="cost-row"><span>Tren Ligero</span><span>$5 MXN</span></div>
+        <div class="cost-total"><span>Total</span><span>~$10 MXN (~$0.60 USD)</span></div>
+      </div>
+    </div>
+
+    <!-- UBER STEPS -->
+    <div class="steps-container" id="uber-steps">
+      <div class="warning-card" style="margin-bottom:12px">
+        <div class="warning-title" style="color:var(--red)">⚠️ Match Day Warning</div>
+        <div class="warning-body">Leave AT LEAST 3 hours early. Calzada de Tlalpan and Periférico Sur will be gridlocked. Traffic can double your journey time.</div>
+      </div>
+      <table class="ride-table">
+        <thead><tr><th>From</th><th>Normal</th><th>Match Day</th><th>Cost</th></tr></thead>
+        <tbody>
+          <tr><td>Polanco</td><td>25-40m</td><td>60-90m</td><td>$350-500</td></tr>
+          <tr><td>Roma/Condesa</td><td>20-35m</td><td>50-80m</td><td>$280-420</td></tr>
+          <tr><td>Centro</td><td>25-40m</td><td>55-85m</td><td>$300-450</td></tr>
+          <tr><td>Airport</td><td>40-65m</td><td>90-130m</td><td>$450-650</td></tr>
+        </tbody>
+      </table>
+      <div style="font-family:'Nunito',sans-serif;font-size:10px;color:var(--gray-500);margin-top:4px">All prices in MXN</div>
+      <div class="smart-card" style="margin-top:12px">
+        <div class="smart-title">💡 Best Strategy</div>
+        <div class="smart-body">Uber to Tasqueña (15-25 min), then Tren Ligero to stadium (15 min). Avoids all stadium traffic. Total: ~40 min max.</div>
+      </div>
+    </div>
+
+    <!-- POST-MATCH -->
+    <div class="sub-header">AFTER THE FINAL WHISTLE</div>
+    <div class="warning-card gold-bg" style="margin-bottom:12px">
+      <div class="warning-title">⏱️ The 30-Minute Rule</div>
+      <div class="warning-body">Do NOT rush out at the final whistle. 80,000 people leave at once. Wait 15-20 minutes inside the stadium. Let the initial rush pass — then exit in the second wave. Much calmer.</div>
+    </div>
+
+    <div class="option-card">
+      <div class="option-header" onclick="toggleOption(this.parentElement)">
+        <div style="width:28px;height:28px;background:var(--blue);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-family:'Bangers',cursive;font-size:14px;color:white">1</span></div>
+        <div class="option-title">Tren Ligero (Recommended)</div>
+        <svg class="opt-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="option-expanded">Walk to Estadio Azteca Tren Ligero station. Trains run until midnight on match days. Crowded platform for 20-30 min then clear. Most reliable option — recommended.</div>
+    </div>
+
+    <div class="option-card">
+      <div class="option-header" onclick="toggleOption(this.parentElement)">
+        <div style="width:28px;height:28px;background:var(--dark-card);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-family:'Bangers',cursive;font-size:14px;color:white">2</span></div>
+        <div class="option-title">Walk + Uber</div>
+        <svg class="opt-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="option-expanded">Walk 10+ minutes from stadium before opening the app. Head toward Calzada de Tlalpan or Insurgentes Sur. Wait time reduces significantly the farther you are from the stadium.</div>
+    </div>
+
+    <div class="option-card">
+      <div class="option-header" onclick="toggleOption(this.parentElement)">
+        <div style="width:28px;height:28px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0"><span style="font-family:'Bangers',cursive;font-size:14px;color:white">3</span></div>
+        <div class="option-title">Pre-arranged Hotel Shuttle</div>
+        <svg class="opt-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="option-expanded">Many hotels offer match-day shuttle packages. Ask your hotel on check-in. Usually $300-600 MXN round trip. Book the day before — they fill up fast.</div>
+    </div>
+
+    <!-- AIRPORT -->
+    <div class="sub-header">ARRIVING AT AICM AIRPORT</div>
+
+    <div class="airport-warning">
+      <div class="airport-warning-title">⚠️ READ THIS BEFORE YOU LAND</div>
+      <div class="airport-warning-body">
+        Men WILL approach you in the arrivals hall offering taxis. They are friendly. Some speak English. They look official.
+        <strong>DO NOT GET IN THEIR TAXI.</strong>
+        Express kidnappings are a documented risk. Use Uber pickup zones or official Taxi kiosks only.
+      </div>
+    </div>
+
+    <div class="steps-container" style="display:block">
+      <div class="steps-title">Safe Airport Exit Protocol</div>
+      <div class="steps-subtitle" style="margin-bottom:14px">Follow these steps every time</div>
+      <div class="steps-flow">
+        <div class="step-item"><div class="step-circle">1</div><div class="step-body"><div class="step-title">Walk past anyone offering transport</div><div class="step-detail">Smile and keep walking. Do not stop or engage.</div></div></div>
+        <div class="step-item"><div class="step-circle">2</div><div class="step-body"><div class="step-title">Connect to free airport WiFi</div><div class="step-detail">AICM offers free WiFi throughout terminals.</div></div></div>
+        <div class="step-item"><div class="step-circle">3</div><div class="step-body"><div class="step-title">Open Uber — request your ride</div><div class="step-detail">T1 pickup: Exit Door 1, rideshare area<br>T2 pickup: Level 1, Zone E</div></div></div>
+        <div class="step-item"><div class="step-circle">4</div><div class="step-body"><div class="step-title">Match car + plate before getting in</div><div class="step-detail">Verify make, color, and license plate on app before opening the door.</div></div></div>
+        <div class="step-item"><div class="step-circle" style="background:var(--gray-500)">5</div><div class="step-body"><div class="step-title">Alternative: Official Taxi Kiosks</div><div class="step-detail">"Taxis Autorizados" or "TAPO" signs inside terminal. Pay fixed price in advance at kiosk.</div></div></div>
+      </div>
+    </div>
+
+    <div class="sub-header">AIRPORT PRICES</div>
+    <table class="airport-table">
+      <thead><tr><th>Destination</th><th>Uber</th><th>Auth. Taxi</th></tr></thead>
+      <tbody>
+        <tr><td>Polanco</td><td>$120-180 MXN</td><td>~$200-250 MXN</td></tr>
+        <tr><td>Roma/Condesa</td><td>$100-150 MXN</td><td>~$180-220 MXN</td></tr>
+        <tr><td>Centro</td><td>$90-140 MXN</td><td>~$160-200 MXN</td></tr>
+      </tbody>
+    </table>
+
+  </section>
+
+  <!-- ===== EMERGENCY ===== -->
+  <section id="sec-emergency" class="section emergency-section">
+
+    <div class="section-header" style="color:var(--red)">EMERGENCY CONTACTS</div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">All Emergencies</div><div class="call-number">911</div><div class="call-desc">Police / Fire / Ambulance · Works from any phone</div></div>
+      <a href="tel:911" class="call-btn">CALL</a>
+    </div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">Tourist Assistance</div><div class="call-number">078</div><div class="call-desc">English-speaking operators · 24 hours</div></div>
+      <a href="tel:078" class="call-btn">CALL</a>
+    </div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">LOCATEL (City Info)</div><div class="call-number">55 5658-1111</div><div class="call-desc">Directions, lost items, general assistance</div></div>
+      <a href="tel:5556581111" class="call-btn">CALL</a>
+    </div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">Cruz Roja (Red Cross)</div><div class="call-number">+52 55 5514-3028</div><div class="call-desc">Medical emergencies</div></div>
+      <a href="tel:+525555143028" class="call-btn">CALL</a>
+    </div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">Hospital ABC</div><div class="call-number">+52 55 5230-8000</div><div class="call-desc">Best international hospital · English staff</div></div>
+      <a href="tel:+525552308000" class="call-btn">CALL</a>
+    </div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">Hosp. Ángeles Polanco</div><div class="call-number">+52 55 5229-8900</div><div class="call-desc">Near Polanco hotels · English staff</div></div>
+      <a href="tel:+525552298900" class="call-btn">CALL</a>
+    </div>
+
+    <!-- EMBASSIES -->
+    <div class="sub-header">EMBASSIES</div>
+
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇺🇸 US Embassy</div><div class="call-number">+52 55 2579-2000</div><div class="call-desc">Emergency after hours: +52 55 5080-2000</div></div>
+      <a href="tel:+525525792000" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇬🇧 UK Embassy</div><div class="call-number">+52 55 1670-3200</div><div class="call-desc"></div></div>
+      <a href="tel:+525516703200" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇩🇪 German Embassy</div><div class="call-number">+52 55 5283-2200</div><div class="call-desc"></div></div>
+      <a href="tel:+525552832200" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇫🇷 French Embassy</div><div class="call-number">+52 55 9171-9700</div><div class="call-desc"></div></div>
+      <a href="tel:+525591719700" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇳🇱 Netherlands Embassy</div><div class="call-number">+31 857 737 400</div><div class="call-desc">WhatsApp only</div></div>
+      <a href="tel:+31857737400" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇪🇸 Spain Embassy</div><div class="call-number">+52 55 5282-2977</div><div class="call-desc"></div></div>
+      <a href="tel:+525552822977" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇦🇷 Argentina Embassy</div><div class="call-number">+52 55 5520-9430</div><div class="call-desc"></div></div>
+      <a href="tel:+525555209430" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇧🇷 Brazil Embassy</div><div class="call-number">+52 55 5484-5484</div><div class="call-desc"></div></div>
+      <a href="tel:+525554845484" class="call-btn">CALL</a>
+    </div>
+    <div class="call-card">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <div class="call-info"><div class="call-name">🇨🇴 Colombia Embassy</div><div class="call-number">+52 55 5202-8454</div><div class="call-desc"></div></div>
+      <a href="tel:+525552028454" class="call-btn">CALL</a>
+    </div>
+
+    <!-- CANCEL CARDS -->
+    <div class="cancel-section-header"><div class="cancel-section-title">🔴 CANCEL YOUR CARDS — DO THIS FIRST IF ROBBED</div></div>
+    <div class="call-card card-cancel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <div class="call-info"><div class="call-name">Visa Emergency</div><div class="call-number">+1 800 847-2911</div><div class="call-desc">Global Visa card cancellation</div></div>
+      <a href="tel:+18008472911" class="call-btn cancel-btn">CALL</a>
+    </div>
+    <div class="call-card card-cancel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <div class="call-info"><div class="call-name">Mastercard</div><div class="call-number">+1 636 722-7111</div><div class="call-desc">Global Mastercard cancellation</div></div>
+      <a href="tel:+16367227111" class="call-btn cancel-btn">CALL</a>
+    </div>
+    <div class="call-card card-cancel">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+      <div class="call-info"><div class="call-name">American Express</div><div class="call-number">+1 800 528-4800</div><div class="call-desc">Global Amex cancellation</div></div>
+      <a href="tel:+18005284800" class="call-btn cancel-btn">CALL</a>
+    </div>
+
+    <!-- SCENARIO ACCORDIONS -->
+    <div class="sub-header">WHAT TO DO IF...</div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" onclick="toggleScenario(this.parentElement)">
+        <span style="font-size:18px">🥷</span>
+        <div class="scenario-title">I've been robbed</div>
+        <svg class="sc-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="scenario-body">
+        <ol>
+          <li>Do not resist. Give them what they ask for.</li>
+          <li>Walk/run opposite direction. Enter any business. Say: <strong>"Me robaron"</strong> (I was robbed).</li>
+          <li>Cancel your cards immediately (numbers above).</li>
+          <li>Call 911 and request a police report.</li>
+          <li>File formal report at Ministerio Público. Your hotel can help you find the nearest one.</li>
+          <li>Call your embassy if passport was taken.</li>
+        </ol>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" onclick="toggleScenario(this.parentElement)">
+        <span style="font-size:18px">👮</span>
+        <div class="scenario-title">Police stopped me</div>
+        <svg class="sc-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="scenario-body">
+        Stay completely calm. No sudden movements.<br><br>
+        Say: <strong>"¿Habla inglés?"</strong> (Do you speak English?)<br>
+        Say: <strong>"Soy turista. Vine a ver el partido."</strong><br><br>
+        If asked for money: <strong>"Prefiero ir a la delegación."</strong><br>
+        This phrase usually ends the situation.<br><br>
+        Do not argue. Do not film without permission.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" onclick="toggleScenario(this.parentElement)">
+        <span style="font-size:18px">😵</span>
+        <div class="scenario-title">I feel sick (altitude)</div>
+        <svg class="sc-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="scenario-body">
+        1. Drink water immediately — at least 500ml.<br>
+        2. Lie down if dizzy.<br>
+        3. Go to any Farmacias del Ahorro.<br>
+        4. Ask for: <strong>"Algo para el mal de altura"</strong><br>
+        5. Or: paracetamol for headache.<br><br>
+        Call Hospital ABC if severe: <strong>+52 55 5230-8000</strong>
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" onclick="toggleScenario(this.parentElement)">
+        <span style="font-size:18px">🛂</span>
+        <div class="scenario-title">I lost my passport</div>
+        <svg class="sc-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="scenario-body">
+        <ol>
+          <li>File police report (denuncia) — call 911.</li>
+          <li>Contact your embassy (numbers above).</li>
+          <li>Bring to embassy: police report, any ID, flight booking, passport photo.</li>
+          <li>Emergency passport issued in 24-48 hours.</li>
+        </ol>
+        <br>
+        <strong>Prevention:</strong> Photograph your passport NOW and email it to yourself.
+      </div>
+    </div>
+
+    <div class="scenario-card">
+      <div class="scenario-header" onclick="toggleScenario(this.parentElement)">
+        <span style="font-size:18px">🏥</span>
+        <div class="scenario-title">I need a doctor</div>
+        <svg class="sc-chevron chevron-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="scenario-body">
+        <strong>Serious emergencies:</strong> Hospital ABC<br>
+        +52 55 5230-8000<br>
+        · Observatorio: Sur 136 No. 116, Las Américas<br>
+        · Santa Fe: Av. Carlos Graef Fernández 154<br>
+        English-speaking staff. Accepts international insurance.<br><br>
+        <strong>Minor issues:</strong> Farmacias del Ahorro<br>
+        Ask: <strong>"¿Hay doctor en turno?"</strong> (Is there an on-duty doctor?)<br>
+        Consultation: ~$50-100 MXN
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== PHRASES ===== -->
+  <section id="sec-phrases" class="section">
+
+    <div class="section-header">SPANISH SURVIVAL PHRASES</div>
+    <div style="font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-bottom:12px">Tap any phrase to copy it to clipboard</div>
+
+    <div class="category-pills">
+      <div class="cat-pill active" onclick="filterPhrases('all',this)">All</div>
+      <div class="cat-pill" onclick="filterPhrases('emergency',this)">🚨 Emergency</div>
+      <div class="cat-pill" onclick="filterPhrases('transport',this)">🚕 Transport</div>
+      <div class="cat-pill" onclick="filterPhrases('food',this)">🍽️ Food</div>
+      <div class="cat-pill" onclick="filterPhrases('money',this)">💰 Money</div>
+      <div class="cat-pill" onclick="filterPhrases('police',this)">👮 Police</div>
+      <div class="cat-pill" onclick="filterPhrases('health',this)">💊 Health</div>
+      <div class="cat-pill" onclick="filterPhrases('matchday',this)">⚽ Match Day</div>
+    </div>
+
+    <div id="phrases-list"></div>
+
+  </section>
+
+</main>
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav">
+  <div class="nav-tab active" id="tab-home" onclick="switchTab('home')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+      <span class="nav-label">Home</span>
+    </div>
+  </div>
+  <div class="nav-tab" id="tab-safety" onclick="switchTab('safety')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 2L3 7v6c0 5.5 3.8 10.7 9 12 5.2-1.3 9-6.5 9-12V7z"/></svg>
+      <span class="nav-label">Safety</span>
+    </div>
+  </div>
+  <div class="nav-tab" id="tab-getting" onclick="switchTab('getting')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+      <span class="nav-label">Get There</span>
+    </div>
+  </div>
+  <div class="nav-tab emergency-tab" id="tab-emergency" onclick="switchTab('emergency')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21 16z"/></svg>
+      <span class="nav-label">SOS</span>
+    </div>
+  </div>
+  <div class="nav-tab" id="tab-phrases" onclick="switchTab('phrases')">
+    <div class="nav-pill">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      <span class="nav-label">Phrases</span>
+    </div>
+  </div>
+</nav>
+
+</div><!-- /app -->
+
+<!-- SOS FLOAT -->
+<div id="sos-float" onclick="openSOS()"><span>SOS</span></div>
+
+<!-- SOS OVERLAY -->
+<div id="sos-overlay">
+  <button class="sos-close" onclick="closeSOS()">✕ Close</button>
+  <div class="sos-overlay-title">EMERGENCY</div>
+  <div class="sos-overlay-sub">Tap to call immediately</div>
+
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num">911</div><div class="sos-call-name">All Emergencies</div><div class="sos-call-desc">Police · Fire · Ambulance</div></div>
+    <a href="tel:911" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num">078</div><div class="sos-call-name">Tourist Assistance</div><div class="sos-call-desc">English operators · 24hrs</div></div>
+    <a href="tel:078" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5230-8000</div><div class="sos-call-name">Hospital ABC</div><div class="sos-call-desc">Best international hospital</div></div>
+    <a href="tel:+525552308000" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">2579-2000</div><div class="sos-call-name">🇺🇸 US Embassy</div><div class="sos-call-desc">Emergency 24hrs</div></div>
+    <a href="tel:+525525792000" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">1670-3200</div><div class="sos-call-name">🇬🇧 UK Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525516703200" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5283-2200</div><div class="sos-call-name">🇩🇪 German Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525552832200" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">9171-9700</div><div class="sos-call-name">🇫🇷 French Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525591719700" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5282-2977</div><div class="sos-call-name">🇪🇸 Spain Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525552822977" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5484-5484</div><div class="sos-call-name">🇧🇷 Brazil Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525554845484" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5520-9430</div><div class="sos-call-name">🇦🇷 Argentina Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525555209430" class="sos-call-btn">CALL</a>
+  </div>
+  <div class="sos-call-card">
+    <div style="flex:1"><div class="sos-call-num" style="font-size:18px">5202-8454</div><div class="sos-call-name">🇨🇴 Colombia Embassy</div><div class="sos-call-desc"></div></div>
+    <a href="tel:+525552028454" class="sos-call-btn">CALL</a>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div id="toast">Copied to clipboard!</div>
+
+<script>
+// ============ PHRASES DATA ============
+const phrases = [
+  {cat:'emergency',es:'¡Ayuda!',ph:'(ah-YOO-dah)',en:'Help!'},
+  {cat:'emergency',es:'¡Auxilio!',ph:'(ow-SEEL-ee-oh)',en:'Help! (urgent)'},
+  {cat:'emergency',es:'Llame a la policía',ph:'(YAH-meh ah la po-lee-SEE-ah)',en:'Call the police'},
+  {cat:'emergency',es:'Me robaron',ph:'(meh ro-BAH-ron)',en:'I was robbed'},
+  {cat:'emergency',es:'Necesito un médico',ph:'(neh-seh-SEE-toh oon MEH-dee-koh)',en:'I need a doctor'},
+  {cat:'emergency',es:'¿Habla inglés?',ph:'(AH-blah een-GLEHS)',en:'Do you speak English?'},
+  {cat:'emergency',es:'No entiendo',ph:'(noh ehn-tee-EHN-doh)',en:"I don't understand"},
+  {cat:'emergency',es:'Soy turista',ph:'(soy too-REES-tah)',en:"I'm a tourist"},
+  {cat:'transport',es:'¿Cuánto cuesta?',ph:'(KWAHN-toh KWES-tah)',en:'How much is it?'},
+  {cat:'transport',es:'Lléveme a...',ph:'(YEH-veh-meh ah)',en:'Take me to...'},
+  {cat:'transport',es:'Pare aquí, por favor',ph:'(PAH-reh ah-KEE)',en:'Stop here please'},
+  {cat:'transport',es:'Está muy caro',ph:'(ehs-TAH mwee KAH-roh)',en:"It's very expensive"},
+  {cat:'transport',es:'¿Dónde está el Metro?',ph:'(DOHN-deh ehs-TAH)',en:'Where is the Metro?'},
+  {cat:'transport',es:'¿A qué hora cierra el Metro?',ph:'(ah keh OH-rah)',en:'What time does the Metro close?'},
+  {cat:'transport',es:'Quiero ir al estadio',ph:'(KYEH-roh eer al es-TAH-dyoh)',en:'I want to go to the stadium'},
+  {cat:'food',es:'La carta, por favor',ph:'(la KAR-tah)',en:'The menu please'},
+  {cat:'food',es:'¿Qué recomienda?',ph:'(keh reh-koh-MYEHN-dah)',en:'What do you recommend?'},
+  {cat:'food',es:'Sin picante, por favor',ph:'(seen pee-KAN-teh)',en:'Without spice please'},
+  {cat:'food',es:'La cuenta, por favor',ph:'(la KWEHN-tah)',en:'The bill please'},
+  {cat:'food',es:'¿Aceptan tarjeta?',ph:'(ah-SEP-tan tar-HEH-tah)',en:'Do you accept card?'},
+  {cat:'food',es:'Agua embotellada',ph:'(AH-gwah em-boh-teh-YAH-dah)',en:'Bottled water'},
+  {cat:'food',es:'Sin hielo, por favor',ph:'(seen HYEH-loh)',en:'Without ice please'},
+  {cat:'food',es:'Soy alérgico/a a...',ph:'(soy ah-LEHR-hee-koh)',en:"I'm allergic to..."},
+  {cat:'money',es:'¿Tiene descuento?',ph:'(TYEH-neh des-KWEN-toh)',en:'Do you have a discount?'},
+  {cat:'money',es:'¿Es precio fijo?',ph:'(ehs PREH-syoh FEE-hoh)',en:'Is it a fixed price?'},
+  {cat:'money',es:'¿Dónde está el cajero?',ph:'(DOHN-deh el kah-HEH-roh)',en:'Where is the ATM?'},
+  {cat:'money',es:'¿Acepta pesos?',ph:'',en:'Does it accept pesos?'},
+  {cat:'police',es:'Soy turista',ph:'(soy too-REES-tah)',en:"I'm a tourist"},
+  {cat:'police',es:'Vine a ver el partido',ph:'(VEE-neh ah vehr)',en:'I came to see the match'},
+  {cat:'police',es:'Prefiero ir a la delegación',ph:'',en:'I prefer to go to the station'},
+  {cat:'police',es:'No entiendo mis derechos',ph:'',en:"I don't understand my rights"},
+  {cat:'police',es:'Quiero llamar a mi embajada',ph:'',en:'I want to call my embassy'},
+  {cat:'health',es:'Me duele la cabeza',ph:'(meh DWEH-leh la kah-BEH-sah)',en:'I have a headache'},
+  {cat:'health',es:'Tengo náuseas',ph:'(TEHN-goh NOW-seh-ahs)',en:'I feel nauseous'},
+  {cat:'health',es:'Necesito agua',ph:'(neh-seh-SEE-toh)',en:'I need water'},
+  {cat:'health',es:'¿Dónde está la farmacia?',ph:'',en:'Where is the pharmacy?'},
+  {cat:'health',es:'Algo para el mal de altura',ph:'',en:'Something for altitude sickness'},
+  {cat:'health',es:'Tengo diarrea',ph:'(dee-ah-REH-ah)',en:'I have diarrhea'},
+  {cat:'health',es:'Me siento muy mal',ph:'',en:'I feel very sick'},
+  {cat:'matchday',es:'¿Dónde está el estadio?',ph:'',en:'Where is the stadium?'},
+  {cat:'matchday',es:'¿Cuándo sale el próximo tren?',ph:'',en:'When is the next train?'},
+  {cat:'matchday',es:'¡Vamos México!',ph:'',en:"Let's go Mexico!"},
+  {cat:'matchday',es:'¡Goool!',ph:'',en:'GOAL!'},
+  {cat:'matchday',es:'¿Dónde puedo tomar un Uber?',ph:'',en:'Where can I get an Uber?'},
+];
+
+const catColors = {
+  emergency:'#fef2f2;color:#dc2626',
+  transport:'#eff6ff;color:#1d4ed8',
+  food:'#fff7ed;color:#c2410c',
+  money:'#f0fdf4;color:#15803d',
+  police:'#faf5ff;color:#7c3aed',
+  health:'#ecfdf5;color:#065f46',
+  matchday:'#fffbeb;color:#b45309',
+};
+
+const catLabels = {
+  emergency:'🚨 Emergency',transport:'🚕 Transport',food:'🍽️ Food',
+  money:'💰 Money',police:'👮 Police',health:'💊 Health',matchday:'⚽ Match Day',
+};
+
+function renderPhrases(filter){
+  const list = document.getElementById('phrases-list');
+  const filtered = filter === 'all' ? phrases : phrases.filter(p=>p.cat===filter);
+  list.innerHTML = filtered.map((p,i)=>`
+    <div class="phrase-card" onclick="copyPhrase(this,'${p.es.replace(/'/g,"\\'")}')">
+      <div class="phrase-cat-badge" style="background:${catColors[p.cat].split(';')[0]};${catColors[p.cat].split(';')[1]}">${catLabels[p.cat]}</div>
+      <div class="phrase-spanish">${p.es}</div>
+      ${p.ph?`<div class="phrase-phonetic">${p.ph}</div>`:''}
+      <div class="phrase-english">${p.en}</div>
+      <div class="phrase-copy-icon">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+      </div>
+    </div>
+  `).join('');
+}
+
+function filterPhrases(cat, el){
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.remove('active'));
+  el.classList.add('active');
+  renderPhrases(cat);
+}
+
+function copyPhrase(card, text){
+  if(navigator.clipboard){
+    navigator.clipboard.writeText(text).catch(()=>{});
+  }
+  card.classList.add('copied');
+  setTimeout(()=>card.classList.remove('copied'),600);
+  showToast('Copied: '+text);
+}
+
+// ============ NAV ============
+const sectionNames = {home:'HOME',safety:'SAFETY',getting:'GET THERE',emergency:'EMERGENCY',phrases:'PHRASES'};
+
+function switchTab(id){
+  document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  document.getElementById('tab-'+id).classList.add('active');
+  document.getElementById('header-title').textContent = sectionNames[id]||'';
+  document.getElementById('content-area').scrollTop = 0;
+}
+
+// ============ TOGGLES ============
+function toggleCard(card){
+  card.classList.toggle('open');
+}
+function toggleOption(card){
+  card.classList.toggle('open');
+}
+function toggleScenario(card){
+  card.classList.toggle('open');
+}
+
+// ============ ROUTE CARDS ============
+function toggleRouteCard(id, card){
+  const el = document.getElementById(id);
+  const isVisible = el.style.display === 'block';
+  document.querySelectorAll('.steps-container').forEach(s=>{s.style.display='none'});
+  if(!isVisible) el.style.display='block';
+}
+
+// ============ ATM TABS ============
+function switchATM(zone, el){
+  document.querySelectorAll('.atm-tab').forEach(t=>t.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('.atm-entry').forEach(e=>{
+    e.classList.toggle('visible', e.dataset.zone===zone);
+  });
+}
+
+// ============ SOS ============
+function openSOS(){
+  document.getElementById('sos-overlay').classList.add('visible');
+  document.body.style.overflow='hidden';
+}
+function closeSOS(){
+  document.getElementById('sos-overlay').classList.remove('visible');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeSOS()});
+
+// ============ TOAST ============
+function showToast(msg){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(()=>t.classList.remove('show'),2000);
+}
+
+// ============ COUNTDOWN ============
+function updateCountdown(){
+  const target = new Date('2026-06-11T20:00:00-05:00').getTime();
+  const now = new Date().getTime();
+  const diff = target - now;
+  if(diff <= 0){
+    document.getElementById('cd-days').textContent='0';
+    document.getElementById('cd-hrs').textContent='0';
+    document.getElementById('cd-min').textContent='0';
+    document.getElementById('cd-sec').textContent='0';
+    return;
+  }
+  document.getElementById('cd-days').textContent = Math.floor(diff/(1000*60*60*24));
+  document.getElementById('cd-hrs').textContent = Math.floor((diff%(1000*60*60*24))/(1000*60*60));
+  document.getElementById('cd-min').textContent = Math.floor((diff%(1000*60*60))/(1000*60));
+  document.getElementById('cd-sec').textContent = Math.floor((diff%(1000*60))/1000);
+}
+updateCountdown();
+setInterval(updateCountdown, 1000);
+
+// ============ INIT ============
+renderPhrases('all');
+</script>
+</body>
+</html>
