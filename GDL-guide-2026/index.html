@@ -1,0 +1,1951 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#CC0000">
+<title>GDL Travel Pass — FIFA World Cup 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --red: #D42B2B;
+  --blue: #1A3FAA;
+  --gold: #F5C518;
+  --green: #1A7A4A;
+  --chivas: #CC0000;
+  --teal: #0F766E;
+  --black: #0A0A0A;
+  --white: #FFFFFF;
+  --cream: #FFFBF0;
+  --gray-100: #F3F4F6;
+  --gray-200: #E5E7EB;
+  --gray-500: #6B7280;
+  --gray-700: #374151;
+  --dark-bg: #050D1F;
+  --dark-card: #111827;
+  --shadow: 3px 3px 0px var(--black);
+  --border: 2px solid var(--black);
+  --radius: 12px;
+  --pill: 99px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{height:100%;overflow:hidden;}
+body{
+  font-family:'Nunito',sans-serif;
+  background:var(--gray-100);
+  color:var(--black);
+  display:flex;
+  flex-direction:column;
+  max-width:430px;
+  margin:0 auto;
+  position:relative;
+}
+/* HEADER */
+#top-header{
+  height:60px;
+  background:var(--chivas);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px;
+  flex-shrink:0;
+  border-bottom:2px solid var(--black);
+  z-index:100;
+}
+.header-logo{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  font-family:'Bangers',cursive;
+  font-size:18px;
+  color:var(--white);
+  letter-spacing:1px;
+}
+.header-logo svg{width:24px;height:24px;}
+#section-title{
+  font-family:'Bangers',cursive;
+  font-size:15px;
+  color:rgba(255,255,255,0.85);
+  letter-spacing:1px;
+  text-transform:uppercase;
+}
+.sos-btn{
+  background:var(--red);
+  color:var(--white);
+  border:2px solid var(--black);
+  border-radius:var(--pill);
+  padding:6px 14px;
+  font-family:'Fredoka One',cursive;
+  font-size:14px;
+  cursor:pointer;
+  box-shadow:2px 2px 0 var(--black);
+  transition:transform .1s,box-shadow .1s;
+  touch-action:manipulation;
+}
+.sos-btn:active{transform:translate(2px,2px);box-shadow:none;}
+
+/* SCROLL AREA */
+#scroll-area{
+  flex:1;
+  overflow-y:auto;
+  overflow-x:hidden;
+  -webkit-overflow-scrolling:touch;
+  padding-bottom:70px;
+}
+/* BOTTOM NAV */
+#bottom-nav{
+  height:60px;
+  background:var(--white);
+  border-top:2px solid var(--black);
+  display:flex;
+  align-items:center;
+  justify-content:space-around;
+  flex-shrink:0;
+  z-index:100;
+}
+.nav-btn{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:2px;
+  padding:8px 10px;
+  border:none;
+  background:transparent;
+  cursor:pointer;
+  border-radius:var(--radius);
+  transition:transform .1s;
+  touch-action:manipulation;
+  min-width:44px;
+  min-height:44px;
+  justify-content:center;
+}
+.nav-btn:active{transform:scale(0.93);}
+.nav-btn svg{width:22px;height:22px;color:var(--gray-500);}
+.nav-btn span{font-size:9px;font-family:'Nunito',sans-serif;font-weight:700;color:var(--gray-500);display:none;}
+.nav-btn.active{background:var(--gold);border:2px solid var(--black);box-shadow:2px 2px 0 var(--black);}
+.nav-btn.active svg{color:var(--black);}
+.nav-btn.active span{display:block;color:var(--black);}
+.nav-btn[data-tab="emergency"] svg{color:#cc0000;}
+.nav-btn[data-tab="emergency"].active svg{color:var(--black);}
+
+/* VIEWS */
+.view{display:none;padding:12px;}
+.view.active{display:block;}
+
+/* CARDS */
+.card{
+  background:var(--white);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.card-header{
+  padding:14px 16px;
+  font-family:'Fredoka One',cursive;
+  font-size:15px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.card-body{padding:14px 16px;}
+
+/* HERO */
+.hero-card{
+  background:linear-gradient(135deg,#1a0000 0%,#CC0000 60%,#a30000 100%);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  overflow:hidden;
+  position:relative;
+}
+.mexico-stripe{height:4px;background:linear-gradient(90deg,#006847 33%,#fff 33% 66%,#CE1126 66%);}
+.hero-inner{padding:16px;}
+.hero-pre{
+  font-family:'Fredoka One',cursive;
+  font-size:11px;
+  color:var(--gold);
+  text-transform:uppercase;
+  letter-spacing:1px;
+  margin-bottom:6px;
+}
+.hero-title{
+  font-family:'Bangers',cursive;
+  font-size:38px;
+  color:var(--white);
+  line-height:1;
+  text-shadow:3px 3px 0 #1a0000;
+  margin-bottom:4px;
+}
+.hero-sub{
+  font-size:13px;
+  color:rgba(255,255,255,0.82);
+  line-height:1.4;
+  margin-bottom:12px;
+}
+.match-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px;}
+.match-pill{
+  background:rgba(0,0,0,0.4);
+  color:var(--gold);
+  font-family:'Fredoka One',cursive;
+  font-size:12px;
+  padding:4px 10px;
+  border-radius:var(--pill);
+  border:1px solid var(--gold);
+}
+.hero-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:8px;
+}
+.stat-col{
+  background:rgba(0,0,0,0.3);
+  border-radius:8px;
+  padding:8px 4px;
+  text-align:center;
+}
+.stat-val{
+  font-family:'Bangers',cursive;
+  font-size:22px;
+  color:var(--gold);
+  line-height:1;
+}
+.stat-label{
+  font-size:9px;
+  color:rgba(255,255,255,0.7);
+  text-transform:uppercase;
+  letter-spacing:0.5px;
+  font-weight:700;
+}
+.stat-col.green-stat .stat-val{color:#4ade80;}
+.agave-deco{
+  position:absolute;
+  right:-10px;
+  top:10px;
+  opacity:0.12;
+  pointer-events:none;
+}
+.countdown-pill{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  background:rgba(0,0,0,0.5);
+  border:1px solid var(--gold);
+  border-radius:var(--pill);
+  padding:5px 12px;
+  font-family:'Fredoka One',cursive;
+  font-size:12px;
+  color:var(--gold);
+  margin-bottom:10px;
+}
+
+/* WEATHER CARD */
+.weather-card{
+  background:var(--teal);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  padding:16px;
+}
+.weather-card h3{
+  font-family:'Fredoka One',cursive;
+  font-size:15px;
+  color:var(--white);
+  margin-bottom:6px;
+}
+.weather-card p{font-size:13px;color:rgba(255,255,255,0.9);line-height:1.5;}
+
+/* RULES SECTION */
+.section-head{
+  font-family:'Bangers',cursive;
+  font-size:22px;
+  letter-spacing:1px;
+  margin-bottom:10px;
+}
+.rule-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.rule-header{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:12px 14px;
+}
+.rule-num{
+  width:28px;height:28px;
+  border-radius:50%;
+  border:2px solid var(--black);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Bangers',cursive;
+  font-size:16px;
+  flex-shrink:0;
+}
+.rule-title{font-family:'Fredoka One',cursive;font-size:14px;}
+.rule-body{padding:0 14px 12px 52px;font-size:13px;line-height:1.5;color:var(--gray-700);}
+
+/* QUICK ACTIONS */
+.quick-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+  margin-bottom:12px;
+}
+.quick-btn{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  padding:14px 12px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:6px;
+  cursor:pointer;
+  background:var(--white);
+  transition:transform .1s,box-shadow .1s;
+  touch-action:manipulation;
+  min-height:80px;
+  justify-content:center;
+}
+.quick-btn:active{transform:translate(2px,2px);box-shadow:none;}
+.quick-btn svg{width:28px;height:28px;}
+.quick-btn span{font-family:'Fredoka One',cursive;font-size:13px;text-align:center;line-height:1.2;}
+.quick-btn.q-stadium{background:#1A3FAA;color:var(--white);}
+.quick-btn.q-food{background:var(--teal);color:var(--white);}
+.quick-btn.q-emergency{background:var(--red);color:var(--white);}
+.quick-btn.q-phrases{background:var(--gold);color:var(--black);}
+
+/* ACCORDION */
+.accordion-item{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.accordion-trigger{
+  width:100%;
+  background:var(--white);
+  border:none;
+  padding:14px 16px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  text-align:left;
+  touch-action:manipulation;
+}
+.accordion-trigger:active{background:var(--gray-100);}
+.accordion-label{
+  font-family:'Fredoka One',cursive;
+  font-size:14px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.accordion-chevron{
+  width:20px;height:20px;
+  color:var(--gray-500);
+  transition:transform .2s;
+  flex-shrink:0;
+}
+.accordion-item.open .accordion-chevron{transform:rotate(180deg);}
+.accordion-body{
+  display:none;
+  padding:14px 16px;
+  border-top:2px solid var(--black);
+  font-size:13px;
+  line-height:1.6;
+  color:var(--gray-700);
+  background:var(--cream);
+}
+.accordion-item.open .accordion-body{display:block;}
+
+/* COLORED ACCORDION HEADERS */
+.acc-teal .accordion-trigger{background:var(--teal);}
+.acc-teal .accordion-label{color:var(--white);}
+.acc-teal .accordion-chevron{color:rgba(255,255,255,0.8);}
+.acc-chivas .accordion-trigger{background:var(--chivas);}
+.acc-chivas .accordion-label{color:var(--white);}
+.acc-chivas .accordion-chevron{color:rgba(255,255,255,0.8);}
+.acc-gold .accordion-trigger{background:var(--gold);}
+.acc-gold .accordion-label{color:var(--black);}
+.acc-dark .accordion-trigger{background:var(--dark-card);}
+.acc-dark .accordion-label{color:var(--white);}
+.acc-dark .accordion-chevron{color:rgba(255,255,255,0.6);}
+
+/* FOOD FLAGS */
+.flag-list{list-style:none;margin-top:8px;}
+.flag-list li{padding:4px 0;font-size:13px;border-bottom:1px solid var(--gray-200);}
+.flag-list li:last-child{border:none;}
+
+/* ZONE BADGE */
+.zone-badge{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:800;
+  padding:2px 8px;
+  border-radius:var(--pill);
+  border:1px solid var(--black);
+  margin-bottom:6px;
+}
+.zone-green{background:#dcfce7;color:#15803d;}
+.zone-yellow{background:#fef9c3;color:#a16207;}
+.zone-red{background:#fee2e2;color:#dc2626;}
+
+/* ATM TABS */
+.tab-pills{display:flex;gap:6px;margin-bottom:12px;flex-wrap:wrap;}
+.tab-pill{
+  padding:6px 14px;
+  border-radius:var(--pill);
+  border:2px solid var(--black);
+  background:var(--white);
+  font-family:'Fredoka One',cursive;
+  font-size:13px;
+  cursor:pointer;
+  box-shadow:2px 2px 0 var(--black);
+  transition:transform .1s,box-shadow .1s;
+  touch-action:manipulation;
+}
+.tab-pill:active{transform:translate(2px,2px);box-shadow:none;}
+.tab-pill.active{background:var(--gold);}
+.atm-panel{display:none;}
+.atm-panel.active{display:block;}
+.atm-item{
+  display:flex;
+  align-items:flex-start;
+  gap:10px;
+  padding:10px 0;
+  border-bottom:1px solid var(--gray-200);
+  font-size:13px;
+}
+.atm-item:last-child{border:none;}
+.atm-bank{
+  font-family:'Fredoka One',cursive;
+  font-size:14px;
+  color:var(--blue);
+}
+
+/* STADIUM */
+.stadium-hero{
+  background:linear-gradient(135deg,#1a0000,#CC0000);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  padding:20px 16px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.stadium-svg{margin-bottom:12px;}
+.stadium-name{
+  font-family:'Bangers',cursive;
+  font-size:32px;
+  color:var(--white);
+  line-height:1;
+  text-shadow:2px 2px 0 #1a0000;
+}
+.stadium-sub{font-size:13px;color:rgba(255,255,255,0.8);margin-top:4px;}
+.stadium-stats{
+  display:flex;
+  justify-content:center;
+  gap:12px;
+  margin-top:12px;
+  flex-wrap:wrap;
+}
+.stadium-stat{
+  background:rgba(0,0,0,0.4);
+  border-radius:8px;
+  padding:6px 12px;
+  text-align:center;
+}
+.stadium-stat-val{font-family:'Bangers',cursive;font-size:18px;color:var(--gold);}
+.stadium-stat-lbl{font-size:9px;color:rgba(255,255,255,0.7);text-transform:uppercase;font-weight:700;}
+
+.zapopan-note{
+  background:#fffbeb;
+  border:2px solid #f59e0b;
+  border-radius:var(--radius);
+  padding:12px 14px;
+  margin-bottom:12px;
+  font-size:13px;
+  line-height:1.5;
+}
+.zapopan-note strong{font-family:'Fredoka One',cursive;font-size:14px;}
+
+/* MATCH CARDS */
+.match-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.match-card-header{
+  padding:10px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:var(--dark-card);
+}
+.match-date{font-size:11px;color:rgba(255,255,255,0.7);font-weight:700;}
+.match-group{
+  font-size:10px;
+  background:rgba(255,255,255,0.15);
+  padding:2px 8px;
+  border-radius:var(--pill);
+  color:rgba(255,255,255,0.8);
+  font-weight:700;
+}
+.match-card-body{padding:12px 14px;background:var(--white);}
+.match-teams{
+  font-family:'Bangers',cursive;
+  font-size:20px;
+  letter-spacing:1px;
+  margin-bottom:4px;
+}
+.match-time{font-size:12px;color:var(--gray-500);font-weight:700;}
+.match-note{font-size:12px;color:var(--gray-700);margin-top:6px;line-height:1.4;}
+.match-card.marquee{border:2px solid var(--gold);}
+.match-card.marquee .match-card-header{background:linear-gradient(135deg,#1a0000,#CC0000);}
+.marquee-badge{
+  background:var(--gold);
+  color:var(--black);
+  font-family:'Fredoka One',cursive;
+  font-size:10px;
+  padding:2px 8px;
+  border-radius:var(--pill);
+  border:1px solid var(--black);
+}
+
+/* TRANSPORT CARDS */
+.transport-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:10px;
+  overflow:hidden;
+}
+.transport-header{
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.transport-header:active{opacity:0.85;}
+.transport-badge{
+  font-size:10px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:var(--pill);
+  border:1px solid var(--black);
+}
+.badge-green{background:#dcfce7;color:#15803d;}
+.badge-yellow{background:#fef9c3;color:#a16207;}
+.transport-title{font-family:'Fredoka One',cursive;font-size:15px;color:var(--white);}
+.transport-body{
+  display:none;
+  padding:14px;
+  border-top:2px solid var(--black);
+  background:var(--white);
+}
+.transport-card.open .transport-body{display:block;}
+.transport-card.t-blue .transport-header{background:var(--blue);}
+.transport-card.t-teal .transport-header{background:var(--teal);}
+.transport-card.t-gray .transport-header{background:var(--gray-700);}
+
+.step{
+  display:flex;
+  gap:10px;
+  margin-bottom:12px;
+  align-items:flex-start;
+}
+.step-num{
+  width:24px;height:24px;
+  border-radius:50%;
+  background:var(--blue);
+  color:var(--white);
+  font-family:'Bangers',cursive;
+  font-size:14px;
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;
+}
+.step-text{font-size:13px;line-height:1.5;color:var(--gray-700);}
+.step-text strong{color:var(--black);}
+
+.autotren-box{
+  background:#fffbeb;
+  border:2px solid var(--gold);
+  border-radius:10px;
+  padding:12px;
+  margin-top:10px;
+  font-size:13px;
+  line-height:1.5;
+}
+.autotren-box strong{font-family:'Fredoka One',cursive;color:var(--black);}
+
+.cost-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:6px 0;
+  border-bottom:1px solid var(--gray-200);
+  font-size:13px;
+}
+.cost-row:last-child{border:none;}
+
+/* EMERGENCY */
+.emergency-view .section-head{color:var(--red);}
+.call-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:8px;
+  overflow:hidden;
+}
+.call-btn{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:14px 16px;
+  background:var(--white);
+  text-decoration:none;
+  color:var(--black);
+  transition:background .1s;
+  touch-action:manipulation;
+}
+.call-btn:active{background:var(--gray-100);}
+.call-info{}
+.call-name{font-family:'Fredoka One',cursive;font-size:15px;}
+.call-desc{font-size:11px;color:var(--gray-500);margin-top:2px;}
+.call-number{font-family:'Fredoka One',cursive;font-size:13px;color:var(--blue);}
+.call-icon{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:var(--green);
+  display:flex;align-items:center;justify-content:center;
+  border:2px solid var(--black);
+  flex-shrink:0;
+}
+.call-icon.red-icon{background:var(--red);}
+.call-icon.blue-icon{background:var(--blue);}
+.call-icon svg{width:20px;height:20px;color:var(--white);}
+
+.embassies-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+  margin-bottom:12px;
+}
+.embassy-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+}
+.embassy-card a{
+  display:flex;
+  flex-direction:column;
+  padding:10px 12px;
+  text-decoration:none;
+  color:var(--black);
+  background:var(--white);
+  gap:2px;
+}
+.embassy-card a:active{background:var(--gray-100);}
+.embassy-name{font-family:'Fredoka One',cursive;font-size:13px;}
+.embassy-num{font-size:11px;color:var(--blue);}
+
+/* PHRASES */
+.phrase-filter{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;margin-bottom:12px;scrollbar-width:none;}
+.phrase-filter::-webkit-scrollbar{display:none;}
+.phrase-pill{
+  flex-shrink:0;
+  padding:6px 14px;
+  border-radius:var(--pill);
+  border:2px solid var(--black);
+  background:var(--white);
+  font-family:'Fredoka One',cursive;
+  font-size:13px;
+  cursor:pointer;
+  box-shadow:2px 2px 0 var(--black);
+  transition:transform .1s,box-shadow .1s;
+  touch-action:manipulation;
+}
+.phrase-pill:active{transform:translate(1px,1px);box-shadow:none;}
+.phrase-pill.active{background:var(--gold);}
+
+.phrase-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:8px;
+  background:var(--white);
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .1s;
+  touch-action:manipulation;
+}
+.phrase-card:active{transform:translate(2px,2px);}
+.phrase-inner{padding:12px 14px;}
+.phrase-spanish{font-family:'Fredoka One',cursive;font-size:15px;margin-bottom:2px;}
+.phrase-pronun{font-size:11px;color:var(--teal);font-style:italic;margin-bottom:4px;}
+.phrase-english{font-size:12px;color:var(--gray-700);}
+.phrase-copy{
+  padding:8px 14px;
+  background:var(--gray-100);
+  border-top:1px solid var(--gray-200);
+  font-size:11px;
+  color:var(--gray-500);
+  font-weight:700;
+}
+.phrase-card.copied .phrase-copy{background:var(--gold);color:var(--black);}
+
+/* SOS OVERLAY */
+#sos-overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(180,0,0,0.97);
+  z-index:1000;
+  overflow-y:auto;
+  padding:20px 16px;
+}
+#sos-overlay.active{display:block;}
+.sos-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+.sos-title{
+  font-family:'Bangers',cursive;
+  font-size:32px;
+  color:var(--white);
+  letter-spacing:2px;
+}
+.sos-close{
+  width:40px;height:40px;
+  border-radius:50%;
+  background:rgba(255,255,255,0.2);
+  border:2px solid rgba(255,255,255,0.5);
+  color:var(--white);
+  font-size:20px;
+  display:flex;align-items:center;justify-content:center;
+  cursor:pointer;
+  touch-action:manipulation;
+}
+.sos-911{
+  display:block;
+  width:100%;
+  background:var(--white);
+  color:var(--red);
+  text-decoration:none;
+  text-align:center;
+  font-family:'Bangers',cursive;
+  font-size:40px;
+  padding:20px;
+  border-radius:var(--radius);
+  border:3px solid var(--black);
+  box-shadow:4px 4px 0 var(--black);
+  margin-bottom:14px;
+  letter-spacing:4px;
+}
+.sos-call{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  background:rgba(255,255,255,0.15);
+  border:2px solid rgba(255,255,255,0.3);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  text-decoration:none;
+  color:var(--white);
+  margin-bottom:8px;
+}
+.sos-call-name{font-family:'Fredoka One',cursive;font-size:14px;}
+.sos-call-num{font-size:12px;opacity:0.8;}
+
+/* ZAPOPAN BANNER */
+#zapopan-banner{
+  display:none;
+  background:#fffbeb;
+  border-bottom:2px solid #f59e0b;
+  padding:10px 14px;
+  font-size:13px;
+  line-height:1.4;
+  position:relative;
+}
+#zapopan-banner.show{display:block;}
+.zapopan-dismiss{
+  position:absolute;
+  top:8px;right:10px;
+  width:24px;height:24px;
+  border:none;background:none;
+  font-size:18px;
+  cursor:pointer;
+  color:var(--gray-500);
+  touch-action:manipulation;
+}
+
+/* TOAST */
+#toast{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%) translateY(20px);
+  background:var(--gold);
+  color:var(--black);
+  font-family:'Fredoka One',cursive;
+  font-size:14px;
+  padding:8px 20px;
+  border-radius:var(--pill);
+  border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+  opacity:0;
+  transition:opacity .2s,transform .2s;
+  z-index:999;
+  pointer-events:none;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0);}
+
+/* UTILITY */
+.section-sub{font-size:13px;color:var(--gray-700);margin-bottom:12px;line-height:1.5;}
+.info-box{
+  background:var(--gray-100);
+  border:var(--border);
+  border-radius:var(--radius);
+  padding:12px 14px;
+  font-size:13px;
+  line-height:1.5;
+  margin-bottom:12px;
+  color:var(--gray-700);
+}
+.divider{height:1px;background:var(--gray-200);margin:12px 0;}
+strong{font-weight:800;}
+
+/* ICONS inline */
+.icon-row{display:flex;align-items:center;gap:6px;}
+</style>
+</head>
+<body>
+
+<!-- TOP HEADER -->
+<header id="top-header">
+  <div class="header-logo">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    GDL GUIDE
+  </div>
+  <span id="section-title">HOME</span>
+  <button class="sos-btn" onclick="openSOS()">🆘 SOS</button>
+</header>
+
+<!-- ZAPOPAN BANNER -->
+<div id="zapopan-banner">
+  📍 <strong>Remember:</strong> Estadio Akron is in <strong>ZAPOPAN</strong> — 15km west of downtown GDL. Tell your Uber: <em>"Estadio Akron, Zapopan"</em>
+  <button class="zapopan-dismiss" onclick="dismissZapopan()">✕</button>
+</div>
+
+<!-- SCROLL AREA -->
+<div id="scroll-area">
+
+  <!-- ════════ HOME VIEW ════════ -->
+  <div class="view active" id="view-home" data-title="HOME">
+
+    <!-- Hero -->
+    <div class="hero-card">
+      <div class="mexico-stripe"></div>
+      <div class="hero-inner">
+        <!-- Agave SVG decoration -->
+        <svg class="agave-deco" width="120" height="200" viewBox="0 0 120 200" fill="white">
+          <ellipse cx="60" cy="180" rx="6" ry="20" transform="rotate(-5,60,180)"/>
+          <path d="M60 160 Q30 130 10 100 Q5 90 15 88 Q25 86 35 110 Q45 130 60 155Z" opacity="0.9"/>
+          <path d="M60 155 Q90 125 110 95 Q115 85 105 83 Q95 81 85 105 Q75 125 60 150Z" opacity="0.9"/>
+          <path d="M60 150 Q20 140 0 120 Q-5 110 5 107 Q15 104 28 125 Q42 140 60 145Z" opacity="0.7"/>
+          <path d="M60 145 Q100 135 118 115 Q124 105 114 102 Q104 99 91 120 Q77 135 60 140Z" opacity="0.7"/>
+          <path d="M60 145 Q40 115 35 80 Q33 68 43 68 Q53 68 55 90 Q57 112 60 140Z" opacity="0.6"/>
+          <path d="M60 140 Q80 110 85 75 Q87 63 77 63 Q67 63 65 85 Q63 107 60 135Z" opacity="0.6"/>
+        </svg>
+
+        <div class="countdown-pill" id="countdown-display">
+          ⏱ Loading countdown...
+        </div>
+        <div class="hero-pre">ESTADIO AKRON · ZAPOPAN · SUMMER 2026</div>
+        <div class="hero-title">GUADALAJARA<br>TRAVEL PASS</div>
+        <p class="hero-sub">La Perla del Occidente — the food capital of Mexico<br>and home of mariachi, tequila, and the world's best birria</p>
+        <div class="match-pills">
+          <span class="match-pill">Jun 11</span>
+          <span class="match-pill">Jun 18</span>
+          <span class="match-pill">Jun 23</span>
+          <span class="match-pill">Jun 26</span>
+        </div>
+        <div class="hero-stats">
+          <div class="stat-col">
+            <div class="stat-val">46,000+</div>
+            <div class="stat-label">Capacity</div>
+          </div>
+          <div class="stat-col">
+            <div class="stat-val">4</div>
+            <div class="stat-label">Matches</div>
+          </div>
+          <div class="stat-col green-stat">
+            <div class="stat-val">22°C</div>
+            <div class="stat-label">Perfect Weather</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Weather Card -->
+    <div class="weather-card">
+      <h3>☀️ Best Weather of All 3 Cities</h3>
+      <p>Guadalajara in June is warm and beautiful — 22–25°C (72–77°F). All 4 matches kick off in the evening when it's even cooler. No altitude sickness. No extreme heat. This is Mexico's most comfortable World Cup city.</p>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="quick-grid">
+      <button class="quick-btn q-stadium" onclick="goTab('stadium')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M2 12v4c0 3.3 4.5 6 10 6s10-2.7 10-6v-4"/></svg>
+        <span>Stadium Route</span>
+      </button>
+      <button class="quick-btn q-food" onclick="goTab('safety');scrollToFood()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C8 2 4 6 4 10c0 5.4 7 12 8 12s8-6.6 8-12c0-4-4-8-8-8z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>Food Guide</span>
+      </button>
+      <button class="quick-btn q-emergency" onclick="openSOS()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        <span>Emergency</span>
+      </button>
+      <button class="quick-btn q-phrases" onclick="goTab('phrases')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <span>Spanish Phrases</span>
+      </button>
+    </div>
+
+    <!-- 5 Rules -->
+    <div class="section-head" style="color:var(--chivas)">THE 5 RULES</div>
+    <div class="rule-card">
+      <div class="rule-header" style="background:#fff5f5;">
+        <div class="rule-num" style="background:var(--red);color:#fff;">1</div>
+        <div class="rule-title">NEVER take a street taxi</div>
+      </div>
+      <div class="rule-body">Use Uber or DiDi exclusively. Guadalajara has the same risk as all Mexican cities: no libre taxis off the street.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-header" style="background:#f0fdfa;">
+        <div class="rule-num" style="background:var(--teal);color:#fff;">2</div>
+        <div class="rule-title">EAT EVERYTHING — but know what's safe</div>
+      </div>
+      <div class="rule-body">Guadalajara is the food capital of Mexico. Birria, torta ahogada, pozole — you must try them. This guide tells you where it's safe and what to avoid.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-header" style="background:#f0fdf4;">
+        <div class="rule-num" style="background:var(--green);color:#fff;">3</div>
+        <div class="rule-title">KNOW the difference between GDL and Zapopan</div>
+      </div>
+      <div class="rule-body">The stadium is in Zapopan, not Guadalajara. Same metro area, 15km apart. Don't go to the wrong place.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-header" style="background:#fffbeb;">
+        <div class="rule-num" style="background:var(--gold);color:#000;">4</div>
+        <div class="rule-title">STAY in Chapultepec and Colonia Americana</div>
+      </div>
+      <div class="rule-body">These are your home zones. The best food, nightlife, and safest streets. Everything you need is here.</div>
+    </div>
+    <div class="rule-card">
+      <div class="rule-header" style="background:#eff6ff;">
+        <div class="rule-num" style="background:var(--blue);color:#fff;">5</div>
+        <div class="rule-title">PLAN your post-match exit before kickoff</div>
+      </div>
+      <div class="rule-body">Mi Tren Line 3 is your best option back. Uber will surge. Know your route before the final whistle.</div>
+    </div>
+
+    <!-- Tlaquepaque + Fan Fest -->
+    <div class="divider"></div>
+    <div class="section-head" style="color:var(--teal)">EXPLORE GDL</div>
+    <div class="accordion-item acc-teal" id="tlaquepaque-acc">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🏘️ Tlaquepaque — Best Day Trip from GDL</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p><strong>8km south of center.</strong> The most atmospheric place near Guadalajara. Cobblestone streets, artisan galleries, the best ceramics in Mexico, and El Parián cantina.</p>
+        <br>
+        <p><strong>El Parián:</strong> A large open-air cantina complex where you can drink while mariachi bands play tableside. One of the most unique drinking experiences in all of Mexico.</p>
+        <br>
+        <p><strong>Getting there:</strong> Uber ~$80–120 MXN, 15–20 min.<br>
+        <strong>Best time:</strong> 11am–8pm. Safe until ~10pm on the main strip.<br>
+        <strong>Don't miss:</strong> Calle Independencia (main pedestrian street), El Parián plaza, ceramic shops, tequila tastings.</p>
+      </div>
+    </div>
+    <div class="accordion-item acc-chivas" id="fanfest-acc">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">⚽ FIFA Fan Fest — Plaza Liberación</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>The official fan zone is at <strong>Plaza Liberación</strong> in the historic downtown, surrounded by the cathedral, Teatro Degollado, and Guadalajara's central plazas.</p>
+        <br>
+        <p>Open on match days <strong>June 11 to June 26</strong>. Giant screens, live entertainment, food vendors. One of the most architecturally stunning fan zones in the entire 2026 World Cup.</p>
+        <br>
+        <p><strong>Getting there:</strong> Mi Tren Line 1 or 2 → Centro station.<br>
+        <strong>Safety:</strong> Heavily policed during World Cup. Very safe.<br>
+        <strong>Note:</strong> During Mexico vs South Korea (June 18), expect massive crowds — arrive early.</p>
+      </div>
+    </div>
+
+  </div><!-- /home -->
+
+  <!-- ════════ SAFETY VIEW ════════ -->
+  <div class="view" id="view-safety" data-title="SAFETY">
+
+    <!-- Food Safety -->
+    <div id="food-section">
+      <div class="section-head" style="color:var(--teal)">THE FOOD — EAT SAFELY IN GDL</div>
+      <p class="section-sub">Guadalajara is the food capital of Mexico. This section tells you what to eat, where, and how safely.</p>
+
+      <div class="accordion-item acc-teal">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <span class="accordion-label">🍖 Birria — The dish Guadalajara invented</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Slow-cooked goat or lamb in chile broth. Served with consomé for dipping, handmade tortillas, onion, cilantro. You eat it here at the source — nowhere does it better.</p>
+          <br>
+          <p><strong>Safety:</strong> Best at established restaurants, not street carts. Look for: long queue of locals, meat visible in pot, fresh tortillas made in front of you.</p>
+          <br>
+          <p>📍 <strong>Recommended:</strong> Birriería Las 9 Esquinas<br>Calle Leandro Valle 895, Zona Centro</p>
+        </div>
+      </div>
+
+      <div class="accordion-item acc-chivas">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <span class="accordion-label">🌮 Torta Ahogada — GDL's signature sandwich</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>A birote salado (crusty local bread) stuffed with carnitas, literally "drowned" in spicy árbol chile tomato sauce. Messy, fiery, magnificent. Guadalajarans are fiercely loyal to their torta ahogada — and they're right to be.</p>
+          <br>
+          <p><strong>Safety:</strong> Fine at any established torta shop. The sauce is cooked — no raw salsa risk.</p>
+          <br>
+          <p>⚠️ <strong>WARNING:</strong> This IS spicy. If you don't like heat, ask for <em>"enchilada"</em> (mild sauce) not <em>"ahogada"</em>.</p>
+          <br>
+          <p>📍 <strong>Recommended:</strong> Don José El de la Bicicleta (historic spot)</p>
+        </div>
+      </div>
+
+      <div class="accordion-item acc-gold">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <span class="accordion-label">🍲 Pozole — The soup that warms everything</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Hominy corn soup with pork or chicken, radishes, oregano, lime, and either red or green broth. A complete meal.</p>
+          <br>
+          <p><strong>Safety:</strong> Excellent at any sit-down restaurant. Very safe. Great before or after a match — filling and nutritious.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item acc-dark">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <span class="accordion-label">🥃 Tequila — You're in Jalisco</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Jalisco is where tequila comes from. The real stuff.</p>
+          <br>
+          <p><strong>Avoid:</strong> Cheap mixto tequilas sold in tourist traps.<br>
+          <strong>Look for:</strong> "100% Agave" on the label.<br>
+          <strong>Best experience:</strong> Cantinas in Tlaquepaque or Colonia Americana.</p>
+          <br>
+          <p>Tequila at 40% ABV still dehydrates you. Arrange your transport home before you start drinking.</p>
+        </div>
+      </div>
+
+      <div class="accordion-item acc-teal">
+        <button class="accordion-trigger" onclick="toggleAcc(this)">
+          <span class="accordion-label">🥤 Tejuino — The street drink of Guadalajara</span>
+          <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="accordion-body">
+          <p>Cold, slightly fermented corn drink made from masa and piloncillo. Served with lime sorbet and chile salt. Sounds unusual. Tastes extraordinary. Perfect at a watch party or walking the fan zone.</p>
+          <br>
+          <p><strong>Safety:</strong> Buy from established vendors with refrigeration. Avoid tejuino left in sun without ice.</p>
+        </div>
+      </div>
+
+      <!-- Food flags -->
+      <div class="card" style="margin-top:4px;">
+        <div class="card-body">
+          <div style="font-family:'Fredoka One',cursive;font-size:14px;color:var(--green);margin-bottom:8px;">✅ GREEN FLAGS — eat here</div>
+          <ul class="flag-list">
+            <li>✅ Long queue of locals — high turnover = fresh</li>
+            <li>✅ Open kitchen — you can see preparation</li>
+            <li>✅ Protein cooked fresh in front of you</li>
+            <li>✅ Tortillas made to order</li>
+            <li>✅ Established restaurant with indoor seating</li>
+          </ul>
+          <div style="font-family:'Fredoka One',cursive;font-size:14px;color:var(--red);margin:12px 0 8px;">❌ RED FLAGS — avoid</div>
+          <ul class="flag-list">
+            <li>❌ Protein sitting uncovered in sun</li>
+            <li>❌ No turnover — food sitting for hours</li>
+            <li>❌ Raw salsas in open containers at street stalls</li>
+            <li>❌ Seafood from market stalls (not a coastal city)</li>
+            <li>❌ Unrefrigerated drinks or dairy</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- Neighborhood Zones -->
+    <div class="section-head" style="color:var(--chivas)">NEIGHBORHOOD SAFETY ZONES</div>
+    <div class="info-box">🟢 Safe &nbsp;·&nbsp; 🟡 Caution &nbsp;·&nbsp; 🔴 Avoid</div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-green">🟢 SAFE</span> Chapultepec / Colonia Americana</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>The best neighborhood in Guadalajara for tourists. TimeOut Magazine named Colonia Americana one of the coolest neighborhoods in the world. Av. Chapultepec is lined with international restaurants, craft cocktail bars, cafés, and boutiques.</p>
+        <br><p>Safe day and night. Very active until 3–4am on weekends. <strong>Watch for:</strong> Phone theft near busy intersections. <strong>Getting there:</strong> Mi Tren Line 3 → Chapultepec station.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-green">🟢 SAFE</span> Providencia</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>Upscale residential neighborhood northwest of center. Shopping plazas, international restaurants, tree-lined streets. Very safe, low crime, family-friendly feel. Less touristic than Chapultepec but excellent quality. Good for hotels if you want quiet over nightlife.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-green">🟢 SAFE</span> Chapalita</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>The safest neighborhood in Guadalajara per locals. Residential, family-oriented. Off the tourist track but very safe for walking anytime. 20 min from main attractions.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-green">🟢</span><span class="zone-badge zone-yellow" style="margin-left:4px;">🟡</span> Tlaquepaque</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>Historic craft village 8km from city center. Cobblestone streets, artisan galleries, the best cantinas in the region. El Parián is the central plaza — mariachi plays while you drink.</p>
+        <br><p><strong>Safe during the day and until ~10–11pm.</strong> Avoid wandering off the main tourist streets after dark. Day trip or evening outing — not a late-night destination.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-green">🟢 SAFE</span> Zapopan Centro</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>Where Estadio Akron is located. Modern, suburban, lower crime than Guadalajara city. The <strong>Basílica de Zapopan</strong> is the main attraction. Safe and calm.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-yellow">🟡 CAUTION</span> Centro Histórico</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>Beautiful colonial architecture. Cathedral, Teatro Degollado, Plaza de Armas, Plaza Liberación (Fan Fest). Fine on main streets during the day. <strong>Avoid empty side streets after dark.</strong></p>
+        <br><p>THE FIFA FAN FEST is here — Plaza Liberación. During World Cup matches, this area is heavily policed and very active. Go for the fan fest, then leave.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-yellow">🟡 CAUTION</span> Mercado San Juan de Dios</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>Latin America's largest indoor market. Best tortas ahogadas in the city. Amazing for day visits. <strong>Watch for pickpockets</strong> in crowded market areas. Go during the day, not at night.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label"><span class="zone-badge zone-red">🔴 AVOID</span> Outer Colonias</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p>South and east of the tourist circuit. Residential areas with higher crime. No tourist reason to visit. If you're not sure where you are, request an Uber immediately.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <!-- ATM Section -->
+    <div class="section-head" style="color:var(--blue)">SAFE ATMs</div>
+    <div class="tab-pills">
+      <div class="tab-pill active" onclick="switchATM('chapultepec',this)">Chapultepec</div>
+      <div class="tab-pill" onclick="switchATM('tlaquepaque',this)">Tlaquepaque</div>
+      <div class="tab-pill" onclick="switchATM('stadium',this)">Near Stadium</div>
+    </div>
+
+    <div class="atm-panel active" id="atm-chapultepec">
+      <div class="card">
+        <div class="card-body">
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">BBVA</div>
+              <div style="font-size:12px;color:var(--gray-500);">Av. Chapultepec (multiple branches)</div>
+            </div>
+          </div>
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">Banamex</div>
+              <div style="font-size:12px;color:var(--gray-500);">Av. Vallarta near Chapultepec</div>
+            </div>
+          </div>
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">Santander</div>
+              <div style="font-size:12px;color:var(--gray-500);">Inside Galerías Guadalajara mall</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--teal);font-weight:700;margin-top:8px;">Best concentration of safe ATMs in the city ✓</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="atm-panel" id="atm-tlaquepaque">
+      <div class="card">
+        <div class="card-body">
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">BBVA</div>
+              <div style="font-size:12px;color:var(--gray-500);">Main pedestrian street, Independencia</div>
+            </div>
+          </div>
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">In-Shop ATMs</div>
+              <div style="font-size:12px;color:var(--gray-500);">Inside shops in the tourist zone</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="atm-panel" id="atm-stadium">
+      <div class="card">
+        <div class="card-body">
+          <div class="info-box" style="background:#fff5f5;border-color:#fca5a5;margin-bottom:10px;">
+            ⚠️ <strong>No safe standalone ATMs near Estadio Akron.</strong> Withdraw before leaving for the stadium.
+          </div>
+          <div class="atm-item">
+            <div>
+              <div class="atm-bank">Galerías Guadalajara Mall</div>
+              <div style="font-size:12px;color:var(--gray-500);">Near stadium — ATMs inside. Safest option.</div>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--gray-700);margin-top:8px;">Take $500 MXN max to the stadium. Stadium accepts cards.</div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /safety -->
+
+  <!-- ════════ STADIUM VIEW ════════ -->
+  <div class="view" id="view-stadium" data-title="STADIUM">
+
+    <!-- Hero -->
+    <div class="stadium-hero">
+      <!-- Stadium SVG -->
+      <div class="stadium-svg">
+        <svg width="100" height="70" viewBox="0 0 100 70">
+          <ellipse cx="50" cy="50" rx="48" ry="18" fill="none" stroke="rgba(255,255,255,0.4)" stroke-width="2"/>
+          <ellipse cx="50" cy="50" rx="38" ry="14" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <path d="M2 50 Q2 10 50 10 Q98 10 98 50" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="2.5"/>
+          <path d="M10 50 Q10 18 50 18 Q90 18 90 50" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="1.5"/>
+          <rect x="36" y="28" width="28" height="18" rx="2" fill="rgba(255,255,255,0.12)" stroke="rgba(255,255,255,0.3)" stroke-width="1"/>
+          <rect x="42" y="34" width="16" height="12" rx="1" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1"/>
+        </svg>
+      </div>
+      <div class="stadium-name">ESTADIO AKRON</div>
+      <div class="stadium-sub">Estadio Guadalajara for FIFA 2026 · Zapopan, Jalisco</div>
+      <div class="stadium-stats">
+        <div class="stadium-stat">
+          <div class="stadium-stat-val">46,000</div>
+          <div class="stadium-stat-lbl">Capacity</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-val">4</div>
+          <div class="stadium-stat-lbl">Matches</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-val">Chivas</div>
+          <div class="stadium-stat-lbl">Home Team</div>
+        </div>
+        <div class="stadium-stat">
+          <div class="stadium-stat-val">Zapopan</div>
+          <div class="stadium-stat-lbl">Location</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Zapopan note -->
+    <div class="zapopan-note">
+      ⚠️ <strong>Important:</strong> The stadium is in <strong>ZAPOPAN</strong> — not Guadalajara. Zapopan is a separate municipality, 15km west of downtown.<br>
+      Your Uber must say <em>"Estadio Akron, Zapopan"</em> or <em>"Circuito JVC, Zapopan"</em> — not just "Guadalajara."
+    </div>
+
+    <!-- Match Schedule -->
+    <div class="section-head" style="color:var(--chivas)">MATCH SCHEDULE</div>
+
+    <div class="match-card">
+      <div class="match-card-header">
+        <span class="match-date">Thursday, June 11, 2026 · 22:00 CDT</span>
+        <span class="match-group">Group A</span>
+      </div>
+      <div class="match-card-body">
+        <div class="match-teams">🇰🇷 South Korea vs Czechia 🇨🇿</div>
+        <div class="match-time">⏰ 22:00 CDT (UTC-6)</div>
+        <div class="match-note">Opening group stage match at Estadio Akron</div>
+      </div>
+    </div>
+
+    <div class="match-card marquee">
+      <div class="match-card-header">
+        <span class="match-date">Wednesday, June 18, 2026 · 21:00 CDT</span>
+        <span class="marquee-badge">🇲🇽 HOME MATCH</span>
+      </div>
+      <div class="match-card-body">
+        <div class="match-teams" style="color:var(--chivas)">🇲🇽 MEXICO vs South Korea 🇰🇷</div>
+        <div class="match-time">⏰ 21:00 CDT (UTC-6)</div>
+        <div class="match-note" style="color:var(--chivas);font-weight:700;">Mexico's home match in Guadalajara. Expect extraordinary atmosphere. <strong>Arrive 3 hours early.</strong></div>
+      </div>
+    </div>
+
+    <div class="match-card">
+      <div class="match-card-header">
+        <span class="match-date">Monday, June 23, 2026 · 22:00 CDT</span>
+        <span class="match-group">Group K</span>
+      </div>
+      <div class="match-card-body">
+        <div class="match-teams">🇨🇴 Colombia vs DR Congo 🇨🇩</div>
+        <div class="match-time">⏰ 22:00 CDT (UTC-6)</div>
+      </div>
+    </div>
+
+    <div class="match-card marquee">
+      <div class="match-card-header">
+        <span class="match-date">Friday, June 26, 2026 · 20:00 CDT</span>
+        <span class="marquee-badge">⭐ MARQUEE MATCH</span>
+      </div>
+      <div class="match-card-body">
+        <div class="match-teams">🏆 Uruguay vs Spain 🏆</div>
+        <div class="match-time">⏰ 20:00 CDT (UTC-6)</div>
+        <div class="match-note" style="color:var(--blue);font-weight:700;">Two former World Champions. One of the most anticipated group stage matches of the entire 2026 tournament globally.</div>
+      </div>
+    </div>
+
+    <div class="info-box" style="font-size:12px;">
+      ℹ️ All times CDT (UTC-6). Guadalajara hosts <strong>group stage only</strong>. No knockout matches here. If you follow Spain, Uruguay, Mexico, Colombia, or South Korea into knockout rounds, you will need to cross the US border.
+    </div>
+
+    <!-- Transport -->
+    <div class="section-head" style="color:var(--blue)">HOW TO GET TO ESTADIO AKRON</div>
+    <div class="info-box">The stadium is in Zapopan, 15km from city center. No Uber or Macrobús drops you at the gate. Best route: <strong>Mi Tren Line 3 → Autotrén</strong> directly to stadium entrance.</div>
+
+    <div class="transport-card t-blue open" id="transport-1">
+      <div class="transport-header" onclick="toggleTransport('transport-1')">
+        <div>
+          <div class="transport-title">🚆 Mi Tren Line 3 + Autotrén</div>
+          <div style="margin-top:4px;"><span class="transport-badge badge-green">✅ RECOMMENDED · FASTEST ON MATCH DAY</span></div>
+        </div>
+        <svg style="width:20px;height:20px;color:rgba(255,255,255,0.7);transition:transform .2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="transport-1-chevron"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="transport-body">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-text"><strong>Board Mi Tren Line 3 (SITEUR light rail)</strong><br>From Chapultepec: Line 3 station on Av. Vallarta<br>Direction: westbound toward Zapopan<br>Journey: ~20–30 minutes to transfer point</div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-text"><strong>Exit at PERIFÉRICO BELENES station</strong><br>Follow signs for Estadio Akron / Autotrén</div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-text"><strong>Board THE AUTOTRÉN ← unique to Guadalajara</strong><br>Electric autonomous vehicle train (like an airport people-mover). Built specifically for the 2026 World Cup.<br>Capacity: 7,200 passengers/hour.<br>Journey: <strong>1 minute 45 seconds</strong> to stadium.<br>Cost: same fare as regular transit.</div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-text"><strong>Arrive at ESTADIO AKRON station</strong><br>Walk directly to your gate.</div>
+        </div>
+        <div class="autotren-box">
+          <strong>⚡ The Autotrén</strong><br>
+          One of the most innovative match-day transport systems at any World Cup 2026 venue. Electric, zero-emission, autonomous vehicles running on an elevated track over Circuito JVC. No traffic. No delays. Maximum 7,200 fans/hour. This is why Guadalajara's stadium access will be smoother than Monterrey or CDMX.
+        </div>
+        <div class="divider"></div>
+        <div class="cost-row"><span>Cost</span><span style="font-weight:700;">~$14–15 MXN total</span></div>
+        <div class="cost-row"><span>Total time from Chapultepec</span><span style="font-weight:700;">~45–60 min</span></div>
+      </div>
+    </div>
+
+    <div class="transport-card t-teal" id="transport-2">
+      <div class="transport-header" onclick="toggleTransport('transport-2')">
+        <div>
+          <div class="transport-title">🚌 Match Day Bus Routes</div>
+        </div>
+        <svg style="width:20px;height:20px;color:rgba(255,255,255,0.7);transition:transform .2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="transport-2-chevron"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="transport-body">
+        <p style="font-size:13px;line-height:1.6;">Several bus routes run to the stadium on match days:</p>
+        <br>
+        <p style="font-size:13px;"><strong>Routes:</strong> A12, T01, T02, C109, C-138 match-day loop</p>
+        <p style="font-size:13px;"><strong>Mi Macro Periférico BRT:</strong> Estadio Chivas station with feeder routes from Ciudad Judicial / Ciudad Granja</p>
+      </div>
+    </div>
+
+    <div class="transport-card t-gray" id="transport-3">
+      <div class="transport-header" onclick="toggleTransport('transport-3')">
+        <div>
+          <div class="transport-title">🚗 Uber / DiDi</div>
+          <div style="margin-top:4px;"><span class="transport-badge badge-yellow">⚠️ SLOWER ON MATCH DAY</span></div>
+        </div>
+        <svg style="width:20px;height:20px;color:rgba(255,255,255,0.7);transition:transform .2s;" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" id="transport-3-chevron"><polyline points="6 9 12 15 18 9"/></svg>
+      </div>
+      <div class="transport-body">
+        <div class="cost-row"><span>Normal (Chapultepec → Akron)</span><span>$100–180 MXN / 20–35 min</span></div>
+        <div class="cost-row"><span>Match day</span><span>Add 30–60 min + surge</span></div>
+        <div class="cost-row"><span>GDL Airport → stadium</span><span>~$200–300 MXN, 35–45 min</span></div>
+        <br>
+        <div class="autotren-box" style="background:#eff6ff;border-color:var(--blue);">
+          <strong>💡 Smart Strategy:</strong> Uber to Mi Tren station, then Mi Tren Line 3 + Autotrén. Best of both options.
+        </div>
+      </div>
+    </div>
+
+    <!-- Airport -->
+    <div class="divider"></div>
+    <div class="section-head" style="color:var(--teal)">ARRIVING AT GDL AIRPORT</div>
+    <div class="card">
+      <div class="card-body">
+        <div style="font-family:'Fredoka One',cursive;font-size:15px;margin-bottom:8px;">✈️ Guadalajara Miguel Hidalgo y Costilla International (GDL)</div>
+        <p style="font-size:13px;color:var(--gray-700);line-height:1.5;">Mexico's second-busiest international airport. Direct flights from: LA, Chicago, Dallas, Houston, NYC, Las Vegas, Denver, Phoenix, Toronto, Vancouver.</p>
+        <div class="divider"></div>
+        <div style="background:#fff5f5;border:1px solid #fca5a5;border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px;">
+          ⚠️ Do <strong>NOT</strong> accept rides from people in the arrivals hall. Use Uber (no restrictions at GDL) or the official yellow airport taxi at the designated kiosk.
+        </div>
+        <div class="cost-row"><span>To Chapultepec/Col. Americana</span><span>$180–250 MXN, 25–35 min</span></div>
+        <div class="cost-row"><span>To Tlaquepaque</span><span>$150–200 MXN, 20–30 min</span></div>
+        <div class="cost-row"><span>To Estadio Akron</span><span>$200–300 MXN, 35–45 min</span></div>
+      </div>
+    </div>
+
+    <!-- Post Match -->
+    <div class="divider"></div>
+    <div class="section-head" style="color:var(--chivas)">AFTER THE FINAL WHISTLE</div>
+    <div class="card" style="border-color:var(--gold);box-shadow:3px 3px 0 var(--gold);">
+      <div class="card-body">
+        <div style="font-family:'Fredoka One',cursive;font-size:15px;margin-bottom:6px;">⚠️ 46,000 people leaving at once</div>
+        <p style="font-size:13px;line-height:1.5;color:var(--gray-700);">Wait <strong>15–20 minutes inside</strong> the stadium before heading to exits. The first rush is the most chaotic. Arrange your Uber pickup point BEFORE you enter.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🚆 Option 1: Autotrén + Mi Tren back</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.5;">Reverse the arrival route. Autotrén → Periférico Belenes → Mi Tren Line 3 → city center. Platform crowded for 20–30 min, then trains run clear. Line 3 runs until midnight on match days.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🚗 Option 2: Walk + Uber surge avoidance</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.5;">Walk 10–15 min from stadium before opening app. Head toward Av. López Mateos or Av. Vallarta. Surge pricing drops significantly away from the stadium.</p>
+      </div>
+    </div>
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🏨 Option 3: Pre-arranged transport</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.5;">Hotels in Zapopan or near the stadium offer match-day transport packages. Ask on check-in. ~$300–600 MXN round trip.</p>
+      </div>
+    </div>
+
+  </div><!-- /stadium -->
+
+  <!-- ════════ EMERGENCY VIEW ════════ -->
+  <div class="view emergency-view" id="view-emergency" data-title="EMERGENCY">
+
+    <div class="section-head" style="color:var(--red)">EMERGENCY CONTACTS</div>
+
+    <!-- Primary -->
+    <div class="call-card">
+      <a class="call-btn" href="tel:911">
+        <div class="call-info">
+          <div class="call-name">911 — All Emergencies</div>
+          <div class="call-desc">Police · Fire · Ambulance · Any network</div>
+        </div>
+        <div class="call-icon red-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.29 6.29l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <div class="call-card">
+      <a class="call-btn" href="tel:078">
+        <div class="call-info">
+          <div class="call-name">078 — Tourist Assistance</div>
+          <div class="call-desc">English available · Free call</div>
+        </div>
+        <div class="call-icon" style="background:var(--teal);">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.28h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9a16 16 0 0 0 6.29 6.29l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Hospitals -->
+    <div class="section-head" style="color:var(--chivas);font-size:18px;margin-top:4px;">HOSPITALS</div>
+    <div class="call-card">
+      <a class="call-btn" href="tel:+523336485585">
+        <div class="call-info">
+          <div class="call-name">Hospital Country 2000</div>
+          <div class="call-desc">Best international care · Colonia Monraz · English staff</div>
+          <div class="call-number">+52 33 3648-8585</div>
+        </div>
+        <div class="call-icon blue-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+      </a>
+    </div>
+    <div class="call-card">
+      <a class="call-btn" href="tel:+523338173141">
+        <div class="call-info">
+          <div class="call-name">Hospital Ángeles Guadalajara</div>
+          <div class="call-desc">International patients · English staff</div>
+          <div class="call-number">+52 33 3817-3141</div>
+        </div>
+        <div class="call-icon blue-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+      </a>
+    </div>
+    <div class="call-card">
+      <a class="call-btn" href="tel:+523336690222">
+        <div class="call-info">
+          <div class="call-name">Hospital San Javier</div>
+          <div class="call-desc">Guadalajara's most established private hospital · English staff</div>
+          <div class="call-number">+52 33 3669-0222</div>
+        </div>
+        <div class="call-icon blue-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+      </a>
+    </div>
+    <div class="call-card">
+      <a class="call-btn" href="tel:+523336145300">
+        <div class="call-info">
+          <div class="call-name">Cruz Roja Guadalajara</div>
+          <div class="call-desc">Red Cross ambulance service</div>
+          <div class="call-number">+52 33 3614-5300</div>
+        </div>
+        <div class="call-icon red-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+      </a>
+    </div>
+
+    <!-- Embassies -->
+    <div class="section-head" style="color:var(--blue);font-size:18px;margin-top:4px;">EMBASSIES</div>
+    <div class="embassies-grid">
+      <div class="embassy-card"><a href="tel:+525525792000"><div class="embassy-name">🇺🇸 USA</div><div class="embassy-num">+52 55 2579-2000</div></a></div>
+      <div class="embassy-card"><a href="tel:+525516703200"><div class="embassy-name">🇬🇧 UK</div><div class="embassy-num">+52 55 1670-3200</div></a></div>
+      <div class="embassy-card"><a href="tel:+525552832200"><div class="embassy-name">🇩🇪 Germany</div><div class="embassy-num">+52 55 5283-2200</div></a></div>
+      <div class="embassy-card"><a href="tel:+525591719700"><div class="embassy-name">🇫🇷 France</div><div class="embassy-num">+52 55 9171-9700</div></a></div>
+      <div class="embassy-card"><a href="tel:+31857737400"><div class="embassy-name">🇳🇱 Netherlands</div><div class="embassy-num">+31 857 737 400 (WhatsApp)</div></a></div>
+      <div class="embassy-card"><a href="tel:+525552822977"><div class="embassy-name">🇪🇸 Spain</div><div class="embassy-num">+52 55 5282-2977</div></a></div>
+      <div class="embassy-card"><a href="tel:+525555209430"><div class="embassy-name">🇦🇷 Argentina</div><div class="embassy-num">+52 55 5520-9430</div></a></div>
+      <div class="embassy-card"><a href="tel:+525554845484"><div class="embassy-name">🇧🇷 Brazil</div><div class="embassy-num">+52 55 5484-5484</div></a></div>
+      <div class="embassy-card"><a href="tel:+525552028454"><div class="embassy-name">🇨🇴 Colombia</div><div class="embassy-num">+52 55 5202-8454</div></a></div>
+    </div>
+
+    <!-- Cards -->
+    <div class="section-head" style="color:var(--gray-700);font-size:18px;margin-top:4px;">CARD EMERGENCIES</div>
+    <div class="call-card"><a class="call-btn" href="tel:+18008472911"><div class="call-info"><div class="call-name">💳 Visa Emergency</div><div class="call-number">+1 800 847-2911</div></div></a></div>
+    <div class="call-card"><a class="call-btn" href="tel:+16367227111"><div class="call-info"><div class="call-name">💳 Mastercard Emergency</div><div class="call-number">+1 636 722-7111</div></div></a></div>
+    <div class="call-card"><a class="call-btn" href="tel:+18005284800"><div class="call-info"><div class="call-name">💳 Amex Emergency</div><div class="call-number">+1 800 528-4800</div></div></a></div>
+
+    <!-- Protocols -->
+    <div class="divider"></div>
+    <div class="section-head" style="color:var(--gray-700);font-size:18px;">IF SOMETHING GOES WRONG</div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🚨 If I've been robbed</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.7;">1. Do not resist. Give them what they ask for.<br>2. Move to a public place immediately.<br>3. Call 911 or 078 (tourist assistance).<br>4. Do NOT return to the scene.<br>5. File a report at the nearest police station (needed for insurance).<br>6. Cancel your cards immediately using the numbers above.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">👮 If police stop me</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.7;">1. Stay calm. Do not run or argue.<br>2. Provide ID if asked — a copy is fine.<br>3. Ask: <em>"¿Puede llamar a un intérprete?"</em> (Can you call an interpreter?)<br>4. Do not pay cash on the spot — ask for a formal citation.<br>5. Note the officer's name and badge number.<br><br><strong>Policía Turística</strong> are deployed in Centro Histórico, Tlaquepaque, and the Fan Fest area. They speak English and are specifically for tourists.</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🤢 If I got sick from food</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.7;"><strong>Step 1:</strong> Stop eating immediately.<br><strong>Step 2:</strong> Drink oral rehydration salts (Pedialyte/Suero Oral).<br><strong>Step 3:</strong> Go to Farmacias del Ahorro — doctor on duty.<br><strong>Step 4:</strong> Say: <em>"Tengo intoxicación alimentaria"</em> (I have food poisoning).</p>
+        <br>
+        <p style="font-size:13px;"><strong>At the pharmacy:</strong> Loperamida (Imodium equivalent) ~$25 MXN. Metronidazol for bacterial infection (ask pharmacist).</p>
+        <br>
+        <p style="font-size:13px;">Go to hospital if: fever over 38.5°C, blood, can't keep fluids down.<br><strong>Hospital Country 2000:</strong> +52 33 3648-8585</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🏥 If I need a doctor</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.7;"><strong>Minor issues:</strong> Farmacias del Ahorro — doctor on duty ~$75 MXN.<br><strong>Best international care:</strong> Hospital Country 2000 · +52 33 3648-8585<br><strong>Most established:</strong> Hospital San Javier · +52 33 3669-0222<br><strong>International patients:</strong> Hospital Ángeles · +52 33 3817-3141</p>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-trigger" onclick="toggleAcc(this)">
+        <span class="accordion-label">🛂 If I lost my passport</span>
+        <svg class="accordion-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="accordion-body">
+        <p style="font-size:13px;line-height:1.7;">1. File a police report immediately (denuncia).<br>2. Contact your embassy using the numbers above.<br>3. Have digital copies of your passport stored in email/cloud.<br>4. Your embassy can issue an emergency travel document within 24–48 hours.<br>5. Tourist assistance: 078 can help guide you through the process.</p>
+      </div>
+    </div>
+
+  </div><!-- /emergency -->
+
+  <!-- ════════ PHRASES VIEW ════════ -->
+  <div class="view" id="view-phrases" data-title="PHRASES">
+
+    <div class="section-head" style="color:var(--chivas)">SPANISH PHRASES</div>
+    <p class="section-sub">Tap any phrase to copy it to clipboard.</p>
+
+    <div class="phrase-filter" id="phrase-filter">
+      <div class="phrase-pill active" onclick="filterPhrases('all',this)">All</div>
+      <div class="phrase-pill" onclick="filterPhrases('emergency',this)">🚨 Emergency</div>
+      <div class="phrase-pill" onclick="filterPhrases('transport',this)">🚕 Transport</div>
+      <div class="phrase-pill" onclick="filterPhrases('food',this)">🍽️ Food</div>
+      <div class="phrase-pill" onclick="filterPhrases('money',this)">💰 Money</div>
+      <div class="phrase-pill" onclick="filterPhrases('police',this)">👮 Police</div>
+      <div class="phrase-pill" onclick="filterPhrases('health',this)">💊 Health</div>
+      <div class="phrase-pill" onclick="filterPhrases('matchday',this)">⚽ Match Day</div>
+    </div>
+
+    <div id="phrases-list"></div>
+
+  </div><!-- /phrases -->
+
+</div><!-- /scroll-area -->
+
+<!-- BOTTOM NAV -->
+<nav id="bottom-nav">
+  <button class="nav-btn active" data-tab="home" onclick="goTab('home')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="nav-btn" data-tab="safety" onclick="goTab('safety')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Safety</span>
+  </button>
+  <button class="nav-btn" data-tab="stadium" onclick="goTab('stadium')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M2 12v4c0 3.3 4.5 6 10 6s10-2.7 10-6v-4"/></svg>
+    <span>Stadium</span>
+  </button>
+  <button class="nav-btn" data-tab="emergency" onclick="goTab('emergency')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+    <span>Emergency</span>
+  </button>
+  <button class="nav-btn" data-tab="phrases" onclick="goTab('phrases')">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <span>Phrases</span>
+  </button>
+</nav>
+
+<!-- SOS OVERLAY -->
+<div id="sos-overlay">
+  <div class="sos-header">
+    <div class="sos-title">🆘 EMERGENCY</div>
+    <button class="sos-close" onclick="closeSOS()">✕</button>
+  </div>
+  <a class="sos-911" href="tel:911">📞 CALL 911</a>
+  <a class="sos-call" href="tel:078"><span class="sos-call-name">078 — Tourist Assistance (English)</span><span class="sos-call-num">📞</span></a>
+  <a class="sos-call" href="tel:+523336485585"><span class="sos-call-name">Hospital Country 2000</span><span class="sos-call-num">+52 33 3648-8585</span></a>
+  <a class="sos-call" href="tel:+523336145300"><span class="sos-call-name">Cruz Roja Guadalajara</span><span class="sos-call-num">+52 33 3614-5300</span></a>
+  <a class="sos-call" href="tel:+523338173141"><span class="sos-call-name">Hospital Ángeles GDL</span><span class="sos-call-num">+52 33 3817-3141</span></a>
+  <a class="sos-call" href="tel:+523336690222"><span class="sos-call-name">Hospital San Javier</span><span class="sos-call-num">+52 33 3669-0222</span></a>
+  <a class="sos-call" href="tel:+525525792000"><span class="sos-call-name">🇺🇸 US Embassy Mexico City</span><span class="sos-call-num">+52 55 2579-2000</span></a>
+  <a class="sos-call" href="tel:+525516703200"><span class="sos-call-name">🇬🇧 UK Embassy</span><span class="sos-call-num">+52 55 1670-3200</span></a>
+</div>
+
+<!-- TOAST -->
+<div id="toast">Copied! ✓</div>
+
+<script>
+// ═══════════════════════════════
+// PHRASE DATA
+// ═══════════════════════════════
+const phrases = [
+  // Emergency
+  {cat:'emergency', es:'¡Ayúdame!', pron:'ah-YOO-dah-meh', en:'Help me!'},
+  {cat:'emergency', es:'Llame a la policía', pron:'YAH-meh ah la po-li-SEE-ah', en:'Call the police'},
+  {cat:'emergency', es:'Llame a una ambulancia', pron:'YAH-meh ah OO-nah am-boo-LAN-syah', en:'Call an ambulance'},
+  {cat:'emergency', es:'Me robaron', pron:'meh ro-BAH-ron', en:'I was robbed'},
+  {cat:'emergency', es:'Perdí mi pasaporte', pron:'per-DEE mee pa-sa-POR-teh', en:'I lost my passport'},
+  {cat:'emergency', es:'¿Dónde está el hospital?', pron:'DOHN-deh es-TAH el os-pi-TAL', en:'Where is the hospital?'},
+  // Transport
+  {cat:'transport', es:'Uber, por favor', pron:'OO-ber por fa-VOR', en:'Uber please (use app)'},
+  {cat:'transport', es:'Al estadio Akron, por favor', pron:'al es-TAH-dyoh AK-ron', en:'To Estadio Akron, please'},
+  {cat:'transport', es:'A Zapopan, por favor', pron:'ah sa-PO-pan', en:'To Zapopan, please'},
+  {cat:'transport', es:'¿Dónde está la estación de Tren Línea 3?', pron:'DOHN-deh es-TAH la es-ta-SYON', en:'Where is the Mi Tren Line 3 station?'},
+  {cat:'transport', es:'¿El Autotrén está funcionando?', pron:'el ow-toh-TREHN es-TAH foon-syo-NAHN-doh', en:'Is the Autotrén running?'},
+  {cat:'transport', es:'¿Cuánto tarda al estadio?', pron:'KWAHN-toh TAR-dah al es-TAH-dyoh', en:'How long to the stadium?'},
+  {cat:'transport', es:'Al aeropuerto, por favor', pron:'al ae-ro-PWER-toh', en:'To the airport, please'},
+  // Food
+  {cat:'food', es:'Una torta ahogada, por favor', pron:'OO-nah TOR-tah ah-oh-GAH-dah', en:'One torta ahogada please'},
+  {cat:'food', es:'Sin picante, por favor', pron:'seen pee-KAN-teh', en:'Without spice please'},
+  {cat:'food', es:'Enchilada, no ahogada', pron:'en-chee-LAH-dah, no ah-oh-GAH-dah', en:'Mild sauce, not spicy'},
+  {cat:'food', es:'¿Dónde puedo comer birria?', pron:'DOHN-deh PWEH-doh koh-MEHR BEE-ryah', en:'Where can I eat birria?'},
+  {cat:'food', es:'¿Es cabrito o res?', pron:'es kah-BREE-toh oh ress', en:'Is it goat or beef?'},
+  {cat:'food', es:'Un tejuino, por favor', pron:'oon teh-HWEE-noh', en:'One tejuino please'},
+  {cat:'food', es:'Un tequila 100% agave, por favor', pron:'oon teh-KEE-lah syen por-SYENTO', en:'A 100% agave tequila please'},
+  {cat:'food', es:'La cuenta, por favor', pron:'la KWEN-tah por fa-VOR', en:'The bill, please'},
+  {cat:'food', es:'¿Tiene opciones vegetarianas?', pron:'TYEH-neh op-SYO-nes veh-heh-tah-RYAH-nas', en:'Do you have vegetarian options?'},
+  // Money
+  {cat:'money', es:'¿Dónde hay un cajero automático?', pron:'DOHN-deh ay oon ka-HEH-ro', en:'Where is an ATM?'},
+  {cat:'money', es:'¿Aceptan tarjetas?', pron:'ah-SEP-tan tar-HEH-tas', en:'Do you accept cards?'},
+  {cat:'money', es:'¿Cuánto cuesta?', pron:'KWAHN-toh KWES-tah', en:'How much does it cost?'},
+  {cat:'money', es:'¿Tienen cambio?', pron:'TYEH-nen KAM-byoh', en:'Do you have change?'},
+  // Police
+  {cat:'police', es:'No entiendo', pron:'no en-TYEHN-doh', en:"I don't understand"},
+  {cat:'police', es:'Soy turista', pron:'soy too-REES-tah', en:'I am a tourist'},
+  {cat:'police', es:'Necesito un intérprete', pron:'neh-seh-SEE-toh oon een-TER-preh-teh', en:'I need an interpreter'},
+  {cat:'police', es:'¿Puedo llamar a mi embajada?', pron:'PWEH-doh yah-MAR ah mee em-ba-HAH-dah', en:'Can I call my embassy?'},
+  {cat:'police', es:'No hice nada malo', pron:'no EE-seh NAH-dah MAH-loh', en:'I did nothing wrong'},
+  // Health
+  {cat:'health', es:'Necesito un médico', pron:'neh-seh-SEE-toh oon MEH-dee-koh', en:'I need a doctor'},
+  {cat:'health', es:'Me duele el estómago', pron:'meh DWEH-leh el es-TOH-mah-go', en:'My stomach hurts'},
+  {cat:'health', es:'Tengo intoxicación alimentaria', pron:'TEN-go een-tok-see-kah-SYON', en:'I have food poisoning'},
+  {cat:'health', es:'Soy alérgico a...', pron:'soy ah-LER-hee-koh ah', en:'I am allergic to...'},
+  {cat:'health', es:'¿Tiene Pedialyte o suero oral?', pron:'TYEH-neh peh-dyah-LITE', en:'Do you have Pedialyte/oral rehydration?'},
+  // Match Day
+  {cat:'matchday', es:'¿Dónde está el estadio?', pron:'DOHN-deh es-TAH el es-TAH-dyoh', en:'Where is the stadium?'},
+  {cat:'matchday', es:'¡Arriba el Tri!', pron:'ah-REE-bah el tree', en:'Go Mexico! (universal chant)'},
+  {cat:'matchday', es:'¡Chivas!', pron:'CHEE-vas', en:'Cheer for the local team!'},
+  {cat:'matchday', es:'¿A qué hora es el partido?', pron:'ah keh OH-rah es el par-TEE-doh', en:'What time is the match?'},
+  {cat:'matchday', es:'¿Dónde están las entradas?', pron:'DOHN-deh es-TAN las en-TRAH-das', en:'Where are the entrances?'},
+  {cat:'matchday', es:'¿Cuál es mi asiento?', pron:'kwahl es mee ah-SYEN-toh', en:'What is my seat?'},
+  {cat:'matchday', es:'¿Dónde están los baños?', pron:'DOHN-deh es-TAN los BAH-nyos', en:'Where are the bathrooms?'},
+];
+
+// ═══════════════════════════════
+// RENDER PHRASES
+// ═══════════════════════════════
+function renderPhrases(filter) {
+  const list = document.getElementById('phrases-list');
+  const filtered = filter === 'all' ? phrases : phrases.filter(p => p.cat === filter);
+  list.innerHTML = filtered.map((p,i) => `
+    <div class="phrase-card" onclick="copyPhrase(this,'${p.es.replace(/'/g,"\\'")}')">
+      <div class="phrase-inner">
+        <div class="phrase-spanish">${p.es}</div>
+        <div class="phrase-pronun">${p.pron}</div>
+        <div class="phrase-english">${p.en}</div>
+      </div>
+      <div class="phrase-copy">Tap to copy</div>
+    </div>
+  `).join('');
+}
+renderPhrases('all');
+
+function filterPhrases(cat, el) {
+  document.querySelectorAll('.phrase-pill').forEach(p => p.classList.remove('active'));
+  el.classList.add('active');
+  renderPhrases(cat);
+}
+
+function copyPhrase(card, text) {
+  if (navigator.clipboard) {
+    navigator.clipboard.writeText(text).catch(()=>{});
+  }
+  card.classList.add('copied');
+  card.querySelector('.phrase-copy').textContent = 'Copied! ✓';
+  showToast('Copied!');
+  setTimeout(()=>{
+    card.classList.remove('copied');
+    card.querySelector('.phrase-copy').textContent = 'Tap to copy';
+  }, 2000);
+}
+
+// ═══════════════════════════════
+// TAB NAVIGATION
+// ═══════════════════════════════
+let stadiumTabVisited = false;
+
+function goTab(tab) {
+  document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  const view = document.getElementById('view-' + tab);
+  if (view) {
+    view.classList.add('active');
+    document.getElementById('scroll-area').scrollTop = 0;
+    const title = view.dataset.title || tab.toUpperCase();
+    document.getElementById('section-title').textContent = title;
+  }
+  const btn = document.querySelector(`[data-tab="${tab}"]`);
+  if (btn) btn.classList.add('active');
+
+  // Zapopan reminder on first stadium visit
+  if (tab === 'stadium' && !stadiumTabVisited) {
+    const dismissed = sessionStorage.getItem('zapopan_dismissed');
+    if (!dismissed) {
+      document.getElementById('zapopan-banner').classList.add('show');
+    }
+    stadiumTabVisited = true;
+  }
+}
+
+function scrollToFood() {
+  setTimeout(() => {
+    const el = document.getElementById('food-section');
+    if (el) el.scrollIntoView({behavior:'smooth'});
+  }, 100);
+}
+
+// ═══════════════════════════════
+// ACCORDIONS
+// ═══════════════════════════════
+function toggleAcc(btn) {
+  const item = btn.closest('.accordion-item');
+  const isOpen = item.classList.contains('open');
+  // Close all in same context
+  item.parentElement.querySelectorAll('.accordion-item.open').forEach(i => {
+    if (i !== item) i.classList.remove('open');
+  });
+  item.classList.toggle('open', !isOpen);
+}
+
+// ═══════════════════════════════
+// TRANSPORT TOGGLES
+// ═══════════════════════════════
+function toggleTransport(id) {
+  const card = document.getElementById(id);
+  const isOpen = card.classList.contains('open');
+  card.classList.toggle('open', !isOpen);
+  const chevron = document.getElementById(id + '-chevron');
+  if (chevron) chevron.style.transform = card.classList.contains('open') ? 'rotate(180deg)' : '';
+}
+
+// ═══════════════════════════════
+// ATM TABS
+// ═══════════════════════════════
+function switchATM(id, el) {
+  document.querySelectorAll('.atm-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.tab-pill').forEach(p => p.classList.remove('active'));
+  document.getElementById('atm-' + id).classList.add('active');
+  el.classList.add('active');
+}
+
+// ═══════════════════════════════
+// SOS OVERLAY
+// ═══════════════════════════════
+function openSOS() {
+  document.getElementById('sos-overlay').classList.add('active');
+}
+function closeSOS() {
+  document.getElementById('sos-overlay').classList.remove('active');
+}
+
+// ═══════════════════════════════
+// ZAPOPAN BANNER
+// ═══════════════════════════════
+function dismissZapopan() {
+  document.getElementById('zapopan-banner').classList.remove('show');
+  sessionStorage.setItem('zapopan_dismissed', '1');
+}
+
+// ═══════════════════════════════
+// TOAST
+// ═══════════════════════════════
+let toastTimer;
+function showToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg + ' ✓';
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 1800);
+}
+
+// ═══════════════════════════════
+// COUNTDOWN
+// ═══════════════════════════════
+function updateCountdown() {
+  const target = new Date('2026-06-11T22:00:00-06:00');
+  const now = new Date();
+  const diff = target - now;
+  const el = document.getElementById('countdown-display');
+  if (!el) return;
+  if (diff <= 0) {
+    el.textContent = '⚽ The World Cup is here!';
+    return;
+  }
+  const days = Math.floor(diff / (1000*60*60*24));
+  const hours = Math.floor((diff % (1000*60*60*24)) / (1000*60*60));
+  if (days > 0) {
+    el.textContent = `⏱ ${days} days to first match`;
+  } else if (hours > 0) {
+    el.textContent = `⏱ ${hours} hours to kickoff`;
+  } else {
+    el.textContent = '⚽ Kickoff TODAY!';
+  }
+}
+updateCountdown();
+setInterval(updateCountdown, 60000);
+</script>
+</body>
+</html>
