@@ -1671,7 +1671,6 @@ a{text-decoration:none;color:inherit;}
   50%{transform:rotate(45deg) translateY(5px);}
 }
 </style>
-<script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
 <body>
 
@@ -2683,9 +2682,14 @@ function updateDynamicUpsell(n) {
    CHECKOUT
 ═══════════════════════════════ */
 function openGumroad(url) {
-  // ?wanted=true skips the product page and opens checkout directly
-  const checkoutUrl = url + '?wanted=true';
-  window.open(checkoutUrl, '_blank');
+  // Create a temporary hidden link with the Gumroad overlay attribute and click it
+  const a = document.createElement('a');
+  a.href = url;
+  a.setAttribute('data-gumroad-overlay-checkout', 'true');
+  a.style.display = 'none';
+  document.body.appendChild(a);
+  a.click();
+  setTimeout(() => document.body.removeChild(a), 1000);
 }
 
 function goCheckout() {
@@ -3017,5 +3021,6 @@ if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
 </div>
 
 <div id="selection-toast">Choose a city first</div>
+<script src="https://gumroad.com/js/gumroad.js"></script>
 </body>
 </html>
