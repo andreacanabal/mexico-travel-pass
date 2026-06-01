@@ -148,17 +148,19 @@ a{text-decoration:none;color:inherit;}
 .sticky-nav{
   position:fixed;top:0;left:0;right:0;z-index:1000;
   height:52px;
-  background:var(--red);
+  background:#0A0A0A;
+  border-bottom:2px solid #D42B2B;
   display:flex;align-items:center;
-  padding:0 16px;
-  gap:12px;
+  padding:0 14px;
+  gap:10px;
   overflow:hidden;
 }
 .sticky-logo{
   font-family:'Bangers',cursive;
-  font-size:18px;color:var(--white);
-  letter-spacing:0.04em;
+  font-size:15px;color:rgba(255,255,255,0.5);
+  letter-spacing:0.06em;
   white-space:nowrap;flex-shrink:0;
+  text-transform:uppercase;
 }
 .sticky-ticker-wrap{
   flex:1;overflow:hidden;
@@ -167,32 +169,58 @@ a{text-decoration:none;color:inherit;}
 .sticky-ticker{
   display:flex;align-items:center;
   white-space:nowrap;
-  animation:ticker 22s linear infinite;
+  animation:ticker 28s linear infinite;
 }
 .sticky-ticker:hover{animation-play-state:paused;}
 @keyframes ticker{
-  from{transform:translateX(100%);}
-  to{transform:translateX(-100%);}
+  from{transform:translateX(0);}
+  to{transform:translateX(-50%);}
 }
 .sticky-ticker span{
   font-family:'Nunito',sans-serif;
-  font-size:13px;color:rgba(255,255,255,0.9);
-  font-weight:600;padding:0 16px;
+  font-size:12px;color:rgba(255,255,255,0.55);
+  font-weight:700;padding:0 18px;
+  text-transform:uppercase;letter-spacing:0.5px;
+}
+.sticky-ticker span #ticker-countdown,
+.sticky-ticker span #ticker-countdown-2{
+  font-family:'Bangers',cursive;
+  font-size:15px;color:#F5C518;
+  letter-spacing:1px;
 }
 .sticky-cta{
   font-family:'Bangers',cursive;
-  font-size:15px;letter-spacing:0.04em;
-  background:var(--gold);color:var(--black);
-  border:2px solid var(--black);
+  font-size:15px;letter-spacing:1px;
+  background:#F5C518;color:#0A0A0A;
+  border:2px solid #0A0A0A;
   border-radius:8px;
   padding:6px 14px;
-  box-shadow:2px 2px 0 var(--black);
+  box-shadow:3px 3px 0 #D42B2B;
   flex-shrink:0;
   transition:box-shadow 80ms,transform 80ms;
+  white-space:nowrap;
 }
-.sticky-cta:hover{box-shadow:4px 4px 0 var(--black);transform:translate(-1px,-1px);}
-.sticky-cta:active{box-shadow:1px 1px 0 var(--black);transform:translate(2px,2px);}
-@media(max-width:600px){.sticky-logo{font-size:13px;letter-spacing:0.02em;}.sticky-ticker-wrap{min-width:0;max-width:140px;}}
+.sticky-cta:hover{box-shadow:4px 4px 0 #D42B2B;transform:translate(-1px,-1px);}
+.sticky-cta:active{box-shadow:1px 1px 0 #D42B2B;transform:translate(2px,2px);}
+.live-dot-nav{
+  display:none;align-items:center;gap:4px;
+  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
+  color:#4ADE80;white-space:nowrap;flex-shrink:0;
+}
+.live-dot-nav .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ADE80;animation:blink 1.2s ease-in-out infinite;
+}
+.live-dot-nav.show{display:flex;}
+#scroll-progress{
+  position:absolute;bottom:0;left:0;height:3px;width:0%;
+  background:linear-gradient(90deg,#F5C518,#D42B2B);
+  transition:width 80ms linear;pointer-events:none;
+}
+@media(max-width:600px){
+  .sticky-logo{font-size:12px;}
+  .sticky-cta{font-size:13px;padding:5px 10px;}
+}
 
 /* ═══════════════════════════════
    SECTION 2: HERO — TOURNAMENT POSTER
@@ -245,6 +273,15 @@ a{text-decoration:none;color:inherit;}
 }
 
 /* ── Hero container ── */
+.hero-top-badge{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(212,43,43,0.92);
+  border:1.5px solid rgba(255,255,255,0.25);
+  border-radius:99px;padding:6px 16px;
+  margin-bottom:20px;
+  font-family:'Fredoka One',cursive;
+  font-size:13px;color:#fff;letter-spacing:0.5px;
+}
 #hero{
   position:relative;
   min-height:100svh;
@@ -1388,7 +1425,7 @@ a{text-decoration:none;color:inherit;}
 .availability-bar-label{display:flex;justify-content:space-between;font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;color:rgba(0,0,0,0.6);margin-bottom:6px;}
 #avail-remaining{color:#D42B2B;font-weight:800;}
 .availability-bar-track{height:8px;background:rgba(0,0,0,0.15);border-radius:4px;overflow:hidden;border:1px solid rgba(0,0,0,0.1);}
-.availability-bar-fill{height:100%;background:linear-gradient(90deg,#D42B2B,#F5C518);border-radius:4px;width:0%;transition:width 1.5s ease;}
+.availability-bar-fill{height:100%;background:linear-gradient(90deg,#D42B2B,#F5C518);border-radius:4px;width:60%;transition:width 1.5s ease;}
 
 /* ═══════════════ SYSTEM 6 — GUARANTEE ═══════════════ */
 #guarantee-section{background:var(--cream);padding:44px 0;}
@@ -1660,78 +1697,6 @@ a{text-decoration:none;color:inherit;}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* ═══ 1. EMAIL CAPTURE MODAL ═══ */
-#email-capture-overlay{
-  display:none;position:fixed;inset:0;z-index:99998;
-  background:rgba(0,0,20,0.88);
-  align-items:center;justify-content:center;padding:20px;
-}
-#email-capture-overlay.active{display:flex;}
-#ec-box{
-  background:#0A0A14;border:3px solid #F5C518;
-  border-radius:18px;box-shadow:8px 8px 0 #0A0A0A;
-  width:100%;max-width:420px;padding:32px 28px;
-  position:relative;
-}
-#ec-close{
-  position:absolute;top:14px;right:16px;
-  background:none;border:none;color:rgba(255,255,255,0.5);
-  font-size:22px;cursor:pointer;
-  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
-  border-radius:50%;transition:color 120ms;
-}
-#ec-close:hover{color:#fff;}
-.ec-badge{
-  display:inline-flex;align-items:center;gap:6px;
-  background:rgba(212,43,43,0.2);border:1px solid rgba(212,43,43,0.5);
-  border-radius:99px;padding:4px 12px;
-  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
-  color:#F87171;letter-spacing:0.5px;text-transform:uppercase;
-  margin-bottom:14px;
-}
-#ec-box h3{
-  font-family:'Bangers',cursive;font-size:28px;
-  color:#FFFFFF;letter-spacing:2px;line-height:1;
-  margin-bottom:6px;
-}
-#ec-box .ec-sub{
-  font-family:'Nunito',sans-serif;font-size:13px;
-  color:rgba(255,255,255,0.6);margin-bottom:20px;line-height:1.5;
-}
-.ec-field{
-  display:flex;flex-direction:column;gap:6px;margin-bottom:12px;
-}
-.ec-field label{
-  font-family:'Fredoka One',cursive;font-size:12px;
-  color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.5px;
-}
-.ec-field input{
-  background:rgba(255,255,255,0.07);
-  border:2px solid rgba(255,255,255,0.15);
-  border-radius:10px;padding:11px 14px;
-  font-family:'Nunito',sans-serif;font-size:14px;
-  color:#fff;outline:none;
-  transition:border-color 150ms;
-}
-.ec-field input:focus{border-color:#F5C518;}
-.ec-field input::placeholder{color:rgba(255,255,255,0.3);}
-#ec-submit{
-  width:100%;padding:15px;margin-top:6px;
-  background:#F5C518;color:#0A0A0A;
-  font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;
-  border:3px solid #0A0A0A;border-radius:12px;
-  box-shadow:4px 4px 0 #0A0A0A;cursor:pointer;
-  transition:transform 80ms,box-shadow 80ms;
-}
-#ec-submit:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #0A0A0A;}
-#ec-submit:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #0A0A0A;}
-.ec-disclaimer{
-  font-family:'Nunito',sans-serif;font-size:11px;
-  color:rgba(255,255,255,0.35);text-align:center;
-  margin-top:10px;
-}
-.ec-disclaimer svg{display:inline-block;vertical-align:middle;margin-right:3px;}
-
-/* ═══ 2. STICKY BOTTOM BAR ═══ */
 #sticky-bottom-bar{
   display:none;
   position:fixed;bottom:0;left:0;right:0;z-index:997;
@@ -1925,6 +1890,77 @@ a{text-decoration:none;color:inherit;}
   color:rgba(255,255,255,0.3);transition:color 150ms;
 }
 .footer-social a:hover{color:var(--gold);}
+
+/* ══════════════ CART POPUP ══════════════ */
+#cart-overlay{
+  display:none;position:fixed;inset:0;z-index:10000;
+  background:rgba(0,0,0,0.6);align-items:flex-end;justify-content:center;
+}
+#cart-overlay.active{display:flex;}
+@media(min-width:600px){
+  #cart-overlay{align-items:center;}
+  #cart-drawer{border-radius:20px!important;max-width:420px;}
+}
+#cart-drawer{
+  background:#FFFBF0;border-radius:20px 20px 0 0;
+  border:3px solid #0A0A0A;box-shadow:0 -6px 0 #0A0A0A;
+  width:100%;max-width:480px;padding:0;overflow:hidden;
+  transform:translateY(100%);transition:transform 300ms cubic-bezier(0.34,1.56,0.64,1);
+}
+#cart-overlay.active #cart-drawer{transform:translateY(0);}
+@media(min-width:600px){
+  #cart-drawer{transform:scale(0.92) translateY(20px)!important;}
+  #cart-overlay.active #cart-drawer{transform:scale(1) translateY(0)!important;}
+}
+#cart-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:18px 20px 14px;border-bottom:2px solid #0A0A0A;background:#1A3FAA;
+}
+#cart-title{font-family:'Bangers',cursive;font-size:22px;color:#F5C518;letter-spacing:2px;}
+#cart-close{
+  background:none;border:none;font-size:20px;color:rgba(255,255,255,0.7);
+  cursor:pointer;width:36px;height:36px;display:flex;
+  align-items:center;justify-content:center;border-radius:50%;
+}
+#cart-close:hover{color:#fff;}
+#cart-items{padding:16px 20px;display:flex;flex-direction:column;gap:10px;max-height:280px;overflow-y:auto;}
+.cart-item{
+  display:flex;align-items:center;justify-content:space-between;
+  background:#fff;border:2px solid #0A0A0A;border-radius:12px;
+  box-shadow:3px 3px 0 #0A0A0A;padding:12px 14px;gap:10px;
+}
+.cart-item-left{display:flex;align-items:center;gap:10px;flex:1;}
+.cart-item-emoji{font-size:22px;flex-shrink:0;}
+.cart-item-name{font-family:'Fredoka One',cursive;font-size:15px;color:#0A0A0A;}
+.cart-item-sub{font-family:'Nunito',sans-serif;font-size:11px;color:#666;font-weight:600;}
+.cart-item-price{font-family:'Bangers',cursive;font-size:18px;color:#1A3FAA;flex-shrink:0;}
+.cart-item-remove{
+  background:none;border:none;font-size:16px;color:#999;cursor:pointer;
+  width:28px;height:28px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;flex-shrink:0;transition:color 150ms,background 150ms;
+}
+.cart-item-remove:hover{color:#D42B2B;background:rgba(212,43,43,0.1);}
+.cart-empty{text-align:center;padding:24px;font-family:'Fredoka One',cursive;font-size:16px;color:#999;}
+#cart-footer{padding:14px 20px 20px;border-top:2px solid rgba(0,0,0,0.1);background:#fff;}
+#cart-total-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;}
+#cart-total-label{font-family:'Nunito',sans-serif;font-size:14px;font-weight:700;color:#555;}
+#cart-total-amount{font-family:'Bangers',cursive;font-size:28px;color:#D42B2B;letter-spacing:1px;}
+#cart-checkout-btn{
+  width:100%;padding:16px;background:#F5C518;color:#0A0A0A;
+  font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;
+  border:3px solid #0A0A0A;border-radius:12px;box-shadow:4px 4px 0 #D42B2B;
+  cursor:pointer;transition:transform 80ms,box-shadow 80ms;margin-bottom:8px;
+}
+#cart-checkout-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #D42B2B;}
+#cart-checkout-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #D42B2B;}
+#cart-trust{font-family:'Nunito',sans-serif;font-size:11px;color:#888;text-align:center;font-weight:600;}
+.cart-stomach-row{
+  display:flex;align-items:center;gap:10px;padding:10px 14px;
+  background:#f0fff4;border:1.5px solid #1A7A4A;border-radius:10px;margin-top:2px;
+}
+.cart-stomach-check{width:20px;height:20px;accent-color:#1A7A4A;cursor:pointer;flex-shrink:0;}
+.cart-stomach-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:#1A7A4A;flex:1;}
+.cart-stomach-price{font-family:'Bangers',cursive;font-size:16px;color:#1A7A4A;}
 </style>
 </head>
 <body>
@@ -1936,11 +1972,11 @@ a{text-decoration:none;color:inherit;}
   <span class="sticky-logo">Mexico Travel Pass</span>
   <div class="sticky-ticker-wrap">
     <div class="sticky-ticker">
-      <span>· Wrong taxi? We tell you exactly which app to use ·</span>
+      <span>⚡ Kickoff in <span id="ticker-countdown">--d --h --m</span> · Get your pass now ·</span>
       <span>· <span id="traveler-count-live">847</span> fans already protected ·</span>
-      <span>· Kickoff June 11 · Mexico City · Guadalajara · Monterrey ·</span>
+      <span>· Mexico City · Guadalajara · Monterrey ·</span>
       <span>· $9.99 per city · Instant download ·</span>
-      <span>· Wrong taxi? We tell you exactly which app to use ·</span>
+      <span>⚡ Kickoff in <span id="ticker-countdown-2">--d --h --m</span> · Get your pass now ·</span>
     </div>
   </div>
   <div class="live-dot-nav" id="live-dot-nav"><span class="dot"></span>LIVE</div>
@@ -2213,7 +2249,7 @@ a{text-decoration:none;color:inherit;}
     </div>
 
     <!-- H: Bundle teaser -->
-    <div class="hero-bundle-new" onclick="selectAll(); setTimeout(scrollToSelector,80);" role="button" tabindex="0">
+    <div class="hero-bundle-new" onclick="selectedCities=new Set(['cdmx','gdl','mty']); updateUI(); openCart();" role="button" tabindex="0">
       <div class="bundle-new-left">
         <div class="bundle-new-badge">BEST VALUE</div>
         <div class="bundle-new-title">All 3 Cities Pass</div>
@@ -2240,7 +2276,7 @@ a{text-decoration:none;color:inherit;}
   <div class="fear-inner wrap-sm">
     <div class="fear-label">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="10.29 3.86 1.82 18 22.18 18"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-      Three things that happen to unprepared fans every tournament
+      THREE THINGS THAT HAPPEN TO UNPREPARED FANS EVERY TOURNAMENT
     </div>
     <div class="fear-scenarios">
       <div class="fear-scenario" data-delay="0">
@@ -2294,7 +2330,7 @@ a{text-decoration:none;color:inherit;}
           <div class="availability-bar-fill" id="avail-fill"></div>
         </div>
       </div>
-      <button class="btn btn-red btn-full" style="font-size:20px;padding:14px;border-radius:10px;" onclick="selectAll()"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><line x1="9" y1="12" x2="15" y2="12"/></svg> GET ALL 3 — $22.99</button>
+      <button class="btn btn-red btn-full" style="font-size:20px;padding:14px;border-radius:10px;" onclick="selectedCities=new Set(['cdmx','gdl','mty']); updateUI(); openCart();"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><line x1="9" y1="12" x2="15" y2="12"/></svg> GET ALL 3 — $22.99</button>
     </div>
 
     <p class="city-divider">— or pick individual cities below —</p>
@@ -2328,9 +2364,9 @@ a{text-decoration:none;color:inherit;}
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Airport to Azteca: 45 min · Metro Line 9</div>
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="22"/><line x1="10" y1="18" x2="10" y2="22"/><line x1="14" y1="18" x2="14" y2="22"/><line x1="18" y1="18" x2="18" y2="22"/><rect x="2" y="10" width="8" height="12"/><rect x="10" y="6" width="8" height="16"/><rect x="18" y="13" width="4" height="9"/></svg> Largest city in North America</div>
           </div>
-          <button class="btn btn-blue btn-full card-cta" id="cta-cdmx" onclick="toggleCity('cdmx')">Select Mexico City — $9.99</button>
+          <button class="btn btn-blue btn-full card-cta" id="cta-cdmx" onclick="toggleCity('cdmx'); openCart();">Select Mexico City — $9.99</button>
           <div class="card-price-sub">Tap to select · $9.99</div>
-          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Stomach Survival Guide <strong>+$3.99</strong></span></div>
+          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Montezuma's Revenge Survival Guide <strong>+$3.99</strong></span></div>
         </div>
       </div>
 
@@ -2360,9 +2396,9 @@ a{text-decoration:none;color:inherit;}
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg> Perfect June weather, 22°C average</div>
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Airport to Akron: 35 min</div>
           </div>
-          <button class="btn btn-blue btn-full card-cta" id="cta-gdl" onclick="toggleCity('gdl')">Select Guadalajara — $9.99</button>
+          <button class="btn btn-blue btn-full card-cta" id="cta-gdl" onclick="toggleCity('gdl'); openCart();">Select Guadalajara — $9.99</button>
           <div class="card-price-sub">Tap to select · $9.99</div>
-          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Stomach Survival Guide <strong>+$3.99</strong></span></div>
+          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Montezuma's Revenge Survival Guide <strong>+$3.99</strong></span></div>
         </div>
       </div>
 
@@ -2392,9 +2428,9 @@ a{text-decoration:none;color:inherit;}
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg> Best nightlife of the 3 cities</div>
             <div class="card-fact"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><rect x="1" y="3" width="15" height="13" rx="1"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg> Airport to BBVA: 25 min</div>
           </div>
-          <button class="btn btn-blue btn-full card-cta" id="cta-mty" onclick="toggleCity('mty')">Select Monterrey — $9.99</button>
+          <button class="btn btn-blue btn-full card-cta" id="cta-mty" onclick="toggleCity('mty'); openCart();">Select Monterrey — $9.99</button>
           <div class="card-price-sub">Tap to select · $9.99</div>
-          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Stomach Survival Guide <strong>+$3.99</strong></span></div>
+          <div class="card-stomach-teaser" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0;"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg><span>Add Montezuma's Revenge Survival Guide <strong>+$3.99</strong></span></div>
         </div>
       </div>
     </div><!-- /city-grid -->
@@ -2408,24 +2444,13 @@ a{text-decoration:none;color:inherit;}
       <div class="ob-row">
         <input type="checkbox" class="ob-check" id="ob-checkbox" onchange="updateOrderBump()">
         <label for="ob-checkbox" class="ob-text" style="cursor:pointer;">
-          <strong>Stomach Survival Guide</strong>
+          <strong>Montezuma's Revenge Survival Guide</strong>
           <small>Safe food map, pharmacy phrases &amp; recovery protocol</small>
         </label>
         <span class="ob-price">+$3.99</span>
       </div>
     </div>
 
-    <!-- Live price + checkout -->
-    <div class="price-display-wrap" id="price-display-wrap" style="display:none;">
-      <div class="price-display-label" id="price-display">YOUR TOTAL: $9.99</div>
-    </div>
-    <button class="btn btn-gold btn-pulse checkout-btn" id="checkout-btn" style="display:none;" onclick="goCheckout()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M21 16l-9-9-3 6-3-3-3 3"/><path d="m21 16-3-3m3 3h-5"/></svg> GET MY PASS — <span id="checkout-price">$9.99</span>
-    </button>
-    <div id="urgency-msg"></div>
-    <p class="checkout-guarantee" id="checkout-guarantee" style="display:none;">
-      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure checkout · <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Instant download · <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> 30-day guarantee
-    </p>
   </div>
 </section>
 
@@ -2566,7 +2591,7 @@ a{text-decoration:none;color:inherit;}
     </div>
     <div class="addon-teaser">
       <span class="pill pill-white" style="padding:5px 12px;font-size:12px;font-weight:700;background:#111;color:#FFD000;border-color:#0A0A0A;">+ ADD-ON:</span>
-      <button class="pill pill-green" style="padding:7px 16px;font-size:13px;border:2px solid #0A0A0A;box-shadow:2px 2px 0 #0A0A0A;cursor:pointer;min-height:44px;" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> Stomach Survival Guide</button>
+      <button class="pill pill-green" style="padding:7px 16px;font-size:13px;border:2px solid #0A0A0A;box-shadow:2px 2px 0 #0A0A0A;cursor:pointer;min-height:44px;" onclick="document.querySelector('.stomach-section').scrollIntoView({behavior:'smooth'})"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> Montezuma's Revenge Survival Guide</button>
     </div>
   </div>
 </section>
@@ -2582,12 +2607,12 @@ a{text-decoration:none;color:inherit;}
           <span class="pill pill-gold" style="padding:5px 14px;font-size:12px;text-transform:uppercase;letter-spacing:0.06em;"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M3 2v7c0 1.1.9 2 2 2h4a2 2 0 0 0 2-2V2"/><path d="M7 2v20"/><path d="M21 15V2a5 5 0 0 0-5 5v6c0 1.1.9 2 2 2h3zm0 0v7"/></svg> OPTIONAL ADD-ON</span>
         </div>
         <h2 class="stomach-h2" id="stomach-h2">ONE MORE THING<br>ABOUT MEXICO CITY:</h2>
-        <p class="stomach-p" id="stomach-p">Mexico City's street food is legendary — and the #1 reason visitors get sick. The Stomach Survival Guide tells you what's safe, what to avoid, and what to order at Farmacias del Ahorro if it happens anyway.</p>
+        <p class="stomach-p" id="stomach-p">Mexico City's street food is legendary — and the #1 reason visitors get sick. The Montezuma's Revenge Survival Guide tells you what's safe, what to avoid, and what to order at Farmacias del Ahorro if it happens anyway.</p>
         <p class="stomach-bundle-line" id="stomach-bundle">Together with your Safety Pass: $13.98 total · save $3</p>
         <button class="btn btn-gold btn-full" style="font-size:18px;padding:14px;margin-top:16px;min-height:52px;" onclick="addStomachGuide()">
-          <span id="stomach-btn-label">Add Mexico City Stomach Guide +$3.99</span>
+          <span id="stomach-btn-label">Add Mexico City Montezuma's Revenge Guide +$3.99</span>
         </button>
-        <button class="stomach-all-link" onclick="addStomachGuideAll()">All 3 Cities Stomach Guide +$7.99</button>
+        <button class="stomach-all-link" onclick="addStomachGuideAll()">All 3 Cities Montezuma's Revenge Guide +$7.99</button>
       </div>
       <div class="stomach-price-block">
         <div class="stomach-was">$7.99</div>
@@ -2670,7 +2695,7 @@ a{text-decoration:none;color:inherit;}
       <div class="testi-card">
         <span class="pill testi-city-badge" style="background:#6B21A8;color:#fff;border:2px solid #0A0A0A;box-shadow:2px 2px 0 #0A0A0A;padding:4px 10px;font-size:11px;border-radius:99px;font-family:'Fredoka One',cursive;">MONTERREY</span>
         <div class="testi-stars" style="margin-top:8px;color:#F5C518;">★★★★★</div>
-        <p class="testi-quote">"38-degree heat, no idea what to drink or eat safely. The Stomach Guide saved two of us from a ruined match day. Worth every cent."</p>
+        <p class="testi-quote">"38-degree heat, no idea what to drink or eat safely. The Montezuma's Revenge Guide saved two of us from a ruined match day. Worth every cent."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#6B21A8;color:#fff;">CB</div>
           <div><div class="testi-name">Caitlin B.</div><div class="testi-origin">Melbourne, Australia</div></div>
@@ -2824,40 +2849,7 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div>
 
-<!-- ════ EMAIL CAPTURE MODAL ════ -->
-<div id="email-capture-overlay">
-  <div id="ec-box">
-    <button id="ec-close" onclick="closeEmailCapture()" aria-label="Close">✕</button>
-    <div class="ec-badge">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="#F87171" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-      One step away
-    </div>
-    <h3>ALMOST THERE</h3>
-    <p class="ec-sub">Enter your email — we'll send your download link here the moment you complete your purchase.</p>
-    <div class="ec-field">
-      <label for="ec-name">First name</label>
-      <input type="text" id="ec-name" placeholder="Your first name" autocomplete="given-name">
-    </div>
-    <div class="ec-field">
-      <label for="ec-email">Email address</label>
-      <input type="email" id="ec-email" placeholder="you@email.com" autocomplete="email">
-    </div>
-    <button id="ec-submit" onclick="submitEmailCapture()">CONTINUE TO SECURE CHECKOUT →</button>
-    <p class="ec-disclaimer">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      We'll send your download link here. No spam, ever.
-    </p>
-  </div>
-</div>
 
-<!-- ════ STICKY BOTTOM BAR (mobile) ════ -->
-<div id="sticky-bottom-bar">
-  <div class="sbb-left">
-    <span class="sbb-label">Best value</span>
-    <span class="sbb-title">All 3 Cities Pass — <strong>$22.99</strong></span>
-  </div>
-  <button class="sbb-btn" onclick="openCheckoutWithEmail(CHECKOUT_URLS.all3)">Get My Pass →</button>
-</div>
 
 <div id="selection-toast">Choose a city first</div>
 <script>
@@ -2879,7 +2871,7 @@ const CHECKOUT_URLS = {
   all3_stomach: 'https://buy.stripe.com/8x29ATdZl44u0oE4zV6wE03',
 };
 
-const PRICES = { 0: 9.99, 1: 9.99, 2: 16.99, 3: 22.99 };
+const PRICES = { 0: 9.99, 1: 9.99, 2: 22.99, 3: 22.99 };
 const CITY_NAMES = { cdmx: 'Mexico City', gdl: 'Guadalajara', mty: 'Monterrey' };
 
 const CITY_FEATURES = {
@@ -2912,9 +2904,9 @@ const CITY_TIPS = {
   mty:  'Mountain heat survival. BBVA transport. Barrio Antiguo nightlife guide.'
 };
 const STOMACH_TEXT = {
-  cdmx: "Mexico City's street food is legendary — and the #1 reason visitors get sick. The Stomach Survival Guide tells you what's safe, what to avoid, and what to order at Farmacias del Ahorro if it happens anyway.",
-  gdl:  "Guadalajara is the food capital of Mexico. That means more delicious options — and more ways to get sick if you're not careful. The Stomach Survival Guide tells you what's safe, what's risky, and how to recover fast.",
-  mty:  "Monterrey in June means 38°C heat and incredible carne asada. The Stomach Survival Guide covers heat illness, hydration, and what to eat safely when your body isn't used to the climate."
+  cdmx: "Mexico City's street food is legendary — and the #1 reason visitors get sick. The Montezuma's Revenge Survival Guide tells you what's safe, what to avoid, and what to order at Farmacias del Ahorro if it happens anyway.",
+  gdl:  "Guadalajara is the food capital of Mexico. That means more delicious options — and more ways to get sick if you're not careful. The Montezuma's Revenge Survival Guide tells you what's safe, what's risky, and how to recover fast.",
+  mty:  "Monterrey in June means 38°C heat and incredible carne asada. The Montezuma's Revenge Survival Guide covers heat illness, hydration, and what to eat safely when your body isn't used to the climate."
 };
 const STOMACH_BUNDLE = {
   0: "Together with your Safety Pass: $13.98 total · save $3",
@@ -2939,13 +2931,7 @@ function getNames() {
    CITY SELECTION
 ═══════════════════════════════ */
 function scrollToCheckout() {
-  const btn = document.getElementById('checkout-btn');
-  if (btn && btn.style.display !== 'none') {
-    setTimeout(() => {
-      const top = btn.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }, 150);
-  }
+  // checkout button removed — cart handles this
 }
 
 function toggleCity(city) {
@@ -2955,14 +2941,27 @@ function toggleCity(city) {
     selectedCities.add(city);
   }
   updateUI();
-  scrollToCheckout();
+  if (selectedCities.size > 0) { openCart(); }
 }
 
 function selectAll() {
   selectedCities = new Set(['cdmx','gdl','mty']);
   updateUI();
-  setTimeout(() => scrollToSelector(), 50);
-  scrollToCheckout();
+}
+
+function selectAllAndBuy() {
+  selectedCities = new Set(['cdmx','gdl','mty']);
+  updateUI();
+  // Make checkout button visible, scroll to it, then auto-checkout after 400ms
+  const btn = document.getElementById('checkout-btn');
+  if(btn) btn.style.display = 'flex';
+  setTimeout(() => {
+    if(btn) {
+      const top = btn.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }
+    setTimeout(() => goCheckout(), 400);
+  }, 80);
 }
 
 function updateUI() {
@@ -2994,34 +2993,9 @@ function updateUI() {
   if(ob) ob.classList.toggle('visible', n > 0);
 
   // Price display & checkout
-  const priceWrap = document.getElementById('price-display-wrap');
-  const checkoutBtn = document.getElementById('checkout-btn');
-  const checkoutGuarantee = document.getElementById('checkout-guarantee');
-  const priceStr = '$' + getPrice().toFixed(2).replace('.00','');
 
-  if (n > 0) {
-    priceWrap.style.display = 'block';
-    checkoutBtn.style.display = 'flex';
-    checkoutGuarantee.style.display = 'block';
-    document.getElementById('price-display').textContent = 'YOUR TOTAL: ' + priceStr;
-    document.getElementById('checkout-price').textContent = priceStr;
-    // Urgency message
-    const urgencyEl = document.getElementById('urgency-msg');
-    if(urgencyEl){
-      urgencyEl.style.display = 'block';
-      const tgt = new Date('2026-06-11T15:00:00Z').getTime();
-      const daysLeft = Math.ceil((tgt - Date.now()) / 86400000);
-      urgencyEl.textContent = daysLeft > 0
-        ? 'Kickoff in ' + daysLeft + ' days — get your pass before the tournament starts'
-        : 'Tournament is live — fans are arriving now';
-    }
-  } else {
-    priceWrap.style.display = 'none';
-    checkoutBtn.style.display = 'none';
-    checkoutGuarantee.style.display = 'none';
-    const urgencyEl = document.getElementById('urgency-msg');
-    if(urgencyEl) urgencyEl.style.display = 'none';
-  }
+
+  // (price display / checkout btn removed — cart handles checkout)
 
   // What's inside: update to first selected city or default CDMX
   const activeCity = [...selectedCities][0] || 'cdmx';
@@ -3041,13 +3015,13 @@ function updateUI() {
   const afDesc = document.getElementById('feature-after-desc');
   if(afDesc) afDesc.textContent = fd.aftermatch;
 
-  // Stomach guide
+  // Montezuma's Revenge guide
   const stomachCity = n === 1 ? activeCity : (n === 0 ? 'cdmx' : null);
   const stomachName = n === 0 ? 'Mexico City' : (n === 1 ? CITY_NAMES[activeCity] : (n === 3 ? 'All 3 Cities' : 'Your Cities'));
   document.getElementById('stomach-h2').innerHTML = 'ONE MORE THING<br>ABOUT ' + stomachName.toUpperCase() + ':';
   document.getElementById('stomach-p').textContent = STOMACH_TEXT[stomachCity || 'cdmx'];
   document.getElementById('stomach-bundle').textContent = STOMACH_BUNDLE[n];
-  document.getElementById('stomach-btn-label').textContent = 'Add ' + stomachName + ' Stomach Guide +$3.99';
+  document.getElementById('stomach-btn-label').textContent = 'Add ' + stomachName + " Montezuma\u2019s Revenge Guide +$3.99";
 }
 
 function updateDynamicUpsell(n) {
@@ -3062,17 +3036,17 @@ function updateDynamicUpsell(n) {
       <div style="font-family:'Fredoka One',cursive;font-size:12px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Going to more than one city?</div>
       <div style="display:flex;flex-direction:column;gap:8px;">
         ${unselected.map(c => `<button class="btn btn-red btn-full" style="font-size:14px;padding:10px;" onclick="toggleCity('${c}')">+ Add ${CITY_NAMES[c]} — +$7.00</button>`).join('')}
-        <button class="btn btn-full" style="font-size:14px;padding:10px;background:rgba(245,197,24,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:10px;font-family:'Bangers',cursive;letter-spacing:1px;" onclick="selectAll()">Get All 3 — $22.99 · save $6.98</button>
+        <button class="btn btn-full" style="font-size:14px;padding:10px;background:rgba(245,197,24,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:10px;font-family:'Bangers',cursive;letter-spacing:1px;" onclick="selectedCities=new Set(['cdmx','gdl','mty']); updateUI(); openCart();">Get All 3 — $22.99 · save $6.98</button>
       </div>
     </div>`;
   } else if (n === 2) {
     const third = unselected[0];
     html = `<div style="background:rgba(245,197,24,0.12);border:2px solid rgba(245,197,24,0.5);border-radius:12px;padding:14px 16px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
       <div>
-        <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gold);margin-bottom:3px;">Add ${CITY_NAMES[third]} for just $6 more</div>
-        <div style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.55);">Complete your Mexico trip · save $6.98 total</div>
+        <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gold);margin-bottom:3px;">Add ${CITY_NAMES[third]} — same price, $22.99 total</div>
+        <div style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.55);">Add the 3rd city — same price, $22.99 total</div>
       </div>
-      <button class="btn btn-gold" style="font-size:15px;padding:10px 16px;flex-shrink:0;" onclick="selectAll()">+ Add it</button>
+      <button class="btn btn-gold" style="font-size:15px;padding:10px 16px;flex-shrink:0;" onclick="selectedCities=new Set(['cdmx','gdl','mty']); updateUI(); openCart();">+ Add it</button>
     </div>`;
   } else if (n === 3) {
     /* n=3: just a compact confirmation — the gold GET MY PASS button below is the CTA */
@@ -3085,42 +3059,155 @@ function updateDynamicUpsell(n) {
 }
 
 /* ═══════════════════════════════
+   CART & CHECKOUT
+═══════════════════════════════ */
+const CITY_EMOJIS = { cdmx:'🏟', gdl:'🌮', mty:'⛰' };
+const CITY_SUBS = {
+  cdmx:'Mexico City · Estadio Azteca · 5 matches',
+  gdl:'Guadalajara · Estadio Akron · 4 matches',
+  mty:'Monterrey · Estadio BBVA · 4 matches'
+};
+let cartStomachAdded = false;
+
+function openCart() {
+  if(selectedCities.size === 0) return;
+  renderCart();
+  document.getElementById('cart-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeCart() {
+  document.getElementById('cart-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+}
+function closeCartOnOverlay(e) {
+  if(e.target === document.getElementById('cart-overlay')) closeCart();
+}
+function removeFromCart(city) {
+  selectedCities.delete(city);
+  updateUI();
+  renderCart();
+  if(selectedCities.size === 0) closeCart();
+}
+function removeFromCartBundle() {
+  selectedCities = new Set();
+  updateUI();
+  closeCart();
+}
+function addThirdCity() {
+  selectedCities = new Set(['cdmx','gdl','mty']);
+  updateUI();
+  renderCart();
+}
+function toggleCartStomach(checked) {
+  cartStomachAdded = checked;
+  stomachAdded = checked;
+  renderCart();
+}
+function renderCart() {
+  const items = document.getElementById('cart-items');
+  const totalEl = document.getElementById('cart-total-amount');
+  if (!items) return;
+  const n = selectedCities.size;
+  if (n === 0) {
+    items.innerHTML = '<div class="cart-empty">No cities selected yet</div>';
+    if (totalEl) totalEl.textContent = '$0';
+    return;
+  }
+  let html = '';
+  if (n === 3) {
+    html += `<div class="cart-item">
+      <div class="cart-item-left">
+        <span class="cart-item-emoji">🇲🇽</span>
+        <div>
+          <div class="cart-item-name">All 3 Cities Pass</div>
+          <div class="cart-item-sub">Mexico City + Guadalajara + Monterrey</div>
+        </div>
+      </div>
+      <span class="cart-item-price">$22.99</span>
+      <button class="cart-item-remove" onclick="removeFromCartBundle()" title="Remove">✕</button>
+    </div>`;
+  } else {
+    [...selectedCities].forEach(city => {
+      html += `<div class="cart-item">
+        <div class="cart-item-left">
+          <span class="cart-item-emoji">${CITY_EMOJIS[city]}</span>
+          <div>
+            <div class="cart-item-name">${CITY_NAMES[city]} Pass</div>
+            <div class="cart-item-sub">${CITY_SUBS[city]}</div>
+          </div>
+        </div>
+        <span class="cart-item-price">$9.99</span>
+        <button class="cart-item-remove" onclick="removeFromCart('${city}')" title="Remove">✕</button>
+      </div>`;
+    });
+    if (n === 2) {
+      html += `<div style="text-align:center;padding:6px 0;font-family:'Fredoka One',cursive;font-size:12px;color:#1A3FAA;cursor:pointer;" onclick="addThirdCity()">
+        + Add all 3 cities — just $22.99 (save $6.98) →
+      </div>`;
+    }
+  }
+  const stomachPrice = n >= 3 ? '7.99' : '3.99';
+  html += `<div class="cart-stomach-row">
+    <input type="checkbox" class="cart-stomach-check" id="cart-stomach-cb"
+      ${cartStomachAdded ? 'checked' : ''}
+      onchange="toggleCartStomach(this.checked)">
+    <label for="cart-stomach-cb" class="cart-stomach-label" style="cursor:pointer;">
+      🌿 Add Montezuma's Revenge Survival Guide
+    </label>
+    <span class="cart-stomach-price">+$${stomachPrice}</span>
+  </div>`;
+  items.innerHTML = html;
+  const base = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
+  const sPrice = n >= 3 ? 7.99 : 3.99;
+  const total = base + (cartStomachAdded ? sPrice : 0);
+  if (totalEl) totalEl.textContent = '$' + total.toFixed(2).replace('.00', '');
+  const titleEl = document.getElementById('cart-title');
+  if (titleEl) titleEl.textContent = n === 3 ? 'All 3 Cities Pass' : n === 1 ? CITY_NAMES[[...selectedCities][0]] + ' Pass' : 'Your Pass';
+}
+function cartCheckout() {
+  const n = selectedCities.size;
+  if(n === 0) return;
+  let url;
+  if(n >= 3) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
+  else if(n === 2) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
+  else { const city = [...selectedCities][0]; url = cartStomachAdded ? (CHECKOUT_URLS[city+'_stomach']||CHECKOUT_URLS[city]) : CHECKOUT_URLS[city]; }
+  window.open(url, '_blank');
+}
+function selectAllAndCheckout() {
+  selectedCities = new Set(['cdmx','gdl','mty']);
+  updateUI();
+  setTimeout(() => window.open(CHECKOUT_URLS.all3, '_blank'), 150);
+}
+/* ═══════════════════════════════
    CHECKOUT
 ═══════════════════════════════ */
 function openCheckout(url) {
   window.open(url, '_blank');
 }
-function openCheckoutWithEmail(url) {
-  openCheckoutWithEmail(url);
-}
 
 function goCheckout() {
-  const n = selectedCities.size;
-  if (n === 0) {
+  if (selectedCities.size === 0) {
     scrollToSelector();
     const grid = document.getElementById('city-grid');
-    grid.classList.remove('shake');
-    void grid.offsetWidth;
-    grid.classList.add('shake');
+    if(grid){ grid.classList.remove('shake'); void grid.offsetWidth; grid.classList.add('shake'); }
     const toast = document.getElementById('selection-toast');
-    toast.classList.add('visible');
-    setTimeout(()=>toast.classList.remove('visible'), 2500);
+    if(toast){ toast.classList.add('visible'); setTimeout(()=>toast.classList.remove('visible'), 2500); }
     return;
   }
-  let url;
-  if (n === 3)      url = CHECKOUT_URLS.all3;
-  else if (n === 2) url = CHECKOUT_URLS.all3;   // upsell to all3
-  else              url = CHECKOUT_URLS[[...selectedCities][0]];
-  openCheckoutWithEmail(url);
+  openCart();
 }
 function addStomachGuide() {
-  const n = selectedCities.size;
-  const city = [...selectedCities][0] || 'cdmx';
-  const key = n === 3 ? 'all3_stomach' : city + '_stomach';
-  openCheckoutWithEmail(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
+  cartStomachAdded = true;
+  stomachAdded = true;
+  if (selectedCities.size === 0) { scrollToSelector(); return; }
+  openCart();
 }
 function addStomachGuideAll() {
-  openCheckoutWithEmail(CHECKOUT_URLS.all3_stomach);
+  selectedCities = new Set(['cdmx','gdl','mty']);
+  cartStomachAdded = true;
+  stomachAdded = true;
+  updateUI();
+  openCart();
 }
 
 /* ═══════════════════════════════
@@ -3202,7 +3289,7 @@ function resetInactivity() {
     if (popupEnabled && !popupShown && !sessionStorage.getItem('popupShown')) {
       showPopup();
     }
-  }, 60000);
+  }, 120000);
 }
 ['touchstart','touchmove','scroll','click'].forEach(ev =>
   document.addEventListener(ev, resetInactivity, { passive: true })
@@ -3211,7 +3298,7 @@ resetInactivity();
 
 // ESC key
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') forceClosePopup();
+  if (e.key === 'Escape') { forceClosePopup(); closeCart(); }
 });
 
 function showPopup() {
@@ -3230,12 +3317,13 @@ function forceClosePopup() {
 }
 function popupSelectCity(city) {
   forceClosePopup();
-  if (!selectedCities.has(city)) toggleCity(city);
-  scrollToSelector();
+  selectedCities.add(city);
+  updateUI();
+  openCart();
 }
 function popupSelectAll() {
   forceClosePopup();
-  selectAll();
+  selectAllAndBuy();
 }
 
 /* ═══════════════════════════════
@@ -3369,75 +3457,33 @@ window.addEventListener('scroll', function(){
 }, { passive: true });
 
 
-/* ═══ EMAIL CAPTURE ═══ */
-let _pendingCheckoutUrl = null;
-
 function openCheckoutWithEmail(url) {
-  // If email already captured this session, go straight to Stripe
-  if(sessionStorage.getItem('mtp_lead_email')) {
-    openCheckout(url);
-    return;
-  }
-  _pendingCheckoutUrl = url;
-  document.getElementById('email-capture-overlay').classList.add('active');
-  document.body.style.overflow = 'hidden';
-  setTimeout(() => {
-    const nameEl = document.getElementById('ec-name');
-    if(nameEl) nameEl.focus();
-  }, 100);
+  window.open(url, '_blank');
 }
 
-function closeEmailCapture() {
-  document.getElementById('email-capture-overlay').classList.remove('active');
-  document.body.style.overflow = '';
-  _pendingCheckoutUrl = null;
-}
 
-function submitEmailCapture() {
-  const name  = document.getElementById('ec-name').value.trim();
-  const email = document.getElementById('ec-email').value.trim();
-  if(!email || !email.includes('@')) {
-    document.getElementById('ec-email').focus();
-    document.getElementById('ec-email').style.borderColor = '#EF4444';
-    return;
-  }
-  document.getElementById('ec-email').style.borderColor = '';
-  // Store in localStorage and sessionStorage
-  localStorage.setItem('mtp_lead_email', email);
-  localStorage.setItem('mtp_lead_name', name);
-  sessionStorage.setItem('mtp_lead_email', email);
-  // Close modal and go to Stripe
-  document.getElementById('email-capture-overlay').classList.remove('active');
-  document.body.style.overflow = '';
-  if(_pendingCheckoutUrl) {
-    openCheckout(_pendingCheckoutUrl);
-    _pendingCheckoutUrl = null;
-  }
-}
 
-// Close on overlay click
-document.getElementById('email-capture-overlay').addEventListener('click', function(e) {
-  if(e.target === this) closeEmailCapture();
-});
-// Close on ESC
-document.addEventListener('keydown', function(e) {
-  if(e.key === 'Escape') closeEmailCapture();
-});
-// Enter key submits
-document.getElementById('ec-email').addEventListener('keydown', function(e) {
-  if(e.key === 'Enter') submitEmailCapture();
-});
-
-// Pre-fill if returning
-(function(){
-  const saved = localStorage.getItem('mtp_lead_email');
-  const savedName = localStorage.getItem('mtp_lead_name');
-  if(saved) {
-    document.getElementById('ec-email').value = saved;
-    if(savedName) document.getElementById('ec-name').value = savedName;
+/* ═══ Ticker countdown ═══ */
+(function updateTickerCountdown() {
+  const diff = new Date('2026-06-11T15:00:00Z') - Date.now();
+  if (diff > 0) {
+    const d = Math.floor(diff / 86400000);
+    const h = Math.floor((diff % 86400000) / 3600000);
+    const m = Math.floor((diff % 3600000) / 60000);
+    const txt = d + 'd ' + h + 'h ' + m + 'm';
+    const el = document.getElementById('ticker-countdown');
+    const el2 = document.getElementById('ticker-countdown-2');
+    if (el) el.textContent = txt;
+    if (el2) el2.textContent = txt;
+  } else {
+    const txt = 'LIVE NOW';
+    ['ticker-countdown','ticker-countdown-2'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = txt;
+    });
   }
+  setTimeout(updateTickerCountdown, 60000);
 })();
-
 /* ═══ STICKY BOTTOM BAR ═══ */
 (function(){
   const bar = document.getElementById('sticky-bottom-bar');
@@ -3445,8 +3491,8 @@ document.getElementById('ec-email').addEventListener('keydown', function(e) {
   if(!bar || !selector) return;
   function checkStickyBar() {
     const rect = selector.getBoundingClientRect();
-    const inSelector = rect.top < window.innerHeight && rect.bottom > 0;
-    bar.classList.toggle('hidden', inSelector);
+    const inView = rect.top < window.innerHeight && rect.bottom > 0;
+    bar.classList.toggle('hidden', inView);
   }
   window.addEventListener('scroll', checkStickyBar, {passive:true});
   checkStickyBar();
@@ -3456,14 +3502,10 @@ document.getElementById('ec-email').addEventListener('keydown', function(e) {
 let stomachAdded = false;
 function updateOrderBump() {
   stomachAdded = document.getElementById('ob-checkbox').checked;
-  // Update price display
-  const n = selectedCities.size;
-  if(n > 0) {
-    const base = PRICES[Math.min(n,3)];
-    const total = stomachAdded ? (base + 3.99) : base;
-    const priceStr = '$' + total.toFixed(2).replace('.00','');
-    document.getElementById('price-display').textContent = 'YOUR TOTAL: ' + priceStr;
-    document.getElementById('checkout-price').textContent = priceStr;
+  cartStomachAdded = stomachAdded;
+  if (document.getElementById('cart-overlay') &&
+      document.getElementById('cart-overlay').classList.contains('active')) {
+    renderCart();
   }
 }
 
@@ -3491,5 +3533,33 @@ updateUI();
 const tcEl = document.getElementById('traveler-count');
 if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
 </script>
+<!-- ════ CART POPUP ════ -->
+<div id="cart-overlay" onclick="closeCartOnOverlay(event)">
+  <div id="cart-drawer">
+    <div id="cart-header">
+      <span id="cart-title">Your Pass</span>
+      <button id="cart-close" onclick="closeCart()">✕</button>
+    </div>
+    <div id="cart-items"></div>
+    <div id="cart-footer">
+      <div id="cart-total-row">
+        <span id="cart-total-label">Total</span>
+        <span id="cart-total-amount">$0</span>
+      </div>
+      <button id="cart-checkout-btn" onclick="cartCheckout()">SECURE CHECKOUT →</button>
+      <p id="cart-trust">🔒 Stripe · ⚡ Instant download · ✓ 30-day guarantee</p>
+    </div>
+  </div>
+</div>
+
+<!-- ════ STICKY BOTTOM BAR ════ -->
+<div id="sticky-bottom-bar">
+  <div class="sbb-left">
+    <span class="sbb-label">Best value</span>
+    <span class="sbb-title">All 3 Cities Pass — <strong>$22.99</strong></span>
+  </div>
+  <button class="sbb-btn" onclick="if(selectedCities.size===0){selectedCities=new Set(['cdmx','gdl','mty']);updateUI();}openCart();">GET MY PASS →</button>
+</div>
+
 </body>
 </html>
