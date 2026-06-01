@@ -1670,7 +1670,7 @@ a{text-decoration:none;color:inherit;}
   0%,100%{transform:rotate(45deg) translateY(0);}
   50%{transform:rotate(45deg) translateY(5px);}
 }
-</style>
+<script src="https://gumroad.com/js/gumroad.js"></script>
 </head>
 <body>
 
@@ -2461,7 +2461,17 @@ const TRAVELERS_COUNT = 847;
 /* ═══════════════════════════════
    CONSTANTS
 ═══════════════════════════════ */
-const CHECKOUT_URL = 'https://YOUR_GUMROAD_OR_LEMONSQUEEZY_URL';
+// ── Product URLs — direct Gumroad links ──
+const CHECKOUT_URLS = {
+  cdmx:         'https://wlwtravepass.gumroad.com/l/cdmx-guide-2026',
+  gdl:          'https://wlwtravepass.gumroad.com/l/GDL-guide-2026',
+  mty:          'https://wlwtravepass.gumroad.com/l/MTY-guide-2026',
+  all3:         'https://wlwtravepass.gumroad.com/l/all3-guide-2026',
+  cdmx_stomach: 'https://wlwtravepass.gumroad.com/l/cdmx-guide-2026',
+  gdl_stomach:  'https://wlwtravepass.gumroad.com/l/GDL-guide-2026',
+  mty_stomach:  'https://wlwtravepass.gumroad.com/l/MTY-guide-2026',
+  all3_stomach: 'https://wlwtravepass.gumroad.com/l/all3-guide-2026',
+};
 
 const PRICES = { 0: 9.99, 1: 9.99, 2: 16.99, 3: 22.99 };
 const CITY_NAMES = { cdmx: 'Mexico City', gdl: 'Guadalajara', mty: 'Monterrey' };
@@ -2671,6 +2681,15 @@ function updateDynamicUpsell(n) {
 /* ═══════════════════════════════
    CHECKOUT
 ═══════════════════════════════ */
+function openGumroad(url) {
+  // Opens Gumroad checkout as overlay modal — user never leaves the page
+  if (window.GumroadOverlay) {
+    window.GumroadOverlay.open(url);
+  } else {
+    window.open(url, '_blank');
+  }
+}
+
 function goCheckout() {
   const n = selectedCities.size;
   if (n === 0) {
@@ -2684,16 +2703,20 @@ function goCheckout() {
     setTimeout(()=>toast.classList.remove('visible'), 2500);
     return;
   }
-  const variant = n === 3 ? 'all3' : [...selectedCities].join('_');
-  window.location.href = CHECKOUT_URL + '?variant=' + variant;
+  let url;
+  if (n === 3)      url = CHECKOUT_URLS.all3;
+  else if (n === 2) url = CHECKOUT_URLS.all3;   // upsell to all3
+  else              url = CHECKOUT_URLS[[...selectedCities][0]];
+  openGumroad(url);
 }
 function addStomachGuide() {
   const n = selectedCities.size;
-  const variant = n === 3 ? 'all3_stomach' : ([...selectedCities][0] || 'cdmx') + '_stomach';
-  window.location.href = CHECKOUT_URL + '?variant=' + variant;
+  const city = [...selectedCities][0] || 'cdmx';
+  const key = n === 3 ? 'all3_stomach' : city + '_stomach';
+  openGumroad(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
 }
 function addStomachGuideAll() {
-  window.location.href = CHECKOUT_URL + '?variant=all3_stomach';
+  openGumroad(CHECKOUT_URLS.all3_stomach);
 }
 
 /* ═══════════════════════════════
