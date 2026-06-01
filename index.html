@@ -169,7 +169,7 @@ a{text-decoration:none;color:inherit;}
 .sticky-ticker{
   display:flex;align-items:center;
   white-space:nowrap;
-  animation:ticker 28s linear infinite;
+  animation:ticker 16s linear infinite;
 }
 .sticky-ticker:hover{animation-play-state:paused;}
 @keyframes ticker{
@@ -217,9 +217,15 @@ a{text-decoration:none;color:inherit;}
   background:linear-gradient(90deg,#F5C518,#D42B2B);
   transition:width 80ms linear;pointer-events:none;
 }
+.cta-short{display:none;}
+.cta-long{display:inline;}
 @media(max-width:600px){
-  .sticky-logo{font-size:12px;}
-  .sticky-cta{font-size:13px;padding:5px 10px;}
+  .sticky-logo{display:none;}
+  .cta-long{display:none;}
+  .cta-short{display:inline;}
+  .sticky-nav{overflow:visible;padding:0 8px;gap:6px;}
+  .sticky-cta{font-size:12px;padding:5px 10px;letter-spacing:0.3px;box-shadow:none;border-width:1.5px;}
+  .sticky-ticker span{font-size:11px;padding:0 10px;}
 }
 
 /* ═══════════════════════════════
@@ -1980,7 +1986,7 @@ a{text-decoration:none;color:inherit;}
     </div>
   </div>
   <div class="live-dot-nav" id="live-dot-nav"><span class="dot"></span>LIVE</div>
-  <button class="sticky-cta" onclick="scrollToSelector()">Choose Your City ↓</button>
+  <button class="sticky-cta" onclick="scrollToSelector()"><span class="cta-long">Choose Your City ↓</span><span class="cta-short">Get Pass ↓</span></button>
   <div id="scroll-progress"></div>
 </nav>
 
@@ -2184,7 +2190,7 @@ a{text-decoration:none;color:inherit;}
   <div class="hero-content">
 
     <!-- A: Top badge -->
-    <div class="hero-top-badge">⚡ FIFA WORLD CUP 2026 · MEXICO</div>
+    <div class="hero-top-badge">⚽️ MEXICO 2026 FAN GUIDE</div>
 
     <!-- B: Headline -->
     <div class="hero-headline-block">
