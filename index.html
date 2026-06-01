@@ -728,30 +728,30 @@ a{text-decoration:none;color:inherit;}
 /* Live price + checkout */
 .price-display-wrap{
   background:var(--black);
-  border-radius:14px;
-  border:3px solid var(--black);
-  padding:12px 20px;
+  border-radius:12px;
+  padding:10px 20px;
   text-align:center;
-  margin-top:14px;
+  margin-top:12px;margin-bottom:2px;
 }
 .price-display-label{
   font-family:'Bangers',cursive;
-  font-size:28px;color:var(--gold);
+  font-size:26px;color:var(--gold);
   letter-spacing:0.05em;
 }
 .checkout-btn{
   font-size:22px;padding:18px 20px;
   width:100%;justify-content:center;
-  margin-top:10px;
+  margin-top:8px;
   border:3px solid var(--black);
-  border-radius:12px;
-  box-shadow:4px 4px 0 var(--red);
+  border-radius:14px;
+  box-shadow:5px 5px 0 var(--black);
   min-height:60px;
 }
 .checkout-guarantee{
   font-family:'Nunito',sans-serif;
-  font-size:12px;color:rgba(255,255,255,0.65);
-  text-align:center;margin-top:8px;
+  font-size:11px;color:rgba(255,255,255,0.5);
+  text-align:center;margin-top:6px;
+  display:flex;align-items:center;justify-content:center;gap:6px;flex-wrap:wrap;
 }
 
 /* ═══════════════════════════════
@@ -1342,21 +1342,6 @@ a{text-decoration:none;color:inherit;}
 }
 .city-card.just-selected{animation:card-select-pop 0.35s ease forwards;}
 
-/* ═══════════════ SYSTEM 1 — INTRO OVERLAY ═══════════════ */
-#intro-overlay{
-  position:fixed;inset:0;background:#050D1F;z-index:9998;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:32px;
-  transition:opacity 600ms ease;
-}
-#intro-overlay.fade-out{opacity:0;pointer-events:none;}
-.stadium-bars{display:flex;flex-direction:column-reverse;gap:4px;width:260px;}
-.stadium-bar{height:8px;border-radius:2px;background:rgba(255,255,255,0.08);transform-origin:left;transition:background 200ms ease,box-shadow 200ms ease;}
-.stadium-bar.lit{background:#F5C518;box-shadow:0 0 12px rgba(245,197,24,0.6);}
-#intro-title{font-family:'Bangers',cursive;font-size:32px;color:#fff;letter-spacing:4px;opacity:0;transition:opacity 400ms ease;text-align:center;}
-#intro-sub{font-family:'Fredoka One',cursive;font-size:16px;color:#F5C518;opacity:0;transition:opacity 400ms ease;text-align:center;}
-#intro-title.show,#intro-sub.show{opacity:1;}
-
 /* ═══════════════ SYSTEM 2 — PURCHASE NOTIF ═══════════════ */
 #purchase-notif{
   position:fixed;bottom:24px;left:16px;
@@ -1672,72 +1657,6 @@ a{text-decoration:none;color:inherit;}
 }
 
 /* ═══════════════ CHECKOUT MODAL ═══════════════ */
-#checkout-modal-overlay{
-  display:none;
-  position:fixed;inset:0;z-index:99999;
-  background:rgba(0,0,0,0.85);
-  align-items:center;justify-content:center;
-  padding:16px;
-}
-#checkout-modal-overlay.active{display:flex;}
-#checkout-modal-box{
-  background:#fff;
-  border:3px solid #0A0A0A;
-  border-radius:16px;
-  box-shadow:8px 8px 0 #0A0A0A;
-  width:100%;max-width:480px;
-  max-height:90vh;
-  display:flex;flex-direction:column;
-  overflow:hidden;
-  position:relative;
-}
-#checkout-modal-header{
-  display:flex;align-items:center;justify-content:space-between;
-  padding:14px 18px;
-  border-bottom:2px solid #0A0A0A;
-  background:#F5C518;
-  flex-shrink:0;
-}
-#checkout-modal-title{
-  font-family:'Bangers',cursive;
-  font-size:20px;color:#0A0A0A;letter-spacing:1px;
-}
-#checkout-modal-close{
-  background:none;border:none;cursor:pointer;
-  font-size:22px;font-weight:700;color:#0A0A0A;
-  width:32px;height:32px;
-  display:flex;align-items:center;justify-content:center;
-  border-radius:50%;
-  transition:background 100ms;
-  flex-shrink:0;
-}
-#checkout-modal-close:hover{background:rgba(0,0,0,0.1);}
-#checkout-modal-iframe{
-  width:100%;
-  flex:1;
-  border:none;
-  min-height:500px;
-}
-#checkout-modal-loading{
-  position:absolute;
-  top:60px;left:0;right:0;bottom:0;
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  gap:12px;
-  background:#fff;
-  z-index:1;
-}
-#checkout-modal-loading p{
-  font-family:'Fredoka One',cursive;
-  font-size:15px;color:#666;
-}
-.checkout-spinner{
-  width:36px;height:36px;
-  border:3px solid #eee;
-  border-top-color:#D42B2B;
-  border-radius:50%;
-  animation:spin 0.7s linear infinite;
-}
 @keyframes spin{to{transform:rotate(360deg);}}
 
 /* ═══ 1. EMAIL CAPTURE MODAL ═══ */
@@ -2225,25 +2144,22 @@ a{text-decoration:none;color:inherit;}
   </svg>
 
 
-  <!-- Main content — CONVERSION REBUILD -->
+  <!-- HERO CONTENT — DON'T GET CAUGHT OFF GUARD -->
   <div class="hero-content">
 
-    <!-- E1: Urgency ticker -->
-    <div class="hero-urgency-ticker">
-      <span class="urgency-dot"></span>
-      <span id="hero-countdown-text">11 days until kickoff in Mexico City</span>
-    </div>
+    <!-- A: Top badge -->
+    <div class="hero-top-badge">⚡ FIFA WORLD CUP 2026 · MEXICO</div>
 
-    <!-- E2: Headline -->
+    <!-- B: Headline -->
     <div class="hero-headline-block">
       <h1 class="hero-h1-new">
-        <span class="h1-line-1">DON'T LET A</span>
-        <span class="h1-line-2">WRONG TAXI</span>
-        <span class="h1-line-3">RUIN YOUR TRIP</span>
+        <span class="h1-line-1">DON'T GET CAUGHT</span>
+        <span class="h1-line-2">OFF GUARD</span>
+        <span class="h1-line-3">IN MEXICO</span>
       </h1>
     </div>
 
-    <!-- E3: Proof strip -->
+    <!-- C: Social proof -->
     <div class="hero-proof-strip">
       <div class="proof-avatars">
         <div class="proof-av" style="background:#1A3FAA">PV</div>
@@ -2258,36 +2174,36 @@ a{text-decoration:none;color:inherit;}
       </div>
     </div>
 
-    <!-- E4: Outcome pills -->
+    <!-- D: Outcome pills -->
     <div class="hero-outcomes">
       <div class="outcome-pill">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span>Safe taxis every time</span>
+        <span>Safe transport — right app, right pickup, every time</span>
       </div>
       <div class="outcome-pill">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span>Know every neighborhood</span>
+        <span>Know your neighborhood before you arrive</span>
       </div>
       <div class="outcome-pill">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-        <span>Act fast in any emergency</span>
+        <span>Emergency protocol in your pocket, offline</span>
       </div>
     </div>
 
-    <!-- E5: Price anchor -->
+    <!-- E: Price anchor -->
     <div class="hero-price-anchor">
       <span class="price-label">City guide starting at</span>
       <span class="price-amount">$9.99</span>
       <span class="price-context">Less than one bad taxi ride</span>
     </div>
 
-    <!-- E6: CTA button -->
+    <!-- F: CTA button -->
     <button class="hero-cta-new" onclick="scrollToSelector()">
       <span class="cta-main-text">GET MY CITY GUIDE</span>
-      <span class="cta-sub-text">Choose your city below →</span>
+      <span class="cta-sub-text">Choose your city below — instant download</span>
     </button>
 
-    <!-- E7: Trust row -->
+    <!-- G: Trust row -->
     <div class="hero-trust-new">
       <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg> Secure</span>
       <span class="trust-dot">·</span>
@@ -2296,7 +2212,7 @@ a{text-decoration:none;color:inherit;}
       <span><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> 30-day guarantee</span>
     </div>
 
-    <!-- E8: Bundle teaser -->
+    <!-- H: Bundle teaser -->
     <div class="hero-bundle-new" onclick="selectAll(); setTimeout(scrollToSelector,80);" role="button" tabindex="0">
       <div class="bundle-new-left">
         <div class="bundle-new-badge">BEST VALUE</div>
@@ -2310,7 +2226,7 @@ a{text-decoration:none;color:inherit;}
       </div>
     </div>
 
-    <!-- E9: Scroll indicator -->
+    <!-- I: Scroll indicator -->
     <div class="hero-scroll-new" aria-hidden="true">
       <span class="scroll-label-new">Choose your city</span>
       <div class="scroll-arrow-new"></div>
@@ -2896,6 +2812,54 @@ a{text-decoration:none;color:inherit;}
   </div>
 </div>
 
+
+<!-- ════ SYSTEM 2: PURCHASE NOTIFICATION ════ -->
+<div id="purchase-notif">
+  <div id="pn-icon">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  </div>
+  <div id="pn-text">
+    <div id="pn-headline">Someone just got their pass</div>
+    <div id="pn-detail"><span id="pn-city">Mexico City</span> pass · from <span id="pn-country">Netherlands</span></div>
+  </div>
+</div>
+
+<!-- ════ EMAIL CAPTURE MODAL ════ -->
+<div id="email-capture-overlay">
+  <div id="ec-box">
+    <button id="ec-close" onclick="closeEmailCapture()" aria-label="Close">✕</button>
+    <div class="ec-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="#F87171" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+      One step away
+    </div>
+    <h3>ALMOST THERE</h3>
+    <p class="ec-sub">Enter your email — we'll send your download link here the moment you complete your purchase.</p>
+    <div class="ec-field">
+      <label for="ec-name">First name</label>
+      <input type="text" id="ec-name" placeholder="Your first name" autocomplete="given-name">
+    </div>
+    <div class="ec-field">
+      <label for="ec-email">Email address</label>
+      <input type="email" id="ec-email" placeholder="you@email.com" autocomplete="email">
+    </div>
+    <button id="ec-submit" onclick="submitEmailCapture()">CONTINUE TO SECURE CHECKOUT →</button>
+    <p class="ec-disclaimer">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      We'll send your download link here. No spam, ever.
+    </p>
+  </div>
+</div>
+
+<!-- ════ STICKY BOTTOM BAR (mobile) ════ -->
+<div id="sticky-bottom-bar">
+  <div class="sbb-left">
+    <span class="sbb-label">Best value</span>
+    <span class="sbb-title">All 3 Cities Pass — <strong>$22.99</strong></span>
+  </div>
+  <button class="sbb-btn" onclick="openCheckoutWithEmail(CHECKOUT_URLS.all3)">Get My Pass →</button>
+</div>
+
+<div id="selection-toast">Choose a city first</div>
 <script>
 // ── Social proof number — update manually as sales grow ──
 const TRAVELERS_COUNT = 847;
@@ -2974,6 +2938,16 @@ function getNames() {
 /* ═══════════════════════════════
    CITY SELECTION
 ═══════════════════════════════ */
+function scrollToCheckout() {
+  const btn = document.getElementById('checkout-btn');
+  if (btn && btn.style.display !== 'none') {
+    setTimeout(() => {
+      const top = btn.getBoundingClientRect().top + window.pageYOffset - 80;
+      window.scrollTo({ top, behavior: 'smooth' });
+    }, 150);
+  }
+}
+
 function toggleCity(city) {
   if (selectedCities.has(city)) {
     selectedCities.delete(city);
@@ -2981,12 +2955,14 @@ function toggleCity(city) {
     selectedCities.add(city);
   }
   updateUI();
+  scrollToCheckout();
 }
 
 function selectAll() {
   selectedCities = new Set(['cdmx','gdl','mty']);
   updateUI();
   setTimeout(() => scrollToSelector(), 50);
+  scrollToCheckout();
 }
 
 function updateUI() {
@@ -3076,49 +3052,34 @@ function updateUI() {
 
 function updateDynamicUpsell(n) {
   const wrap = document.getElementById('dynamic-upsell');
-  if (n === 0) {
-    wrap.classList.remove('visible');
-    wrap.innerHTML = '';
-    return;
-  }
-  wrap.classList.add('visible');
+  if (n === 0) { wrap.innerHTML = ''; return; }
 
-  const allCities = ['cdmx','gdl','mty'];
-  const unselected = allCities.filter(c => !selectedCities.has(c));
-
+  const unselected = ['cdmx','gdl','mty'].filter(c => !selectedCities.has(c));
   let html = '';
 
   if (n === 1) {
-    html = `
-      <div class="upsell-card upsell-yellow" style="border:3px solid var(--black);border-radius:14px;padding:16px 18px;margin-top:16px;">
-        <div class="upsell-label">Going to more than one city?</div>
-        <div class="upsell-btns-row">
-          ${unselected.map(c => `
-            <button class="btn btn-red btn-full upsell-btn-add" onclick="toggleCity('${c}')">
-              + Add ${CITY_NAMES[c]} — +$7.00
-            </button>`).join('')}
-        </div>
-        <button class="btn btn-red btn-full" style="font-size:15px;padding:12px;" onclick="selectAll()">
-          Get All 3 Cities — $22.99 (save $6.98)
-        </button>
-      </div>`;
+    html = `<div style="background:rgba(255,255,255,0.12);border:2px solid rgba(255,255,255,0.25);border-radius:12px;padding:14px 16px;margin-top:14px;">
+      <div style="font-family:'Fredoka One',cursive;font-size:12px;color:rgba(255,255,255,0.7);text-transform:uppercase;letter-spacing:1px;margin-bottom:10px;">Going to more than one city?</div>
+      <div style="display:flex;flex-direction:column;gap:8px;">
+        ${unselected.map(c => `<button class="btn btn-red btn-full" style="font-size:14px;padding:10px;" onclick="toggleCity('${c}')">+ Add ${CITY_NAMES[c]} — +$7.00</button>`).join('')}
+        <button class="btn btn-full" style="font-size:14px;padding:10px;background:rgba(245,197,24,0.15);border:2px solid var(--gold);color:var(--gold);border-radius:10px;font-family:'Bangers',cursive;letter-spacing:1px;" onclick="selectAll()">Get All 3 — $22.99 · save $6.98</button>
+      </div>
+    </div>`;
   } else if (n === 2) {
     const third = unselected[0];
-    html = `
-      <div class="upsell-card upsell-yellow" style="border:3px solid var(--black);border-radius:14px;padding:16px 18px;margin-top:16px;">
-        <div class="upsell-label">Add ${CITY_NAMES[third]} for just $6 more — complete your Mexico trip</div>
-        <button class="btn btn-gold btn-full" style="font-size:17px;padding:12px;border:2px solid var(--black);box-shadow:3px 3px 0 var(--black);" onclick="toggleCity('${third}')">
-          Complete My Pass — $22.99
-        </button>
-      </div>`;
+    html = `<div style="background:rgba(245,197,24,0.12);border:2px solid rgba(245,197,24,0.5);border-radius:12px;padding:14px 16px;margin-top:14px;display:flex;align-items:center;justify-content:space-between;gap:12px;">
+      <div>
+        <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gold);margin-bottom:3px;">Add ${CITY_NAMES[third]} for just $6 more</div>
+        <div style="font-family:'Nunito',sans-serif;font-size:11px;color:rgba(255,255,255,0.55);">Complete your Mexico trip · save $6.98 total</div>
+      </div>
+      <button class="btn btn-gold" style="font-size:15px;padding:10px 16px;flex-shrink:0;" onclick="selectAll()">+ Add it</button>
+    </div>`;
   } else if (n === 3) {
-    html = `
-      <div class="upsell-card upsell-green" style="border:3px solid var(--black);border-radius:14px;padding:16px 18px;margin-top:16px;">
-        <div class="upsell-label white" style="color:var(--white);font-size:16px;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> You have the complete Mexico pass!</div>
-        <button class="btn btn-green btn-full" style="font-size:17px;padding:12px;" onclick="goCheckout()">
-          Proceed to Checkout — $22.99
-        </button>
-      </div>`;
+    /* n=3: just a compact confirmation — the gold GET MY PASS button below is the CTA */
+    html = `<div style="display:flex;align-items:center;gap:8px;margin-top:14px;padding:10px 14px;background:rgba(74,222,128,0.1);border:1.5px solid rgba(74,222,128,0.4);border-radius:10px;">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ADE80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+      <span style="font-family:'Fredoka One',cursive;font-size:14px;color:#4ADE80;">All 3 cities selected · best value</span>
+    </div>`;
   }
   wrap.innerHTML = html;
 }
@@ -3126,11 +3087,11 @@ function updateDynamicUpsell(n) {
 /* ═══════════════════════════════
    CHECKOUT
 ═══════════════════════════════ */
-function openGumroad(url) {
+function openCheckout(url) {
   window.open(url, '_blank');
 }
-function openGumroadWithEmailFallback(url) {
-  openGumroadWithEmail(url);
+function openCheckoutWithEmail(url) {
+  openCheckoutWithEmail(url);
 }
 
 function goCheckout() {
@@ -3150,16 +3111,16 @@ function goCheckout() {
   if (n === 3)      url = CHECKOUT_URLS.all3;
   else if (n === 2) url = CHECKOUT_URLS.all3;   // upsell to all3
   else              url = CHECKOUT_URLS[[...selectedCities][0]];
-  openGumroadWithEmail(url);
+  openCheckoutWithEmail(url);
 }
 function addStomachGuide() {
   const n = selectedCities.size;
   const city = [...selectedCities][0] || 'cdmx';
   const key = n === 3 ? 'all3_stomach' : city + '_stomach';
-  openGumroadWithEmail(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
+  openCheckoutWithEmail(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
 }
 function addStomachGuideAll() {
-  openGumroadWithEmail(CHECKOUT_URLS.all3_stomach);
+  openCheckoutWithEmail(CHECKOUT_URLS.all3_stomach);
 }
 
 /* ═══════════════════════════════
@@ -3305,42 +3266,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var pc = document.getElementById('proof-count');
   if(pc) pc.textContent = (typeof liveCount !== 'undefined' ? liveCount : 847).toLocaleString();
 });
-/* ═══════════════════════════════
-   SYSTEM 1 — INTRO OVERLAY
-═══════════════════════════════ */
-(function(){
-  if(sessionStorage.getItem('introSeen')){
-    var o = document.getElementById('intro-overlay');
-    if(o) o.parentNode.removeChild(o);
-    return;
-  }
-  var bars = document.querySelectorAll('.stadium-bar');
-  bars.forEach(function(bar, i){
-    setTimeout(function(){
-      bar.classList.add('lit');
-    }, 150 * i);
-  });
-  // Show title after bars light up
-  setTimeout(function(){
-    var t = document.getElementById('intro-title');
-    if(t) t.classList.add('show');
-  }, 150 * bars.length + 100);
-  setTimeout(function(){
-    var s = document.getElementById('intro-sub');
-    if(s) s.classList.add('show');
-  }, 150 * bars.length + 300);
-  // Fade out at 2.2s
-  setTimeout(function(){
-    var o = document.getElementById('intro-overlay');
-    if(o){
-      o.classList.add('fade-out');
-      setTimeout(function(){
-        if(o.parentNode) o.parentNode.removeChild(o);
-      }, 700);
-    }
-    sessionStorage.setItem('introSeen','1');
-  }, 2200);
-})();
+
 
 /* ═══════════════════════════════
    SYSTEM 2 — LIVING COUNTER
@@ -3446,10 +3372,10 @@ window.addEventListener('scroll', function(){
 /* ═══ EMAIL CAPTURE ═══ */
 let _pendingCheckoutUrl = null;
 
-function openGumroadWithEmail(url) {
+function openCheckoutWithEmail(url) {
   // If email already captured this session, go straight to Stripe
   if(sessionStorage.getItem('mtp_lead_email')) {
-    openGumroad(url);
+    openCheckout(url);
     return;
   }
   _pendingCheckoutUrl = url;
@@ -3484,7 +3410,7 @@ function submitEmailCapture() {
   document.getElementById('email-capture-overlay').classList.remove('active');
   document.body.style.overflow = '';
   if(_pendingCheckoutUrl) {
-    openGumroad(_pendingCheckoutUrl);
+    openCheckout(_pendingCheckoutUrl);
     _pendingCheckoutUrl = null;
   }
 }
@@ -3565,73 +3491,5 @@ updateUI();
 const tcEl = document.getElementById('traveler-count');
 if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
 </script>
-
-<!-- ════ SYSTEM 2: PURCHASE NOTIFICATION ════ -->
-<div id="purchase-notif">
-  <div id="pn-icon">
-    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-  </div>
-  <div id="pn-text">
-    <div id="pn-headline">Someone just got their pass</div>
-    <div id="pn-detail"><span id="pn-city">Mexico City</span> pass · from <span id="pn-country">Netherlands</span></div>
-  </div>
-</div>
-
-<!-- ════ CHECKOUT MODAL ════ -->
-<div id="checkout-modal-overlay" onclick="closeCheckoutModal(event)">
-  <div id="checkout-modal-box">
-    <div id="checkout-modal-header">
-      <span id="checkout-modal-title">Secure Checkout</span>
-      <button id="checkout-modal-close" onclick="forceCloseCheckoutModal()" aria-label="Close">✕</button>
-    </div>
-    <div id="checkout-modal-loading">
-      <div class="checkout-spinner"></div>
-      <p>Loading secure checkout...</p>
-    </div>
-    <iframe id="checkout-modal-iframe"
-            src=""
-            title="Checkout"
-            allow="payment"
-            onload="document.getElementById('checkout-modal-loading').style.display='none'">
-    </iframe>
-  </div>
-</div>
-
-<!-- ════ EMAIL CAPTURE MODAL ════ -->
-<div id="email-capture-overlay">
-  <div id="ec-box">
-    <button id="ec-close" onclick="closeEmailCapture()" aria-label="Close">✕</button>
-    <div class="ec-badge">
-      <svg width="10" height="10" viewBox="0 0 24 24" fill="#F87171" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
-      One step away
-    </div>
-    <h3>ALMOST THERE</h3>
-    <p class="ec-sub">Enter your email — we'll send your download link here the moment you complete your purchase.</p>
-    <div class="ec-field">
-      <label for="ec-name">First name</label>
-      <input type="text" id="ec-name" placeholder="Your first name" autocomplete="given-name">
-    </div>
-    <div class="ec-field">
-      <label for="ec-email">Email address</label>
-      <input type="email" id="ec-email" placeholder="you@email.com" autocomplete="email">
-    </div>
-    <button id="ec-submit" onclick="submitEmailCapture()">CONTINUE TO SECURE CHECKOUT →</button>
-    <p class="ec-disclaimer">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-      We'll send your download link here. No spam, ever.
-    </p>
-  </div>
-</div>
-
-<!-- ════ STICKY BOTTOM BAR (mobile) ════ -->
-<div id="sticky-bottom-bar">
-  <div class="sbb-left">
-    <span class="sbb-label">Best value</span>
-    <span class="sbb-title">All 3 Cities Pass — <strong>$22.99</strong></span>
-  </div>
-  <button class="sbb-btn" onclick="openGumroadWithEmail(CHECKOUT_URLS.all3)">Get My Pass →</button>
-</div>
-
-<div id="selection-toast">Choose a city first</div>
 </body>
 </html>
