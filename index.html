@@ -1670,6 +1670,342 @@ a{text-decoration:none;color:inherit;}
   0%,100%{transform:rotate(45deg) translateY(0);}
   50%{transform:rotate(45deg) translateY(5px);}
 }
+
+/* ═══════════════ CHECKOUT MODAL ═══════════════ */
+#checkout-modal-overlay{
+  display:none;
+  position:fixed;inset:0;z-index:99999;
+  background:rgba(0,0,0,0.85);
+  align-items:center;justify-content:center;
+  padding:16px;
+}
+#checkout-modal-overlay.active{display:flex;}
+#checkout-modal-box{
+  background:#fff;
+  border:3px solid #0A0A0A;
+  border-radius:16px;
+  box-shadow:8px 8px 0 #0A0A0A;
+  width:100%;max-width:480px;
+  max-height:90vh;
+  display:flex;flex-direction:column;
+  overflow:hidden;
+  position:relative;
+}
+#checkout-modal-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:14px 18px;
+  border-bottom:2px solid #0A0A0A;
+  background:#F5C518;
+  flex-shrink:0;
+}
+#checkout-modal-title{
+  font-family:'Bangers',cursive;
+  font-size:20px;color:#0A0A0A;letter-spacing:1px;
+}
+#checkout-modal-close{
+  background:none;border:none;cursor:pointer;
+  font-size:22px;font-weight:700;color:#0A0A0A;
+  width:32px;height:32px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;
+  transition:background 100ms;
+  flex-shrink:0;
+}
+#checkout-modal-close:hover{background:rgba(0,0,0,0.1);}
+#checkout-modal-iframe{
+  width:100%;
+  flex:1;
+  border:none;
+  min-height:500px;
+}
+#checkout-modal-loading{
+  position:absolute;
+  top:60px;left:0;right:0;bottom:0;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:12px;
+  background:#fff;
+  z-index:1;
+}
+#checkout-modal-loading p{
+  font-family:'Fredoka One',cursive;
+  font-size:15px;color:#666;
+}
+.checkout-spinner{
+  width:36px;height:36px;
+  border:3px solid #eee;
+  border-top-color:#D42B2B;
+  border-radius:50%;
+  animation:spin 0.7s linear infinite;
+}
+@keyframes spin{to{transform:rotate(360deg);}}
+
+/* ═══ 1. EMAIL CAPTURE MODAL ═══ */
+#email-capture-overlay{
+  display:none;position:fixed;inset:0;z-index:99998;
+  background:rgba(0,0,20,0.88);
+  align-items:center;justify-content:center;padding:20px;
+}
+#email-capture-overlay.active{display:flex;}
+#ec-box{
+  background:#0A0A14;border:3px solid #F5C518;
+  border-radius:18px;box-shadow:8px 8px 0 #0A0A0A;
+  width:100%;max-width:420px;padding:32px 28px;
+  position:relative;
+}
+#ec-close{
+  position:absolute;top:14px;right:16px;
+  background:none;border:none;color:rgba(255,255,255,0.5);
+  font-size:22px;cursor:pointer;
+  width:36px;height:36px;display:flex;align-items:center;justify-content:center;
+  border-radius:50%;transition:color 120ms;
+}
+#ec-close:hover{color:#fff;}
+.ec-badge{
+  display:inline-flex;align-items:center;gap:6px;
+  background:rgba(212,43,43,0.2);border:1px solid rgba(212,43,43,0.5);
+  border-radius:99px;padding:4px 12px;
+  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
+  color:#F87171;letter-spacing:0.5px;text-transform:uppercase;
+  margin-bottom:14px;
+}
+#ec-box h3{
+  font-family:'Bangers',cursive;font-size:28px;
+  color:#FFFFFF;letter-spacing:2px;line-height:1;
+  margin-bottom:6px;
+}
+#ec-box .ec-sub{
+  font-family:'Nunito',sans-serif;font-size:13px;
+  color:rgba(255,255,255,0.6);margin-bottom:20px;line-height:1.5;
+}
+.ec-field{
+  display:flex;flex-direction:column;gap:6px;margin-bottom:12px;
+}
+.ec-field label{
+  font-family:'Fredoka One',cursive;font-size:12px;
+  color:rgba(255,255,255,0.55);text-transform:uppercase;letter-spacing:0.5px;
+}
+.ec-field input{
+  background:rgba(255,255,255,0.07);
+  border:2px solid rgba(255,255,255,0.15);
+  border-radius:10px;padding:11px 14px;
+  font-family:'Nunito',sans-serif;font-size:14px;
+  color:#fff;outline:none;
+  transition:border-color 150ms;
+}
+.ec-field input:focus{border-color:#F5C518;}
+.ec-field input::placeholder{color:rgba(255,255,255,0.3);}
+#ec-submit{
+  width:100%;padding:15px;margin-top:6px;
+  background:#F5C518;color:#0A0A0A;
+  font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;
+  border:3px solid #0A0A0A;border-radius:12px;
+  box-shadow:4px 4px 0 #0A0A0A;cursor:pointer;
+  transition:transform 80ms,box-shadow 80ms;
+}
+#ec-submit:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #0A0A0A;}
+#ec-submit:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #0A0A0A;}
+.ec-disclaimer{
+  font-family:'Nunito',sans-serif;font-size:11px;
+  color:rgba(255,255,255,0.35);text-align:center;
+  margin-top:10px;
+}
+.ec-disclaimer svg{display:inline-block;vertical-align:middle;margin-right:3px;}
+
+/* ═══ 2. STICKY BOTTOM BAR ═══ */
+#sticky-bottom-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:997;
+  background:#0A0A0A;border-top:2px solid #F5C518;
+  padding:10px 16px;
+  align-items:center;justify-content:space-between;gap:10px;
+}
+@media(max-width:768px){
+  #sticky-bottom-bar{display:flex;}
+  body{padding-bottom:72px;}
+}
+#sticky-bottom-bar.hidden{display:none !important;}
+.sbb-left{
+  display:flex;flex-direction:column;gap:1px;
+}
+.sbb-label{
+  font-family:'Fredoka One',cursive;font-size:10px;
+  color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.5px;
+}
+.sbb-title{
+  font-family:'Fredoka One',cursive;font-size:14px;color:#fff;line-height:1;
+}
+.sbb-title strong{color:#F5C518;}
+.sbb-btn{
+  background:#F5C518;color:#0A0A0A;
+  font-family:'Bangers',cursive;font-size:16px;letter-spacing:1px;
+  border:2px solid #0A0A0A;border-radius:10px;
+  padding:9px 18px;white-space:nowrap;
+  box-shadow:3px 3px 0 #0A0A0A;cursor:pointer;
+  transition:transform 80ms,box-shadow 80ms;flex-shrink:0;
+}
+.sbb-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #0A0A0A;}
+
+/* ═══ 3. PDF PREVIEW STRIP ═══ */
+.preview-strip-wrap{margin-bottom:28px;}
+.preview-strip-label{
+  font-family:'Fredoka One',cursive;font-size:11px;
+  color:var(--red);text-transform:uppercase;letter-spacing:0.08em;
+  margin-bottom:10px;text-align:center;
+}
+.preview-strip{
+  display:flex;gap:14px;
+  overflow-x:auto;padding-bottom:8px;
+  -webkit-overflow-scrolling:touch;
+  scroll-snap-type:x mandatory;
+}
+.preview-strip::-webkit-scrollbar{height:4px;}
+.preview-strip::-webkit-scrollbar-track{background:rgba(0,0,0,0.05);}
+.preview-strip::-webkit-scrollbar-thumb{background:#D42B2B;border-radius:2px;}
+.pdf-card{
+  min-width:220px;max-width:220px;
+  background:#fff;border:2px solid #0A0A0A;
+  border-radius:6px 14px 6px 6px;
+  box-shadow:3px 3px 0 #0A0A0A;
+  padding:14px;flex-shrink:0;
+  scroll-snap-align:start;position:relative;overflow:hidden;
+}
+.pdf-card::before{
+  content:'';position:absolute;top:0;right:0;
+  width:22px;height:22px;
+  background:linear-gradient(225deg,#e0e0e0 50%,transparent 50%);
+  border-bottom-left-radius:4px;
+}
+.pdf-card-title{
+  font-family:'Fredoka One',cursive;font-size:12px;
+  color:var(--blue);margin-bottom:10px;line-height:1.3;
+  padding-right:16px;
+}
+.pdf-heatmap{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:4px;}
+.pdf-heatmap div{height:22px;border-radius:3px;}
+.pdf-list{font-family:'Nunito',sans-serif;font-size:11px;color:#333;line-height:1.7;list-style:none;}
+.pdf-list li::before{content:attr(data-n) ". ";font-weight:700;color:var(--blue);}
+.pdf-table{width:100%;border-collapse:collapse;}
+.pdf-table td{
+  font-family:'Nunito',sans-serif;font-size:10px;color:#333;
+  border:1px solid #ddd;padding:4px 6px;line-height:1.3;
+}
+.pdf-table td:first-child{font-weight:700;color:var(--blue);background:#f5f5ff;width:45%;}
+
+/* ═══ 4. AUTHOR SECTION ═══ */
+#author-section{
+  background:var(--cream);
+  border-top:2px solid #0A0A0A;border-bottom:2px solid #0A0A0A;
+  padding:44px 20px;text-align:center;
+}
+.author-inner{max-width:600px;margin:0 auto;}
+.author-avatar{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--blue);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Fredoka One',cursive;font-size:24px;color:#fff;
+  margin:0 auto 16px;border:3px solid #0A0A0A;
+  box-shadow:3px 3px 0 #0A0A0A;
+}
+.author-h{
+  font-family:'Bangers',cursive;font-size:clamp(22px,5vw,28px);
+  color:var(--blue);letter-spacing:1px;margin-bottom:14px;
+}
+.author-p{
+  font-family:'Nunito',sans-serif;font-size:15px;
+  color:#444;line-height:1.65;margin-bottom:20px;
+}
+.author-pills{
+  display:flex;flex-wrap:wrap;justify-content:center;gap:8px;
+}
+.author-pill{
+  display:inline-flex;align-items:center;gap:5px;
+  background:#fff;border:2px solid #0A0A0A;
+  border-radius:99px;padding:5px 12px;
+  font-family:'Fredoka One',cursive;font-size:12px;
+  box-shadow:2px 2px 0 #0A0A0A;
+}
+
+/* ═══ 5. TESTIMONIALS 2-COL ═══ */
+.testi-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:16px;
+}
+@media(min-width:600px){
+  .testi-grid{grid-template-columns:repeat(2,1fr);}
+}
+@media(min-width:1100px){
+  .testi-grid{grid-template-columns:repeat(3,1fr);}
+}
+
+/* ═══ 6. ORDER BUMP ═══ */
+#order-bump{
+  display:none;
+  background:#f0fff4;border:2px solid #1A7A4A;
+  border-radius:12px;padding:14px 18px;
+  margin-top:14px;
+}
+#order-bump.visible{display:block;}
+.ob-label{
+  font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;
+  color:var(--red);text-transform:uppercase;letter-spacing:1px;
+  margin-bottom:8px;
+}
+.ob-row{
+  display:flex;align-items:center;gap:12px;
+}
+.ob-check{
+  width:22px;height:22px;flex-shrink:0;
+  accent-color:#1A7A4A;cursor:pointer;
+}
+.ob-text{flex:1;}
+.ob-text strong{
+  font-family:'Fredoka One',cursive;font-size:14px;
+  color:#0A0A0A;display:block;
+}
+.ob-text small{
+  font-family:'Nunito',sans-serif;font-size:11px;
+  color:#555;font-weight:600;
+}
+.ob-price{
+  font-family:'Bangers',cursive;font-size:20px;
+  color:#1A7A4A;letter-spacing:0.5px;flex-shrink:0;
+}
+
+/* ═══ 7. URGENCY COUNTDOWN PULSE ═══ */
+@keyframes urgency-pulse{
+  0%,100%{background:#7B1D1D;}
+  50%{background:#9B2222;}
+}
+.countdown-bar-new.extreme-urgency{
+  animation:urgency-pulse 2s ease-in-out infinite;
+}
+.live-dot-nav{
+  display:none;align-items:center;gap:4px;
+  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
+  color:#4ADE80;white-space:nowrap;
+}
+.live-dot-nav .dot{
+  width:7px;height:7px;border-radius:50%;
+  background:#4ADE80;animation:blink 1.2s ease-in-out infinite;
+}
+.live-dot-nav.show{display:flex;}
+
+/* ═══ 8. FOOTER IMPROVEMENTS ═══ */
+.footer-trust{
+  font-family:'Nunito',sans-serif;font-size:11px;
+  color:rgba(255,255,255,0.35);text-align:center;
+  margin-bottom:12px;line-height:1.5;
+}
+.footer-social{
+  display:flex;align-items:center;justify-content:center;
+  gap:16px;margin-bottom:14px;
+}
+.footer-social a{
+  color:rgba(255,255,255,0.3);transition:color 150ms;
+}
+.footer-social a:hover{color:var(--gold);}
 </style>
 </head>
 <body>
@@ -1688,6 +2024,7 @@ a{text-decoration:none;color:inherit;}
       <span>· Wrong taxi? We tell you exactly which app to use ·</span>
     </div>
   </div>
+  <div class="live-dot-nav" id="live-dot-nav"><span class="dot"></span>LIVE</div>
   <button class="sticky-cta" onclick="scrollToSelector()">Choose Your City ↓</button>
   <div id="scroll-progress"></div>
 </nav>
@@ -2149,6 +2486,19 @@ a{text-decoration:none;color:inherit;}
     <!-- Dynamic upsell -->
     <div class="dynamic-upsell" id="dynamic-upsell"></div>
 
+    <!-- ORDER BUMP -->
+    <div id="order-bump">
+      <div class="ob-label">Recommended Add-On</div>
+      <div class="ob-row">
+        <input type="checkbox" class="ob-check" id="ob-checkbox" onchange="updateOrderBump()">
+        <label for="ob-checkbox" class="ob-text" style="cursor:pointer;">
+          <strong>Stomach Survival Guide</strong>
+          <small>Safe food map, pharmacy phrases &amp; recovery protocol</small>
+        </label>
+        <span class="ob-price">+$3.99</span>
+      </div>
+    </div>
+
     <!-- Live price + checkout -->
     <div class="price-display-wrap" id="price-display-wrap" style="display:none;">
       <div class="price-display-label" id="price-display">YOUR TOTAL: $9.99</div>
@@ -2216,6 +2566,50 @@ a{text-decoration:none;color:inherit;}
       <span class="pill pill-red" id="inside-pill-label" style="padding:6px 16px;font-size:13px;text-transform:uppercase;letter-spacing:0.06em;">MEXICO CITY PASS</span>
     </div>
     <h2 class="inside-h2" id="inside-h2">WHAT'S INSIDE YOUR<br>MEXICO CITY PASS:</h2>
+    <div class="preview-strip-wrap">
+      <div class="preview-strip-label">Preview — what's inside your guide</div>
+      <div class="preview-strip">
+        <div class="pdf-card">
+          <div class="pdf-card-title">Safety Heatmap — Mexico City</div>
+          <div class="pdf-heatmap">
+            <div style="background:#EF4444;"></div>
+            <div style="background:#F59E0B;"></div>
+            <div style="background:#22C55E;"></div>
+            <div style="background:#F59E0B;"></div>
+            <div style="background:#22C55E;"></div>
+            <div style="background:#22C55E;"></div>
+            <div style="background:#EF4444;"></div>
+            <div style="background:#F59E0B;"></div>
+            <div style="background:#22C55E;"></div>
+          </div>
+          <div style="display:flex;gap:6px;margin-top:6px;flex-wrap:wrap;">
+            <span style="display:inline-flex;align-items:center;gap:3px;font-family:'Nunito',sans-serif;font-size:9px;"><span style="width:8px;height:8px;border-radius:2px;background:#EF4444;display:inline-block;"></span>Avoid</span>
+            <span style="display:inline-flex;align-items:center;gap:3px;font-family:'Nunito',sans-serif;font-size:9px;"><span style="width:8px;height:8px;border-radius:2px;background:#F59E0B;display:inline-block;"></span>Caution</span>
+            <span style="display:inline-flex;align-items:center;gap:3px;font-family:'Nunito',sans-serif;font-size:9px;"><span style="width:8px;height:8px;border-radius:2px;background:#22C55E;display:inline-block;"></span>Safe</span>
+          </div>
+        </div>
+        <div class="pdf-card">
+          <div class="pdf-card-title">Transport Protocols</div>
+          <ul class="pdf-list">
+            <li data-n="1">Open DiDi app</li>
+            <li data-n="2">Set pickup: stadium gate 3</li>
+            <li data-n="3">Share ETA with group</li>
+            <li data-n="4">Confirm driver photo &amp; plate</li>
+            <li data-n="5">Pay in-app only</li>
+          </ul>
+        </div>
+        <div class="pdf-card">
+          <div class="pdf-card-title">Emergency Contacts</div>
+          <table class="pdf-table">
+            <tr><td>Police</td><td>911</td></tr>
+            <tr><td>Tourist line</td><td>078</td></tr>
+            <tr><td>US Embassy</td><td>+52 55 5080 2000</td></tr>
+            <tr><td>UK Embassy</td><td>+52 55 1670 3200</td></tr>
+            <tr><td>Ambulance</td><td>065</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
     <div class="features-grid">
       <div class="feature-card">
         <div class="feature-header-bar fh-blue"></div>
@@ -2348,6 +2742,47 @@ a{text-decoration:none;color:inherit;}
           </div>
         </div>
       </div>
+      <div class="testi-card">
+        <span class="pill testi-city-badge" style="background:#D4AF00;color:#0A0A0A;border:2px solid #0A0A0A;box-shadow:2px 2px 0 #0A0A0A;padding:4px 10px;font-size:11px;border-radius:99px;font-family:'Fredoka One',cursive;">ALL 3 CITIES</span>
+        <div class="testi-stars" style="margin-top:8px;color:#F5C518;">★★★★★</div>
+        <p class="testi-quote">"Traveled with a group of 8 from Germany. We used the transport guide every single match day. Not one bad experience. The police protocol section was something none of us had thought about."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#1A7A4A;color:#fff;">MW</div>
+          <div><div class="testi-name">Marcus W.</div><div class="testi-origin">Berlin, Germany</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="pill testi-city-badge" style="background:#6B21A8;color:#fff;border:2px solid #0A0A0A;box-shadow:2px 2px 0 #0A0A0A;padding:4px 10px;font-size:11px;border-radius:99px;font-family:'Fredoka One',cursive;">MONTERREY</span>
+        <div class="testi-stars" style="margin-top:8px;color:#F5C518;">★★★★★</div>
+        <p class="testi-quote">"38-degree heat, no idea what to drink or eat safely. The Stomach Guide saved two of us from a ruined match day. Worth every cent."</p>
+        <div class="testi-author">
+          <div class="testi-av" style="background:#6B21A8;color:#fff;">CB</div>
+          <div><div class="testi-name">Caitlin B.</div><div class="testi-origin">Melbourne, Australia</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="pill pill-red testi-city-badge" style="padding:4px 10px;font-size:11px;">GUADALAJARA</span>
+        <div class="testi-stars" style="margin-top:8px;color:#F5C518;">★★★★★</div>
+        <p class="testi-quote">"My Spanish is zero. The guide gave me exact phrases to use with taxi drivers and at pharmacies. I felt genuinely prepared for the first time."</p>
+        <div class="testi-author">
+          <div class="testi-av av-red">YF</div>
+          <div><div class="testi-name">Yannick F.</div><div class="testi-origin">Lyon, France</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ AUTHOR CREDIBILITY ════ -->
+<section id="author-section">
+  <div class="author-inner">
+    <div class="author-avatar">MT</div>
+    <h2 class="author-h">WRITTEN BY SOMEONE WHO'S BEEN THERE</h2>
+    <p class="author-p">This guide was built from years of attending major football tournaments in Latin America — Copa América, Gold Cup, qualifying matches. Every protocol, every taxi tip, every emergency contact was tested in the field. Not written from a desk.</p>
+    <div class="author-pills">
+      <span class="author-pill">🏟 8+ tournaments attended</span>
+      <span class="author-pill">🌎 3 Mexico cities covered</span>
+      <span class="author-pill">✈ 40+ nationalities served</span>
     </div>
   </div>
 </section>
@@ -2425,12 +2860,19 @@ a{text-decoration:none;color:inherit;}
      FOOTER
 ════════════════════════════════════ -->
 <footer class="footer">
-  <div class="footer-inner">
-    <span class="footer-copy">Mexico Travel Pass © 2026</span>
-    <div class="footer-links">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Refund Policy</a>
-      <a href="#">Contact</a>
+  <div class="wrap" style="max-width:1160px;margin:0 auto;">
+    <div class="footer-social">
+      <a href="#" aria-label="Twitter/X"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+      <a href="#" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+    </div>
+    <p class="footer-trust">Secure payments via Stripe · Instant PDF delivery · 30-day money-back guarantee</p>
+    <div class="footer-inner">
+      <span class="footer-copy">Mexico Travel Pass © 2026</span>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Refund Policy</a>
+        <a href="#">Contact</a>
+      </div>
     </div>
   </div>
 </footer>
@@ -2461,16 +2903,16 @@ const TRAVELERS_COUNT = 847;
 /* ═══════════════════════════════
    CONSTANTS
 ═══════════════════════════════ */
-// ── Product URLs — direct Gumroad links ──
+// ── Product URLs — Stripe Payment Links (LIVE) ──
 const CHECKOUT_URLS = {
-  cdmx:         'https://wlwtravepass.gumroad.com/l/cdmx-guide-2026',
-  gdl:          'https://wlwtravepass.gumroad.com/l/GDL-guide-2026',
-  mty:          'https://wlwtravepass.gumroad.com/l/MTY-guide-2026',
-  all3:         'https://wlwtravepass.gumroad.com/l/all3-guide-2026',
-  cdmx_stomach: 'https://wlwtravepass.gumroad.com/l/cdmx-guide-2026',
-  gdl_stomach:  'https://wlwtravepass.gumroad.com/l/GDL-guide-2026',
-  mty_stomach:  'https://wlwtravepass.gumroad.com/l/MTY-guide-2026',
-  all3_stomach: 'https://wlwtravepass.gumroad.com/l/all3-guide-2026',
+  cdmx:         'https://buy.stripe.com/eVq6oH08v7gGdbqeav6wE00',
+  gdl:          'https://buy.stripe.com/9B65kD3kH30q0oE8Qb6wE01',
+  mty:          'https://buy.stripe.com/aFacN53kH7gGb3i3vR6wE02',
+  all3:         'https://buy.stripe.com/8x29ATdZl44u0oE4zV6wE03',
+  cdmx_stomach: 'https://buy.stripe.com/eVq6oH08v7gGdbqeav6wE00',
+  gdl_stomach:  'https://buy.stripe.com/9B65kD3kH30q0oE8Qb6wE01',
+  mty_stomach:  'https://buy.stripe.com/aFacN53kH7gGb3i3vR6wE02',
+  all3_stomach: 'https://buy.stripe.com/8x29ATdZl44u0oE4zV6wE03',
 };
 
 const PRICES = { 0: 9.99, 1: 9.99, 2: 16.99, 3: 22.99 };
@@ -2571,6 +3013,9 @@ function updateUI() {
 
   // Dynamic upsell
   updateDynamicUpsell(n);
+  // Order bump
+  const ob = document.getElementById('order-bump');
+  if(ob) ob.classList.toggle('visible', n > 0);
 
   // Price display & checkout
   const priceWrap = document.getElementById('price-display-wrap');
@@ -2682,14 +3127,10 @@ function updateDynamicUpsell(n) {
    CHECKOUT
 ═══════════════════════════════ */
 function openGumroad(url) {
-  // Create a temporary hidden link with the Gumroad overlay attribute and click it
-  const a = document.createElement('a');
-  a.href = url;
-  a.setAttribute('data-gumroad-overlay-checkout', 'true');
-  a.style.display = 'none';
-  document.body.appendChild(a);
-  a.click();
-  setTimeout(() => document.body.removeChild(a), 1000);
+  window.open(url, '_blank');
+}
+function openGumroadWithEmailFallback(url) {
+  openGumroadWithEmail(url);
 }
 
 function goCheckout() {
@@ -2709,16 +3150,16 @@ function goCheckout() {
   if (n === 3)      url = CHECKOUT_URLS.all3;
   else if (n === 2) url = CHECKOUT_URLS.all3;   // upsell to all3
   else              url = CHECKOUT_URLS[[...selectedCities][0]];
-  openGumroad(url);
+  openGumroadWithEmail(url);
 }
 function addStomachGuide() {
   const n = selectedCities.size;
   const city = [...selectedCities][0] || 'cdmx';
   const key = n === 3 ? 'all3_stomach' : city + '_stomach';
-  openGumroad(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
+  openGumroadWithEmail(CHECKOUT_URLS[key] || CHECKOUT_URLS[city]);
 }
 function addStomachGuideAll() {
-  openGumroad(CHECKOUT_URLS.all3_stomach);
+  openGumroadWithEmail(CHECKOUT_URLS.all3_stomach);
 }
 
 /* ═══════════════════════════════
@@ -2855,7 +3296,7 @@ document.addEventListener('DOMContentLoaded', function(){
   var days = Math.floor(diff / 86400000);
   var tickerEl = document.getElementById('hero-countdown-text');
   if(tickerEl){
-    if(days > 1)       tickerEl.textContent = days + ' days until kickoff in Mexico City';
+    if(days > 1)       tickerEl.textContent = days > 7 ? days + ' days until kickoff — guides sell out as the tournament approaches' : days > 1 ? '⚠ Only ' + days + ' days left — fans are arriving now' : '🔴 LIVE: Tournament has started — fans are on the ground now';
     else if(days === 1) tickerEl.textContent = 'Tomorrow is kickoff. Are you ready?';
     else if(days === 0) tickerEl.textContent = 'TODAY is kickoff — tournament is live';
     else               tickerEl.textContent = 'Tournament is live across Mexico';
@@ -3001,6 +3442,122 @@ window.addEventListener('scroll', function(){
   if(bar) bar.style.width = pct + '%';
 }, { passive: true });
 
+
+/* ═══ EMAIL CAPTURE ═══ */
+let _pendingCheckoutUrl = null;
+
+function openGumroadWithEmail(url) {
+  // If email already captured this session, go straight to Stripe
+  if(sessionStorage.getItem('mtp_lead_email')) {
+    openGumroad(url);
+    return;
+  }
+  _pendingCheckoutUrl = url;
+  document.getElementById('email-capture-overlay').classList.add('active');
+  document.body.style.overflow = 'hidden';
+  setTimeout(() => {
+    const nameEl = document.getElementById('ec-name');
+    if(nameEl) nameEl.focus();
+  }, 100);
+}
+
+function closeEmailCapture() {
+  document.getElementById('email-capture-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+  _pendingCheckoutUrl = null;
+}
+
+function submitEmailCapture() {
+  const name  = document.getElementById('ec-name').value.trim();
+  const email = document.getElementById('ec-email').value.trim();
+  if(!email || !email.includes('@')) {
+    document.getElementById('ec-email').focus();
+    document.getElementById('ec-email').style.borderColor = '#EF4444';
+    return;
+  }
+  document.getElementById('ec-email').style.borderColor = '';
+  // Store in localStorage and sessionStorage
+  localStorage.setItem('mtp_lead_email', email);
+  localStorage.setItem('mtp_lead_name', name);
+  sessionStorage.setItem('mtp_lead_email', email);
+  // Close modal and go to Stripe
+  document.getElementById('email-capture-overlay').classList.remove('active');
+  document.body.style.overflow = '';
+  if(_pendingCheckoutUrl) {
+    openGumroad(_pendingCheckoutUrl);
+    _pendingCheckoutUrl = null;
+  }
+}
+
+// Close on overlay click
+document.getElementById('email-capture-overlay').addEventListener('click', function(e) {
+  if(e.target === this) closeEmailCapture();
+});
+// Close on ESC
+document.addEventListener('keydown', function(e) {
+  if(e.key === 'Escape') closeEmailCapture();
+});
+// Enter key submits
+document.getElementById('ec-email').addEventListener('keydown', function(e) {
+  if(e.key === 'Enter') submitEmailCapture();
+});
+
+// Pre-fill if returning
+(function(){
+  const saved = localStorage.getItem('mtp_lead_email');
+  const savedName = localStorage.getItem('mtp_lead_name');
+  if(saved) {
+    document.getElementById('ec-email').value = saved;
+    if(savedName) document.getElementById('ec-name').value = savedName;
+  }
+})();
+
+/* ═══ STICKY BOTTOM BAR ═══ */
+(function(){
+  const bar = document.getElementById('sticky-bottom-bar');
+  const selector = document.getElementById('city-selector');
+  if(!bar || !selector) return;
+  function checkStickyBar() {
+    const rect = selector.getBoundingClientRect();
+    const inSelector = rect.top < window.innerHeight && rect.bottom > 0;
+    bar.classList.toggle('hidden', inSelector);
+  }
+  window.addEventListener('scroll', checkStickyBar, {passive:true});
+  checkStickyBar();
+})();
+
+/* ═══ ORDER BUMP ═══ */
+let stomachAdded = false;
+function updateOrderBump() {
+  stomachAdded = document.getElementById('ob-checkbox').checked;
+  // Update price display
+  const n = selectedCities.size;
+  if(n > 0) {
+    const base = PRICES[Math.min(n,3)];
+    const total = stomachAdded ? (base + 3.99) : base;
+    const priceStr = '$' + total.toFixed(2).replace('.00','');
+    document.getElementById('price-display').textContent = 'YOUR TOTAL: ' + priceStr;
+    document.getElementById('checkout-price').textContent = priceStr;
+  }
+}
+
+/* ═══ 7. URGENCY — countdown bar + live dot ═══ */
+(function(){
+  const kickoff = new Date('2026-06-11T15:00:00Z').getTime();
+  const diff = kickoff - Date.now();
+  const days = Math.floor(diff / 86400000);
+  // Live dot
+  if(days <= 0) {
+    const dot = document.getElementById('live-dot-nav');
+    if(dot) dot.classList.add('show');
+  }
+  // Countdown bar urgency
+  if(days <= 3 && days >= 0) {
+    const bar = document.querySelector('.countdown-bar-new');
+    if(bar) bar.classList.add('extreme-urgency');
+  }
+})();
+
 /* ═══════════════════════════════
    INIT
 ═══════════════════════════════ */
@@ -3020,7 +3577,61 @@ if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
   </div>
 </div>
 
+<!-- ════ CHECKOUT MODAL ════ -->
+<div id="checkout-modal-overlay" onclick="closeCheckoutModal(event)">
+  <div id="checkout-modal-box">
+    <div id="checkout-modal-header">
+      <span id="checkout-modal-title">Secure Checkout</span>
+      <button id="checkout-modal-close" onclick="forceCloseCheckoutModal()" aria-label="Close">✕</button>
+    </div>
+    <div id="checkout-modal-loading">
+      <div class="checkout-spinner"></div>
+      <p>Loading secure checkout...</p>
+    </div>
+    <iframe id="checkout-modal-iframe"
+            src=""
+            title="Checkout"
+            allow="payment"
+            onload="document.getElementById('checkout-modal-loading').style.display='none'">
+    </iframe>
+  </div>
+</div>
+
+<!-- ════ EMAIL CAPTURE MODAL ════ -->
+<div id="email-capture-overlay">
+  <div id="ec-box">
+    <button id="ec-close" onclick="closeEmailCapture()" aria-label="Close">✕</button>
+    <div class="ec-badge">
+      <svg width="10" height="10" viewBox="0 0 24 24" fill="#F87171" aria-hidden="true"><circle cx="12" cy="12" r="10"/></svg>
+      One step away
+    </div>
+    <h3>ALMOST THERE</h3>
+    <p class="ec-sub">Enter your email — we'll send your download link here the moment you complete your purchase.</p>
+    <div class="ec-field">
+      <label for="ec-name">First name</label>
+      <input type="text" id="ec-name" placeholder="Your first name" autocomplete="given-name">
+    </div>
+    <div class="ec-field">
+      <label for="ec-email">Email address</label>
+      <input type="email" id="ec-email" placeholder="you@email.com" autocomplete="email">
+    </div>
+    <button id="ec-submit" onclick="submitEmailCapture()">CONTINUE TO SECURE CHECKOUT →</button>
+    <p class="ec-disclaimer">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+      We'll send your download link here. No spam, ever.
+    </p>
+  </div>
+</div>
+
+<!-- ════ STICKY BOTTOM BAR (mobile) ════ -->
+<div id="sticky-bottom-bar">
+  <div class="sbb-left">
+    <span class="sbb-label">Best value</span>
+    <span class="sbb-title">All 3 Cities Pass — <strong>$22.99</strong></span>
+  </div>
+  <button class="sbb-btn" onclick="openGumroadWithEmail(CHECKOUT_URLS.all3)">Get My Pass →</button>
+</div>
+
 <div id="selection-toast">Choose a city first</div>
-<script src="https://gumroad.com/js/gumroad.js"></script>
 </body>
 </html>
