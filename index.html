@@ -2683,12 +2683,9 @@ function updateDynamicUpsell(n) {
    CHECKOUT
 ═══════════════════════════════ */
 function openGumroad(url) {
-  // Opens Gumroad checkout as overlay modal — user never leaves the page
-  if (window.GumroadOverlay) {
-    window.GumroadOverlay.open(url);
-  } else {
-    window.open(url, '_blank');
-  }
+  // ?wanted=true skips the product page and opens checkout directly
+  const checkoutUrl = url + '?wanted=true';
+  window.open(checkoutUrl, '_blank');
 }
 
 function goCheckout() {
