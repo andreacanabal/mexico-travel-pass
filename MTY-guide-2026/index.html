@@ -288,6 +288,92 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 #content::-webkit-scrollbar{width:3px}
 #content::-webkit-scrollbar-track{background:var(--dark-bg)}
 #content::-webkit-scrollbar-thumb{background:var(--purple);border-radius:99px}
+
+/* ── SHOP BUTTON ── */
+.shop-btn{background:var(--gold);color:var(--black);font-family:'Bangers',cursive;
+  font-size:13px;letter-spacing:0.5px;border:none;border-radius:99px;
+  padding:7px 12px;cursor:pointer;box-shadow:2px 2px 0 var(--black);
+  flex-shrink:0;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.shop-btn:active{transform:scale(0.95)}
+.shop-btn svg{flex-shrink:0}
+
+/* ── SHOP TAB ── */
+.shop-hero{background:linear-gradient(135deg,#0d1a00,#1A7A4A 60%,#2d6a1a);
+  margin:12px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);padding:20px 16px;overflow:hidden;position:relative}
+.shop-hero-title{font-family:'Bangers',cursive;font-size:28px;color:var(--white);
+  line-height:1;margin-bottom:6px}
+.shop-hero-sub{font-size:13px;color:rgba(255,255,255,0.8);line-height:1.5}
+.shop-section-label{font-family:'Bangers',cursive;font-size:18px;letter-spacing:1px;
+  padding:14px 14px 6px;display:flex;align-items:center;gap:8px}
+.partner-badge{display:inline-flex;align-items:center;gap:6px;background:var(--dark-card);
+  border:2px solid var(--black);border-radius:99px;padding:5px 12px;margin:0 12px 10px;
+  font-family:'Fredoka One',cursive;font-size:11px;color:var(--gray-500)}
+.partner-badge span{color:var(--gold)}
+.gyg-wrapper{margin:0 12px 16px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;background:var(--dark-card)}
+.gyg-inner{padding:0}
+.gyg-inner iframe,.gyg-inner [data-gyg-widget]{width:100%!important;max-width:100%!important}
+.affiliate-disclaimer{margin:12px;font-size:11px;color:var(--gray-500);
+  line-height:1.5;text-align:center;padding:0 8px}
+.coming-soon-card{margin:8px 12px;border-radius:12px;border:2px dashed rgba(255,255,255,0.15);
+  padding:16px;text-align:center}
+.cs-title{font-family:'Fredoka One',cursive;font-size:14px;color:rgba(255,255,255,0.4);margin-bottom:4px}
+.cs-sub{font-size:12px;color:rgba(255,255,255,0.25)}
+
+/* ── DISCOVERCARS WIDGET WRAPPER ── */
+.dcw-wrapper{margin:0 12px 16px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden}
+.dcw-wrapper>div{width:100%}
+
+/* ── GYG WIDGET SIZING ── */
+.gyg-wrapper{margin:0 12px 16px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;background:var(--dark-card)}
+.gyg-inner{min-height:320px}
+.gyg-inner>div{width:100%!important}
+
+/* ── GYG NATIVE FALLBACK ── */
+.native-cards-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:0 12px 10px}
+.native-act-card{background:var(--dark-card);border:2px solid var(--black);
+  border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:hidden;
+  text-decoration:none;display:flex;flex-direction:column;transition:transform 0.1s}
+.native-act-card:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.nac-img{height:80px;display:flex;align-items:center;justify-content:center}
+.nac-body{padding:10px}
+.nac-tag{font-family:'Fredoka One',cursive;font-size:9px;color:var(--gold);
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:3px}
+.nac-title{font-family:'Fredoka One',cursive;font-size:13px;color:var(--white);
+  line-height:1.3;margin-bottom:4px}
+.nac-meta{font-size:10px;color:var(--gray-500);line-height:1.4;margin-bottom:6px}
+.nac-footer{display:flex;align-items:center;justify-content:space-between}
+.nac-stars{font-size:10px;color:var(--gold)}
+.nac-cta{font-family:'Bangers',cursive;font-size:13px;color:var(--gold);letter-spacing:0.5px}
+.gyg-browse-btn{display:flex;align-items:center;justify-content:center;gap:8px;
+  margin:0 12px 16px;background:rgba(245,197,24,0.1);border:2px solid var(--gold);
+  border-radius:12px;padding:12px;font-family:'Fredoka One',cursive;font-size:13px;
+  color:var(--gold);text-decoration:none;box-shadow:3px 3px 0 var(--black);
+  transition:transform 0.1s}
+.gyg-browse-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+
+/* ── DISCOVERCARS NATIVE FALLBACK ── */
+.dcf-card{margin:0 12px 16px;background:var(--dark-card);border:2px solid var(--black);
+  border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:hidden}
+.dcf-header{background:#007ac2;padding:16px}
+.dcf-logo{display:flex;align-items:center;gap:8px;font-family:'Bangers',cursive;
+  font-size:18px;color:var(--white);letter-spacing:0.5px;margin-bottom:8px}
+.dcf-tagline{font-size:13px;color:rgba(255,255,255,0.9);line-height:1.4}
+.dcf-benefits{padding:14px 16px 10px}
+.dcf-benefit{display:flex;align-items:center;gap:8px;font-size:12px;
+  color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:7px}
+.dcf-benefit svg{flex-shrink:0}
+.dcf-cta{display:flex;align-items:center;justify-content:center;gap:8px;
+  margin:0 16px 10px;background:var(--gold);color:var(--black);
+  font-family:'Bangers',cursive;font-size:19px;letter-spacing:0.5px;
+  border:2px solid var(--black);border-radius:12px;padding:14px;
+  text-decoration:none;box-shadow:3px 3px 0 var(--black);transition:transform 0.1s}
+.dcf-cta:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.dcf-desc{font-size:11px;color:var(--gray-500);text-align:center;
+  padding:0 16px 14px;line-height:1.4}
 </style>
 </head>
 <body>
@@ -299,7 +385,13 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <span class="hdr-title">MTY GUIDE</span>
   </div>
   <span id="section-label">HOME</span>
-  <button class="sos-btn" onclick="openSOS()">SOS</button>
+  <div style="display:flex;align-items:center;gap:6px">
+    <button class="shop-btn" id="shop-hdr-btn" onclick="switchTab('shop')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      MTY DEALS
+    </button>
+    <button class="sos-btn" onclick="openSOS()">SOS</button>
+  </div>
 </div>
 
 <!-- CONTENT -->
@@ -1078,6 +1170,162 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
   </div><!-- /tab-phrases -->
 
+  <!-- ════════════════════════════════════════
+       TAB 6: SHOP / AFFILIATES
+       ════════════════════════════════════════ -->
+  <div id="tab-shop" class="tab-section">
+
+    <!-- Hero -->
+    <div class="shop-hero">
+      <div style="font-family:'Fredoka One',cursive;font-size:11px;color:rgba(255,255,255,0.6);margin-bottom:6px;letter-spacing:2px;text-transform:uppercase">MTY WORLD CUP 2026</div>
+      <div class="shop-hero-title">BOOK IT.<br>DON'T MISS IT.</div>
+      <div class="shop-hero-sub">Tours, rental cars, eSIMs and more — curated for fans heading to Estadio BBVA. Everything you need, sorted before you land.</div>
+    </div>
+
+    <!-- GetYourGuide -->
+    <div class="shop-section-label" style="color:var(--gold)">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      TOURS &amp; EXPERIENCES
+    </div>
+    <div class="partner-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Partner: <span>GetYourGuide</span> · Verified activities in Monterrey
+    </div>
+
+    <!-- GYG native fallback cards (always visible) -->
+    <div class="native-cards-row">
+      <a class="native-act-card" href="https://www.getyourguide.com/monterrey-l679/city-tour-tc31/?partner_id=SAGF2GH&cmp=mty" target="_blank" rel="sponsored noopener">
+        <div class="nac-img" style="background:linear-gradient(135deg,#1a3a1a,#2d6a2d)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+        </div>
+        <div class="nac-body">
+          <div class="nac-tag">City Tour</div>
+          <div class="nac-title">Monterrey City Highlights</div>
+          <div class="nac-meta">Macroplaza · Santa Lucía · Barrio Antiguo</div>
+          <div class="nac-footer"><span class="nac-stars">★★★★★</span><span class="nac-cta">Book →</span></div>
+        </div>
+      </a>
+      <a class="native-act-card" href="https://www.getyourguide.com/monterrey-l679/food-drink-tc71/?partner_id=SAGF2GH&cmp=mty" target="_blank" rel="sponsored noopener">
+        <div class="nac-img" style="background:linear-gradient(135deg,#3a1a00,#8b4513)">
+          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.6)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="18" y2="6"/><path d="M18 2v4m0 4v12M6 2v6a2 2 0 002 2h0a2 2 0 002-2V2M8 10v12"/></svg>
+        </div>
+        <div class="nac-body">
+          <div class="nac-tag">Food &amp; Drinks</div>
+          <div class="nac-title">Monterrey Food Tour</div>
+          <div class="nac-meta">Carne Asada · Cabrito · Local Markets</div>
+          <div class="nac-footer"><span class="nac-stars">★★★★★</span><span class="nac-cta">Book →</span></div>
+        </div>
+      </a>
+    </div>
+    <a class="gyg-browse-btn" href="https://www.getyourguide.com/monterrey-l679/?partner_id=SAGF2GH&cmp=mty" target="_blank" rel="sponsored noopener">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
+      Browse all Monterrey experiences on GetYourGuide
+    </a>
+
+    <!-- GYG widget (loads on real browser, hidden in sandboxed preview) -->
+    <div class="gyg-wrapper" id="gyg-widget-wrap" style="display:none">
+      <div class="gyg-inner">
+        <div
+          data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+          data-gyg-locale-code="en-US"
+          data-gyg-widget="activities"
+          data-gyg-number-of-items="2"
+          data-gyg-cmp="mty"
+          data-gyg-partner-id="SAGF2GH"
+          data-gyg-tour-ids="1079627,1280090,1045087,1156975,592466,451073,1280091,451070,1045197,387005">
+        </div>
+      </div>
+    </div>
+
+    <!-- DiscoverCars -->
+    <div class="shop-section-label" style="color:#60a5fa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="11" width="22" height="9" rx="2"/><path d="M5 11L7.5 4h9L19 11"/><circle cx="7" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+      RENT A CAR IN MEXICO
+    </div>
+    <div class="partner-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Partner: <span>DiscoverCars</span> · Compare 500+ suppliers · Save up to 70%
+    </div>
+
+    <!-- DiscoverCars native fallback card -->
+    <div class="dcf-card">
+      <div class="dcf-header">
+        <div class="dcf-logo">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="11" width="22" height="9" rx="2"/><path d="M5 11L7.5 4h9L19 11"/><circle cx="7" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+          <span>DiscoverCars</span>
+        </div>
+        <div class="dcf-tagline">Search and compare car rentals<br>and save up to <strong style="color:var(--gold)">70%!</strong></div>
+      </div>
+      <div class="dcf-benefits">
+        <div class="dcf-benefit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Free cancellation on most bookings</div>
+        <div class="dcf-benefit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Compare Hertz, Avis, Budget &amp; 500+ more</div>
+        <div class="dcf-benefit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> No surge pricing on match days</div>
+        <div class="dcf-benefit"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> International license accepted in Mexico</div>
+      </div>
+      <a class="dcf-cta" href="https://www.discovercars.com/?a_aid=mexicotravelpass" target="_blank" rel="sponsored noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="11" width="22" height="9" rx="2"/><path d="M5 11L7.5 4h9L19 11"/><circle cx="7" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></svg>
+        Search Now — Free &amp; Instant
+      </a>
+      <div class="dcf-desc">We've selected the best deals from our car rental partners.</div>
+    </div>
+
+    <!-- DiscoverCars widget (loads on real browser) -->
+    <div class="dcw-wrapper" id="dcw-widget-wrap" style="display:none">
+      <div><script id="dchwidget" src="https://www.discovercars.com/widget.js?v1"
+        data-dev-env="com"
+        data-location="mexico/mexico"
+        data-lang="en"
+        data-currency="usd"
+        data-utm-source="MexicoTravelPass"
+        data-utm-medium="widget"
+        data-aff-code="a_aid"
+        data-autocomplete="on"
+        data-style-submit-bg-color="#007ac2"
+        data-style-submit-font-color="#ffffff"
+        data-style-form-bg-color="#fcd34d"
+        data-style-form-font-color="#000000"
+        data-style-submit-text="Search now"
+        data-style-title-color="#000000"
+        data-title-text="Search and compare car rentals and save up to 70%!"
+        async="async"
+        data-style_rounded_corners="on"
+        data-layout_benefits="on"
+        data-layout_description="on"
+        data-layout_description_text="We've selected the best deals from our car rental partners."
+        data-layout_logo_style="on dark"
+        data-layout_style_form_bg_color="#007ac2"
+        data-layout_title="on"
+        data-layout_top_logo="on"></script></div>
+    </div>
+
+    <!-- Coming Soon -->
+    <div class="shop-section-label" style="color:rgba(255,255,255,0.4);font-size:16px">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      COMING SOON
+    </div>
+
+    <div class="coming-soon-card">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        <div class="cs-title">Holafly — Travel eSIM</div>
+      </div>
+      <div class="cs-sub">Mexico data plans for World Cup fans. No roaming fees, instant activation.</div>
+    </div>
+
+    <div class="coming-soon-card">
+      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        <div class="cs-title">Hotels in San Pedro</div>
+      </div>
+      <div class="cs-sub">Curated stays in the safest zone — walking distance from top restaurants.</div>
+    </div>
+
+    <div class="affiliate-disclaimer">
+      Some links on this page are affiliate links. If you book through them, MTY Travel Pass may earn a small commission — at no extra cost to you. We only recommend services we'd use ourselves.
+    </div>
+
+  </div><!-- /tab-shop -->
+
 </div><!-- /content -->
 
 <!-- BOTTOM NAV -->
@@ -1157,15 +1405,22 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 <script>
 // ── TAB NAVIGATION ──
 const sectionNames = {
-  home:'HOME',safety:'SAFETY',stadium:'STADIUM',emergency:'EMERGENCY',phrases:'PHRASES'
+  home:'HOME',safety:'SAFETY',stadium:'STADIUM',emergency:'EMERGENCY',phrases:'PHRASES',shop:'MTY DEALS'
 };
 
 function switchTab(tab) {
   document.querySelectorAll('.tab-section').forEach(s => s.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
-  document.getElementById('nav-'+tab).classList.add('active');
-  document.getElementById('section-label').textContent = sectionNames[tab];
+  const section = document.getElementById('tab-'+tab);
+  if (section) section.classList.add('active');
+  const navBtn = document.getElementById('nav-'+tab);
+  if (navBtn) navBtn.classList.add('active');
+  const shopBtn = document.getElementById('shop-hdr-btn');
+  if (shopBtn) {
+    shopBtn.style.background = (tab === 'shop') ? 'var(--white)' : 'var(--gold)';
+    shopBtn.style.color = (tab === 'shop') ? 'var(--purple)' : 'var(--black)';
+  }
+  document.getElementById('section-label').textContent = sectionNames[tab] || tab.toUpperCase();
   document.getElementById('content').scrollTop = 0;
 }
 
@@ -1250,6 +1505,34 @@ setInterval(updateCountdown, 60000);
 
 // ── HIDE FLOAT SOS WHEN OVERLAY OPEN ──
 document.getElementById('sos-float').addEventListener('click', openSOS);
+
+// ── WIDGET LOADER DETECTION ──
+// Show real widgets if scripts load; fallback cards stay visible otherwise
+function tryShowWidgets() {
+  // GYG: check if widget script injected any content
+  const gygWrap = document.getElementById('gyg-widget-wrap');
+  const gygFallbackCards = document.querySelector('.native-cards-row');
+  const gygFallbackBtn = document.querySelector('.gyg-browse-btn');
+  const dcwWrap = document.getElementById('dcw-widget-wrap');
+  const dcfCard = document.querySelector('.dcf-card');
+
+  // Show GYG widget and hide fallback if GYG script loaded
+  if (typeof window.GYGWidgetLoader !== 'undefined' || document.querySelector('[data-gyg-widget]')?.children?.length > 0) {
+    if (gygWrap) gygWrap.style.display = 'block';
+    if (gygFallbackCards) gygFallbackCards.style.display = 'none';
+    if (gygFallbackBtn) gygFallbackBtn.style.display = 'none';
+  }
+  // Show DiscoverCars widget and hide fallback if DCW loaded
+  if (document.getElementById('dch-widget') || document.querySelector('#dchwidget + *')) {
+    if (dcwWrap) dcwWrap.style.display = 'block';
+    if (dcfCard) dcfCard.style.display = 'none';
+  }
+}
+// Check after scripts have had time to execute
+setTimeout(tryShowWidgets, 2000);
+setTimeout(tryShowWidgets, 5000);
 </script>
+<!-- GetYourGuide Widget Script -->
+<script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="SAGF2GH"></script>
 </body>
 </html>
