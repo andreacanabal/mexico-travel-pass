@@ -34,6 +34,9 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 #header-title{font-family:'Bangers',cursive;font-size:16px;color:white;letter-spacing:1px;text-transform:uppercase;position:absolute;left:50%;transform:translateX(-50%)}
 .sos-btn{background:var(--black);color:white;border:2px solid white;border-radius:99px;padding:6px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;min-height:36px;transition:transform .1s}
 .sos-btn:active{transform:scale(.95)}
+.shop-btn{background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:99px;padding:6px 10px;font-family:'Fredoka One',cursive;font-size:11px;cursor:pointer;min-height:36px;transition:transform .1s;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.shop-btn:active{transform:scale(.95)}
+.header-right{display:flex;align-items:center;gap:6px}
 
 /* BOTTOM NAV */
 .nav-tab{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer;height:100%;gap:2px;transition:all .15s;min-height:44px}
@@ -218,6 +221,41 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 .scenario-card.open .scenario-body{display:block}
 .sc-chevron{color:var(--gray-500);transition:transform .25s}
 
+/* DEALS SECTION */
+.deals-hero{background:linear-gradient(135deg,#050D1F,#1A3FAA);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;padding:20px 16px;text-align:center}
+.deals-hero-label{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.deals-hero-title{font-family:'Bangers',cursive;font-size:28px;color:white;line-height:1.1;margin-bottom:8px}
+.deals-hero-sub{font-family:'Nunito',sans-serif;font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
+.deals-category-label{font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.deals-category-label::after{content:'';flex:1;height:2px;background:var(--gray-200)}
+.widget-slot{position:relative;margin-bottom:12px}
+.fallback-cards{display:flex;flex-direction:column;gap:10px}
+.fallback-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:hidden;display:flex;flex-direction:column}
+.fallback-card-img{height:90px;display:flex;align-items:center;justify-content:center}
+.fallback-card-body{padding:12px}
+.fallback-card-tag{display:inline-block;background:var(--gold);color:var(--black);border-radius:99px;padding:2px 8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700;margin-bottom:6px}
+.fallback-card-title{font-family:'Fredoka One',cursive;font-size:15px;color:var(--black);margin-bottom:4px}
+.fallback-card-desc{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5;margin-bottom:10px}
+.fallback-card-footer{display:flex;align-items:center;justify-content:space-between}
+.fallback-price{font-family:'Bangers',cursive;font-size:18px;color:var(--green)}
+.fallback-see-more{text-align:center;padding:4px 0}
+.fallback-see-more-btn{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:var(--blue);text-decoration:none}
+#gyg-widget-container,#dc-widget-container{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:visible;padding:12px}
+.partner-card{background:white;border:2px solid var(--gray-200);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px}
+.fallback-logo{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.partner-info{flex:1}
+.partner-name{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black)}
+.partner-desc{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-top:2px;line-height:1.4}
+.partner-btn{background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:99px;padding:8px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .1s;margin-top:8px}
+.partner-btn:active{transform:scale(.95)}
+.fallback-badges{display:flex;flex-wrap:wrap;gap:4px;margin:6px 0 4px}
+.fbadge{display:inline-block;border:1px solid var(--gray-200);border-radius:99px;padding:2px 8px;font-family:'Nunito',sans-serif;font-size:10px;font-weight:700}
+.fbadge.green{background:#dcfce7;color:var(--green);border-color:#bbf7d0}
+.fbadge.blue{background:#dbeafe;color:var(--blue);border-color:#bfdbfe}
+.fbadge.gold{background:#fef9c3;color:#92400e;border-color:#fde68a}
+.deals-disclaimer{font-family:'Nunito',sans-serif;font-size:10px;color:var(--gray-500);text-align:center;margin-top:4px;line-height:1.5;padding:8px 4px}
+
+
 /* PHRASES */
 .category-pills{display:flex;gap:6px;overflow-x:auto;margin-bottom:14px;padding-bottom:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .category-pills::-webkit-scrollbar{display:none}
@@ -289,7 +327,13 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
     <span class="logo-text">CDMX GUIDE</span>
   </div>
   <span id="header-title">HOME</span>
-  <button class="sos-btn" onclick="openSOS()">SOS</button>
+  <div class="header-right">
+    <button class="shop-btn" onclick="switchTab('deals')">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+      Deals
+    </button>
+    <button class="sos-btn" onclick="openSOS()">SOS</button>
+  </div>
 </header>
 
 <!-- CONTENT AREA -->
@@ -918,6 +962,144 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
   </section>
 
+  <!-- ===== DEALS ===== -->
+  <section id="sec-deals" class="section">
+
+    <div class="deals-hero">
+      <div class="deals-hero-label">🌎 World Cup 2026 · Exclusive Deals</div>
+      <div class="deals-hero-title">GET MORE FROM<br>YOUR TRIP</div>
+      <div class="deals-hero-sub">Tours, SIM cards, transfers & more — curated for fans visiting Mexico City this summer.</div>
+    </div>
+
+    <!-- ── TOURS & EXPERIENCES ─────────────────────────────── -->
+    <div class="deals-category-label">🎟️ Tours & Experiences</div>
+
+    <!-- Widget slot: fallback always visible; real widget overlays when loaded -->
+    <div class="widget-slot" id="gyg-slot">
+
+      <!-- FALLBACK: always rendered, hidden by JS once widget loads -->
+      <div class="fallback-cards" id="gyg-fallback">
+        <div class="fallback-card">
+          <div class="fallback-card-img" style="background:linear-gradient(135deg,#1A3FAA,#4f6fd4)">
+            <span style="font-size:32px">🏙️</span>
+          </div>
+          <div class="fallback-card-body">
+            <div class="fallback-card-tag">Top Rated</div>
+            <div class="fallback-card-title">Mexico City Night Tour</div>
+            <div class="fallback-card-desc">Explore CDMX after dark with a local expert. Includes Zócalo, Reforma & street food stops.</div>
+            <div class="fallback-card-footer">
+              <span class="fallback-price">From $35</span>
+              <a href="https://www.getyourguide.com/mexico-city-l194/tours-tc1/?partner_id=SAGF2GH&cmp=cdmx" target="_blank" rel="sponsored" class="partner-btn" style="margin-top:0;padding:6px 14px;font-size:11px">Book now →</a>
+            </div>
+          </div>
+        </div>
+        <div class="fallback-card">
+          <div class="fallback-card-img" style="background:linear-gradient(135deg,#1A7A4A,#34d399)">
+            <span style="font-size:32px">🏟️</span>
+          </div>
+          <div class="fallback-card-body">
+            <div class="fallback-card-tag">World Cup Special</div>
+            <div class="fallback-card-title">Estadio Azteca Tour</div>
+            <div class="fallback-card-desc">Go behind the scenes of the world's most iconic stadium. Locker rooms, pitch side & trophy room.</div>
+            <div class="fallback-card-footer">
+              <span class="fallback-price">From $28</span>
+              <a href="https://www.getyourguide.com/mexico-city-l194/?partner_id=SAGF2GH&cmp=cdmx&tour_id=887360" target="_blank" rel="sponsored" class="partner-btn" style="margin-top:0;padding:6px 14px;font-size:11px">Book now →</a>
+            </div>
+          </div>
+        </div>
+        <div class="fallback-see-more">
+          <a href="https://www.getyourguide.com/mexico-city-l194/?partner_id=SAGF2GH&cmp=cdmx" target="_blank" rel="sponsored" class="fallback-see-more-btn">See all experiences on GetYourGuide →</a>
+        </div>
+      </div>
+
+      <!-- REAL WIDGET: injected on top when script loads -->
+      <div id="gyg-widget-container" style="display:none">
+        <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame" data-gyg-locale-code="en-US" data-gyg-widget="activities" data-gyg-number-of-items="2" data-gyg-cmp="cdmx" data-gyg-partner-id="SAGF2GH" data-gyg-tour-ids="696822,887360,1091374,28868,434356,28922,58106,831064,524001,1338298"><span style="font-family:'Nunito',sans-serif;font-size:11px;color:var(--gray-500)">Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/mexico-city-l194/" style="color:var(--blue)">GetYourGuide</a></span></div>
+      </div>
+
+    </div>
+
+    <!-- ── STAY CONNECTED ──────────────────────────────────── -->
+    <div class="deals-category-label">📶 Stay Connected</div>
+    <div class="partner-card">
+      <div class="fallback-logo" style="background:linear-gradient(135deg,#ff6b35,#f7931e)">
+        <span style="font-size:22px">📶</span>
+      </div>
+      <div class="partner-info">
+        <div class="partner-name">Holafly eSIM</div>
+        <div class="partner-desc">Unlimited data in Mexico. No physical SIM. Works the moment you land — no roaming fees.</div>
+        <div class="fallback-badges"><span class="fbadge green">Instant activation</span><span class="fbadge blue">No roaming</span></div>
+        <a href="https://holafly.com" target="_blank" rel="sponsored" class="partner-btn">Get eSIM →</a>
+      </div>
+    </div>
+
+    <!-- ── CAR RENTAL ─────────────────────────────────────── -->
+    <div class="deals-category-label">🚗 Car Rental</div>
+
+    <div class="widget-slot" id="dc-slot">
+
+      <!-- FALLBACK -->
+      <div class="fallback-cards" id="dc-fallback">
+        <div class="fallback-card" style="flex-direction:column;background:linear-gradient(135deg,#007ac2,#005a8e);color:white;border-color:var(--black)">
+          <div style="padding:16px 16px 0;display:flex;align-items:center;gap:10px">
+            <span style="font-size:28px">🚗</span>
+            <div>
+              <div style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:.5px">DiscoverCars</div>
+              <div style="font-family:'Nunito',sans-serif;font-size:11px;opacity:.85">Compare 500+ rental companies</div>
+            </div>
+          </div>
+          <div style="padding:12px 16px;font-family:'Nunito',sans-serif;font-size:12px;opacity:.9;line-height:1.5">
+            Best prices on car rentals across Mexico. Free cancellation. No hidden fees. Save up to 70%.
+          </div>
+          <div style="display:flex;gap:8px;padding:0 16px 8px;flex-wrap:wrap">
+            <span class="fbadge" style="background:rgba(255,255,255,.2);color:white;border-color:rgba(255,255,255,.3)">✓ Free cancellation</span>
+            <span class="fbadge" style="background:rgba(255,255,255,.2);color:white;border-color:rgba(255,255,255,.3)">✓ 500+ suppliers</span>
+            <span class="fbadge" style="background:rgba(255,255,255,.2);color:white;border-color:rgba(255,255,255,.3)">✓ Best price guarantee</span>
+          </div>
+          <div style="padding:0 16px 16px">
+            <a href="https://www.discovercars.com/?a_aid=mexicotravelpass" target="_blank" rel="sponsored" style="display:block;background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:10px;padding:12px;font-family:'Fredoka One',cursive;font-size:14px;text-align:center;text-decoration:none;transition:transform .1s">Search Car Rentals in Mexico →</a>
+          </div>
+        </div>
+        <div style="font-family:'Nunito',sans-serif;font-size:11px;color:var(--gray-500);text-align:center;padding:4px 0 8px">Powered by DiscoverCars · affiliate partner</div>
+      </div>
+
+      <!-- REAL WIDGET: empty div — script injected dynamically by JS -->
+      <div id="dc-widget-container" style="display:none"></div>
+
+    </div>
+
+    <!-- ── AIRPORT TRANSFERS ───────────────────────────────── -->
+    <div class="deals-category-label">✈️ Airport Transfers</div>
+    <div class="partner-card">
+      <div class="fallback-logo" style="background:linear-gradient(135deg,#1A3FAA,#4f6fd4)">
+        <span style="font-size:22px">✈️</span>
+      </div>
+      <div class="partner-info">
+        <div class="partner-name">Private Airport Transfer</div>
+        <div class="partner-desc">Safe, pre-booked transfer from AICM. Fixed price. English-speaking driver.</div>
+        <div class="fallback-badges"><span class="fbadge blue">Fixed price</span><span class="fbadge green">English driver</span></div>
+        <a href="https://www.getyourguide.com/mexico-city-l194/transfers-tc183/?partner_id=SAGF2GH&cmp=cdmx" target="_blank" rel="sponsored" class="partner-btn">Book Transfer →</a>
+      </div>
+    </div>
+
+    <!-- ── MATCH DAY ───────────────────────────────────────── -->
+    <div class="deals-category-label">🏟️ Match Day</div>
+    <div class="partner-card">
+      <div class="fallback-logo" style="background:linear-gradient(135deg,#1A7A4A,#34d399)">
+        <span style="font-size:22px">⚽</span>
+      </div>
+      <div class="partner-info">
+        <div class="partner-name">Stadium Tours — Estadio Azteca</div>
+        <div class="partner-desc">Go behind the scenes of the world's most iconic stadium before the tournament begins.</div>
+        <div class="fallback-badges"><span class="fbadge gold">Skip the line</span><span class="fbadge green">English guide</span></div>
+        <a href="https://www.getyourguide.com/mexico-city-l194/?partner_id=SAGF2GH&cmp=cdmx&tour_id=28868" target="_blank" rel="sponsored" class="partner-btn">Book Tour →</a>
+      </div>
+    </div>
+
+    <div class="deals-disclaimer">Some links are affiliate links. We may earn a small commission at no extra cost to you. All recommendations are genuine — we only list services we'd use ourselves.</div>
+
+  </section>
+
 </main>
 
 <!-- BOTTOM NAV -->
@@ -1110,15 +1292,98 @@ function copyPhrase(card, text){
 }
 
 // ============ NAV ============
-const sectionNames = {home:'HOME',safety:'SAFETY',getting:'GET THERE',emergency:'EMERGENCY',phrases:'PHRASES'};
+const sectionNames = {home:'HOME',safety:'SAFETY',getting:'GET THERE',emergency:'EMERGENCY',phrases:'PHRASES',deals:'DEALS'};
 
 function switchTab(id){
   document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.nav-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById('sec-'+id).classList.add('active');
-  document.getElementById('tab-'+id).classList.add('active');
+  const tabEl = document.getElementById('tab-'+id);
+  if(tabEl) tabEl.classList.add('active');
   document.getElementById('header-title').textContent = sectionNames[id]||'';
   document.getElementById('content-area').scrollTop = 0;
+  // Load GYG widget script on first visit to deals tab
+  if(id==='deals' && !window._gygLoaded){
+    window._gygLoaded = true;
+
+    // --- GetYourGuide ---
+    const gygScript = document.createElement('script');
+    gygScript.async = true;
+    gygScript.src = 'https://widget.getyourguide.com/dist/pa.umd.production.min.js';
+    gygScript.setAttribute('data-gyg-partner-id','SAGF2GH');
+    gygScript.onload = function(){
+      // Give GYG a moment to render into the container
+      setTimeout(function(){
+        const container = document.getElementById('gyg-widget-container');
+        const fallback  = document.getElementById('gyg-fallback');
+        // Only swap if GYG actually injected content (iframe or rendered nodes)
+        if(container && container.querySelector('iframe, [data-gyg-widget]')){
+          if(fallback)  fallback.style.display = 'none';
+          container.style.display = 'block';
+        }
+        // If GYG failed/blocked, fallback stays visible — no blank state
+      }, 2500);
+    };
+    gygScript.onerror = function(){ /* fallback stays, nothing to do */ };
+    document.head.appendChild(gygScript);
+
+    // --- DiscoverCars ---
+    // Dynamically create + inject the script so it actually executes
+    var dcScript = document.createElement('script');
+    dcScript.id = 'dchwidget';
+    dcScript.src = 'https://www.discovercars.com/widget.js?v1';
+    dcScript.async = true;
+    // All widget config attributes
+    var dcAttrs = {
+      'data-dev-env': 'com',
+      'data-location': 'mexico/mexico',
+      'data-lang': 'en',
+      'data-currency': 'usd',
+      'data-utm-source': 'MexicoTravelPass',
+      'data-utm-medium': 'widget',
+      'data-aff-code': 'a_aid',
+      'data-autocomplete': 'on',
+      'data-style-submit-bg-color': '#007ac2',
+      'data-style-submit-font-color': '#ffffff',
+      'data-style-form-bg-color': '#fcd34d',
+      'data-style-form-font-color': '#000000',
+      'data-style-submit-text': 'Search now',
+      'data-style-title-color': '#000000',
+      'data-title-text': 'Search and compare car rentals and save up to 70%!',
+      'data-style_rounded_corners': 'on',
+      'data-layout_benefits': 'on',
+      'data-layout_description': 'on',
+      'data-layout_description_text': "We've selected the best deals from our car rental partners.",
+      'data-layout_logo_style': 'on dark',
+      'data-layout_style_form_bg_color': '#007ac2',
+      'data-layout_title': 'on',
+      'data-layout_top_logo': 'on'
+    };
+    Object.keys(dcAttrs).forEach(function(k){ dcScript.setAttribute(k, dcAttrs[k]); });
+
+    dcScript.onload = function(){
+      setTimeout(function(){
+        // DC widget injects its UI as a sibling right after the script tag,
+        // or inside the nearest container. Check the slot div for any new children.
+        var dcSlot     = document.getElementById('dc-slot');
+        var dcFallback = document.getElementById('dc-fallback');
+        var dcContainer= document.getElementById('dc-widget-container');
+        // Look anywhere inside dc-slot for widget-injected elements
+        var dcRendered = dcSlot && dcSlot.querySelector(
+          'iframe, [id*="dch"], [class*="dch"], [class*="discover"], form, input[type="text"]'
+        );
+        if(dcRendered){
+          if(dcFallback)  dcFallback.style.display = 'none';
+          if(dcContainer) dcContainer.style.display = 'block';
+        }
+        // If nothing rendered → fallback stays, never blank
+      }, 2000);
+    };
+    dcScript.onerror = function(){ /* fallback stays */ };
+    // Append to dc-widget-container so DC widget renders adjacent to it
+    var dcContainer = document.getElementById('dc-widget-container');
+    if(dcContainer) dcContainer.appendChild(dcScript);
+  }
 }
 
 // ============ TOGGLES ============
