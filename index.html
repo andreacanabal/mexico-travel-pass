@@ -4,6 +4,24 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 <title>Mexico Travel Pass — Stadium Safety Guide 2026</title>
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1572885741065144');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -3057,6 +3075,14 @@ function toggleCity(city) {
     selectedCities.delete(city);
   } else {
     selectedCities.add(city);
+    // Meta Pixel: AddToCart
+    if(typeof fbq !== 'undefined') fbq('track', 'AddToCart', {
+      content_name: CITY_NAMES[city] + ' Safety Guide',
+      content_ids: [city],
+      content_type: 'product',
+      value: 9.99,
+      currency: 'USD'
+    });
   }
   updateUI();
   if (selectedCities.size > 0) { openCart(); }
@@ -3198,6 +3224,18 @@ function openCart() {
   renderCart();
   document.getElementById('cart-overlay').classList.add('active');
   document.body.style.overflow = 'hidden';
+  // Meta Pixel: InitiateCheckout
+  if(typeof fbq !== 'undefined') {
+    const n = selectedCities.size;
+    const val = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
+    fbq('track', 'InitiateCheckout', {
+      content_ids: [...selectedCities],
+      content_type: 'product',
+      num_items: n,
+      value: val + (cartStomachAdded ? (n >= 3 ? 7.99 : 3.99) : 0),
+      currency: 'USD'
+    });
+  }
 }
 function closeCart() {
   document.getElementById('cart-overlay').classList.remove('active');
@@ -3299,6 +3337,17 @@ function cartCheckout() {
   if(n >= 3) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
   else if(n === 2) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
   else { const city = [...selectedCities][0]; url = cartStomachAdded ? (CHECKOUT_URLS[city+'_stomach']||CHECKOUT_URLS[city]) : CHECKOUT_URLS[city]; }
+  // Meta Pixel: Purchase (fire on checkout click — Stripe redirect)
+  if(typeof fbq !== 'undefined') {
+    const base = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
+    const sPrice = n >= 3 ? 7.99 : 3.99;
+    fbq('track', 'Purchase', {
+      content_ids: [...selectedCities],
+      content_type: 'product',
+      value: base + (cartStomachAdded ? sPrice : 0),
+      currency: 'USD'
+    });
+  }
   window.open(url, '_blank');
 }
 function selectAllAndCheckout() {
