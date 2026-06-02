@@ -1415,6 +1415,61 @@ a{text-decoration:none;color:inherit;}
 .fear-vs-line{flex:1;height:1px;background:rgba(255,255,255,0.1);}
 .fear-vs-text{font-family:'Bangers',cursive;font-size:22px;color:rgba(255,255,255,0.3);letter-spacing:2px;}
 
+/* ══════════════ PERKS SECTION ══════════════ */
+#perks-section{
+  background:#0A0A0A;padding:52px 0;
+  border-top:4px solid #F5C518;border-bottom:4px solid #F5C518;
+}
+.perks-label{
+  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.4);text-transform:uppercase;letter-spacing:2.5px;
+  text-align:center;margin-bottom:12px;
+}
+.perks-h2{
+  font-family:'Bangers',cursive;font-size:clamp(26px,7vw,40px);
+  color:#fff;text-align:center;letter-spacing:0.04em;
+  line-height:1.05;margin-bottom:10px;
+}
+.perks-h2-gold{color:#F5C518;filter:drop-shadow(2px 2px 0 rgba(0,0,0,0.5));}
+.perks-sub{
+  font-family:'Nunito',sans-serif;font-size:15px;color:rgba(255,255,255,0.55);
+  text-align:center;max-width:480px;margin:0 auto 32px;line-height:1.6;
+}
+.perks-grid{
+  display:grid;grid-template-columns:repeat(2,1fr);
+  gap:12px;margin-bottom:20px;
+}
+@media(min-width:680px){.perks-grid{grid-template-columns:repeat(3,1fr);}}
+.perk-card{
+  background:#141414;border:2px solid rgba(255,255,255,0.08);
+  border-radius:14px;padding:18px 16px;
+  display:flex;flex-direction:column;gap:6px;
+  transition:border-color 200ms,transform 150ms;
+  position:relative;overflow:hidden;
+}
+.perk-card::before{
+  content:'';position:absolute;inset:0;border-radius:12px;
+  background:linear-gradient(135deg,rgba(245,197,24,0.04) 0%,transparent 60%);
+  pointer-events:none;
+}
+.perk-card:hover{border-color:rgba(245,197,24,0.35);transform:translateY(-2px);}
+.perk-icon{font-size:26px;line-height:1;margin-bottom:2px;}
+.perk-name{font-family:'Fredoka One',cursive;font-size:15px;color:#fff;line-height:1.2;}
+.perk-detail{font-family:'Nunito',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);line-height:1.5;flex:1;}
+.perk-badge{
+  display:inline-flex;align-items:center;
+  background:rgba(245,197,24,0.12);border:1px solid rgba(245,197,24,0.35);
+  border-radius:99px;padding:3px 10px;
+  font-family:'Fredoka One',cursive;font-size:11px;color:#F5C518;
+  width:fit-content;margin-top:4px;
+}
+.perks-footer-note{
+  display:flex;align-items:center;justify-content:center;gap:6px;
+  font-family:'Nunito',sans-serif;font-size:12px;font-weight:600;
+  color:rgba(255,255,255,0.3);text-align:center;
+}
+.perks-footer-note svg{flex-shrink:0;stroke:rgba(74,222,128,0.6);}
+
 /* ═══════════════ SYSTEM 4 — TRIBE SECTION ═══════════════ */
 #tribe-section{background:linear-gradient(135deg,#1A3FAA 0%,#0D1F6B 100%);padding:52px 20px;text-align:center;border-top:4px solid #0A0A0A;border-bottom:4px solid #0A0A0A;}
 .tribe-headline{font-family:'Bangers',cursive;font-size:clamp(32px,8vw,52px);color:#F5C518;filter:drop-shadow(3px 3px 0 #0A0A0A);letter-spacing:1px;margin-bottom:20px;}
@@ -1956,8 +2011,9 @@ a{text-decoration:none;color:inherit;}
   font-family:'Bangers',cursive;font-size:22px;letter-spacing:1px;
   border:3px solid #0A0A0A;border-radius:12px;box-shadow:4px 4px 0 #D42B2B;
   cursor:pointer;transition:transform 80ms,box-shadow 80ms;margin-bottom:8px;
+  animation:pulse 2s ease-in-out infinite;
 }
-#cart-checkout-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #D42B2B;}
+#cart-checkout-btn:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 #D42B2B;animation:none;}
 #cart-checkout-btn:active{transform:translate(2px,2px);box-shadow:2px 2px 0 #D42B2B;}
 #cart-trust{font-family:'Nunito',sans-serif;font-size:11px;color:#888;text-align:center;font-weight:600;}
 .cart-stomach-row{
@@ -1967,6 +2023,9 @@ a{text-decoration:none;color:inherit;}
 .cart-stomach-check{width:20px;height:20px;accent-color:#1A7A4A;cursor:pointer;flex-shrink:0;}
 .cart-stomach-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:#1A7A4A;flex:1;}
 .cart-stomach-price{font-family:'Bangers',cursive;font-size:16px;color:#1A7A4A;}
+@media(max-width:768px){
+  #purchase-notif { bottom: 82px; }
+}
 </style>
 </head>
 <body>
@@ -2460,7 +2519,57 @@ a{text-decoration:none;color:inherit;}
   </div>
 </section>
 
-<!-- ════ SYSTEM 4: TRIBE SECTION ════ -->
+<!-- ════ BONUS PERKS SECTION ════ -->
+<section id="perks-section">
+  <div class="wrap">
+    <div class="perks-label">INCLUDED WITH YOUR PASS</div>
+    <h2 class="perks-h2">MORE THAN A SAFETY GUIDE.<br><span class="perks-h2-gold">EXCLUSIVE DISCOUNTS INCLUDED.</span></h2>
+    <p class="perks-sub">Every pass comes with access to partner deals built for fans traveling Mexico this summer.</p>
+    <div class="perks-grid">
+      <div class="perk-card">
+        <div class="perk-icon">🗺️</div>
+        <div class="perk-name">Tours & Experiences</div>
+        <div class="perk-detail">Stadium tours, city excursions & day trips near each host city</div>
+        <div class="perk-badge">Up to 20% off</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🎰</div>
+        <div class="perk-name">Casinos & Nightlife</div>
+        <div class="perk-detail">VIP access & free chips at top casinos in CDMX, GDL & MTY</div>
+        <div class="perk-badge">Free entry</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🚗</div>
+        <div class="perk-name">Car Rentals</div>
+        <div class="perk-detail">Discounts with local and international rental agencies at all 3 cities</div>
+        <div class="perk-badge">15% off</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">📶</div>
+        <div class="perk-name">eSIM Data</div>
+        <div class="perk-detail">Stay connected all tournament — unlimited data plans for Mexico</div>
+        <div class="perk-badge">10% off</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">✈️</div>
+        <div class="perk-name">Flights</div>
+        <div class="perk-detail">Partner deals on inter-city flights between Mexico City, Guadalajara & Monterrey</div>
+        <div class="perk-badge">Exclusive fares</div>
+      </div>
+      <div class="perk-card">
+        <div class="perk-icon">🏨</div>
+        <div class="perk-name">Hotels</div>
+        <div class="perk-detail">Preferred rates at fan-friendly hotels near all 3 stadiums</div>
+        <div class="perk-badge">Up to 25% off</div>
+      </div>
+    </div>
+    <div class="perks-footer-note">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+      All discount codes delivered instantly with your guide · No subscription required
+    </div>
+  </div>
+</section>
+
 <section id="tribe-section">
   <div class="tribe-inner">
     <div class="tribe-headline">The fans who travel smart.</div>
@@ -2478,6 +2587,7 @@ a{text-decoration:none;color:inherit;}
     <button class="tribe-cta" onclick="scrollToSelector()">Join them — get your pass</button>
   </div>
 </section>
+
 
 <!-- ════════════════════════════════════
      COUNTDOWN
@@ -2925,6 +3035,8 @@ const STOMACH_BUNDLE = {
    STATE
 ═══════════════════════════════ */
 let selectedCities = new Set();
+let stomachAdded = false;
+let cartStomachAdded = false;
 
 function getPrice() {
   return PRICES[Math.min(selectedCities.size, 3)];
@@ -2958,16 +3070,7 @@ function selectAll() {
 function selectAllAndBuy() {
   selectedCities = new Set(['cdmx','gdl','mty']);
   updateUI();
-  // Make checkout button visible, scroll to it, then auto-checkout after 400ms
-  const btn = document.getElementById('checkout-btn');
-  if(btn) btn.style.display = 'flex';
-  setTimeout(() => {
-    if(btn) {
-      const top = btn.getBoundingClientRect().top + window.pageYOffset - 80;
-      window.scrollTo({ top, behavior: 'smooth' });
-    }
-    setTimeout(() => goCheckout(), 400);
-  }, 80);
+  openCart();
 }
 
 function updateUI() {
@@ -3003,12 +3106,27 @@ function updateUI() {
 
   // (price display / checkout btn removed — cart handles checkout)
 
+  // Update sticky bar text based on selection
+  const sbbTitle = document.querySelector('.sbb-title');
+  if (sbbTitle) {
+    if (n === 0) {
+      sbbTitle.innerHTML = 'All 3 Cities Pass — <strong>$22.99</strong>';
+    } else if (n === 1) {
+      const c = [...selectedCities][0];
+      sbbTitle.innerHTML = CITY_NAMES[c] + ' selected · <strong style="color:#4ADE80;">Add 2 more →</strong>';
+    } else if (n === 2) {
+      sbbTitle.innerHTML = '2 cities selected · <strong style="color:#F5C518;">Add 1 more — $22.99</strong>';
+    } else {
+      sbbTitle.innerHTML = 'All 3 Cities ✓ — <strong>$22.99</strong>';
+    }
+  }
+
   // What's inside: update to first selected city or default CDMX
   const activeCity = [...selectedCities][0] || 'cdmx';
   const activeName = n === 3 ? 'All 3 Cities' : (n === 1 ? CITY_NAMES[activeCity] : (n === 2 ? getNames().join(' + ') : 'Mexico City'));
-  document.getElementById('inside-pill-label').textContent = (n === 3 ? 'ALL 3 CITIES' : (activeName + ' PASS').toUpperCase());
-  document.getElementById('inside-h2').innerHTML = "WHAT'S INSIDE YOUR<br>" + (n === 3 ? 'ALL 3 CITIES PASS:' : (activeName.toUpperCase() + ' PASS:'));
-  document.getElementById('feature-city-tip').textContent = CITY_TIPS[activeCity];
+  const _ipl=document.getElementById('inside-pill-label'); if(_ipl) _ipl.textContent = (n === 3 ? 'ALL 3 CITIES' : (activeName + ' PASS').toUpperCase());
+  const _ih2=document.getElementById('inside-h2'); if(_ih2) _ih2.innerHTML = "WHAT'S INSIDE YOUR<br>" + (n === 3 ? 'ALL 3 CITIES PASS:' : (activeName.toUpperCase() + ' PASS:'));
+  const _fct=document.getElementById('feature-city-tip'); if(_fct) _fct.textContent = CITY_TIPS[activeCity];
 
   // Update feature card descriptions per city
   const fd = CITY_FEATURES[activeCity];
@@ -3024,15 +3142,16 @@ function updateUI() {
   // Montezuma's Revenge guide
   const stomachCity = n === 1 ? activeCity : (n === 0 ? 'cdmx' : null);
   const stomachName = n === 0 ? 'Mexico City' : (n === 1 ? CITY_NAMES[activeCity] : (n === 3 ? 'All 3 Cities' : 'Your Cities'));
-  document.getElementById('stomach-h2').innerHTML = 'ONE MORE THING<br>ABOUT ' + stomachName.toUpperCase() + ':';
-  document.getElementById('stomach-p').textContent = STOMACH_TEXT[stomachCity || 'cdmx'];
-  document.getElementById('stomach-bundle').textContent = STOMACH_BUNDLE[n];
-  document.getElementById('stomach-btn-label').textContent = 'Add ' + stomachName + " Montezuma\u2019s Revenge Guide +$3.99";
+  const _sh2=document.getElementById('stomach-h2'); if(_sh2) _sh2.innerHTML = 'ONE MORE THING<br>ABOUT ' + stomachName.toUpperCase() + ':';
+  const _sp=document.getElementById('stomach-p'); if(_sp) _sp.textContent = STOMACH_TEXT[stomachCity || 'cdmx'];
+  const _sb=document.getElementById('stomach-bundle'); if(_sb) _sb.textContent = STOMACH_BUNDLE[n];
+  const _sbl=document.getElementById('stomach-btn-label'); if(_sbl) _sbl.textContent = 'Add ' + stomachName + " Montezuma\u2019s Revenge Guide +$3.99";
 }
 
 function updateDynamicUpsell(n) {
   const wrap = document.getElementById('dynamic-upsell');
-  if (n === 0) { wrap.innerHTML = ''; return; }
+  if(wrap) wrap.classList.toggle('visible', n > 0);
+  if (n === 0) { if(wrap) wrap.innerHTML = ''; return; }
 
   const unselected = ['cdmx','gdl','mty'].filter(c => !selectedCities.has(c));
   let html = '';
@@ -3073,7 +3192,6 @@ const CITY_SUBS = {
   gdl:'Guadalajara · Estadio Akron · 4 matches',
   mty:'Monterrey · Estadio BBVA · 4 matches'
 };
-let cartStomachAdded = false;
 
 function openCart() {
   if(selectedCities.size === 0) return;
@@ -3084,6 +3202,9 @@ function openCart() {
 function closeCart() {
   document.getElementById('cart-overlay').classList.remove('active');
   document.body.style.overflow = '';
+  if (selectedCities.size === 0) {
+    setTimeout(() => scrollToSelector(), 300);
+  }
 }
 function closeCartOnOverlay(e) {
   if(e.target === document.getElementById('cart-overlay')) closeCart();
@@ -3132,6 +3253,7 @@ function renderCart() {
       <span class="cart-item-price">$22.99</span>
       <button class="cart-item-remove" onclick="removeFromCartBundle()" title="Remove">✕</button>
     </div>`;
+  html += `<div style="display:flex;align-items:center;justify-content:center;gap:6px;padding:6px 0 2px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:#1A7A4A;"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1A7A4A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg> You save $6.98 vs buying individually</div>`;
   } else {
     [...selectedCities].forEach(city => {
       html += `<div class="cart-item">
@@ -3505,7 +3627,6 @@ function openCheckoutWithEmail(url) {
 })();
 
 /* ═══ ORDER BUMP ═══ */
-let stomachAdded = false;
 function updateOrderBump() {
   stomachAdded = document.getElementById('ob-checkbox').checked;
   cartStomachAdded = stomachAdded;
@@ -3566,6 +3687,5 @@ if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
   </div>
   <button class="sbb-btn" onclick="if(selectedCities.size===0){selectedCities=new Set(['cdmx','gdl','mty']);updateUI();}openCart();">GET MY PASS →</button>
 </div>
-
 </body>
 </html>
