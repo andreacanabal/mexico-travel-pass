@@ -110,7 +110,7 @@ body{
   flex-direction:column;
   align-items:center;
   gap:2px;
-  padding:8px 10px;
+  padding:6px 6px;
   border:none;
   background:transparent;
   cursor:pointer;
@@ -120,15 +120,18 @@ body{
   min-width:44px;
   min-height:44px;
   justify-content:center;
+  flex:1;
 }
 .nav-btn:active{transform:scale(0.93);}
-.nav-btn svg{width:22px;height:22px;color:var(--gray-500);}
-.nav-btn span{font-size:9px;font-family:'Nunito',sans-serif;font-weight:700;color:var(--gray-500);display:none;}
+.nav-btn svg{width:20px;height:20px;color:var(--gray-500);}
+.nav-btn span{font-size:8px;font-family:'Nunito',sans-serif;font-weight:700;color:var(--gray-500);display:none;}
 .nav-btn.active{background:var(--gold);border:2px solid var(--black);box-shadow:2px 2px 0 var(--black);}
 .nav-btn.active svg{color:var(--black);}
 .nav-btn.active span{display:block;color:var(--black);}
 .nav-btn[data-tab="emergency"] svg{color:#cc0000;}
 .nav-btn[data-tab="emergency"].active svg{color:var(--black);}
+.nav-btn[data-tab="shop"] svg{color:var(--gold);}
+.nav-btn[data-tab="shop"].active svg{color:var(--black);}
 
 /* VIEWS */
 .view{display:none;padding:12px;}
@@ -839,6 +842,294 @@ strong{font-weight:800;}
 
 /* ICONS inline */
 .icon-row{display:flex;align-items:center;gap:6px;}
+
+/* SHOP BUTTON */
+.widget-outer{
+  position:relative;
+  margin-bottom:12px;
+}
+.fallback-card{
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  background:var(--white);
+}
+.fallback-header{
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.fallback-brand{
+  font-family:'Fredoka One',cursive;
+  font-size:16px;
+  color:#fff;
+}
+.fallback-tagline{
+  font-size:11px;
+  color:rgba(255,255,255,0.85);
+  margin-top:2px;
+}
+.fallback-body{
+  padding:12px 14px;
+}
+
+/* Activity cards (GYG fallback) */
+.fb-activity-card{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  padding:10px 0;
+  border-bottom:1px solid var(--gray-200);
+  text-decoration:none;
+  color:var(--black);
+  transition:background .1s;
+}
+.fb-activity-card:last-of-type{border-bottom:none;}
+.fb-activity-card:active{opacity:0.8;}
+.fb-activity-img{
+  width:56px;height:56px;
+  border-radius:8px;
+  border:2px solid var(--black);
+  flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.fb-activity-info{flex:1;}
+.fb-activity-title{
+  font-family:'Fredoka One',cursive;
+  font-size:13px;
+  line-height:1.3;
+  margin-bottom:3px;
+}
+.fb-activity-meta{
+  display:flex;gap:4px;align-items:center;
+  margin-bottom:3px;
+}
+.fb-rating{font-size:11px;color:#f59e0b;font-weight:800;}
+.fb-reviews{font-size:10px;color:var(--gray-500);}
+.fb-activity-price{font-size:11px;color:var(--gray-700);}
+.fb-activity-price strong{color:var(--green);}
+
+/* Stats row */
+.fb-stats-row{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:6px;
+  margin-bottom:12px;
+}
+.fb-stat{
+  background:var(--gray-100);
+  border-radius:8px;
+  padding:8px 4px;
+  text-align:center;
+}
+.fb-stat-val{
+  font-family:'Bangers',cursive;
+  font-size:20px;
+  color:var(--blue);
+  line-height:1;
+}
+.fb-stat-lbl{
+  font-size:9px;
+  color:var(--gray-500);
+  font-weight:700;
+  text-transform:uppercase;
+}
+
+/* Car cards (DiscoverCars fallback) */
+.fb-car-card{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  padding:10px;
+  border:1px solid var(--gray-200);
+  border-radius:8px;
+  margin-bottom:8px;
+  text-decoration:none;
+  color:var(--black);
+  background:var(--gray-100);
+  transition:background .1s;
+}
+.fb-car-card:active{background:var(--gray-200);}
+.fb-car-icon{font-size:28px;flex-shrink:0;}
+.fb-car-info{flex:1;}
+.fb-car-title{
+  font-family:'Fredoka One',cursive;
+  font-size:13px;
+  line-height:1.3;
+}
+.fb-car-sub{font-size:11px;color:var(--gray-500);margin-top:2px;}
+.fb-car-price{
+  text-align:right;
+  font-size:10px;
+  color:var(--gray-700);
+  flex-shrink:0;
+}
+.fb-car-price strong{display:block;font-size:14px;color:var(--green);font-family:'Fredoka One',cursive;}
+
+/* Fake search box */
+.fb-search-box{
+  background:#fcd34d;
+  border:2px solid var(--black);
+  border-radius:8px;
+  padding:10px 12px;
+  margin-bottom:10px;
+}
+.fb-search-label{font-size:10px;font-weight:800;color:var(--black);text-transform:uppercase;margin-bottom:2px;}
+.fb-search-value{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black);}
+
+/* CTA buttons */
+.fb-cta{
+  display:block;
+  width:100%;
+  text-align:center;
+  padding:12px 16px;
+  border-radius:var(--radius);
+  border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);
+  font-family:'Fredoka One',cursive;
+  font-size:14px;
+  text-decoration:none;
+  transition:transform .1s,box-shadow .1s;
+  margin-top:10px;
+}
+.fb-cta:active{transform:translate(2px,2px);box-shadow:none;}
+.fb-cta-red{background:#ff5533;color:#fff;}
+.fb-cta-blue{background:var(--blue);color:#fff;}
+
+/* WIDGET SLOT — sits on top of fallback when loaded */
+.widget-slot{
+  display:none;
+  position:relative;
+  z-index:2;
+  background:var(--white);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:visible;
+}
+.widget-outer.widget-ready .widget-slot{display:block;}
+.widget-outer.widget-ready .fallback-card{display:none;}
+
+/* SHOP BUTTON */
+.shop-btn{
+  background:var(--gold);
+  color:var(--black);
+  border:2px solid var(--black);
+  border-radius:var(--pill);
+  padding:6px 11px;
+  font-family:'Fredoka One',cursive;
+  font-size:13px;
+  cursor:pointer;
+  box-shadow:2px 2px 0 var(--black);
+  transition:transform .1s,box-shadow .1s;
+  touch-action:manipulation;
+  display:flex;
+  align-items:center;
+  gap:4px;
+  white-space:nowrap;
+}
+.shop-btn:active{transform:translate(2px,2px);box-shadow:none;}
+
+/* HEADER BUTTONS GROUP */
+.header-actions{display:flex;align-items:center;gap:6px;}
+
+/* AFFILIATE VIEW */
+.affiliate-hero{
+  background:linear-gradient(135deg,#0a0a0a 0%,#1a1a2e 60%,#0f3460 100%);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  padding:20px 16px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.affiliate-hero-title{
+  font-family:'Bangers',cursive;
+  font-size:30px;
+  color:var(--gold);
+  line-height:1;
+  text-shadow:2px 2px 0 #000;
+  margin-bottom:6px;
+}
+.affiliate-hero-sub{
+  font-size:13px;
+  color:rgba(255,255,255,0.8);
+  line-height:1.5;
+  margin-bottom:14px;
+}
+.affiliate-cats{
+  display:flex;
+  justify-content:center;
+  gap:8px;
+  flex-wrap:wrap;
+}
+.affiliate-cat-pill{
+  background:rgba(255,255,255,0.12);
+  border:1px solid rgba(255,255,255,0.25);
+  border-radius:var(--pill);
+  padding:5px 12px;
+  font-size:12px;
+  color:rgba(255,255,255,0.85);
+  font-weight:700;
+}
+
+.affiliate-section-head{
+  font-family:'Bangers',cursive;
+  font-size:20px;
+  letter-spacing:1px;
+  margin-bottom:6px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.affiliate-section-sub{
+  font-size:12px;
+  color:var(--gray-500);
+  margin-bottom:12px;
+  line-height:1.4;
+}
+.affiliate-provider-card{
+  background:var(--white);
+  border:var(--border);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  margin-bottom:12px;
+  overflow:hidden;
+}
+.affiliate-provider-header{
+  padding:12px 14px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.affiliate-provider-name{
+  font-family:'Fredoka One',cursive;
+  font-size:16px;
+}
+.affiliate-coming-soon{
+  font-size:10px;
+  font-weight:800;
+  padding:3px 8px;
+  border-radius:var(--pill);
+  background:var(--gray-200);
+  color:var(--gray-500);
+  border:1px solid var(--gray-200);
+}
+.gyg-widget-wrap{
+  padding:0 14px 14px;
+  /* GetYourGuide widget needs overflow visible */
+  overflow:visible;
+}
+/* Force GYG widget responsive */
+.gyg-widget-wrap iframe,
+.gyg-widget-wrap > div{
+  max-width:100% !important;
+  width:100% !important;
+}
 </style>
 </head>
 <body>
@@ -850,8 +1141,17 @@ strong{font-weight:800;}
     GDL GUIDE
   </div>
   <span id="section-title">HOME</span>
-  <button class="sos-btn" onclick="openSOS()">🆘 SOS</button>
+  <div class="header-actions">
+    <button class="shop-btn" onclick="goTab('shop')">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      MY DEALS
+    </button>
+    <button class="sos-btn" onclick="openSOS()">🆘 SOS</button>
+  </div>
 </header>
+
+<!-- GetYourGuide Widget Script -->
+<script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="SAGF2GH"></script>
 
 <!-- ZAPOPAN BANNER -->
 <div id="zapopan-banner">
@@ -1682,6 +1982,230 @@ strong{font-weight:800;}
 
   </div><!-- /phrases -->
 
+  <!-- ════════ SHOP / AFFILIATES VIEW ════════ -->
+  <div class="view" id="view-shop" data-title="MY DEALS">
+
+    <!-- Hero -->
+    <div class="affiliate-hero">
+      <div style="font-size:32px;margin-bottom:8px;">🛍️</div>
+      <div class="affiliate-hero-title">MY DEALS</div>
+      <p class="affiliate-hero-sub">Tours, car rentals, SIM cards and more — hand-picked for World Cup travelers in Guadalajara.</p>
+      <div class="affiliate-cats">
+        <span class="affiliate-cat-pill">⚽ Match Day Tours</span>
+        <span class="affiliate-cat-pill">🚗 Car Rentals</span>
+        <span class="affiliate-cat-pill">📱 SIM Cards</span>
+        <span class="affiliate-cat-pill">🌮 Food Experiences</span>
+      </div>
+    </div>
+
+    <!-- ══════════════════════════════════════
+         TOURS & EXPERIENCES — GetYourGuide
+         Fallback always visible.
+         Real widget overlays when it loads.
+    ══════════════════════════════════════ -->
+    <div class="affiliate-section-head" style="color:#ff5533;">
+      🗺️ Tours &amp; Experiences
+    </div>
+    <p class="affiliate-section-sub">Book day trips, food tours, tequila tastings, and match-day experiences in Guadalajara.</p>
+
+    <div class="widget-outer" id="gyg-outer">
+
+      <!-- FALLBACK — always visible, replaced by real widget -->
+      <div class="fallback-card" id="gyg-fallback">
+        <div class="fallback-header" style="background:linear-gradient(90deg,#e8401c,#ff6644);">
+          <div>
+            <div class="fallback-brand">GetYourGuide</div>
+            <div class="fallback-tagline">Tours · Activities · Day Trips · Free cancellation</div>
+          </div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><circle cx="12" cy="10" r="3"/><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"/></svg>
+        </div>
+        <div class="fallback-body">
+          <a href="https://www.getyourguide.com/guadalajara-l97419/?partner_id=SAGF2GH&cmp=guadalajara" target="_blank" rel="sponsored noopener" class="fb-activity-card">
+            <div class="fb-activity-img" style="background:linear-gradient(135deg,#7c3aed,#4f46e5);">
+              <span style="font-size:28px;">🥃</span>
+            </div>
+            <div class="fb-activity-info">
+              <div class="fb-activity-title">Tequila Town Day Trip from Guadalajara</div>
+              <div class="fb-activity-meta">
+                <span class="fb-rating">★ 4.8</span>
+                <span class="fb-reviews">(2,400+ reviews)</span>
+              </div>
+              <div class="fb-activity-price">From <strong>$45 USD</strong> · Free cancellation</div>
+            </div>
+          </a>
+          <a href="https://www.getyourguide.com/guadalajara-l97419/?partner_id=SAGF2GH&cmp=guadalajara" target="_blank" rel="sponsored noopener" class="fb-activity-card">
+            <div class="fb-activity-img" style="background:linear-gradient(135deg,#0f766e,#0891b2);">
+              <span style="font-size:28px;">🌮</span>
+            </div>
+            <div class="fb-activity-info">
+              <div class="fb-activity-title">Guadalajara Food &amp; Birria Tour with Local Guide</div>
+              <div class="fb-activity-meta">
+                <span class="fb-rating">★ 4.9</span>
+                <span class="fb-reviews">(1,100+ reviews)</span>
+              </div>
+              <div class="fb-activity-price">From <strong>$38 USD</strong> · Free cancellation</div>
+            </div>
+          </a>
+          <a href="https://www.getyourguide.com/guadalajara-l97419/?partner_id=SAGF2GH&cmp=guadalajara" target="_blank" rel="sponsored noopener" class="fb-cta fb-cta-red">
+            See all Guadalajara experiences →
+          </a>
+        </div>
+      </div>
+
+      <!-- REAL WIDGET — rendered on top when GYG script fires -->
+      <div class="widget-slot" id="gyg-widget-slot">
+        <div
+          data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
+          data-gyg-locale-code="en-US"
+          data-gyg-widget="activities"
+          data-gyg-number-of-items="2"
+          data-gyg-cmp="guadalajara"
+          data-gyg-partner-id="SAGF2GH"
+          data-gyg-tour-ids="1177169,850766,779940,666866,621737,316952,537427,1339494,1316767,538589"
+        ></div>
+        <div style="text-align:right;padding:4px 10px 6px;font-size:10px;color:var(--gray-500);">
+          Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/amatitan-l138358/" style="color:var(--gray-500);">GetYourGuide</a>
+        </div>
+      </div>
+
+    </div><!-- /gyg-outer -->
+
+
+    <!-- ══════════════════════════════════════
+         CAR RENTAL — DiscoverCars
+         Fallback always visible.
+         Real widget overlays when it loads.
+    ══════════════════════════════════════ -->
+    <div class="affiliate-section-head" style="color:var(--blue);margin-top:4px;">
+      🚗 Car Rental
+    </div>
+    <p class="affiliate-section-sub">Explore Jalisco at your own pace — Tequila town, Lake Chapala, Tlaquepaque. Compare 500+ companies in one search.</p>
+
+    <div class="widget-outer" id="dch-outer">
+
+      <!-- FALLBACK — always visible, replaced by real widget -->
+      <div class="fallback-card" id="dch-fallback">
+        <div class="fallback-header" style="background:linear-gradient(90deg,#0f2d6b,#1A3FAA);">
+          <div>
+            <div class="fallback-brand">DiscoverCars</div>
+            <div class="fallback-tagline">Compare all rentals · Best price guarantee · Free cancellation</div>
+          </div>
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h5l3 5v4h-8V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="fallback-body">
+          <div class="fb-stats-row">
+            <div class="fb-stat">
+              <div class="fb-stat-val">500+</div>
+              <div class="fb-stat-lbl">Rental Partners</div>
+            </div>
+            <div class="fb-stat">
+              <div class="fb-stat-val" style="color:var(--green);">Free</div>
+              <div class="fb-stat-lbl">Cancellation</div>
+            </div>
+            <div class="fb-stat">
+              <div class="fb-stat-val" style="color:#ff5533;">70%</div>
+              <div class="fb-stat-lbl">Max Savings</div>
+            </div>
+          </div>
+          <a href="https://www.discovercars.com/?a_aid=mexicotravelpass" target="_blank" rel="sponsored noopener" class="fb-car-card">
+            <div class="fb-car-icon">🚙</div>
+            <div class="fb-car-info">
+              <div class="fb-car-title">Economy · Pick up at GDL Airport</div>
+              <div class="fb-car-sub">Hertz · Budget · Enterprise · +500 more</div>
+            </div>
+            <div class="fb-car-price">From<br><strong>$18/day</strong></div>
+          </a>
+          <a href="https://www.discovercars.com/?a_aid=mexicotravelpass" target="_blank" rel="sponsored noopener" class="fb-car-card">
+            <div class="fb-car-icon">🚐</div>
+            <div class="fb-car-info">
+              <div class="fb-car-title">SUV · Perfect for Tequila Town road trip</div>
+              <div class="fb-car-sub">Toll pass included on select rentals</div>
+            </div>
+            <div class="fb-car-price">From<br><strong>$32/day</strong></div>
+          </a>
+          <div class="fb-search-box">
+            <div class="fb-search-label">📍 Pick-up location</div>
+            <div class="fb-search-value">GDL — Guadalajara Airport</div>
+          </div>
+          <a href="https://www.discovercars.com/?a_aid=mexicotravelpass" target="_blank" rel="sponsored noopener" class="fb-cta fb-cta-blue">
+            Search &amp; Compare Car Rentals →
+          </a>
+          <div style="text-align:center;font-size:10px;color:var(--gray-500);margin-top:6px;">Opens DiscoverCars.com · Affiliate link</div>
+        </div>
+      </div>
+
+      <!-- REAL WIDGET SLOT — DCH script targets #dchwidget and injects UI -->
+      <div class="widget-slot" id="dch-widget-slot">
+        <script id="dchwidget"
+          src="https://www.discovercars.com/widget.js?v1"
+          data-dev-env="com"
+          data-location="mexico/mexico"
+          data-lang="en"
+          data-currency="usd"
+          data-utm-source="MexicoTravelPass"
+          data-utm-medium="widget"
+          data-aff-code="a_aid"
+          data-autocomplete="on"
+          data-style-submit-bg-color="#007ac2"
+          data-style-submit-font-color="#ffffff"
+          data-style-form-bg-color="#fcd34d"
+          data-style-form-font-color="#000000"
+          data-style-submit-text="Search now"
+          data-style-title-color="#000000"
+          data-title-text="Search and compare car rentals and save up to 70%!"
+          async="async"
+          data-style_rounded_corners="on"
+          data-layout_benefits="on"
+          data-layout_description="on"
+          data-layout_description_text="We've selected the best deals from our car rental partners."
+          data-layout_logo_style="on dark"
+          data-layout_style_form_bg_color="#007ac2"
+          data-layout_title="on"
+          data-layout_top_logo="on"
+        ></script>
+      </div>
+
+    </div><!-- /dch-outer -->
+
+
+    <!-- Holafly — Coming Soon -->
+    <div class="affiliate-section-head" style="color:var(--teal);margin-top:4px;">
+      📱 Stay Connected
+    </div>
+    <p class="affiliate-section-sub">A local eSIM is essential for Uber, Google Maps, and WhatsApp in Mexico. Buy before you land.</p>
+    <div class="fallback-card" style="margin-bottom:12px;">
+      <div class="fallback-header" style="background:linear-gradient(90deg,#0f766e,#14b8a6);">
+        <div>
+          <div class="fallback-brand">Holafly eSIM</div>
+          <div class="fallback-tagline">Unlimited data · No SIM swap · Instant activation</div>
+        </div>
+        <span style="background:rgba(255,255,255,0.2);color:#fff;font-size:10px;font-weight:800;padding:3px 10px;border-radius:99px;white-space:nowrap;">Coming Soon</span>
+      </div>
+      <div class="fallback-body">
+        <div class="fb-stats-row">
+          <div class="fb-stat"><div class="fb-stat-val" style="color:var(--teal);">$15</div><div class="fb-stat-lbl">Plans from</div></div>
+          <div class="fb-stat"><div class="fb-stat-val" style="color:var(--teal);">∞</div><div class="fb-stat-lbl">Unlimited data</div></div>
+          <div class="fb-stat"><div class="fb-stat-val" style="color:var(--teal);">3</div><div class="fb-stat-lbl">MX Carriers</div></div>
+        </div>
+        <p style="font-size:13px;color:var(--gray-700);line-height:1.5;margin-bottom:10px;">Unlimited data plans for Mexico — activate instantly before boarding. Works on Telcel, AT&amp;T MX, and Movistar. No physical SIM swap needed.</p>
+        <div style="background:var(--gray-100);border-radius:8px;padding:10px;font-size:12px;color:var(--gray-500);text-align:center;">
+          🔗 Widget integration coming soon
+        </div>
+      </div>
+    </div>
+
+    <!-- Match Tickets Note -->
+    <div class="card" style="background:linear-gradient(135deg,#1a0000,#2d0000);border-color:var(--chivas);">
+      <div class="card-body">
+        <div style="font-family:'Fredoka One',cursive;font-size:15px;color:var(--gold);margin-bottom:6px;">⚽ Official Match Tickets</div>
+        <p style="font-size:13px;color:rgba(255,255,255,0.85);line-height:1.5;">Official tickets are sold exclusively through the <strong style="color:var(--gold);">FIFA+ platform</strong>. We do not sell tickets — always buy from official sources only to avoid scams.</p>
+      </div>
+    </div>
+
+    <div style="height:8px;"></div>
+
+  </div><!-- /shop -->
+
 </div><!-- /scroll-area -->
 
 <!-- BOTTOM NAV -->
@@ -1698,12 +2222,16 @@ strong{font-weight:800;}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="12" rx="10" ry="6"/><path d="M2 12v4c0 3.3 4.5 6 10 6s10-2.7 10-6v-4"/></svg>
     <span>Stadium</span>
   </button>
+  <button class="nav-btn" data-tab="shop" onclick="goTab('shop')" style="position:relative;">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+    <span>Book</span>
+  </button>
   <button class="nav-btn" data-tab="emergency" onclick="goTab('emergency')">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-    <span>Emergency</span>
+    <span>SOS</span>
   </button>
   <button class="nav-btn" data-tab="phrases" onclick="goTab('phrases')">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
     <span>Phrases</span>
   </button>
 </nav>
@@ -1946,6 +2474,111 @@ function updateCountdown() {
 }
 updateCountdown();
 setInterval(updateCountdown, 60000);
+
+// ═══════════════════════════════════════════════════════
+// WIDGET LOAD DETECTION
+//
+// Strategy: fallback cards are ALWAYS visible (display:block).
+// When a real widget loads, we add .widget-ready to .widget-outer,
+// which via CSS hides .fallback-card and shows .widget-slot.
+//
+// DiscoverCars (DCH) injects its UI as a sibling next to the
+// #dchwidget script element — not necessarily inside .widget-slot.
+// We use MutationObserver on document.body to catch any new
+// substantial element and move/reveal it inside the slot.
+// ═══════════════════════════════════════════════════════
+
+// ── GYG: polls for iframe/painted content inside the slot ──
+(function() {
+  const outer = document.getElementById('gyg-outer');
+  const slot  = document.getElementById('gyg-widget-slot');
+  if (!outer || !slot) return;
+
+  const start = Date.now();
+  const maxWait = 15000; // 15s timeout
+
+  const id = setInterval(() => {
+    const hasIframe  = !!slot.querySelector('iframe');
+    const hasGYGEl   = !!slot.querySelector('[class*="gyg"],[class*="GYG"],[id*="gyg"]');
+    const bigEnough  = slot.scrollHeight > 100;
+
+    if (hasIframe || hasGYGEl || bigEnough) {
+      outer.classList.add('widget-ready');
+      clearInterval(id);
+      return;
+    }
+    if (Date.now() - start > maxWait) {
+      clearInterval(id); // timed out — keep fallback
+    }
+  }, 600);
+})();
+
+// ── DCH: MutationObserver watches for DCH injecting near #dchwidget ──
+(function() {
+  const outer    = document.getElementById('dch-outer');
+  const slot     = document.getElementById('dch-widget-slot');
+  const scriptEl = document.getElementById('dchwidget');
+  if (!outer || !slot) return;
+
+  let resolved = false;
+
+  function markReady(el) {
+    if (resolved) return;
+    resolved = true;
+    // Move the injected element into our slot for proper containment
+    if (el && el.parentNode !== slot) {
+      slot.appendChild(el);
+    }
+    outer.classList.add('widget-ready');
+  }
+
+  // Poll: check if slot itself grew (script executed inline)
+  const pollId = setInterval(() => {
+    if (resolved) { clearInterval(pollId); return; }
+
+    // Case 1: iframe injected inside slot
+    const iframe = slot.querySelector('iframe');
+    if (iframe) { markReady(null); clearInterval(pollId); return; }
+
+    // Case 2: slot grew substantially
+    if (slot.scrollHeight > 80) { markReady(null); clearInterval(pollId); return; }
+  }, 500);
+
+  // MutationObserver: catch DCH injecting as sibling of the script
+  const observer = new MutationObserver((mutations) => {
+    if (resolved) { observer.disconnect(); return; }
+    mutations.forEach(m => {
+      m.addedNodes.forEach(node => {
+        if (node.nodeType !== 1) return;
+        // DCH typically injects a div with class containing "dch" or "discovercars"
+        // or just a sizeable div right after the script tag
+        const isDCH = (node.id && node.id.includes('dch')) ||
+                      (node.className && typeof node.className === 'string' &&
+                       (node.className.includes('dch') || node.className.includes('discover'))) ||
+                      node.querySelector('iframe') !== null ||
+                      (node.offsetHeight > 50 && node !== slot);
+
+        if (isDCH && outer.contains(node)) {
+          markReady(node);
+          observer.disconnect();
+          clearInterval(pollId);
+        }
+      });
+    });
+  });
+
+  // Observe the slot and its parent (DCH may inject as sibling)
+  observer.observe(slot, { childList: true, subtree: true });
+  if (slot.parentNode) observer.observe(slot.parentNode, { childList: true });
+
+  // Hard timeout: stop polling after 15s, keep fallback
+  setTimeout(() => {
+    if (!resolved) {
+      clearInterval(pollId);
+      observer.disconnect();
+    }
+  }, 15000);
+})();
 </script>
 </body>
 </html>
