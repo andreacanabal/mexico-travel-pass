@@ -24,7 +24,9 @@ src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
 /* ═══════════════════════════════
    CSS VARIABLES
@@ -1420,7 +1422,7 @@ a{text-decoration:none;color:inherit;}
 
 /* ═══════════════ SYSTEM 3 — FEAR SECTION ═══════════════ */
 #fear-section{background:#0A0A0A;padding:52px 0;border-top:4px solid #D42B2B;}
-.fear-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.fear-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:6px;}
 .fear-scenarios{display:flex;flex-direction:column;gap:0;}
 .fear-scenario{padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.07);opacity:0;transform:translateY(16px);transition:opacity 500ms ease,transform 500ms ease;}
 .fear-scenario.visible{opacity:1;transform:translateY(0);}
@@ -1431,7 +1433,7 @@ a{text-decoration:none;color:inherit;}
 .fear-outcome.good{color:#4ADE80;font-size:16px;text-align:center;padding:20px;background:rgba(74,222,128,0.08);border-radius:12px;border:1px solid rgba(74,222,128,0.2);line-height:1.6;}
 .fear-vs{display:flex;align-items:center;gap:16px;margin:28px 0;}
 .fear-vs-line{flex:1;height:1px;background:rgba(255,255,255,0.1);}
-.fear-vs-text{font-family:'Bangers',cursive;font-size:22px;color:rgba(255,255,255,0.3);letter-spacing:2px;}
+.fear-vs-text{font-family:'Bangers',cursive;font-size:22px;color:rgba(255,255,255,0.55);letter-spacing:2px;}
 
 /* ══════════════ PERKS SECTION ══════════════ */
 #perks-section{
@@ -1635,6 +1637,7 @@ a{text-decoration:none;color:inherit;}
 .hero-outcomes{
   display:flex;flex-direction:column;gap:7px;
   width:100%;max-width:320px;margin:0 auto 22px;
+  min-height:116px;
 }
 .outcome-pill{
   display:flex;align-items:center;gap:8px;
@@ -1694,7 +1697,7 @@ a{text-decoration:none;color:inherit;}
 }
 .cta-sub-text{
   font-family:'Nunito',sans-serif;font-size:11px;
-  font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.5px;
+  font-weight:700;color:#FFFFFF;letter-spacing:0.5px;
 }
 
 /* E7 — Trust row */
@@ -1705,7 +1708,7 @@ a{text-decoration:none;color:inherit;}
 .hero-trust-new span{
   display:inline-flex;align-items:center;gap:4px;
   font-family:'Nunito',sans-serif;font-size:10px;
-  font-weight:600;color:rgba(255,255,255,0.6);white-space:nowrap;
+  font-weight:700;color:rgba(255,255,255,0.85);white-space:nowrap;
 }
 .hero-trust-new svg{flex-shrink:0;opacity:0.7;}
 .trust-dot{color:rgba(255,255,255,0.25) !important;font-size:12px;}
