@@ -3932,13 +3932,10 @@ function submitEmailGate() {
     });
   }
 
-  // ── Close modal and open Stripe ──
+  // ── Close modal and open Stripe Embedded Checkout ──
   document.getElementById('email-gate-overlay').classList.remove('active');
   document.body.style.overflow = '';
-  if (_pendingUrl) {
-    window.open(_pendingUrl, '_blank');
-    _pendingUrl = null;
-  }
+  openEmbeddedCheckout();
 }
 
 // Close on overlay click
@@ -3988,7 +3985,22 @@ function closeEmbeddedCheckout(){
   const el=document.getElementById('stripe-checkout-element');if(el)el.innerHTML='';
   const l=document.getElementById('checkout-loading');if(l){l.style.display='flex';l.innerHTML='<div class="checkout-spinner"></div>Loading secure checkout...';}
 }
-if(typeof cartCheckout!=="undefined")cartCheckout=function(){openEmbeddedCheckout();};
+if(typeof cartCheckout!=="undefined")cartCheckout=function(){
+  // Show email gate first — captures lead for abandon cart automation
+  // Email gate's submit button calls openEmbeddedCheckout()
+  const overlay = document.getElementById('email-gate-overlay');
+  if(overlay){
+    overlay.classList.add('active');
+    document.body.style.overflow='hidden';
+    setTimeout(function(){
+      const emailInput = document.getElementById('eg-email');
+      if(emailInput) emailInput.focus();
+    }, 100);
+  } else {
+    // Fallback if email gate missing
+    openEmbeddedCheckout();
+  }
+};
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeEmbeddedCheckout();});
 
 (function(){const w=document.getElementById('float-cta-wrap'),x=document.getElementById('float-cta-x');if(!w)return;let d=false;window.addEventListener('scroll',function(){if(d||window.innerWidth>768)return;w.classList.toggle('visible',window.scrollY>300);},{passive:true});if(x)x.onclick=function(){d=true;w.classList.remove('visible');w.style.display='none';};})();
