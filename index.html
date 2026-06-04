@@ -24,9 +24,7 @@ src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap">
-<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-<noscript><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════
    CSS VARIABLES
@@ -1422,7 +1420,7 @@ a{text-decoration:none;color:inherit;}
 
 /* ═══════════════ SYSTEM 3 — FEAR SECTION ═══════════════ */
 #fear-section{background:#0A0A0A;padding:52px 0;border-top:4px solid #D42B2B;}
-.fear-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.75);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:6px;}
+.fear-label{font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:2px;text-align:center;margin-bottom:32px;display:flex;align-items:center;justify-content:center;gap:6px;}
 .fear-scenarios{display:flex;flex-direction:column;gap:0;}
 .fear-scenario{padding:24px 0;border-bottom:1px solid rgba(255,255,255,0.07);opacity:0;transform:translateY(16px);transition:opacity 500ms ease,transform 500ms ease;}
 .fear-scenario.visible{opacity:1;transform:translateY(0);}
@@ -1433,7 +1431,7 @@ a{text-decoration:none;color:inherit;}
 .fear-outcome.good{color:#4ADE80;font-size:16px;text-align:center;padding:20px;background:rgba(74,222,128,0.08);border-radius:12px;border:1px solid rgba(74,222,128,0.2);line-height:1.6;}
 .fear-vs{display:flex;align-items:center;gap:16px;margin:28px 0;}
 .fear-vs-line{flex:1;height:1px;background:rgba(255,255,255,0.1);}
-.fear-vs-text{font-family:'Bangers',cursive;font-size:22px;color:rgba(255,255,255,0.55);letter-spacing:2px;}
+.fear-vs-text{font-family:'Bangers',cursive;font-size:22px;color:rgba(255,255,255,0.3);letter-spacing:2px;}
 
 /* ══════════════ PERKS SECTION ══════════════ */
 #perks-section{
@@ -1637,7 +1635,6 @@ a{text-decoration:none;color:inherit;}
 .hero-outcomes{
   display:flex;flex-direction:column;gap:7px;
   width:100%;max-width:320px;margin:0 auto 22px;
-  min-height:116px;
 }
 .outcome-pill{
   display:flex;align-items:center;gap:8px;
@@ -1697,7 +1694,7 @@ a{text-decoration:none;color:inherit;}
 }
 .cta-sub-text{
   font-family:'Nunito',sans-serif;font-size:11px;
-  font-weight:700;color:#FFFFFF;letter-spacing:0.5px;
+  font-weight:600;color:rgba(255,255,255,0.75);letter-spacing:0.5px;
 }
 
 /* E7 — Trust row */
@@ -1708,7 +1705,7 @@ a{text-decoration:none;color:inherit;}
 .hero-trust-new span{
   display:inline-flex;align-items:center;gap:4px;
   font-family:'Nunito',sans-serif;font-size:10px;
-  font-weight:700;color:rgba(255,255,255,0.85);white-space:nowrap;
+  font-weight:600;color:rgba(255,255,255,0.6);white-space:nowrap;
 }
 .hero-trust-new svg{flex-shrink:0;opacity:0.7;}
 .trust-dot{color:rgba(255,255,255,0.25) !important;font-size:12px;}
@@ -2120,6 +2117,87 @@ a{text-decoration:none;color:inherit;}
   font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;
   color:#F87171;text-align:center;margin-top:6px;display:none;
 }
+
+/* ═══ FLOATING MOBILE CTA ═══ */
+#float-cta-wrap{
+  display:none;
+  position:fixed;bottom:20px;left:50%;transform:translateX(-50%);
+  z-index:9000;align-items:center;gap:8px;
+  width:calc(100% - 32px);max-width:360px;
+}
+#float-cta-wrap.visible{display:flex;}
+@media(min-width:769px){#float-cta-wrap{display:none !important;}}
+#float-cta-btn{
+  flex:1;
+  background:#22c55e;color:#fff;
+  font-family:'Bangers',cursive;font-size:18px;letter-spacing:1px;
+  border:2.5px solid #0A0A0A;border-radius:50px;
+  box-shadow:3px 3px 0 #0A0A0A;
+  padding:16px 24px;cursor:pointer;
+  transition:transform 80ms,box-shadow 80ms;white-space:nowrap;
+}
+#float-cta-btn:active{transform:translate(2px,2px);box-shadow:1px 1px 0 #0A0A0A;}
+#float-cta-close{
+  background:#0A0A0A;color:#fff;border:none;
+  width:36px;height:36px;border-radius:50%;
+  font-size:16px;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+  box-shadow:2px 2px 0 rgba(0,0,0,0.3);
+}
+
+/* ═══ FOR YOU SECTION ═══ */
+#for-you-section{
+  background:var(--cream);
+  border-top:3px solid #0A0A0A;
+  border-bottom:3px solid #0A0A0A;
+  padding:44px 0;
+}
+.for-you-h2{
+  font-family:'Bangers',cursive;
+  font-size:clamp(26px,6vw,36px);
+  color:#1A3FAA;text-align:center;
+  letter-spacing:0.04em;margin-bottom:24px;
+}
+.for-you-list{
+  display:flex;flex-direction:column;gap:10px;
+  margin-bottom:20px;
+}
+.for-you-item{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#fff;border:2px solid #0A0A0A;
+  border-radius:10px;box-shadow:2px 2px 0 #0A0A0A;
+  padding:12px 16px;
+}
+.for-you-check{
+  font-family:'Fredoka One',cursive;font-size:16px;
+  color:#1A7A4A;flex-shrink:0;margin-top:1px;
+}
+.for-you-cross{color:#D42B2B;}
+.for-you-text{
+  font-family:'Nunito',sans-serif;font-size:14px;
+  font-weight:600;color:#0A0A0A;line-height:1.45;
+}
+.for-you-not{
+  background:#fff5f5;border-color:#D42B2B;
+  box-shadow:2px 2px 0 #D42B2B;
+}
+
+/* ═══ LANGUAGE SWITCHER ═══ */
+#lang-switcher{
+  display:flex;align-items:center;gap:4px;flex-shrink:0;
+}
+.lang-btn{
+  background:none;border:1.5px solid rgba(255,255,255,0.25);
+  border-radius:6px;padding:3px 8px;
+  font-family:'Nunito',sans-serif;font-size:11px;font-weight:700;
+  color:rgba(255,255,255,0.55);cursor:pointer;
+  transition:border-color 120ms,color 120ms;
+  white-space:nowrap;
+}
+.lang-btn.active{
+  border-color:#F5C518;color:#F5C518;
+}
+.lang-btn:hover{color:#fff;border-color:rgba(255,255,255,0.5);}
 </style>
 </head>
 <body>
@@ -2138,6 +2216,7 @@ a{text-decoration:none;color:inherit;}
       <span><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" stroke="none" aria-hidden="true"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Kickoff in <span id="ticker-countdown-2">--d --h --m</span> · Get your pass now ·</span>
     </div>
   </div>
+  <div id="lang-switcher"><button class="lang-btn active" id="btn-en" onclick="setLang('en')">🇬🇧 EN</button><button class="lang-btn" id="btn-es" onclick="setLang('es')">🇪🇸 ES</button></div>
   <div class="live-dot-nav" id="live-dot-nav"><span class="dot"></span>LIVE</div>
   <button class="sticky-cta" onclick="scrollToSelector()"><span class="cta-long">Choose Your City ↓</span><span class="cta-short">Get Pass ↓</span></button>
   <div id="scroll-progress"></div>
@@ -2465,6 +2544,44 @@ a{text-decoration:none;color:inherit;}
   </div>
 </section>
 
+
+<!-- ════ FOR YOU SECTION ════ -->
+<section id="for-you-section">
+  <div class="wrap-sm">
+    <h2 class="for-you-h2">THIS GUIDE IS FOR YOU IF...</h2>
+    <div class="for-you-list">
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You're flying into Mexico for the World Cup</span>
+      </div>
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You don't speak fluent Spanish</span>
+      </div>
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You've never been to Mexico City, Guadalajara, or Monterrey</span>
+      </div>
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You want to know <strong>EXACTLY</strong> which taxi app to use outside the stadium</span>
+      </div>
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You want a plan for if something goes wrong — before it goes wrong</span>
+      </div>
+      <div class="for-you-item">
+        <span class="for-you-check">✓</span>
+        <span class="for-you-text">You want to enjoy every day, not just survive them</span>
+      </div>
+      <div class="for-you-item for-you-not">
+        <span class="for-you-check for-you-cross">✗</span>
+        <span class="for-you-text" style="color:#D42B2B;">This is <strong>NOT</strong> for you if you've lived in Mexico for years and know these cities like the back of your hand.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ════════════════════════════════════
      CITY SELECTOR
 ════════════════════════════════════ -->
@@ -2624,25 +2741,25 @@ a{text-decoration:none;color:inherit;}
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="1 6 1 22 8 18 16 22 23 18 23 2 16 6 8 2 1 6"/><line x1="8" y1="2" x2="8" y2="18"/><line x1="16" y1="6" x2="16" y2="22"/></svg></div>
         <div class="perk-name">Tours & Experiences</div>
         <div class="perk-detail">Stadium tours, city excursions & day trips near each host city</div>
-        <div class="perk-badge">Up to 20% off</div>
+        <div class="perk-badge">Save up to $30 per person on tours</div>
       </div>
       <div class="perk-card">
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/><circle cx="8" cy="10" r="2"/><circle cx="16" cy="10" r="2"/></svg></div>
         <div class="perk-name">Casinos & Nightlife</div>
         <div class="perk-detail">VIP access & free chips at top casinos in CDMX, GDL & MTY</div>
-        <div class="perk-badge">Free entry</div>
+        <div class="perk-badge">Free entry — save $20–$50 per night</div>
       </div>
       <div class="perk-card">
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v9a2 2 0 0 1-2 2h-2"/><circle cx="7.5" cy="17.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg></div>
         <div class="perk-name">Car Rentals</div>
         <div class="perk-detail">Discounts with local and international rental agencies at all 3 cities</div>
-        <div class="perk-badge">15% off</div>
+        <div class="perk-badge">Save $15–$40 on your rental</div>
       </div>
       <div class="perk-card">
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M10.54 16a6 6 0 0 1 2.92 0"/><circle cx="12" cy="20" r="1" fill="#fff"/></svg></div>
         <div class="perk-name">eSIM Data</div>
         <div class="perk-detail">Stay connected all tournament — unlimited data plans for Mexico</div>
-        <div class="perk-badge">10% off</div>
+        <div class="perk-badge">Save $5 on unlimited Mexico data</div>
       </div>
       <div class="perk-card">
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19 2c-2-2-4-2-5.5-.5L10 5 1.8 6.2c-.5.1-.9.5-.9 1.1l0 0c0 .5.2 1 .6 1.3L5 11l-1 3H2l-1 1 3 2 2 3 1-1V17l3-1 2.7 2.5c.3.4.8.6 1.3.6l0 0c.6 0 1-.4 1.1-.9z"/></svg></div>
@@ -2654,9 +2771,10 @@ a{text-decoration:none;color:inherit;}
         <div class="perk-icon"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22V8a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v14"/><path d="M2 22h20"/><path d="M7 22v-4a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v4"/><rect x="7" y="8" width="3" height="3"/><rect x="14" y="8" width="3" height="3"/></svg></div>
         <div class="perk-name">Hotels</div>
         <div class="perk-detail">Preferred rates at fan-friendly hotels near all 3 stadiums</div>
-        <div class="perk-badge">Up to 25% off</div>
+        <div class="perk-badge">Save up to $50/night near the stadiums</div>
       </div>
     </div>
+    <p style="text-align:center;font-family:'Nunito',sans-serif;font-size:14px;font-weight:800;color:#4ADE80;margin:0 auto 20px;max-width:480px;">Total partner value: up to $150+ in savings — included with your $9.99 guide.</p>
     <div class="perks-footer-note">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
       All discount codes delivered instantly with your guide · No subscription required
@@ -2865,7 +2983,7 @@ a{text-decoration:none;color:inherit;}
           <div class="testi-av av-blue">PV</div>
           <div>
             <div class="testi-name">Pieter V.</div>
-            <div class="testi-origin">Rotterdam, Netherlands</div>
+            <div class="testi-origin">Rotterdam, Netherlands</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇳🇱 · Watched: Mexico City — Opening Match</div>
           </div>
         </div>
       </div>
@@ -2877,7 +2995,7 @@ a{text-decoration:none;color:inherit;}
           <div class="testi-av av-red">SM</div>
           <div>
             <div class="testi-name">Sofía M.</div>
-            <div class="testi-origin">Madrid, Spain</div>
+            <div class="testi-origin">Madrid, Spain</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇪🇸 · Watched: Guadalajara — Spain vs Uruguay</div>
           </div>
         </div>
       </div>
@@ -2889,7 +3007,7 @@ a{text-decoration:none;color:inherit;}
           <div class="testi-av av-purple">JT</div>
           <div>
             <div class="testi-name">James T.</div>
-            <div class="testi-origin">Dublin, Ireland</div>
+            <div class="testi-origin">Dublin, Ireland</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇮🇪 · Watched: Monterrey — Match Day 2</div>
           </div>
         </div>
       </div>
@@ -2899,7 +3017,7 @@ a{text-decoration:none;color:inherit;}
         <p class="testi-quote">"Traveled with a group of 8 from Germany. We used the transport guide every single match day. Not one bad experience. The police protocol section was something none of us had thought about."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#1A7A4A;color:#fff;">MW</div>
-          <div><div class="testi-name">Marcus W.</div><div class="testi-origin">Berlin, Germany</div></div>
+          <div><div class="testi-name">Marcus W.</div><div class="testi-origin">Berlin, Germany</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇩🇪 · Watched: All 3 Cities</div></div>
         </div>
       </div>
       <div class="testi-card">
@@ -2908,7 +3026,7 @@ a{text-decoration:none;color:inherit;}
         <p class="testi-quote">"38-degree heat, no idea what to drink or eat safely. The Montezuma's Revenge Guide saved two of us from a ruined match day. Worth every cent."</p>
         <div class="testi-author">
           <div class="testi-av" style="background:#6B21A8;color:#fff;">CB</div>
-          <div><div class="testi-name">Caitlin B.</div><div class="testi-origin">Melbourne, Australia</div></div>
+          <div><div class="testi-name">Caitlin B.</div><div class="testi-origin">Melbourne, Australia</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇦🇺 · Watched: Monterrey — Group Stage</div></div>
         </div>
       </div>
       <div class="testi-card">
@@ -2917,7 +3035,7 @@ a{text-decoration:none;color:inherit;}
         <p class="testi-quote">"My Spanish is zero. The guide gave me exact phrases to use with taxi drivers and at pharmacies. I felt genuinely prepared for the first time."</p>
         <div class="testi-author">
           <div class="testi-av av-red">YF</div>
-          <div><div class="testi-name">Yannick F.</div><div class="testi-origin">Lyon, France</div></div>
+          <div><div class="testi-name">Yannick F.</div><div class="testi-origin">Lyon, France</div><div class="testi-origin" style="color:#aaa;font-size:10px;margin-top:2px;">🇫🇷 · Watched: Guadalajara — France Group Stage</div></div>
         </div>
       </div>
     </div>
@@ -2973,7 +3091,14 @@ a{text-decoration:none;color:inherit;}
           <span class="faq-q">When do I receive it?</span>
           <span class="faq-icon">+</span>
         </button>
-        <div class="faq-answer"><div class="faq-answer-inner">Instantly. The moment your payment clears, you receive a download link by email. The PDF works offline — important when you're in a country without reliable data.</div></div>
+        <div class="faq-answer"><div class="faq-answer-inner">In the next 60 seconds. The moment Stripe confirms your payment, an automated email with your download link lands in your inbox. The PDF works offline — important when you're in a country without reliable data. Check spam if you don't see it in 2 minutes.</div></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-trigger" onclick="toggleFaq(this)">
+          <span class="faq-q">Is it safe to pay here?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer"><div class="faq-answer-inner">Absolutely. Checkout is powered by Stripe — the same payment processor used by Amazon, Google, and Airbnb. Your card details never touch our servers. And if you're not satisfied, email us within 30 days for a full refund. No questions.</div></div>
       </div>
       <div class="faq-item">
         <button class="faq-trigger" onclick="toggleFaq(this)">
@@ -2995,7 +3120,7 @@ a{text-decoration:none;color:inherit;}
       <span class="final-hl">YOU KNOW WHERE YOU'RE GOING.</span>
       <span class="final-hl">NOW KNOW WHAT TO DO.</span>
     </h2>
-    <p class="final-sub">The guide that costs less than one bad taxi ride.</p>
+    <p class="final-sub">The guide that costs less than one bad taxi ride. And the first match is in <span id="final-days-left">--</span> days.</p>
     <div class="final-cta-wrap">
       <button class="btn btn-gold btn-pulse final-cta-btn" onclick="scrollToSelector()"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" stroke="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:inline-block;vertical-align:middle;flex-shrink:0;" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg> CHOOSE MY CITY — FROM $9.99</button>
       <div class="final-trust">
@@ -3062,6 +3187,137 @@ a{text-decoration:none;color:inherit;}
 
 
 <div id="selection-toast">Choose a city first</div>
+
+<!-- ════ FLOATING MOBILE CTA ════ -->
+<div id="float-cta-wrap">
+  <button id="float-cta-btn" onclick="scrollToSelector()">GET MY PASS — FROM $9.99 →</button>
+  <button id="float-cta-close" onclick="document.getElementById('float-cta-wrap').style.display='none'" aria-label="Close">✕</button>
+</div>
+
+<script>
+/* ═══ FLOATING CTA SCROLL TRIGGER ═══ */
+(function(){
+  const wrap = document.getElementById('float-cta-wrap');
+  if(!wrap) return;
+  let dismissed = false;
+  window.addEventListener('scroll', function(){
+    if(dismissed || window.innerWidth > 768) return;
+    wrap.classList.toggle('visible', window.scrollY > 300);
+  }, {passive:true});
+  const closeBtn = document.getElementById('float-cta-close');
+  if(closeBtn) closeBtn.addEventListener('click', function(){
+    dismissed = true;
+    wrap.classList.remove('visible');
+    wrap.style.display = 'none';
+  });
+})();
+
+/* ═══ FINAL CTA DAYS LEFT ═══ */
+(function(){
+  const el = document.getElementById('final-days-left');
+  if(el){
+    const days = Math.ceil((new Date('2026-06-11T18:00:00Z') - Date.now()) / 86400000);
+    el.textContent = days > 0 ? days : '0';
+  }
+})();
+
+/* ═══ LANGUAGE SWITCHER ═══ */
+const TRANSLATIONS = {
+  en: {
+    h1_line1: "DON'T GET CAUGHT",
+    h1_line2: "OFF GUARD",
+    h1_line3: "IN MEXICO",
+    cta_main: "GET MY CITY GUIDE",
+    cta_sub:  "Choose your city below — instant download",
+    bundle_btn: "GET ALL 3 — $22.99",
+    final_btn: "CHOOSE MY CITY — FROM $9.99",
+    fear1_time:  "11:47 PM · Outside Estadio Azteca",
+    fear1_story: "The match ended 40 minutes ago. You're trying to get an Uber but the app says 34 minutes away. A man approaches offering a taxi. You don't know if it's safe. You don't know which areas to avoid walking through. You get in anyway.",
+    fear1_out:   "This story doesn't end well.",
+    fear2_time:  "Day 3 · Hotel room · Guadalajara",
+    fear2_story: "You ate at a street stand that looked fine. Everyone around you was eating there. Now it's 4 AM and you're not going to see tomorrow's match. You spend $200 at a private clinic because you don't know what to ask for at the pharmacy.",
+    fear2_out:   "There goes your best match day.",
+    fear3_time:  "After the match · Monterrey downtown",
+    fear3_story: "A police officer stops your group. You don't know your rights. You don't know the protocol. Your friends look at you. You look at your phone. No signal.",
+    fear3_out:   "You needed to know this before you arrived.",
+    resolution:  "You already read the guide. You know exactly which app to use, what to say, and where to go. This trip is exactly what you planned it to be.",
+  },
+  es: {
+    h1_line1: "NO TE AGARREN",
+    h1_line2: "DESPREVENIDO",
+    h1_line3: "EN MÉXICO",
+    cta_main: "QUIERO MI GUÍA",
+    cta_sub:  "Elige tu ciudad — descarga instantánea",
+    bundle_btn: "LAS 3 CIUDADES — $22.99",
+    final_btn: "ELEGIR MI CIUDAD — DESDE $9.99",
+    fear1_time:  "11:47 PM · Afuera del Estadio Azteca",
+    fear1_story: "El partido terminó hace 40 minutos. Intentas pedir un Uber pero dice 34 minutos de espera. Un hombre se acerca ofreciendo taxi. No sabes si es seguro. No sabes qué zonas evitar. Subes de todas formas.",
+    fear1_out:   "Esta historia no termina bien.",
+    fear2_time:  "Día 3 · Cuarto de hotel · Guadalajara",
+    fear2_story: "Comiste en un puesto que se veía bien. Todos a tu alrededor comían ahí. Ahora son las 4 AM y no vas a ver el partido de mañana. Gastas $200 en una clínica privada porque no sabes qué pedir en la farmacia.",
+    fear2_out:   "Ahí se fue tu mejor día de partido.",
+    fear3_time:  "Después del partido · Centro de Monterrey",
+    fear3_story: "Un policía detiene a tu grupo. No sabes tus derechos. No sabes el protocolo. Tus amigos te miran. Tú miras tu teléfono. Sin señal.",
+    fear3_out:   "Necesitabas saber esto antes de llegar.",
+    resolution:  "Ya leíste la guía. Sabes exactamente qué app usar, qué decir y a dónde ir. Este viaje es exactamente lo que planeaste.",
+  }
+};
+
+let currentLang = localStorage.getItem('mtp_lang') || (navigator.language.startsWith('es') ? 'es' : 'en');
+
+function applyLang(lang) {
+  const t = TRANSLATIONS[lang];
+  // Headline
+  const l1 = document.querySelector('.h1-line-1');
+  const l2 = document.querySelector('.h1-line-2');
+  const l3 = document.querySelector('.h1-line-3');
+  if(l1) l1.textContent = t.h1_line1;
+  if(l2) l2.textContent = t.h1_line2;
+  if(l3) l3.textContent = t.h1_line3;
+  // CTAs
+  const ctaMain = document.querySelector('.cta-main-text');
+  const ctaSub  = document.querySelector('.cta-sub-text');
+  if(ctaMain) ctaMain.textContent = t.cta_main;
+  if(ctaSub)  ctaSub.textContent  = t.cta_sub;
+  // Final btn
+  const finalBtn = document.querySelector('.final-cta-btn');
+  if(finalBtn) finalBtn.childNodes.forEach(n => { if(n.nodeType===3 && n.textContent.trim()) n.textContent = ' ' + t.final_btn + ' '; });
+  // Fear stories
+  const times   = document.querySelectorAll('.fear-time');
+  const stories = document.querySelectorAll('.fear-story');
+  const outs    = document.querySelectorAll('.fear-outcome.bad');
+  const resEl   = document.querySelector('.fear-outcome.good');
+  if(times[0])   times[0].textContent   = t.fear1_time;
+  if(stories[0]) stories[0].textContent = t.fear1_story;
+  if(outs[0])    outs[0].textContent    = t.fear1_out;
+  if(times[1])   times[1].textContent   = t.fear2_time;
+  if(stories[1]) stories[1].textContent = t.fear2_story;
+  if(outs[1])    outs[1].textContent    = t.fear2_out;
+  if(times[2])   times[2].textContent   = t.fear3_time;
+  if(stories[2]) stories[2].textContent = t.fear3_story;
+  if(outs[2])    outs[2].textContent    = t.fear3_out;
+  if(resEl)      resEl.textContent      = t.resolution;
+  // Lang buttons
+  document.getElementById('btn-en').classList.toggle('active', lang==='en');
+  document.getElementById('btn-es').classList.toggle('active', lang==='es');
+  // Reorder testimonials — Sofia first in ES
+  const grid = document.querySelector('.testi-grid');
+  if(grid && lang === 'es') {
+    const cards = [...grid.children];
+    const sofia = cards.find(c => c.textContent.includes('Sofía'));
+    if(sofia && cards.indexOf(sofia) !== 0) grid.insertBefore(sofia, cards[0]);
+  }
+}
+
+function setLang(lang) {
+  currentLang = lang;
+  localStorage.setItem('mtp_lang', lang);
+  applyLang(lang);
+}
+
+// Apply on load
+document.addEventListener('DOMContentLoaded', function(){ applyLang(currentLang); });
+</script>
 </body>
 </html>
 </body>
