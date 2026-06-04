@@ -28,8 +28,9 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
   clip-path:polygon(50% 0%,100% 15%,100% 60%,50% 100%,0% 60%,0% 15%);
   display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .hdr-title{font-family:'Bangers',cursive;font-size:18px;color:var(--white);letter-spacing:1px}
-#section-label{font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.85);
-  position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap}
+#section-label{font-family:'Fredoka One',cursive;font-size:12px;color:rgba(255,255,255,0.85);
+  position:absolute;left:50%;transform:translateX(-50%);white-space:nowrap;
+  max-width:120px;overflow:hidden;text-overflow:ellipsis;pointer-events:none}
 .sos-btn{background:var(--red);color:var(--white);font-family:'Bangers',cursive;
   font-size:14px;letter-spacing:1px;border:none;border-radius:99px;padding:7px 16px;
   cursor:pointer;box-shadow:2px 2px 0 var(--black);flex-shrink:0}
@@ -167,6 +168,9 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 .match-teams{font-family:'Fredoka One',cursive;font-size:15px;color:var(--white);flex:1}
 .match-meta{font-size:11px;color:var(--gray-500);margin-top:2px}
 .match-time{font-family:'Bangers',cursive;font-size:18px;color:var(--gold)}
+.ctry-pill{display:inline-block;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.2);
+  border-radius:4px;padding:1px 5px;font-family:'Fredoka One',cursive;font-size:10px;
+  color:rgba(255,255,255,0.7);letter-spacing:0.5px;vertical-align:middle}
 
 /* ── TRANSPORT OPTIONS ── */
 .transport-card{margin:8px 12px;border-radius:12px;border:2px solid var(--black);
@@ -374,9 +378,172 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 .dcf-cta:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
 .dcf-desc{font-size:11px;color:var(--gray-500);text-align:center;
   padding:0 16px 14px;line-height:1.4}
-</style>
+/* ── HOLAFLY CARD ── */
+.hf-card{margin:0 12px 16px;border-radius:12px;border:2px solid var(--black);
+  box-shadow:3px 3px 0 var(--black);overflow:hidden;background:var(--dark-card)}
+.hf-header{background:linear-gradient(135deg,#2e1065,#4c1d95);padding:18px 16px 14px}
+.hf-top-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.hf-logo-wrap{display:flex;align-items:center;gap:8px}
+.hf-brand{font-family:'Bangers',cursive;font-size:20px;color:var(--white);letter-spacing:1px}
+.hf-exclusive-badge{background:var(--gold);color:var(--black);font-family:'Bangers',cursive;
+  font-size:11px;letter-spacing:1px;border-radius:99px;padding:3px 10px;
+  border:2px solid var(--black)}
+.hf-headline{font-family:'Fredoka One',cursive;font-size:18px;color:var(--white);
+  line-height:1.3}
+.hf-discounts{padding:14px 16px 10px;display:flex;flex-direction:column;gap:10px;
+  border-bottom:1px solid rgba(255,255,255,0.07)}
+.hf-discount-row{display:flex;align-items:center;gap:10px}
+.hf-discount-pill{background:var(--gold);color:var(--black);font-family:'Bangers',cursive;
+  font-size:16px;letter-spacing:0.5px;border-radius:8px;padding:4px 12px;
+  border:2px solid var(--black);flex-shrink:0;min-width:72px;text-align:center}
+.hf-pill-purple{background:#a78bfa;color:var(--white)}
+.hf-discount-text{font-family:'Fredoka One',cursive;font-size:13px;color:var(--white)}
+.hf-code-block{margin:14px 16px;background:rgba(167,139,250,0.1);border:2px dashed #a78bfa;
+  border-radius:12px;padding:12px 14px;cursor:pointer;transition:background 0.15s}
+.hf-code-block:active,.hf-code-block.copied{background:rgba(167,139,250,0.25)}
+.hf-code-label{font-family:'Fredoka One',cursive;font-size:10px;color:#a78bfa;
+  text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+.hf-code-row{display:flex;align-items:center;justify-content:space-between}
+.hf-code{font-family:'Bangers',cursive;font-size:22px;color:var(--white);letter-spacing:2px}
+.hf-code-applied{font-size:10px;color:rgba(255,255,255,0.4);margin-top:5px}
+.hf-benefits{padding:10px 16px 14px;border-top:1px solid rgba(255,255,255,0.07)}
+.hf-benefit{display:flex;align-items:center;gap:8px;font-size:12px;
+  color:rgba(255,255,255,0.85);line-height:1.5;margin-bottom:7px}
+.hf-benefit svg{flex-shrink:0}
+.hf-cta{display:flex;align-items:center;justify-content:center;gap:8px;
+  margin:0 16px 8px;background:#a78bfa;color:var(--black);
+  font-family:'Bangers',cursive;font-size:19px;letter-spacing:0.5px;
+  border:2px solid var(--black);border-radius:12px;padding:14px;
+  text-decoration:none;box-shadow:3px 3px 0 var(--black);transition:transform 0.1s}
+.hf-cta:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--black)}
+.hf-cta-note{font-size:11px;color:rgba(255,255,255,0.4);text-align:center;
+  padding:0 16px 14px}
+
+/* ── PDF BUTTON ── */
+.pdf-btn{background:var(--white);color:var(--red);border:2px solid var(--black);
+  border-radius:99px;padding:7px 12px;font-family:'Bangers',cursive;font-size:14px;
+  letter-spacing:1px;cursor:pointer;display:flex;align-items:center;gap:5px;
+  box-shadow:2px 2px 0 var(--black);flex-shrink:0;line-height:1}
+.pdf-btn:active{transform:scale(0.95)}
+.pdf-btn svg{flex-shrink:0}
+
+/* ── PRINT COVER ── */
+#print-cover{display:none;background:#1a0535;color:var(--white);
+  padding:40px 30px;min-height:100vh;flex-direction:column;justify-content:center}
+.pc-flag{display:flex;height:8px;margin-bottom:32px;border-radius:4px;overflow:hidden}
+.pc-flag span{flex:1}
+.pc-pre{font-family:'Fredoka One',cursive;font-size:12px;color:var(--gold);
+  letter-spacing:3px;text-transform:uppercase;margin-bottom:12px}
+.pc-title{font-family:'Bangers',cursive;font-size:64px;color:var(--white);
+  line-height:1;margin-bottom:8px}
+.pc-sub{font-family:'Fredoka One',cursive;font-size:18px;color:rgba(255,255,255,0.75);
+  margin-bottom:32px;line-height:1.4}
+.pc-dates{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.pc-date{background:rgba(107,33,168,0.6);border:1px solid rgba(255,255,255,0.3);
+  border-radius:99px;padding:6px 16px;font-family:'Fredoka One',cursive;font-size:14px}
+.pc-stats{display:flex;gap:20px;margin-bottom:48px}
+.pc-stat-num{font-family:'Bangers',cursive;font-size:32px;color:var(--gold)}
+.pc-stat-lbl{font-family:'Fredoka One',cursive;font-size:11px;color:rgba(255,255,255,0.6);text-transform:uppercase}
+.pc-url{font-family:'Bangers',cursive;font-size:20px;color:rgba(255,255,255,0.4);letter-spacing:1px}
+
+/* ── PRINT SECTION TITLES ── */
+.print-section-title{display:none;align-items:center;gap:14px;
+  padding:20px 24px;margin:0;border-bottom:3px solid var(--black)}
+.pst-num{font-family:'Bangers',cursive;font-size:48px;line-height:1;opacity:0.2}
+.pst-label{font-family:'Bangers',cursive;font-size:28px;letter-spacing:1px}
+
+/* ── @MEDIA PRINT ── */
+@media print {
+  @page{margin:12mm 10mm;size:A4 portrait}
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+
+  /* Reset app layout */
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+  #content{overflow:visible!important;height:auto!important;flex:none!important}
+
+  /* Hide app chrome */
+  #header,#nav,#sos-float,#sos-overlay,#toast,
+  .sos-btn,.shop-btn,.pdf-btn,.qa-btn,.qa-grid,
+  .nightlife-card,.atm-tabs,.phrase-cats,
+  .gyg-wrapper,.dcw-wrapper,.native-cards-row,
+  .gyg-browse-btn,.gyg-widget-wrap,.dcw-widget-wrap,
+  .tab-section#tab-shop{display:none!important}
+
+  /* Show ALL sections */
+  .tab-section{display:block!important;padding-bottom:0!important}
+
+  /* Show print section titles */
+  .print-section-title{display:flex!important}
+
+  /* Show print cover */
+  #print-cover{display:flex!important}
+
+  /* Expand all accordions */
+  .zone-body,.transport-body,.proto-body,.heat-expand{display:block!important}
+  .zone-arrow,.proto-arrow{transform:rotate(90deg)!important}
+
+  /* Show all ATM panels */
+  .atm-panel{display:block!important}
+
+  /* Show all phrase groups */
+  .phrase-group{display:block!important}
+
+  /* Page breaks between sections */
+  #print-cover{page-break-after:always}
+  #tab-home{page-break-after:always}
+  #tab-safety{page-break-after:always}
+  #tab-stadium{page-break-after:always}
+  #tab-emergency{page-break-after:always}
+
+  /* Card print cleanup */
+  .card,.rule-card,.match-card,.emerg-card,.proto-card,
+  .zone-card,.transport-card,.phase-card{
+    box-shadow:none!important;
+    border:1px solid #ccc!important;
+    break-inside:avoid}
+
+  /* Dark backgrounds: keep purple/red, lighten neutral darks */
+  .hero,.stadium-hero,.shop-hero{color:#fff!important}
+  body{font-size:11px}
+}</style>
 </head>
 <body>
+
+<!-- ═══ SVG ICON LIBRARY ═══ -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none;position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9.5L12 3l9 6.5V20a1 1 0 01-1 1H4a1 1 0 01-1-1V9.5z"/><polyline points="9 21 9 12 15 12 15 21"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></symbol>
+  <symbol id="i-stadium" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="10" width="18" height="11" rx="1"/><path d="M3 10C3 6.686 7.03 4 12 4s9 2.686 9 6"/><line x1="9" y1="10" x2="9" y2="21"/><line x1="15" y1="10" x2="15" y2="21"/></symbol>
+  <symbol id="i-alarm" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></symbol>
+  <symbol id="i-thermo" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 14.76V3.5a2.5 2.5 0 00-5 0v11.26a4.5 4.5 0 105 0z"/></symbol>
+  <symbol id="i-map" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></symbol>
+  <symbol id="i-phone" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.0 1.17 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></symbol>
+  <symbol id="i-hospital" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+  <symbol id="i-medic" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></symbol>
+  <symbol id="i-info" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></symbol>
+  <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+  <symbol id="i-car" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="11" width="22" height="9" rx="2"/><path d="M5 11L7.5 4h9L19 11"/><circle cx="7" cy="20" r="1"/><circle cx="17" cy="20" r="1"/></symbol>
+  <symbol id="i-train" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="16" rx="2"/><path d="M4 11h16"/><path d="M12 3v8"/><circle cx="8.5" cy="16.5" r="1.5"/><circle cx="15.5" cy="16.5" r="1.5"/><path d="M8 19l-2 3"/><path d="M16 19l2 3"/></symbol>
+  <symbol id="i-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></symbol>
+  <symbol id="i-copy" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 01-2-2V4a2 2 0 012-2h9a2 2 0 012 2v1"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></symbol>
+  <symbol id="i-card" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></symbol>
+  <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></symbol>
+  <symbol id="i-music" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></symbol>
+  <symbol id="i-bank" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="22" x2="21" y2="22"/><line x1="6" y1="18" x2="6" y2="11"/><line x1="10" y1="18" x2="10" y2="11"/><line x1="14" y1="18" x2="14" y2="11"/><line x1="18" y1="18" x2="18" y2="11"/><polygon points="12 2 20 7 4 7"/></symbol>
+  <symbol id="i-mountain" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="3 20 15 4 21 20 3 20"/></symbol>
+  <symbol id="i-flag" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></symbol>
+  <symbol id="i-passport" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="2" width="16" height="20" rx="2"/><circle cx="12" cy="11" r="3"/><path d="M9 18h6"/></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></symbol>
+  <symbol id="i-ball" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a9.96 9.96 0 015 1.35L14 8H10L7 3.35A9.96 9.96 0 0112 2z"/><path d="M22 12a9.96 9.96 0 01-1.35 5L17 15l-1-3 3-4h2.65"/><path d="M2 12a9.96 9.96 0 001.35 5L7 15l1-3-3-4H2.35"/><path d="M7.35 19.65A9.96 9.96 0 0012 22a9.96 9.96 0 004.65-2.35L15 17H9l-1.65 2.65z"/></symbol>
+  <symbol id="i-food" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="18" y2="6"/><path d="M18 2v4m0 4v12M6 2v6a2 2 0 002 2h0a2 2 0 002-2V2M8 10v12"/></symbol>
+  <symbol id="i-money" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></symbol>
+  <symbol id="i-bolt" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+</svg>
 
 <!-- HEADER -->
 <div id="header">
@@ -384,8 +551,11 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div class="hdr-shield"></div>
     <span class="hdr-title">MTY GUIDE</span>
   </div>
-  <span id="section-label">HOME</span>
   <div style="display:flex;align-items:center;gap:6px">
+    <button class="pdf-btn" onclick="downloadPDF()">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF
+    </button>
     <button class="shop-btn" id="shop-hdr-btn" onclick="switchTab('shop')">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
       MTY DEALS
@@ -397,10 +567,34 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 <!-- CONTENT -->
 <div id="content">
 
+<!-- PRINT COVER — hidden in app, shown on print -->
+<div id="print-cover">
+  <div class="pc-flag"><span style="background:#006847"></span><span style="background:#fff"></span><span style="background:#CE1126"></span></div>
+  <div class="pc-pre">Estadio BBVA · FIFA World Cup 2026</div>
+  <div class="pc-title">MONTERREY<br>TRAVEL PASS</div>
+  <div class="pc-sub">Your complete guide to El Gigante de Acero<br>and the city of the Steel Giant</div>
+  <div class="pc-dates">
+    <span class="pc-date">Jun 14 — Sweden vs Tunisia</span>
+    <span class="pc-date">Jun 20 — Japan vs Tunisia</span>
+    <span class="pc-date">Jun 24 — South Africa vs South Korea</span>
+    <span class="pc-date">Jun 29 — Round of 32</span>
+  </div>
+  <div class="pc-stats">
+    <div><div class="pc-stat-num">53,500</div><div class="pc-stat-lbl">Capacity</div></div>
+    <div><div class="pc-stat-num">4</div><div class="pc-stat-lbl">Matches</div></div>
+    <div><div class="pc-stat-num">34°C</div><div class="pc-stat-lbl">June Heat</div></div>
+  </div>
+  <div class="pc-url">mexicotravelpass.com</div>
+</div>
+
   <!-- ════════════════════════════════════════
        TAB 1: HOME
        ════════════════════════════════════════ -->
   <div id="tab-home" class="tab-section active">
+    <div class="print-section-title" style="background:#1a0535;color:var(--white)">
+      <span class="pst-num">01</span>
+      <span class="pst-label">HOME &amp; ESSENTIAL RULES</span>
+    </div>
 
     <!-- Hero -->
     <div class="hero">
@@ -411,7 +605,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <polygon points="0,80 50,55 80,65 110,45 140,58 170,35 200,50 240,30 280,48 320,38 360,55 400,42 400,80" fill="#7e22ce"/>
       </svg>
       <div class="hero-content">
-        <div class="countdown-pill"><span>⚽</span><span id="countdown-text">Loading…</span></div>
+        <div class="countdown-pill"><span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-ball"/></svg></span><span id="countdown-text">Loading…</span></div>
         <div class="hero-pre">Estadio BBVA · Summer 2026</div>
         <div class="hero-title">MONTERREY<br>TRAVEL PASS</div>
         <div class="hero-sub">Your complete guide to El Gigante de Acero<br>and the city of the Steel Giant</div>
@@ -424,7 +618,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <div class="hero-stats">
           <div class="stat-box"><div class="stat-num">53,500</div><div class="stat-lbl">Capacity</div></div>
           <div class="stat-box"><div class="stat-num">4</div><div class="stat-lbl">Matches</div></div>
-          <div class="stat-box"><div class="stat-num" style="color:var(--red)">34°C ⚠</div><div class="stat-lbl">June Heat</div></div>
+          <div class="stat-box"><div class="stat-num" style="color:var(--red)">34°C <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alert"/></svg></div><div class="stat-lbl">June Heat</div></div>
         </div>
       </div>
     </div>
@@ -432,7 +626,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <!-- Heat Warning -->
     <div class="heat-card">
       <div class="heat-header" onclick="toggleHeat()">
-        <div class="heat-icon">🌡️</div>
+        <div class="heat-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-thermo"/></svg></div>
         <div>
           <div class="heat-title">Heat Warning — Read This First</div>
           <div class="heat-body">Monterrey in June hits 34°C (93°F) with high humidity. Under direct sun it feels like 42°C (107°F). Heat exhaustion is a real risk. Tap to read your survival protocol.</div>
@@ -451,7 +645,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
 
     <!-- 5 Rules -->
-    <div class="rules-header">⚡ THE 5 RULES</div>
+    <div class="rules-header"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bolt"/></svg> THE 5 RULES</div>
 
     <div class="rule-card" style="background:#3d0000">
       <div class="rule-head">
@@ -494,22 +688,22 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
 
     <!-- Quick Actions -->
-    <div class="rules-header" style="padding-top:12px">🚀 QUICK ACTIONS</div>
+    <div class="rules-header" style="padding-top:12px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bolt"/></svg> QUICK ACTIONS</div>
     <div class="qa-grid">
       <div class="qa-btn" onclick="switchTab('stadium')">
-        <div class="qa-icon">🏟️</div>
+        <div class="qa-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-stadium"/></svg></div>
         <div class="qa-label">Stadium Route</div>
       </div>
       <div class="qa-btn" onclick="switchTab('safety')">
-        <div class="qa-icon">🗺️</div>
+        <div class="qa-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg></div>
         <div class="qa-label">Safe Zones</div>
       </div>
       <div class="qa-btn" onclick="openSOS()">
-        <div class="qa-icon">🚨</div>
+        <div class="qa-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg></div>
         <div class="qa-label">Emergency Contacts</div>
       </div>
       <div class="qa-btn" onclick="switchTab('phrases')">
-        <div class="qa-icon">💬</div>
+        <div class="qa-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-chat"/></svg></div>
         <div class="qa-label">Spanish Phrases</div>
       </div>
     </div>
@@ -518,7 +712,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div class="nightlife-card" onclick="this.classList.toggle('open')">
       <div class="nightlife-head">
         <div>
-          <div class="nightlife-title">🌙 AFTER THE MATCH — BARRIO ANTIGUO</div>
+          <div class="nightlife-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-moon"/></svg> AFTER THE MATCH — BARRIO ANTIGUO</div>
           <div style="font-size:12px;color:rgba(255,255,255,0.6);font-family:'Fredoka One',cursive">Nightlife Guide</div>
         </div>
         <div style="font-size:20px">▶</div>
@@ -531,10 +725,10 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <div class="time-row"><div class="time-badge">12–2am</div><div style="font-size:12px;color:rgba(255,255,255,0.8)">Stay on Padre Mier main strip. Don't wander quiet side streets. Keep group together.</div></div>
         <div class="time-row"><div class="time-badge" style="background:var(--red)">After 2am</div><div style="font-size:12px;color:rgba(255,255,255,0.8)">Start heading back. Order Uber from inside the venue.</div></div>
         <div style="margin-top:10px;font-size:12px;line-height:1.6;color:rgba(255,255,255,0.8)">
-          🎵 Electronic/house: <strong>Ambia Social Club</strong> (Padre Mier 1094)<br>
-          🎷 Jazz/rooftop: <strong>Maverick MTY</strong> in San Pedro (Rio Mississippi 103D)<br>
-          🥩 Street food: Carne asada from established vendors on Padre Mier — safe and excellent<br>
-          💳 Cover: $100–300 MXN · Drinks: $80–150 MXN
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-music"/></svg> Electronic/house: <strong>Ambia Social Club</strong> (Padre Mier 1094)<br>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-music"/></svg> Jazz/rooftop: <strong>Maverick MTY</strong> in San Pedro (Rio Mississippi 103D)<br>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-food"/></svg> Street food: Carne asada from established vendors on Padre Mier — safe and excellent<br>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-card"/></svg> Cover: $100–300 MXN · Drinks: $80–150 MXN
         </div>
       </div>
     </div>
@@ -545,8 +739,12 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
        TAB 2: SAFETY
        ════════════════════════════════════════ -->
   <div id="tab-safety" class="tab-section">
+    <div class="print-section-title" style="background:#1a3f00;color:var(--white)">
+      <span class="pst-num">02</span>
+      <span class="pst-label">SAFETY &amp; NEIGHBORHOODS</span>
+    </div>
 
-    <div class="sec-header" style="font-size:20px;color:var(--red)">🌡️ HEAT SURVIVAL — MATCH DAY PROTOCOL</div>
+    <div class="sec-header" style="font-size:20px;color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-thermo"/></svg> HEAT SURVIVAL — MATCH DAY PROTOCOL</div>
 
     <div class="phase-card">
       <div class="phase-head" style="background:var(--blue);color:var(--white)">PHASE 1 — THE DAY BEFORE</div>
@@ -576,70 +774,70 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
       <div class="phase-head" style="background:var(--green);color:var(--white)">PHASE 4 — WHAT TO BUY AT PHARMACY</div>
       <div class="phase-body" style="background:rgba(26,122,74,0.15)">
         <strong>Farmacias del Ahorro</strong> — everywhere in Monterrey<br><br>
-        🥤 Suero Oral / Pedialyte — oral rehydration salts — <strong>$30–50 MXN</strong><br>
-        ⚡ Electrolit — best electrolyte drink in Mexico — <strong>$30 MXN</strong><br>
-        ☀️ Protector solar SPF 50 — sunscreen — <strong>$80–150 MXN</strong><br>
-        💊 Paracetamol — headache from heat — <strong>$25 MXN</strong><br><br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-medic"/></svg> Suero Oral / Pedialyte — oral rehydration salts — <strong>$30–50 MXN</strong><br>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bolt"/></svg> Electrolit — best electrolyte drink in Mexico — <strong>$30 MXN</strong><br>
+        ☀ Protector solar SPF 50 — sunscreen — <strong>$80–150 MXN</strong><br>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-medic"/></svg> Paracetamol — headache from heat — <strong>$25 MXN</strong><br><br>
         Say: <em style="color:var(--gold)">"Me siento mal por el calor"</em> (I feel sick from the heat)
       </div>
     </div>
 
-    <div class="sec-header" style="font-size:20px;color:var(--purple)">🗺️ NEIGHBORHOOD SAFETY ZONES</div>
-    <div style="padding:0 14px 8px;font-size:12px;color:var(--gray-500)">🟢 Safe &nbsp;·&nbsp; 🟡 Caution &nbsp;·&nbsp; 🔴 Avoid — Tap to expand</div>
+    <div class="sec-header" style="font-size:20px;color:var(--purple)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> NEIGHBORHOOD SAFETY ZONES</div>
+    <div style="padding:0 14px 8px;font-size:12px;color:var(--gray-500)"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span> Safe &nbsp;·&nbsp; <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#eab308;flex-shrink:0"></span> Caution &nbsp;·&nbsp; <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></span> Avoid — Tap to expand</div>
 
     <!-- Zones -->
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">San Pedro Garza García</div><div style="font-size:11px;color:var(--gray-500)">Safest municipality in Latin America</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">San Pedro Garza García</div><div style="font-size:11px;color:var(--gray-500)">Safest municipality in Latin America</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">The Beverly Hills of Latin America. Lowest crime index in the entire Monterrey metro (20.5/100). Private security patrols, luxury hotels, upscale restaurants. Calzada del Valle and Centrito Valle are the main strips. Jazz bars, rooftop terraces, international cuisine. Safe day and night including walking alone. <br><strong>Getting there:</strong> Uber from anywhere ~15–25 min.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Barrio Antiguo</div><div style="font-size:11px;color:var(--gray-500)">Historic quarter, best nightlife</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Barrio Antiguo</div><div style="font-size:11px;color:var(--gray-500)">Historic quarter, best nightlife</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Monterrey's historic quarter. Cobblestone streets, colonial architecture, best nightlife in the city. Padre Mier is the main street — clubs, bars, live music. Safe with company. Don't wander empty side streets alone after 2am. Stay on the main strip.<br><strong>Getting there:</strong> Metro Line 1 → Padre Mier station or Uber.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Macroplaza / Centro</div><div style="font-size:11px;color:var(--gray-500)">Gran Plaza, Faro del Comercio</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Macroplaza / Centro</div><div style="font-size:11px;color:var(--gray-500)">Gran Plaza, Faro del Comercio</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">The Gran Plaza is one of the largest public plazas in the world. Government buildings, Faro del Comercio, Paseo Santa Lucía canal. Beautiful and safe by day. Fine on main streets at night. Avoid empty side streets after 10pm. Not a nightlife destination — use for tourism and transit.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Paseo Santa Lucía</div><div style="font-size:11px;color:var(--gray-500)">3.5km riverside promenade</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Paseo Santa Lucía</div><div style="font-size:11px;color:var(--gray-500)">3.5km riverside promenade</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">3.5km riverside promenade connecting Macroplaza to Parque Fundidora. Well-lit, popular, families and tourists. Very safe even at night. Outdoor restaurants, boats, public art. One of the best urban walks in Mexico.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Valle Oriente</div><div style="font-size:11px;color:var(--gray-500)">Modern business district</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟢</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Valle Oriente</div><div style="font-size:11px;color:var(--gray-500)">Modern business district</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Modern business district with international hotels, upscale malls (Galerías Valle Oriente), restaurants. Safe, clean, very tourist-friendly. Good base for fans who want maximum safety and minimum adventure.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Guadalupe / Stadium Area</div><div style="font-size:11px;color:var(--gray-500)">Estadio BBVA zone</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🟡</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Guadalupe / Stadium Area</div><div style="font-size:11px;color:var(--gray-500)">Estadio BBVA zone</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#eab308;flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Estadio BBVA is here. The stadium itself is safe. The main roads around it are fine for match days with the massive security presence. Do NOT explore residential areas around the stadium on foot. Take your designated exit route and leave. Avoid lingering after matches in unlit areas.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Independencia</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Independencia</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Do not visit. Highest crime area in Monterrey. No tourist reason to go here.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Niño Artillero</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Niño Artillero</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Avoid entirely. Flagged by security analysts as a high-risk zone for tourists.</div>
     </div>
 
     <div class="zone-card" onclick="toggleZone(this)">
-      <div class="zone-head"><div><div class="zone-title">Solidaridad</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge">🔴</span><span class="zone-arrow">▶</span></div></div>
+      <div class="zone-head"><div><div class="zone-title">Solidaridad</div></div><div style="display:flex;align-items:center;gap:6px"><span class="zone-badge"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></span></span><span class="zone-arrow">▶</span></div></div>
       <div class="zone-body">Cartel-related activity reported. Not a tourist area.</div>
     </div>
 
     <div class="info-banner" style="background:rgba(26,122,74,0.2);border-color:var(--green)">
-      <div class="ib-title" style="color:#4ade80">ℹ️ US Embassy Travel Advisory</div>
+      <div class="ib-title" style="color:#4ade80">ℹ US Embassy Travel Advisory</div>
       The US Embassy lifted ALL movement restrictions for Monterrey on February 24, 2026. Nuevo León has a Level 3 state advisory but this reflects rural southern areas — not the tourist circuit.
     </div>
 
     <!-- ATMs -->
-    <div class="sec-header" style="color:var(--gold)">🏧 SAFE ATMs IN MONTERREY</div>
+    <div class="sec-header" style="color:var(--gold)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> SAFE ATMs IN MONTERREY</div>
     <div class="atm-tabs">
       <div class="atm-tab active" onclick="switchATM('san-pedro',this)">San Pedro</div>
       <div class="atm-tab" onclick="switchATM('centro',this)">Centro</div>
@@ -647,23 +845,23 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
     <div id="atm-san-pedro" class="atm-panel active">
       <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
-        🏦 <strong>BBVA</strong> — Calzada del Valle (multiple branches)<br>
-        🏦 <strong>Banamex</strong> — Calzada del Valle 400<br>
-        🏦 <strong>Santander</strong> — inside Galerías Valle Oriente mall<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>BBVA</strong> — Calzada del Valle (multiple branches)<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>Banamex</strong> — Calzada del Valle 400<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>Santander</strong> — inside Galerías Valle Oriente mall<br>
         <br><div style="background:rgba(107,33,168,0.3);border-radius:8px;padding:10px;font-size:12px">San Pedro has the highest density of safe ATMs in the metro area. Use these over all others.</div>
       </div></div>
     </div>
     <div id="atm-centro" class="atm-panel">
       <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
-        🏦 <strong>Galerías Monterrey mall</strong> — safest option<br>
-        🏦 <strong>HSBC</strong> — Padre Mier near Macroplaza<br>
-        🏦 <strong>Banamex</strong> — inside Las Américas mall
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>Galerías Monterrey mall</strong> — safest option<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>HSBC</strong> — Padre Mier near Macroplaza<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-bank"/></svg> <strong>Banamex</strong> — inside Las Américas mall
       </div></div>
     </div>
     <div id="atm-stadium" class="atm-panel">
       <div class="card"><div class="card-inner" style="font-size:13px;line-height:1.7">
         <div style="background:rgba(212,43,43,0.2);border-radius:8px;padding:10px;margin-bottom:10px;font-size:12px;color:#ff9999">
-          ⚠️ There are NO safe standalone ATMs near Estadio BBVA. Withdraw cash BEFORE going to the stadium.
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alert"/></svg> There are NO safe standalone ATMs near Estadio BBVA. Withdraw cash BEFORE going to the stadium.
         </div>
         Take what you need — stadium accepts card for food/drinks.<br>
         Recommended: <strong>$500 MXN cash max.</strong>
@@ -672,7 +870,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="card" style="margin-top:8px">
       <div class="card-inner" style="font-size:13px;line-height:1.6">
-        <div style="font-family:'Fredoka One',cursive;margin-bottom:6px;color:var(--gold)">💳 ATM Safety Tips</div>
+        <div style="font-family:'Fredoka One',cursive;margin-bottom:6px;color:var(--gold)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-card"/></svg> ATM Safety Tips</div>
         Wiggle the card reader before inserting. Cover your PIN. Always choose to be charged in pesos (MXN), not dollars. Use ATMs inside malls or banks only.
       </div>
     </div>
@@ -683,9 +881,13 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
        TAB 3: STADIUM
        ════════════════════════════════════════ -->
   <div id="tab-stadium" class="tab-section">
+    <div class="print-section-title" style="background:#0d0120;color:var(--white)">
+      <span class="pst-num">03</span>
+      <span class="pst-label">GETTING TO THE STADIUM</span>
+    </div>
 
     <div class="stadium-hero">
-      <div style="font-size:11px;color:rgba(255,255,255,0.6);font-family:'Fredoka One',cursive;margin-bottom:4px">⚽ FIFA WORLD CUP 2026</div>
+      <div style="font-size:11px;color:rgba(255,255,255,0.6);font-family:'Fredoka One',cursive;margin-bottom:4px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-ball"/></svg> FIFA WORLD CUP 2026</div>
       <div class="stadium-title">EL GIGANTE<br>DE ACERO</div>
       <div class="stadium-sub">Estadio BBVA · Guadalupe, Nuevo León</div>
       <div class="stadium-stats">
@@ -695,17 +897,17 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <span class="s-stat">Populous design</span>
       </div>
       <div style="margin-top:12px;font-size:12px;color:rgba(255,255,255,0.75);line-height:1.5">
-        🏔️ The stadium was built to frame <strong>Cerro de la Silla</strong>. One end is open toward the mountain — you can see it from the stands. It is spectacular.
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-mountain"/></svg> The stadium was built to frame <strong>Cerro de la Silla</strong>. One end is open toward the mountain — you can see it from the stands. It is spectacular.
       </div>
     </div>
 
-    <div class="sec-header" style="color:var(--gold)">📅 MATCH SCHEDULE</div>
+    <div class="sec-header" style="color:var(--gold)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-clock"/></svg> MATCH SCHEDULE</div>
 
     <div class="match-card">
       <div class="match-head">
         <div class="match-date-box"><div class="match-day">14</div><div class="match-month">JUN SUN</div></div>
         <div style="flex:1">
-          <div class="match-teams">🇸🇪 Sweden vs Tunisia 🇹🇳</div>
+          <div class="match-teams"><span class="ctry-pill">SWE</span> Sweden vs Tunisia <span class="ctry-pill">TUN</span></div>
           <div class="match-meta">Group F · Match 12</div>
         </div>
         <div class="match-time">20:00</div>
@@ -716,7 +918,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
       <div class="match-head">
         <div class="match-date-box"><div class="match-day">20</div><div class="match-month">JUN SAT</div></div>
         <div style="flex:1">
-          <div class="match-teams">🇯🇵 Japan vs Tunisia 🇹🇳</div>
+          <div class="match-teams"><span class="ctry-pill">JPN</span> Japan vs Tunisia <span class="ctry-pill">TUN</span></div>
           <div class="match-meta">Group F · Match 33</div>
         </div>
         <div class="match-time">22:00</div>
@@ -727,7 +929,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
       <div class="match-head">
         <div class="match-date-box"><div class="match-day">24</div><div class="match-month">JUN WED</div></div>
         <div style="flex:1">
-          <div class="match-teams">🇿🇦 South Africa vs South Korea 🇰🇷</div>
+          <div class="match-teams"><span class="ctry-pill">RSA</span> South Africa vs South Korea <span class="ctry-pill">KOR</span></div>
           <div class="match-meta">Group A · Match 48</div>
         </div>
         <div class="match-time">19:00</div>
@@ -738,7 +940,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
       <div class="match-head">
         <div class="match-date-box" style="background:var(--gold)"><div class="match-day" style="color:var(--black)">29</div><div class="match-month" style="color:var(--black)">JUN MON</div></div>
         <div style="flex:1">
-          <div class="match-teams">🏆 Round of 32</div>
+          <div class="match-teams"><span style="font-family:'Bangers',cursive;font-size:14px;color:var(--gold)">CUP</span> Round of 32</div>
           <div class="match-meta">Group F winner vs Group C runner-up</div>
         </div>
         <div class="match-time">19:00</div>
@@ -749,7 +951,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
       All times are local Monterrey time (CST, UTC-6). Confirm official kickoff times at FIFA.com closer to date.
     </div>
 
-    <div class="sec-header" style="color:var(--white)">🚇 HOW TO GET TO ESTADIO BBVA</div>
+    <div class="sec-header" style="color:var(--white)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-train"/></svg> HOW TO GET TO ESTADIO BBVA</div>
 
     <div class="info-banner" style="background:rgba(107,33,168,0.3);border-color:var(--purple)">
       <div class="ib-title" style="color:#c084fc">Important — Estadio BBVA Location</div>
@@ -759,7 +961,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div class="transport-card" onclick="this.classList.toggle('open')">
       <div class="transport-head">
         <div>
-          <div class="transport-title">🚇 Metrorrey Line 1 → Exposición</div>
+          <div class="transport-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-train"/></svg> Metrorrey Line 1 → Exposición</div>
           <div style="font-size:11px;color:var(--gray-500)">Tap to expand route details</div>
         </div>
         <div><span class="transport-badge" style="background:var(--green)">MOST RELIABLE</span></div>
@@ -770,9 +972,9 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <div class="transport-step"><div class="step-num">3</div><div><strong>10–12 minute walk</strong> to stadium gates. Follow Av. Exposición → pedestrian bridge → entrance. Well-signed on match days.</div></div>
         <div class="transport-step"><div class="step-num">4</div><div>Match day shuttles and feeder buses also run from Exposición — look for FIFA World Cup signs.</div></div>
         <div class="info-box" style="background:rgba(26,122,74,0.2);border:1px solid var(--green)">
-          💰 $5 MXN Metro ticket · Free walk<br>
-          ⏱️ 25–40 min from central Monterrey<br>
-          ✅ Best for: Guaranteed arrival. No surge pricing. Safest option post-match.
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-money"/></svg> $5 MXN Metro ticket · Free walk<br>
+          ⏱ 25–40 min from central Monterrey<br>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-check"/></svg> Best for: Guaranteed arrival. No surge pricing. Safest option post-match.
         </div>
       </div>
     </div>
@@ -780,25 +982,25 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div class="transport-card" onclick="this.classList.toggle('open')">
       <div class="transport-head">
         <div>
-          <div class="transport-title">🚗 Uber or DiDi</div>
+          <div class="transport-title"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-car"/></svg> Uber or DiDi</div>
           <div style="font-size:11px;color:var(--gray-500)">Tap to expand prices & tips</div>
         </div>
         <div><span class="transport-badge" style="background:var(--gold)">CONVENIENT</span></div>
       </div>
       <div class="transport-body">
         <div style="font-family:'Fredoka One',cursive;font-size:13px;margin-bottom:6px;color:var(--white)">Normal conditions:</div>
-        📍 Downtown → BBVA: 25–35 min · <strong>$80–150 MXN</strong><br>
-        📍 San Pedro → BBVA: 20–30 min · <strong>$80–130 MXN</strong><br>
-        📍 Airport (MTY) → BBVA: 22 min · <strong>$200–300 MXN</strong><br><br>
-        <div style="font-family:'Fredoka One',cursive;font-size:13px;margin-bottom:6px;color:#ff9999">⚠️ Match day reality:</div>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> Downtown → BBVA: 25–35 min · <strong>$80–150 MXN</strong><br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> San Pedro → BBVA: 20–30 min · <strong>$80–130 MXN</strong><br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> Airport (MTY) → BBVA: 22 min · <strong>$200–300 MXN</strong><br><br>
+        <div style="font-family:'Fredoka One',cursive;font-size:13px;margin-bottom:6px;color:#ff9999"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alert"/></svg> Match day reality:</div>
         Add 30–60 min for traffic around stadium. Surge pricing can double or triple normal fares. Use Metro for arrival. Uber is better for departure — walk 10 min away from stadium before requesting.<br><br>
         <div class="info-box" style="background:rgba(245,197,24,0.15);border:1px solid var(--gold)">
-          ✈️ <strong>MTY Airport Uber:</strong> Uber is FULLY LEGAL at Monterrey Airport. Unlike Cancún, Cabo, and Puerto Vallarta where Uber has restrictions — MTY has zero restrictions. Request directly from arrivals.
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-globe"/></svg> <strong>MTY Airport Uber:</strong> Uber is FULLY LEGAL at Monterrey Airport. Unlike Cancún, Cabo, and Puerto Vallarta where Uber has restrictions — MTY has zero restrictions. Request directly from arrivals.
         </div>
       </div>
     </div>
 
-    <div class="sec-header" style="color:var(--white)">✈️ ARRIVING AT MTY AIRPORT</div>
+    <div class="sec-header" style="color:var(--white)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-globe"/></svg> ARRIVING AT MTY AIRPORT</div>
 
     <div class="card">
       <div class="card-inner" style="font-size:13px;line-height:1.7">
@@ -807,24 +1009,24 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
 
     <div class="info-banner" style="background:rgba(212,43,43,0.2);border-color:var(--red)">
-      <div class="ib-title" style="color:#ff6b6b">⛔ Same Rule as Every Mexican Airport</div>
+      <div class="ib-title" style="color:#ff6b6b"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff6b6b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alert"/></svg> Same Rule as Every Mexican Airport</div>
       Do NOT accept rides from people approaching you in the arrivals hall. Use Uber app or the official taxi kiosk inside the terminal only.
     </div>
 
     <div class="card">
       <div class="card-inner" style="font-size:13px;line-height:1.8">
-        🟢 <strong>Uber</strong> — Fully legal at MTY. Pickup area clearly marked outside Terminal B exit.<br>
-        🟡 <strong>Official Taxi</strong> — Taxi Aeropuerto kiosks inside terminal. Fixed rate by zone. Pay in advance, show voucher to driver.<br><br>
-        📍 To downtown: <strong>$250–350 MXN</strong> · ~25–40 min<br>
-        📍 To San Pedro: <strong>$200–280 MXN</strong> · ~20–30 min<br>
-        📍 To stadium: <strong>$200–300 MXN</strong> · ~22 min
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#22c55e;flex-shrink:0"></span> <strong>Uber</strong> — Fully legal at MTY. Pickup area clearly marked outside Terminal B exit.<br>
+        <span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:#eab308;flex-shrink:0"></span> <strong>Official Taxi</strong> — Taxi Aeropuerto kiosks inside terminal. Fixed rate by zone. Pay in advance, show voucher to driver.<br><br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> To downtown: <strong>$250–350 MXN</strong> · ~25–40 min<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> To San Pedro: <strong>$200–280 MXN</strong> · ~20–30 min<br>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gray-500)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg> To stadium: <strong>$200–300 MXN</strong> · ~22 min
       </div>
     </div>
 
-    <div class="sec-header" style="color:var(--white)">🏁 AFTER THE FINAL WHISTLE</div>
+    <div class="sec-header" style="color:var(--white)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--white)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-flag"/></svg> AFTER THE FINAL WHISTLE</div>
 
     <div class="info-banner" style="background:rgba(245,197,24,0.15);border-color:var(--gold)">
-      <div class="ib-title" style="color:var(--gold)">⚠️ Post-Match Crowd Warning</div>
+      <div class="ib-title" style="color:var(--gold)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alert"/></svg> Post-Match Crowd Warning</div>
       53,000 people leaving at once. The area around the stadium entrance is extremely crowded for 30–40 minutes post-match. Wait inside if you can. Pre-arrange your Uber pickup point BEFORE entering.
     </div>
 
@@ -855,9 +1057,13 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
        TAB 4: EMERGENCY
        ════════════════════════════════════════ -->
   <div id="tab-emergency" class="tab-section">
+    <div class="print-section-title" style="background:var(--red);color:var(--white)">
+      <span class="pst-num">04</span>
+      <span class="pst-label">EMERGENCY CONTACTS</span>
+    </div>
 
     <div style="background:var(--red);padding:14px 14px 10px;margin-bottom:4px">
-      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px">🚨 EMERGENCY CONTACTS</div>
+      <div style="font-family:'Bangers',cursive;font-size:22px;letter-spacing:2px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg> EMERGENCY CONTACTS</div>
       <div style="font-size:12px;color:rgba(255,255,255,0.8)">Tap any number to call instantly</div>
     </div>
 
@@ -865,7 +1071,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">ALL EMERGENCIES</div>
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">🚨</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">All Emergencies</div><div class="emerg-num">911</div></div>
         <a class="call-btn" href="tel:911">CALL</a>
       </div>
@@ -873,7 +1079,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">🗺️</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Tourist Assistance (English)</div><div class="emerg-num">078</div></div>
         <a class="call-btn" href="tel:078">CALL</a>
       </div>
@@ -881,7 +1087,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">📞</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-phone"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">NL Tourist Hotline</div><div class="emerg-num" style="font-size:16px">800 987 8224</div></div>
         <a class="call-btn" href="tel:8009878224">CALL</a>
       </div>
@@ -891,7 +1097,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     <div style="font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);padding:10px 14px 4px">MEDICAL</div>
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">🚑</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-medic"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Cruz Roja Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8345-1060</div></div>
         <a class="call-btn" href="tel:+5281834510600">CALL</a>
       </div>
@@ -899,7 +1105,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">🏥</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-hospital"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Hospital San José</div><div class="emerg-desc">Top private hospital · Tec de Monterrey · English staff</div><div class="emerg-num" style="font-size:15px">+52 81 8369-6886</div></div>
         <a class="call-btn" href="tel:+528183696886">CALL</a>
       </div>
@@ -907,7 +1113,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:28px">🏥</div>
+        <div style="font-size:28px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-hospital"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Christus Muguerza</div><div class="emerg-desc">International patients · English staff</div><div class="emerg-num" style="font-size:15px">+52 81 8399-3400</div></div>
         <a class="call-btn" href="tel:+528183993400">CALL</a>
       </div>
@@ -918,7 +1124,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇺🇸</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#3c3b6e;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">US</span></div>
         <div class="emerg-info"><div class="emerg-name">US Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 2579-2000</div></div>
         <a class="call-btn" href="tel:+525525792000">CALL</a>
       </div>
@@ -926,7 +1132,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇬🇧</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#012169;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">UK</span></div>
         <div class="emerg-info"><div class="emerg-name">UK Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 1670-3200</div></div>
         <a class="call-btn" href="tel:+525516703200">CALL</a>
       </div>
@@ -934,7 +1140,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇩🇪</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#000000;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">DE</span></div>
         <div class="emerg-info"><div class="emerg-name">German Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5283-2200</div></div>
         <a class="call-btn" href="tel:+525552832200">CALL</a>
       </div>
@@ -942,7 +1148,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇫🇷</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#002395;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">FR</span></div>
         <div class="emerg-info"><div class="emerg-name">French Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 9171-9700</div></div>
         <a class="call-btn" href="tel:+525591719700">CALL</a>
       </div>
@@ -950,7 +1156,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇳🇱</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#ae1c28;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">NL</span></div>
         <div class="emerg-info"><div class="emerg-name">Netherlands (WhatsApp only)</div><div class="emerg-num" style="font-size:15px">+31 857 737 400</div></div>
         <a class="call-btn" href="https://wa.me/31857737400" target="_blank">WA</a>
       </div>
@@ -958,7 +1164,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇪🇸</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#aa151b;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">ES</span></div>
         <div class="emerg-info"><div class="emerg-name">Spain Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5282-2977</div></div>
         <a class="call-btn" href="tel:+525552822977">CALL</a>
       </div>
@@ -966,7 +1172,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇦🇷</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#74acdf;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">AR</span></div>
         <div class="emerg-info"><div class="emerg-name">Argentina Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5520-9430</div></div>
         <a class="call-btn" href="tel:+525555209430">CALL</a>
       </div>
@@ -974,7 +1180,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇧🇷</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#009c3b;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">BR</span></div>
         <div class="emerg-info"><div class="emerg-name">Brazil Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5484-5484</div></div>
         <a class="call-btn" href="tel:+525554845484">CALL</a>
       </div>
@@ -982,7 +1188,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">🇨🇴</div>
+        <div style="font-size:22px"><span style="display:inline-block;width:14px;height:14px;border-radius:50%;background:#fcd116;border:1px solid rgba(255,255,255,0.3);flex-shrink:0"></span> <span style="font-size:10px;color:var(--gray-500)">CO</span></div>
         <div class="emerg-info"><div class="emerg-name">Colombia Embassy</div><div class="emerg-num" style="font-size:15px">+52 55 5202-8454</div></div>
         <a class="call-btn" href="tel:+525552028454">CALL</a>
       </div>
@@ -993,7 +1199,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">💳</div>
+        <div style="font-size:22px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-card"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Visa Emergency</div><div class="emerg-desc">Reversed charges</div><div class="emerg-num" style="font-size:15px">+1 800 847-2911</div></div>
         <a class="call-btn" href="tel:+18008472911">CALL</a>
       </div>
@@ -1001,7 +1207,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">💳</div>
+        <div style="font-size:22px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-card"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Mastercard Emergency</div><div class="emerg-num" style="font-size:15px">+1 636 722-7111</div></div>
         <a class="call-btn" href="tel:+16367227111">CALL</a>
       </div>
@@ -1009,17 +1215,17 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 
     <div class="emerg-card">
       <div class="emerg-inner">
-        <div style="font-size:22px">💳</div>
+        <div style="font-size:22px"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-card"/></svg></div>
         <div class="emerg-info"><div class="emerg-name">Amex Emergency</div><div class="emerg-num" style="font-size:15px">+1 800 528-4800</div></div>
         <a class="call-btn" href="tel:+18005284800">CALL</a>
       </div>
     </div>
 
     <!-- Protocols -->
-    <div class="sec-header" style="color:var(--red)">📋 EMERGENCY PROTOCOLS</div>
+    <div class="sec-header" style="color:var(--red)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-lock"/></svg> EMERGENCY PROTOCOLS</div>
 
     <div class="proto-card" onclick="this.classList.toggle('open')">
-      <div class="proto-head"><div class="proto-title">🔴 IF I'VE BEEN ROBBED</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-head"><div class="proto-title"><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--red);flex-shrink:0"></span> IF I'VE BEEN ROBBED</div><div class="proto-arrow">▶</div></div>
       <div class="proto-body">
         <div class="proto-step"><div class="pstep-num">1</div><div>Do NOT resist — hand over belongings. Your life is worth more than your phone.</div></div>
         <div class="proto-step"><div class="pstep-num">2</div><div>Move to a safe, public location immediately.</div></div>
@@ -1031,20 +1237,20 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
 
     <div class="proto-card" onclick="this.classList.toggle('open')">
-      <div class="proto-head"><div class="proto-title">👮 IF POLICE STOP ME</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-head"><div class="proto-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-shield"/></svg> IF POLICE STOP ME</div><div class="proto-arrow">▶</div></div>
       <div class="proto-body">
         <div class="proto-step"><div class="pstep-num">1</div><div>Stay calm. Don't argue. Don't reach for anything without asking first.</div></div>
         <div class="proto-step"><div class="pstep-num">2</div><div>Ask to call your embassy. This is your right.</div></div>
         <div class="proto-step"><div class="pstep-num">3</div><div>Ask for the officer's name and badge number. Write it down.</div></div>
         <div class="proto-step"><div class="pstep-num">4</div><div>If asked for a payment, calmly ask for a formal receipt (multa oficial). Corrupt officers avoid paper trails.</div></div>
         <div style="background:rgba(107,33,168,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px">
-          ✅ Tourist Police (Policía Turística) are deployed in San Pedro, Barrio Antiguo, and Macroplaza for the World Cup. They speak English and are there to help you.
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-check"/></svg> Tourist Police (Policía Turística) are deployed in San Pedro, Barrio Antiguo, and Macroplaza for the World Cup. They speak English and are there to help you.
         </div>
       </div>
     </div>
 
     <div class="proto-card" onclick="this.classList.toggle('open')">
-      <div class="proto-head"><div class="proto-title">🌡️ IF I HAVE HEAT EXHAUSTION</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-head"><div class="proto-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-thermo"/></svg> IF I HAVE HEAT EXHAUSTION</div><div class="proto-arrow">▶</div></div>
       <div class="proto-body">
         <div class="proto-step"><div class="pstep-num">1</div><div>Move to shade or air conditioning immediately.</div></div>
         <div class="proto-step"><div class="pstep-num">2</div><div>Drink cold water or Electrolit slowly.</div></div>
@@ -1053,13 +1259,13 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         <div class="proto-step"><div class="pstep-num">5</div><div>If no improvement in 15 minutes — call 911.</div></div>
         <div class="proto-step"><div class="pstep-num">6</div><div>Do NOT return to the sun that day.</div></div>
         <div style="background:rgba(212,43,43,0.3);border-radius:8px;padding:10px;margin-top:8px;font-size:12px;color:#ff9999">
-          🚨 HEAT STROKE = MEDICAL EMERGENCY: confusion, hot dry skin (not sweating), rapid strong pulse → Call 911 immediately. Do not wait.
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg> HEAT STROKE = MEDICAL EMERGENCY: confusion, hot dry skin (not sweating), rapid strong pulse → Call 911 immediately. Do not wait.
         </div>
       </div>
     </div>
 
     <div class="proto-card" onclick="this.classList.toggle('open')">
-      <div class="proto-head"><div class="proto-title">🏥 IF I NEED A DOCTOR</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-head"><div class="proto-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-hospital"/></svg> IF I NEED A DOCTOR</div><div class="proto-arrow">▶</div></div>
       <div class="proto-body">
         <strong>Hospital San José</strong><br>
         Av. Morones Prieto #3000, Col. Los Doctores<br>
@@ -1072,7 +1278,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
     </div>
 
     <div class="proto-card" onclick="this.classList.toggle('open')">
-      <div class="proto-head"><div class="proto-title">🛂 IF I LOST MY PASSPORT</div><div class="proto-arrow">▶</div></div>
+      <div class="proto-head"><div class="proto-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-passport"/></svg> IF I LOST MY PASSPORT</div><div class="proto-arrow">▶</div></div>
       <div class="proto-body">
         <div class="proto-step"><div class="pstep-num">1</div><div>Report the loss to local police — get a denuncia (police report). You will need this.</div></div>
         <div class="proto-step"><div class="pstep-num">2</div><div>Contact your embassy immediately — see embassy numbers above.</div></div>
@@ -1087,20 +1293,24 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
        TAB 5: PHRASES
        ════════════════════════════════════════ -->
   <div id="tab-phrases" class="tab-section">
+    <div class="print-section-title" style="background:#1a0535;color:var(--white)">
+      <span class="pst-num">05</span>
+      <span class="pst-label">SPANISH SURVIVAL PHRASES</span>
+    </div>
 
     <div style="padding:12px 14px 0">
-      <div style="font-family:'Bangers',cursive;font-size:22px;color:var(--purple);letter-spacing:1px">💬 SPANISH PHRASES</div>
+      <div style="font-family:'Bangers',cursive;font-size:22px;color:var(--purple);letter-spacing:1px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-chat"/></svg> SPANISH PHRASES</div>
       <div style="font-size:12px;color:var(--gray-500)">Tap any phrase to copy to clipboard</div>
     </div>
 
     <div class="phrase-cats" id="phrase-cats">
-      <div class="pcat active" onclick="switchPhrase('emergency',this)">🚨 Emergency</div>
-      <div class="pcat" onclick="switchPhrase('transport',this)">🚕 Transport</div>
-      <div class="pcat" onclick="switchPhrase('food',this)">🍽️ Food</div>
-      <div class="pcat" onclick="switchPhrase('money',this)">💰 Money</div>
-      <div class="pcat" onclick="switchPhrase('police',this)">👮 Police</div>
-      <div class="pcat" onclick="switchPhrase('health',this)">💊 Health</div>
-      <div class="pcat" onclick="switchPhrase('matchday',this)">⚽ Match Day</div>
+      <div class="pcat active" onclick="switchPhrase('emergency',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg> Emergency</div>
+      <div class="pcat" onclick="switchPhrase('transport',this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-car"/></svg> Transport</div>
+      <div class="pcat" onclick="switchPhrase('food',this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-food"/></svg> Food</div>
+      <div class="pcat" onclick="switchPhrase('money',this)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-money"/></svg> Money</div>
+      <div class="pcat" onclick="switchPhrase('police',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-shield"/></svg> Police</div>
+      <div class="pcat" onclick="switchPhrase('health',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-medic"/></svg> Health</div>
+      <div class="pcat" onclick="switchPhrase('matchday',this)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-ball"/></svg> Match Day</div>
     </div>
 
     <!-- Emergency -->
@@ -1202,7 +1412,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
           <div class="nac-tag">City Tour</div>
           <div class="nac-title">Monterrey City Highlights</div>
           <div class="nac-meta">Macroplaza · Santa Lucía · Barrio Antiguo</div>
-          <div class="nac-footer"><span class="nac-stars">★★★★★</span><span class="nac-cta">Book →</span></div>
+          <div class="nac-footer"><span class="nac-stars"><span style="color:var(--gold);letter-spacing:1px;font-size:11px">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="nac-cta">Book →</span></div>
         </div>
       </a>
       <a class="native-act-card" href="https://www.getyourguide.com/monterrey-l679/food-drink-tc71/?partner_id=SAGF2GH&cmp=mty" target="_blank" rel="sponsored noopener">
@@ -1213,7 +1423,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
           <div class="nac-tag">Food &amp; Drinks</div>
           <div class="nac-title">Monterrey Food Tour</div>
           <div class="nac-meta">Carne Asada · Cabrito · Local Markets</div>
-          <div class="nac-footer"><span class="nac-stars">★★★★★</span><span class="nac-cta">Book →</span></div>
+          <div class="nac-footer"><span class="nac-stars"><span style="color:var(--gold);letter-spacing:1px;font-size:11px">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span><span class="nac-cta">Book →</span></div>
         </div>
       </a>
     </div>
@@ -1298,18 +1508,70 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
         data-layout_top_logo="on"></script></div>
     </div>
 
+    <!-- Holafly eSIM -->
+    <div class="shop-section-label" style="color:#a78bfa">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+      TRAVEL eSIM
+    </div>
+    <div class="partner-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      Partner: <span>Holafly</span> · Stay connected in Mexico from day one
+    </div>
+
+    <div class="hf-card">
+      <div class="hf-header">
+        <div class="hf-top-row">
+          <div class="hf-logo-wrap">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#a78bfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+            <span class="hf-brand">Holafly</span>
+          </div>
+          <div class="hf-exclusive-badge">EXCLUSIVE</div>
+        </div>
+        <div class="hf-headline">Stay online in Mexico.<br>No roaming. No SIM swap.</div>
+      </div>
+
+      <!-- Discount blocks -->
+      <div class="hf-discounts">
+        <div class="hf-discount-row">
+          <div class="hf-discount-pill">5% OFF</div>
+          <div class="hf-discount-text">Any Holafly travel eSIM</div>
+        </div>
+        <div class="hf-discount-row">
+          <div class="hf-discount-pill hf-pill-purple">10% OFF</div>
+          <div class="hf-discount-text">Holafly Plans — first 12 months</div>
+        </div>
+      </div>
+
+      <!-- Promo code -->
+      <div class="hf-code-block" onclick="copyCode('MEXICOTRAVELPASS', this)">
+        <div class="hf-code-label">Your discount code — tap to copy</div>
+        <div class="hf-code-row">
+          <span class="hf-code">MEXICOTRAVELPASS</span>
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><use href="#i-copy"/></svg>
+        </div>
+        <div class="hf-code-applied">Code applies automatically via the link below</div>
+      </div>
+
+      <!-- Benefits -->
+      <div class="hf-benefits">
+        <div class="hf-benefit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg> Unlimited data in Mexico</div>
+        <div class="hf-benefit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg> Instant activation — works on arrival at MTY</div>
+        <div class="hf-benefit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg> No physical SIM needed — eSIM only</div>
+        <div class="hf-benefit"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><use href="#i-check"/></svg> Keep your number active for calls &amp; 2FA</div>
+      </div>
+
+      <!-- CTA -->
+      <a class="hf-cta" href="https://holafly.sjv.io/c/7369184/3856277/24764" target="_blank" rel="sponsored noopener">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--black)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+        Get My eSIM — Code Applied
+      </a>
+      <div class="hf-cta-note">Code <strong>MEXICOTRAVELPASS</strong> applies automatically</div>
+    </div>
+
     <!-- Coming Soon -->
     <div class="shop-section-label" style="color:rgba(255,255,255,0.4);font-size:16px">
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
       COMING SOON
-    </div>
-
-    <div class="coming-soon-card">
-      <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.25)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-        <div class="cs-title">Holafly — Travel eSIM</div>
-      </div>
-      <div class="cs-sub">Mexico data plans for World Cup fans. No roaming fees, instant activation.</div>
     </div>
 
     <div class="coming-soon-card">
@@ -1331,23 +1593,23 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 <!-- BOTTOM NAV -->
 <div id="nav">
   <button class="nav-btn active" id="nav-home" onclick="switchTab('home')">
-    <span class="nav-icon">🏠</span>
+    <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-home"/></svg></span>
     <span class="nav-label">Home</span>
   </button>
   <button class="nav-btn" id="nav-safety" onclick="switchTab('safety')">
-    <span class="nav-icon">🛡️</span>
+    <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-shield"/></svg></span>
     <span class="nav-label">Safety</span>
   </button>
   <button class="nav-btn" id="nav-stadium" onclick="switchTab('stadium')">
-    <span class="nav-icon">🏟️</span>
+    <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-stadium"/></svg></span>
     <span class="nav-label">Stadium</span>
   </button>
   <button class="nav-btn" id="nav-emergency" onclick="switchTab('emergency')">
-    <span class="nav-icon">🚨</span>
+    <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg></span>
     <span class="nav-label">Emergency</span>
   </button>
   <button class="nav-btn" id="nav-phrases" onclick="switchTab('phrases')">
-    <span class="nav-icon">💬</span>
+    <span class="nav-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-chat"/></svg></span>
     <span class="nav-label">Phrases</span>
   </button>
 </div>
@@ -1356,38 +1618,38 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
 <div id="sos-float" onclick="openSOS()">SOS</div>
 
 <!-- TOAST -->
-<div id="toast">✅ Copied!</div>
+<div id="toast"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-check"/></svg> Copied!</div>
 
 <!-- SOS OVERLAY -->
 <div id="sos-overlay">
   <div class="sos-overlay-header">
-    <div class="sos-h-title">🚨 EMERGENCY SOS</div>
-    <button class="sos-close" onclick="closeSOS()">✕ Close</button>
+    <div class="sos-h-title"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-alarm"/></svg> EMERGENCY SOS</div>
+    <button class="sos-close" onclick="closeSOS()">&#10005; Close</button>
   </div>
   <div class="sos-911">
     <div style="font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:8px">ALL EMERGENCIES</div>
     <div class="sos-911-num">911</div>
     <div class="sos-911-sub">Works from any phone, any network</div>
-    <a href="tel:911" class="sos-call-big">📞 CALL 911 NOW</a>
+    <a href="tel:911" class="sos-call-big"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#60a5fa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-phone"/></svg> CALL 911 NOW</a>
   </div>
   <div style="margin:8px 12px;font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.6)">HOSPITALS</div>
   <div class="emerg-card">
     <div class="emerg-inner">
-      <div style="font-size:22px">🏥</div>
+      <div style="font-size:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-hospital"/></svg></div>
       <div class="emerg-info"><div class="emerg-name">Hospital San José</div><div class="emerg-desc">English staff · Best in Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8369-6886</div></div>
       <a class="call-btn" href="tel:+528183696886">CALL</a>
     </div>
   </div>
   <div class="emerg-card">
     <div class="emerg-inner">
-      <div style="font-size:22px">🏥</div>
+      <div style="font-size:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-hospital"/></svg></div>
       <div class="emerg-info"><div class="emerg-name">Christus Muguerza</div><div class="emerg-desc">International patients</div><div class="emerg-num" style="font-size:15px">+52 81 8399-3400</div></div>
       <a class="call-btn" href="tel:+528183993400">CALL</a>
     </div>
   </div>
   <div class="emerg-card">
     <div class="emerg-inner">
-      <div style="font-size:22px">🚑</div>
+      <div style="font-size:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--red)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-medic"/></svg></div>
       <div class="emerg-info"><div class="emerg-name">Cruz Roja Monterrey</div><div class="emerg-num" style="font-size:15px">+52 81 8345-1060</div></div>
       <a class="call-btn" href="tel:+528183451060">CALL</a>
     </div>
@@ -1395,7 +1657,7 @@ body{font-family:'Nunito',sans-serif;color:var(--white);display:flex;flex-direct
   <div style="margin:12px 12px 4px;font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,0.6)">TOURIST HELP</div>
   <div class="emerg-card">
     <div class="emerg-inner">
-      <div style="font-size:22px">🗺️</div>
+      <div style="font-size:22px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-map"/></svg></div>
       <div class="emerg-info"><div class="emerg-name">Tourist Assistance (English)</div><div class="emerg-num">078</div></div>
       <a class="call-btn" href="tel:078">CALL</a>
     </div>
@@ -1420,7 +1682,6 @@ function switchTab(tab) {
     shopBtn.style.background = (tab === 'shop') ? 'var(--white)' : 'var(--gold)';
     shopBtn.style.color = (tab === 'shop') ? 'var(--purple)' : 'var(--black)';
   }
-  document.getElementById('section-label').textContent = sectionNames[tab] || tab.toUpperCase();
   document.getElementById('content').scrollTop = 0;
 }
 
@@ -1452,6 +1713,26 @@ function switchPhrase(cat, tab) {
 }
 
 // ── COPY TO CLIPBOARD ──
+function copyCode(text, el) {
+  const copy = () => {
+    el.classList.add('copied');
+    const label = el.querySelector('.hf-code-label');
+    const orig = label.textContent;
+    label.textContent = 'Copied!';
+    showToast();
+    setTimeout(() => { el.classList.remove('copied'); label.textContent = orig; }, 2000);
+  };
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(copy);
+  } else {
+    const ta = document.createElement('textarea');
+    ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0';
+    document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); copy(); } catch(e) {}
+    document.body.removeChild(ta);
+  }
+}
+
 function copyPhrase(text, el) {
   if (navigator.clipboard && navigator.clipboard.writeText) {
     navigator.clipboard.writeText(text).then(() => showToast());
@@ -1490,7 +1771,7 @@ function updateCountdown() {
   const diff = target - now;
   const el = document.getElementById('countdown-text');
   if (!el) return;
-  if (diff <= 0) { el.textContent = '⚽ MATCH DAY IS HERE!'; return; }
+  if (diff <= 0) { el.textContent = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" ><use href="#i-ball"/></svg> MATCH DAY IS HERE!'; return; }
   const days = Math.floor(diff / 86400000);
   const hours = Math.floor((diff % 86400000) / 3600000);
   const mins = Math.floor((diff % 3600000) / 60000);
@@ -1505,6 +1786,62 @@ setInterval(updateCountdown, 60000);
 
 // ── HIDE FLOAT SOS WHEN OVERLAY OPEN ──
 document.getElementById('sos-float').addEventListener('click', openSOS);
+
+// ── PDF / PRINT ──
+function downloadPDF() {
+  // Expand all phrase groups so they render in PDF
+  document.querySelectorAll('.phrase-group').forEach(function(g) {
+    g.classList.add('active');
+  });
+  // Brief toast then open print dialog
+  const t = document.getElementById('toast');
+  const origHTML = t.innerHTML;
+  t.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#0A0A0A" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg> Preparing PDF…';
+  t.classList.add('show');
+  setTimeout(function() {
+    t.classList.remove('show');
+    t.innerHTML = origHTML;
+    window.print();
+  }, 350);
+}
+
+window.addEventListener('beforeprint', function() {
+  document.getElementById('print-cover').style.display = 'flex';
+  // Expand all phrases for print
+  document.querySelectorAll('.phrase-group').forEach(function(g) {
+    g.classList.add('active');
+  });
+  // Expand all accordions
+  document.querySelectorAll('.zone-card,.transport-card,.proto-card').forEach(function(c) {
+    c.classList.add('open');
+  });
+  document.getElementById('heat-expand').style.display = 'block';
+  // Show all ATM panels
+  document.querySelectorAll('.atm-panel').forEach(function(p) {
+    p.classList.add('active');
+  });
+});
+
+window.addEventListener('afterprint', function() {
+  document.getElementById('print-cover').style.display = 'none';
+  // Restore accordion state
+  document.querySelectorAll('.zone-card,.transport-card,.proto-card').forEach(function(c) {
+    c.classList.remove('open');
+  });
+  document.getElementById('heat-expand').style.display = 'none';
+  // Restore phrase category (only first active)
+  document.querySelectorAll('.phrase-group').forEach(function(g) {
+    g.classList.remove('active');
+  });
+  const firstGroup = document.getElementById('phrases-emergency');
+  if (firstGroup) firstGroup.classList.add('active');
+  // Restore ATM (only first active)
+  document.querySelectorAll('.atm-panel').forEach(function(p) {
+    p.classList.remove('active');
+  });
+  const firstATM = document.getElementById('atm-sp');
+  if (firstATM) firstATM.classList.add('active');
+});
 
 // ── WIDGET LOADER DETECTION ──
 // Show real widgets if scripts load; fallback cards stay visible otherwise
