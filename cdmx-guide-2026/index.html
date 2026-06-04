@@ -31,11 +31,13 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 .logo-shield{width:28px;height:32px;position:relative}
 .logo-shield svg{width:100%;height:100%}
 .logo-text{font-family:'Bangers',cursive;font-size:18px;color:white;letter-spacing:1px}
-#header-title{font-family:'Bangers',cursive;font-size:16px;color:white;letter-spacing:1px;text-transform:uppercase;position:absolute;left:50%;transform:translateX(-50%)}
-.sos-btn{background:var(--black);color:white;border:2px solid white;border-radius:99px;padding:6px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;min-height:36px;transition:transform .1s}
+#header-title{display:none}
+.sos-btn{background:var(--black);color:white;border:2px solid white;border-radius:99px;padding:4px 10px;font-family:'Fredoka One',cursive;font-size:11px;cursor:pointer;min-height:30px;transition:transform .1s}
 .sos-btn:active{transform:scale(.95)}
-.shop-btn{background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:99px;padding:6px 10px;font-family:'Fredoka One',cursive;font-size:11px;cursor:pointer;min-height:36px;transition:transform .1s;display:flex;align-items:center;gap:4px;white-space:nowrap}
+.shop-btn{background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:99px;padding:4px 8px;font-family:'Fredoka One',cursive;font-size:10px;cursor:pointer;min-height:30px;transition:transform .1s;display:flex;align-items:center;gap:3px;white-space:nowrap}
 .shop-btn:active{transform:scale(.95)}
+.pdf-btn{background:white;color:var(--red);border:2px solid var(--black);border-radius:99px;padding:4px 8px;font-family:'Fredoka One',cursive;font-size:10px;cursor:pointer;min-height:30px;transition:transform .1s;display:flex;align-items:center;gap:3px;white-space:nowrap}
+.pdf-btn:active{transform:scale(.95)}
 .header-right{display:flex;align-items:center;gap:6px}
 
 /* BOTTOM NAV */
@@ -223,11 +225,12 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
 /* DEALS SECTION */
 .deals-hero{background:linear-gradient(135deg,#050D1F,#1A3FAA);border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);margin-bottom:12px;padding:20px 16px;text-align:center}
-.deals-hero-label{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px}
+.deals-hero-label{font-family:'Fredoka One',cursive;font-size:11px;color:var(--gold);text-transform:uppercase;letter-spacing:2px;margin-bottom:6px;display:flex;align-items:center;justify-content:center;gap:5px}
 .deals-hero-title{font-family:'Bangers',cursive;font-size:28px;color:white;line-height:1.1;margin-bottom:8px}
 .deals-hero-sub{font-family:'Nunito',sans-serif;font-size:13px;color:rgba(255,255,255,.75);line-height:1.5}
-.deals-category-label{font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;display:flex;align-items:center;gap:8px}
+.deals-category-label{font-family:'Fredoka One',cursive;font-size:12px;color:var(--gray-500);text-transform:uppercase;letter-spacing:1.5px;margin:16px 0 8px;display:flex;align-items:center;gap:6px}
 .deals-category-label::after{content:'';flex:1;height:2px;background:var(--gray-200)}
+.deals-category-label span{display:inline-flex;align-items:center;flex-shrink:0}
 .widget-slot{position:relative;margin-bottom:12px}
 .fallback-cards{display:flex;flex-direction:column;gap:10px}
 .fallback-card{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:hidden;display:flex;flex-direction:column}
@@ -242,8 +245,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 .fallback-see-more-btn{font-family:'Nunito',sans-serif;font-weight:700;font-size:12px;color:var(--blue);text-decoration:none}
 #gyg-widget-container,#dc-widget-container{background:white;border:2px solid var(--black);border-radius:12px;box-shadow:3px 3px 0 var(--black);overflow:visible;padding:12px}
 .partner-card{background:white;border:2px solid var(--gray-200);border-radius:12px;padding:14px;margin-bottom:10px;display:flex;align-items:flex-start;gap:12px}
-.fallback-logo{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.partner-info{flex:1}
+.fallback-logo{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}.partner-info{flex:1}
 .partner-name{font-family:'Fredoka One',cursive;font-size:14px;color:var(--black)}
 .partner-desc{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-top:2px;line-height:1.4}
 .partner-btn{background:var(--gold);color:var(--black);border:2px solid var(--black);border-radius:99px;padding:8px 14px;font-family:'Fredoka One',cursive;font-size:12px;cursor:pointer;text-decoration:none;display:inline-block;transition:transform .1s;margin-top:8px}
@@ -310,6 +312,124 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 .smart-card{background:#dcfce7;border:2px solid var(--green);border-radius:12px;box-shadow:3px 3px 0 var(--green);margin-bottom:12px;padding:14px}
 .smart-title{font-family:'Fredoka One',cursive;font-size:14px;color:var(--green);margin-bottom:6px}
 .smart-body{font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-700);line-height:1.5}
+/* ═══════════════════════════════════════
+   PRINT / PDF STYLES
+   ═══════════════════════════════════════ */
+@media print {
+  /* Reset layout for print */
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}
+  html,body{height:auto!important;overflow:visible!important;background:white!important;max-width:100%!important}
+  #app{display:block!important;height:auto!important}
+  #top-header,#bottom-nav,#sos-float,#sos-overlay,#toast{display:none!important}
+  #content-area{overflow:visible!important;height:auto!important;padding:0!important}
+
+  /* Show ALL sections when printing */
+  .section{display:block!important;page-break-inside:avoid}
+
+  /* Print cover page */
+  .print-cover{display:block!important}
+
+  /* Section page breaks */
+  #sec-home{page-break-after:always}
+  #sec-safety{page-break-after:always}
+  #sec-getting{page-break-after:always}
+  #sec-emergency{page-break-after:always}
+  #sec-phrases{page-break-after:always}
+  #sec-deals{page-break-after:avoid}
+
+  /* Print section headers */
+  .print-section-title{display:flex!important}
+
+  /* Expand all accordions */
+  .neighborhood-expanded,
+  .altitude-expanded,
+  .option-expanded,
+  .scenario-body,
+  .steps-container{display:block!important;max-height:none!important}
+
+  /* Force accordion chevrons hidden */
+  .nbh-chevron,.sc-chevron,.opt-chevron,.rule-chevron{display:none!important}
+
+  /* Show all ATM zones */
+  .atm-entry{display:block!important}
+  .atm-tabs{display:none!important}
+
+  /* Show all phrases */
+  .phrase-card{display:block!important;break-inside:avoid;margin-bottom:6px}
+  .category-pills{display:none!important}
+
+  /* Show route steps */
+  #metro-steps,#uber-steps{display:block!important}
+
+  /* Cards — keep borders/shadows readable on paper */
+  .card,.card-dark,.hero-card,.rule-card,.neighborhood-card,
+  .scenario-card,.option-card,.call-card,.phrase-card,
+  .fallback-card,.partner-card,.warning-card,.smart-card{
+    break-inside:avoid;
+    box-shadow:none!important;
+    border:1px solid #ccc!important;
+    margin-bottom:8px!important
+  }
+
+  /* Dark backgrounds — keep them for print */
+  .hero-card{background:linear-gradient(135deg,#050D1F,#1A3FAA)!important}
+  .call-card{background:#111827!important}
+  .airport-warning{background:#D42B2B!important}
+
+  /* Hide widget containers, show only fallbacks */
+  #gyg-widget-container,#dc-widget-container{display:none!important}
+  #gyg-fallback,#dc-fallback{display:block!important}
+
+  /* Remove interactive chrome */
+  .sos-btn,.shop-btn,.pdf-btn,.quick-btn,.cat-pill,
+  .atm-tab,.filter-btn{display:none!important}
+
+  /* Typography adjustments */
+  body{font-size:11px!important}
+  .hero-title{font-size:28px!important}
+  .section-header,.sub-header{font-size:16px!important}
+  .call-number{font-size:18px!important}
+
+  /* Page margins */
+  @page{margin:12mm 10mm;size:A4 portrait}
+  @page :first{margin-top:0}
+}
+
+/* Cover page — only shown during print */
+.print-cover{
+  display:none;
+  background:linear-gradient(135deg,#050D1F,#1A3FAA);
+  min-height:100vh;
+  padding:48px 24px;
+  text-align:center;
+  page-break-after:always;
+}
+.print-cover-flag{display:flex;height:8px;margin-bottom:32px}
+.print-cover-flag span:nth-child(1){flex:1;background:#006847}
+.print-cover-flag span:nth-child(2){flex:1;background:white}
+.print-cover-flag span:nth-child(3){flex:1;background:#CE1126}
+.print-cover-pre{font-family:'Fredoka One',cursive;font-size:12px;color:#F5C518;text-transform:uppercase;letter-spacing:3px;margin-bottom:12px}
+.print-cover-title{font-family:'Bangers',cursive;font-size:52px;color:white;line-height:1;margin-bottom:8px;filter:drop-shadow(3px 3px 0 #D42B2B)}
+.print-cover-sub{font-family:'Nunito',sans-serif;font-size:16px;color:rgba(255,255,255,.8);margin-bottom:32px}
+.print-cover-dates{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:32px}
+.print-cover-date{background:#1A3FAA;color:white;border-radius:99px;padding:6px 14px;font-family:'Nunito',sans-serif;font-weight:700;font-size:13px}
+.print-cover-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:320px;margin:0 auto 48px}
+.print-cover-stat-val{font-family:'Bangers',cursive;font-size:24px;color:#F5C518}
+.print-cover-stat-lbl{font-family:'Nunito',sans-serif;font-size:10px;color:rgba(255,255,255,.6);text-transform:uppercase}
+.print-cover-url{font-family:'Fredoka One',cursive;font-size:13px;color:rgba(255,255,255,.5);margin-top:auto}
+.print-section-title{
+  display:none;
+  align-items:center;
+  gap:12px;
+  background:var(--red);
+  color:white;
+  padding:10px 16px;
+  border-radius:10px;
+  margin-bottom:12px;
+  font-family:'Bangers',cursive;
+  font-size:20px;
+  letter-spacing:1px;
+}
 </style>
 </head>
 <body>
@@ -326,8 +446,12 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
     </div>
     <span class="logo-text">CDMX GUIDE</span>
   </div>
-  <span id="header-title">HOME</span>
+  <span id="header-title"></span>
   <div class="header-right">
+    <button class="pdf-btn" onclick="downloadPDF()">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      PDF
+    </button>
     <button class="shop-btn" onclick="switchTab('deals')">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
       Deals
@@ -337,10 +461,32 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 </header>
 
 <!-- CONTENT AREA -->
+<!-- PRINT COVER — only visible when printing -->
+<div class="print-cover" id="print-cover">
+  <div class="print-cover-flag"><span></span><span></span><span></span></div>
+  <div class="print-cover-pre">Summer 2026 · FIFA World Cup</div>
+  <div class="print-cover-title">MEXICO CITY<br>TRAVEL PASS</div>
+  <div class="print-cover-sub">Your complete safety & travel guide<br>for Estadio Azteca · CDMX 2026</div>
+  <div class="print-cover-dates">
+    <span class="print-cover-date">Jun 11</span>
+    <span class="print-cover-date">Jun 17</span>
+    <span class="print-cover-date">Jun 24</span>
+    <span class="print-cover-date">Jun 30</span>
+    <span class="print-cover-date">Jul 5</span>
+  </div>
+  <div class="print-cover-stats">
+    <div><div class="print-cover-stat-val">87,500</div><div class="print-cover-stat-lbl">Capacity</div></div>
+    <div><div class="print-cover-stat-val">2,240m</div><div class="print-cover-stat-lbl">Altitude ⚠</div></div>
+    <div><div class="print-cover-stat-val">5</div><div class="print-cover-stat-lbl">Matches</div></div>
+  </div>
+  <div class="print-cover-url">mexicotravelpass.com</div>
+</div>
+
 <main id="content-area">
 
   <!-- ===== HOME ===== -->
   <section id="sec-home" class="section active">
+    <div class="print-section-title">01 — HOME &amp; ESSENTIAL RULES</div>
 
     <!-- HERO -->
     <div class="hero-card">
@@ -464,6 +610,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
   <!-- ===== SAFETY ===== -->
   <section id="sec-safety" class="section">
+    <div class="print-section-title">02 — SAFETY &amp; NEIGHBORHOODS</div>
 
     <div class="section-header">NEIGHBORHOOD SAFETY ZONES</div>
     <div class="zone-legend">
@@ -591,6 +738,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
   <!-- ===== GETTING THERE ===== -->
   <section id="sec-getting" class="section">
+    <div class="print-section-title">03 — GETTING TO THE STADIUM</div>
 
     <div class="section-header">HOW ARE YOU GETTING TO AZTECA?</div>
 
@@ -744,6 +892,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
   <!-- ===== EMERGENCY ===== -->
   <section id="sec-emergency" class="section emergency-section">
+    <div class="print-section-title" style="background:var(--red)">04 — EMERGENCY CONTACTS</div>
 
     <div class="section-header" style="color:var(--red)">EMERGENCY CONTACTS</div>
 
@@ -943,6 +1092,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
 
   <!-- ===== PHRASES ===== -->
   <section id="sec-phrases" class="section">
+    <div class="print-section-title">05 — SPANISH SURVIVAL PHRASES</div>
 
     <div class="section-header">SPANISH SURVIVAL PHRASES</div>
     <div style="font-family:'Nunito',sans-serif;font-size:12px;color:var(--gray-500);margin-bottom:12px">Tap any phrase to copy it to clipboard</div>
@@ -966,13 +1116,13 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
   <section id="sec-deals" class="section">
 
     <div class="deals-hero">
-      <div class="deals-hero-label">🌎 World Cup 2026 · Exclusive Deals</div>
+      <div class="deals-hero-label"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg> World Cup 2026 · Exclusive Deals</div>
       <div class="deals-hero-title">GET MORE FROM<br>YOUR TRIP</div>
       <div class="deals-hero-sub">Tours, SIM cards, transfers & more — curated for fans visiting Mexico City this summer.</div>
     </div>
 
     <!-- ── TOURS & EXPERIENCES ─────────────────────────────── -->
-    <div class="deals-category-label">🎟️ Tours & Experiences</div>
+    <div class="deals-category-label"><span style="display:inline-flex;align-items:center;color:var(--gray-500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9a3 3 0 0 1 0 6v2a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-2a3 3 0 0 1 0-6V7a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2z"/><path d="M13 5v2M13 17v2M13 11v2"/></svg></span> Tours & Experiences</div>
 
     <!-- Widget slot: fallback always visible; real widget overlays when loaded -->
     <div class="widget-slot" id="gyg-slot">
@@ -981,7 +1131,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
       <div class="fallback-cards" id="gyg-fallback">
         <div class="fallback-card">
           <div class="fallback-card-img" style="background:linear-gradient(135deg,#1A3FAA,#4f6fd4)">
-            <span style="font-size:32px">🏙️</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="9" width="4" height="12"/><rect x="9" y="5" width="6" height="16"/><rect x="17" y="11" width="4" height="10"/><path d="M1 21h22"/></svg>
           </div>
           <div class="fallback-card-body">
             <div class="fallback-card-tag">Top Rated</div>
@@ -995,7 +1145,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
         </div>
         <div class="fallback-card">
           <div class="fallback-card-img" style="background:linear-gradient(135deg,#1A7A4A,#34d399)">
-            <span style="font-size:32px">🏟️</span>
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg>
           </div>
           <div class="fallback-card-body">
             <div class="fallback-card-tag">World Cup Special</div>
@@ -1020,21 +1170,51 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
     </div>
 
     <!-- ── STAY CONNECTED ──────────────────────────────────── -->
-    <div class="deals-category-label">📶 Stay Connected</div>
-    <div class="partner-card">
-      <div class="fallback-logo" style="background:linear-gradient(135deg,#ff6b35,#f7931e)">
-        <span style="font-size:22px">📶</span>
+    <div class="deals-category-label"><span style="display:inline-flex;align-items:center;color:var(--gray-500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor"/></svg></span> Stay Connected</div>
+    <div class="partner-card" style="flex-direction:column;align-items:stretch;gap:0;padding:0;overflow:hidden;border:2px solid var(--black);box-shadow:3px 3px 0 var(--black)">
+      <!-- Header row -->
+      <div style="display:flex;align-items:center;gap:12px;padding:14px 14px 10px">
+        <div class="fallback-logo" style="background:linear-gradient(135deg,#ff6b35,#f7931e)">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="white"/></svg>
+        </div>
+        <div>
+          <div class="partner-name">Holafly eSIM</div>
+          <div class="partner-desc" style="margin-top:2px">Unlimited data in Mexico. No physical SIM. Works the moment you land.</div>
+        </div>
       </div>
-      <div class="partner-info">
-        <div class="partner-name">Holafly eSIM</div>
-        <div class="partner-desc">Unlimited data in Mexico. No physical SIM. Works the moment you land — no roaming fees.</div>
-        <div class="fallback-badges"><span class="fbadge green">Instant activation</span><span class="fbadge blue">No roaming</span></div>
-        <a href="https://holafly.com" target="_blank" rel="sponsored" class="partner-btn">Get eSIM →</a>
+      <!-- Discount badges -->
+      <div style="background:#fff7ed;border-top:1px solid #fed7aa;border-bottom:1px solid #fed7aa;padding:10px 14px;display:flex;flex-direction:column;gap:6px">
+        <div style="font-family:'Fredoka One',cursive;font-size:11px;color:#c2410c;text-transform:uppercase;letter-spacing:1px;margin-bottom:2px"><span style="display:inline-flex;align-items:center;gap:5px;vertical-align:middle"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 12 20 22 4 22 4 12"/><rect x="2" y="7" width="20" height="5"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg> Exclusive Discount — Code applies automatically</span></div>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:white;border:2px solid #fb923c;border-radius:8px;padding:8px 12px">
+          <div>
+            <div style="font-family:'Nunito',sans-serif;font-size:10px;color:var(--gray-500);font-weight:600">TRAVEL eSIM</div>
+            <div style="font-family:'Bangers',cursive;font-size:22px;color:#ea580c;letter-spacing:1px;line-height:1">5% OFF</div>
+          </div>
+          <div style="background:#fff7ed;border:2px dashed #fb923c;border-radius:6px;padding:6px 10px;text-align:center">
+            <div style="font-family:'Nunito',sans-serif;font-size:9px;color:var(--gray-500);font-weight:700;letter-spacing:1px">USE CODE</div>
+            <div style="font-family:'Bangers',cursive;font-size:16px;color:#ea580c;letter-spacing:2px">MEXICOTRAVELPASS</div>
+          </div>
+        </div>
+        <div style="display:flex;align-items:center;justify-content:space-between;background:white;border:2px solid #4f46e5;border-radius:8px;padding:8px 12px">
+          <div>
+            <div style="font-family:'Nunito',sans-serif;font-size:10px;color:var(--gray-500);font-weight:600">HOLAFLY PLANS</div>
+            <div style="font-family:'Bangers',cursive;font-size:22px;color:#4f46e5;letter-spacing:1px;line-height:1">10% OFF</div>
+          </div>
+          <div style="background:#eef2ff;border:2px dashed #4f46e5;border-radius:6px;padding:6px 10px;text-align:center">
+            <div style="font-family:'Nunito',sans-serif;font-size:9px;color:var(--gray-500);font-weight:700;letter-spacing:1px">FIRST 12 MONTHS</div>
+            <div style="font-family:'Bangers',cursive;font-size:16px;color:#4f46e5;letter-spacing:2px">MEXICOTRAVELPASS</div>
+          </div>
+        </div>
+      </div>
+      <!-- CTA -->
+      <div style="padding:12px 14px;display:flex;flex-direction:column;gap:8px">
+        <div class="fallback-badges"><span class="fbadge green">Instant activation</span><span class="fbadge blue">No roaming</span><span class="fbadge gold">Code auto-applied</span></div>
+        <a href="https://holafly.sjv.io/c/7369184/3856277/24764" target="_blank" rel="sponsored" class="partner-btn" style="text-align:center;width:100%;display:block;box-sizing:border-box">Get eSIM with 5% OFF →</a>
       </div>
     </div>
 
     <!-- ── CAR RENTAL ─────────────────────────────────────── -->
-    <div class="deals-category-label">🚗 Car Rental</div>
+    <div class="deals-category-label"><span style="display:inline-flex;align-items:center;color:var(--gray-500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5v-5l2-6h10l2 6v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 12h14"/></svg></span> Car Rental</div>
 
     <div class="widget-slot" id="dc-slot">
 
@@ -1042,7 +1222,7 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
       <div class="fallback-cards" id="dc-fallback">
         <div class="fallback-card" style="flex-direction:column;background:linear-gradient(135deg,#007ac2,#005a8e);color:white;border-color:var(--black)">
           <div style="padding:16px 16px 0;display:flex;align-items:center;gap:10px">
-            <span style="font-size:28px">🚗</span>
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 17H5v-5l2-6h10l2 6v5z"/><circle cx="7.5" cy="17.5" r="1.5"/><circle cx="16.5" cy="17.5" r="1.5"/><path d="M5 12h14"/></svg>
             <div>
               <div style="font-family:'Bangers',cursive;font-size:20px;letter-spacing:.5px">DiscoverCars</div>
               <div style="font-family:'Nunito',sans-serif;font-size:11px;opacity:.85">Compare 500+ rental companies</div>
@@ -1069,10 +1249,10 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
     </div>
 
     <!-- ── AIRPORT TRANSFERS ───────────────────────────────── -->
-    <div class="deals-category-label">✈️ Airport Transfers</div>
+    <div class="deals-category-label"><span style="display:inline-flex;align-items:center;color:var(--gray-500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span> Airport Transfers</div>
     <div class="partner-card">
       <div class="fallback-logo" style="background:linear-gradient(135deg,#1A3FAA,#4f6fd4)">
-        <span style="font-size:22px">✈️</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21 4 19.5 2.5S18 2 16.5 3.5L13 7 4.8 5.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg>
       </div>
       <div class="partner-info">
         <div class="partner-name">Private Airport Transfer</div>
@@ -1083,10 +1263,10 @@ body{font-family:'Nunito',sans-serif;color:var(--black);max-width:480px;margin:0
     </div>
 
     <!-- ── MATCH DAY ───────────────────────────────────────── -->
-    <div class="deals-category-label">🏟️ Match Day</div>
+    <div class="deals-category-label"><span style="display:inline-flex;align-items:center;color:var(--gray-500)"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></span> Match Day</div>
     <div class="partner-card">
       <div class="fallback-logo" style="background:linear-gradient(135deg,#1A7A4A,#34d399)">
-        <span style="font-size:22px">⚽</span>
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/><path d="M2 12h20"/></svg>
       </div>
       <div class="partner-info">
         <div class="partner-name">Stadium Tours — Estadio Azteca</div>
@@ -1453,7 +1633,35 @@ function updateCountdown(){
 updateCountdown();
 setInterval(updateCountdown, 1000);
 
-// ============ INIT ============
+// ============ PDF DOWNLOAD ============
+function downloadPDF(){
+  // Render ALL phrases before printing (they're normally rendered on demand)
+  renderPhrases('all');
+
+  // Show toast
+  showToast('Preparing PDF… use Save as PDF in print dialog');
+
+  // Small delay so toast shows and phrases render
+  setTimeout(function(){
+    window.print();
+  }, 300);
+}
+
+// Before print: ensure all sections visible + cover shown
+window.addEventListener('beforeprint', function(){
+  document.getElementById('print-cover').style.display = 'block';
+  // Render all phrases
+  renderPhrases('all');
+  // Show all phrase cards regardless of filter
+  document.querySelectorAll('.phrase-card').forEach(function(c){ c.style.display='block'; });
+});
+
+// After print: restore normal app state
+window.addEventListener('afterprint', function(){
+  document.getElementById('print-cover').style.display = 'none';
+});
+
+
 renderPhrases('all');
 </script>
 </body>
