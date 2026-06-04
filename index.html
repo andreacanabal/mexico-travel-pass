@@ -4,18 +4,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
 <title>Mexico Travel Pass — Stadium Safety Guide 2026</title>
-<!-- Meta Pixel Code -->
+<!-- Meta Pixel Code — deferred to reduce TBT -->
 <script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1572885741065144');
-fbq('track', 'PageView');
+// Queue fbq calls before pixel loads
+window.fbq=window.fbq||function(){(window.fbq.q=window.fbq.q||[]).push(arguments)};
+window.fbq.q=window.fbq.q||[];window.fbq.loaded=true;window.fbq.version='2.0';
+// Load pixel after page is interactive
+window.addEventListener('load', function() {
+  var t=document.createElement('script');t.async=true;
+  t.src='https://connect.facebook.net/en_US/fbevents.js';
+  document.head.appendChild(t);
+  t.onload=function(){fbq('init','1572885741065144');fbq('track','PageView');};
+});
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
@@ -23,7 +23,9 @@ src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://mexico-travel-pass-serve-production.up.railway.app" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -2152,6 +2154,7 @@ a{text-decoration:none;color:inherit;}
 .lang-btn{background:none;border:1.5px solid rgba(255,255,255,.25);border-radius:6px;padding:3px 8px;font-family:"Nunito",sans-serif;font-size:11px;font-weight:700;color:rgba(255,255,255,.55);cursor:pointer;white-space:nowrap}
 .lang-btn.active{border-color:#F5C518;color:#F5C518}
 </style>
+<meta http-equiv="Cache-Control" content="public, max-age=3600">
 </head>
 <body>
 
@@ -3707,6 +3710,7 @@ function updateLiveCount(){
 updateLiveCount();
 
 function showPurchaseNotification(){
+  if(!document.getElementById("purchase-notif")) return;
   var cities = ['Mexico City','Guadalajara','Monterrey','All 3 Cities'];
   var countries = ['Netherlands','Germany','Spain','Argentina','Brazil','UK','France','Colombia','Australia','Italy','Portugal','Mexico'];
   var city = cities[Math.floor(Math.random() * cities.length)];
@@ -3723,8 +3727,10 @@ function scheduleNextPurchase(){
   var delay = 45000 + Math.random() * 135000;
   setTimeout(function(){
     liveCount += 1;
-    updateLiveCount();
-    showPurchaseNotification();
+    (window.requestIdleCallback||function(cb){setTimeout(cb,1);})(function(){
+      updateLiveCount();
+      showPurchaseNotification();
+    });
     scheduleNextPurchase();
   }, delay);
 }
@@ -3778,12 +3784,12 @@ decrementAvailability();
 /* ═══════════════════════════════
    SYSTEM 8 — SCROLL PROGRESS
 ═══════════════════════════════ */
-window.addEventListener('scroll', function(){
-  var scrolled = window.scrollY;
-  var total = document.documentElement.scrollHeight - window.innerHeight;
-  var pct = (scrolled / total * 100).toFixed(1);
-  var bar = document.getElementById('scroll-progress');
-  if(bar) bar.style.width = pct + '%';
+window.addEventListener('scroll', ()=>{
+  const bar = document.getElementById('scroll-progress');
+  if(bar){
+    const pct = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight) * 100).toFixed(1);
+    bar.style.width = pct + '%';
+  }
 }, { passive: true });
 
 
