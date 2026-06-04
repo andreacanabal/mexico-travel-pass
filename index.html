@@ -3127,12 +3127,7 @@ a{text-decoration:none;color:inherit;}
     <h3>ALMOST THERE</h3>
     <p class="eg-sub">Enter your email — we'll send your download link the moment you pay.</p>
     <div class="eg-field">
-      <label for="eg-name">First name</label>
-      <input type="text" id="eg-name" placeholder="Your first name" autocomplete="given-name">
-    </div>
-    <div class="eg-field">
-      <label for="eg-email">Email address</label>
-      <input type="email" id="eg-email" placeholder="you@email.com" autocomplete="email">
+      <input type="email" id="eg-email" placeholder="your@email.com" autocomplete="email" style="font-size:16px;padding:14px 16px;">
     </div>
     <button id="email-gate-submit" onclick="submitEmailGate()">CONTINUE TO CHECKOUT →</button>
     <div class="eg-error" id="eg-error">Please enter a valid email address</div>
@@ -3873,9 +3868,7 @@ function openEmailGate(url) {
   const saved = localStorage.getItem('mtp_lead_email');
   const savedName = localStorage.getItem('mtp_lead_name');
   const egEmail = document.getElementById('eg-email');
-  const egName  = document.getElementById('eg-name');
-  if (egEmail && saved)     egEmail.value = saved;
-  if (egName  && savedName) egName.value  = savedName;
+  if (egEmail && saved) egEmail.value = saved;
 
   // Show the modal
   const overlay = document.getElementById('email-gate-overlay');
@@ -3903,10 +3896,10 @@ function closeEmailGate() {
 
 function submitEmailGate() {
   const email = document.getElementById('eg-email').value.trim();
-  const name  = document.getElementById('eg-name').value.trim();
   const errEl = document.getElementById('eg-error');
   const btn   = document.getElementById('email-gate-submit');
 
+  // Validate email only — no name required
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errEl.style.display = 'block';
     document.getElementById('eg-email').focus();
@@ -3916,31 +3909,30 @@ function submitEmailGate() {
   errEl.style.display = 'none';
   document.getElementById('eg-email').style.borderColor = '';
 
-  // Save locally
-  localStorage.setItem('mtp_lead_email', email);
-  localStorage.setItem('mtp_lead_name', name);
-  sessionStorage.setItem('mtp_email_captured', '1');
-
-  // Send to Google Sheets (fire and forget)
-  const n = selectedCities.size;
-  const cities = [...selectedCities].map(c => CITY_NAMES[c]).join(', ') || 'Unknown';
-  const value  = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
   btn.textContent = 'OPENING CHECKOUT...';
   btn.disabled = true;
 
-  fetch(SHEETS_URL, {
+  // ── Send to server → server adds to Brevo list 3 (no API key in frontend) ──
+  fetch('https://mexico-travel-pass-serve-production.up.railway.app/capture-lead', {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, name, cities, value })
-  }).catch(() => {}); // silent fail — don't block checkout
+    body: JSON.stringify({
+      email: email,
+      cities: [...selectedCities].map(c => CITY_NAMES[c]).join(', ') || 'Unknown'
+    })
+  }).catch(() => {}); // silent — never block checkout
 
-  // Fire Meta Pixel Lead event
+  // ── Meta Pixel Lead event ──
   if (typeof fbq !== 'undefined') {
-    fbq('track', 'Lead', { content_name: 'Email Capture', value: value, currency: 'USD' });
+    const n = selectedCities.size;
+    fbq('track', 'Lead', {
+      content_name: 'Email Capture',
+      value: n >= 3 ? 22.99 : 9.99,
+      currency: 'USD'
+    });
   }
 
-  // Close and redirect
+  // ── Close modal and open Stripe ──
   document.getElementById('email-gate-overlay').classList.remove('active');
   document.body.style.overflow = '';
   if (_pendingUrl) {
