@@ -3488,17 +3488,8 @@ function cartCheckout() {
   if(n >= 3) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
   else if(n === 2) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
   else { const city = [...selectedCities][0]; url = cartStomachAdded ? (CHECKOUT_URLS[city+'_stomach']||CHECKOUT_URLS[city]) : CHECKOUT_URLS[city]; }
-  // Meta Pixel: Purchase (fire on checkout click — Stripe redirect)
-  if(typeof fbq !== 'undefined') {
-    const base = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
-    const sPrice = n >= 3 ? 7.99 : 3.99;
-    fbq('track', 'Purchase', {
-      content_ids: [...selectedCities],
-      content_type: 'product',
-      value: base + (cartStomachAdded ? sPrice : 0),
-      currency: 'USD'
-    });
-  }
+  // NOTE: Purchase pixel fires ONLY in success.html after Stripe confirms payment
+  // Never fire Purchase here — this is just opening the checkout
   openEmailGate(url);
 }
 function selectAllAndCheckout() {
