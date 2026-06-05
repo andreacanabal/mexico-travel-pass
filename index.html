@@ -16,6 +16,12 @@ window.addEventListener('load', function() {
   document.head.appendChild(t);
   t.onload=function(){fbq('init','1572885741065144');fbq('track','PageView');};
 });
+// Save fbclid for Meta attribution across Stripe redirect
+(function(){
+  var params = new URLSearchParams(window.location.search);
+  var fbclid = params.get('fbclid');
+  if(fbclid) localStorage.setItem('mtp_fbclid', fbclid);
+})();
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
