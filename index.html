@@ -2203,7 +2203,7 @@ a{text-decoration:none;color:inherit;}
   color:#F87171;text-align:center;margin-top:6px;display:none;
 }
 </style>
-<script src="https://js.stripe.com/v3/" defer></script>
+<script src="https://js.stripe.com/v3/"></script>
 <style>
 #checkout-modal{display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;align-items:flex-end;justify-content:center;padding:0}
 @media(min-width:600px){#checkout-modal{align-items:center;padding:16px}}
@@ -4058,7 +4058,7 @@ function closeEmbeddedCheckout(){
   const el=document.getElementById('stripe-checkout-element');if(el)el.innerHTML='';
   const l=document.getElementById('checkout-loading');if(l){l.style.display='flex';l.innerHTML='<div class="checkout-spinner"></div>Loading secure checkout...';}
 }
-if(typeof cartCheckout!=="undefined")cartCheckout=function(){
+cartCheckout=function(){
   // Show email gate first — captures lead for abandon cart automation
   // Email gate's submit button calls openEmbeddedCheckout()
   const overlay = document.getElementById('email-gate-overlay');
@@ -4220,8 +4220,15 @@ function applyLang(lang){
   const fhl1=q('.final-hl'), fhl2=document.getElementById('final-hl-2');
   if(fhl1) fhl1.textContent = lang==='es' ? 'YA SABES A DÓNDE VAS.' : "YOU KNOW WHERE YOU'RE GOING.";
   if(fhl2) fhl2.textContent = lang==='es' ? 'AHORA SABE QUÉ HACER.' : 'NOW KNOW WHAT TO DO.';
-  const fsub=q('.final-sub');
-  if(fsub){const dEl=document.getElementById('final-days-left');const days=dEl?dEl.textContent:'--';fsub.innerHTML=t.final_sub+' <span id="final-days-left">'+days+'</span> días.';}
+  // Final sub — don't recreate the span, just update the text nodes around it
+  const fsubEl2=document.getElementById('final-sub-text');
+  if(fsubEl2){
+    const dEl=document.getElementById('final-days-left');
+    const days=dEl?dEl.textContent:'--';
+    fsubEl2.innerHTML = lang==='es'
+      ? 'La guía que cuesta menos que un taxi equivocado. Y el primer partido es en <span id="final-days-left">'+days+'</span> días.'
+      : 'The guide that costs less than one bad taxi ride. And the first match is in <span id="final-days-left">'+days+'</span> days.';
+  }
   all('.final-cta-btn, .btn-final-main').forEach(b=>{if(b&&!b.querySelector('svg'))b.textContent=t.final_btn;});
 
   // Exit popup
