@@ -105,7 +105,7 @@ src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://connect.facebook.net" crossorigin>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="preconnect" href="https://mexico-travel-pass-serve-production.up.railway.app" crossorigin>
+<link rel="preconnect" href="https://mexico-travel-pass-serve-production-9eab.up.railway.app" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
 <noscript><link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fredoka+One&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
@@ -3986,7 +3986,7 @@ function submitEmailGate() {
   btn.disabled = true;
 
   // ── Send to server → server adds to Brevo list 3 (no API key in frontend) ──
-  fetch('https://mexico-travel-pass-serve-production.up.railway.app/capture-lead', {
+  fetch('https://mexico-travel-pass-serve-production-9eab.up.railway.app/capture-lead', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
@@ -4031,7 +4031,7 @@ if(tcEl) tcEl.textContent = TRAVELERS_COUNT.toLocaleString();
 
 /* === ADDON JS: stripe, countdown, urgency, counter, lang === */
 const STRIPE_PK='pk_live_51TdMsmDOZDPnW2siEApwGEpZIm4mj8xdc9tI1OejAm113UTngHONID9hBm85ivQatw9hWOIaaYSN37RJTyFW0qcS00Y1ZdjSiv';
-const SERVER='https://mexico-travel-pass-serve-production.up.railway.app';
+const SERVER='https://mexico-travel-pass-serve-production-9eab.up.railway.app';
 const PRICE_IDS={cdmx:'price_1TdNCsDOZDPnW2siWVL9vVD0',gdl:'price_1TdNG7DOZDPnW2siLBlEzzgU',mty:'price_1TdNQoDOZDPnW2si1vWVaxCl',all3:'price_1TdNGgDOZDPnW2siSyprCW9U',cdmx_stomach:'price_1TdNH3DOZDPnW2si4Gp5veqZ',gdl_stomach:'price_1TdNHSDOZDPnW2sitXBu5imr',mty_stomach:'price_1TdNHpDOZDPnW2siGXCpM5us',all3_stomach:'price_1TdNIlDOZDPnW2sisp9Jr4no'};
 let _st=null,_ac=null;
 function getStripe(){if(!_st)_st=Stripe(STRIPE_PK);return _st;}
@@ -4094,7 +4094,7 @@ function updateAllCountdowns(){const diff=KICKOFF-Date.now();if(diff<=0){['ticke
 updateAllCountdowns();
 
 // Fetch real buyer count from Stripe via server
-fetch('https://mexico-travel-pass-serve-production.up.railway.app/buyer-count')
+fetch('https://mexico-travel-pass-serve-production-9eab.up.railway.app/buyer-count')
   .then(r=>r.json())
   .then(data=>{
     if(data.count && typeof liveCount!=='undefined'){
