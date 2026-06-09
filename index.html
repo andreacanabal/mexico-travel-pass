@@ -56,6 +56,7 @@ window.addEventListener('load',function(){
    RESET & BASE
 ═══════════════════════════════ */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:hidden;max-width:100vw;}
 html{scroll-behavior:smooth;}
 body{
   font-family:'Nunito',sans-serif;
@@ -2321,7 +2322,83 @@ a{text-decoration:none;color:inherit;}
   margin-bottom: 0 !important;
 }
 
-</style></head>
+</style>
+<style>
+/* ════ OVERFLOW FIXES ════ */
+html, body { overflow-x: hidden !important; max-width: 100vw !important; }
+img, video, iframe, embed { max-width: 100% !important; }
+.sticky-ticker-wrap, .sticky-ticker { overflow: hidden !important; }
+.outcome-pill, .hero-pill { max-width: calc(100vw - 32px); }
+</style>
+
+<style>
+/* ════ MOBILE NAV TIMER ════ */
+.nav-mobile-timer {
+  display: none;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFD600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+@media (max-width: 640px) {
+  .nav-mobile-timer { display: inline-flex; align-items: center; gap: 2px; }
+  .sticky-ticker-wrap { display: none !important; }
+  .sticky-logo { font-size: 10px !important; letter-spacing: 0.04em !important; }
+  .sticky-cta { display: none !important; }
+  .nav-right-group { gap: 6px !important; }
+}
+@media (max-width: 380px) {
+  .sticky-logo { display: none !important; }
+}
+</style>
+
+<style>
+/* ════ CTA BUTTON MOBILE FIX ════ */
+.hero-cta-main {
+  max-width: 92vw !important;
+  width: auto !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+  white-space: nowrap !important;
+  font-size: clamp(13px, 3.5vw, 16px) !important;
+  display: block !important;
+  text-align: center !important;
+  overflow: hidden !important;
+}
+@media (max-width: 430px) {
+  .hero-cta-main {
+    width: 92% !important;
+    white-space: nowrap !important;
+  }
+  .cta-main-text {
+    font-size: clamp(12px, 3.5vw, 15px) !important;
+  }
+}
+</style>
+
+<style>
+/* ════ HERO LOWER DARK WRAP ════ */
+.hero-lower-wrap {
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border-radius: 12px;
+  padding: 20px 16px;
+  margin: 0 0 16px 0;
+  width: 100%;
+  max-width: 600px;
+}
+.hero-subhl {
+  margin-bottom: 16px !important;
+  margin-top: 0 !important;
+}
+.hero-pills-row { margin-bottom: 20px !important; }
+</style>
+</head>
 <body>
 
 <!-- ════════════════════════════════════
@@ -2335,6 +2412,7 @@ a{text-decoration:none;color:inherit;}
       <span>KICKOFF IN <span id="ticker-countdown-2" style="color:#4ADE80;font-weight:700;">--d --h --m</span> &nbsp;·&nbsp; GET YOUR PASS NOW &nbsp;·&nbsp;</span>
     </div>
   </div>
+  <span class="nav-mobile-timer">⚡ <span id="nav-mobile-cd">--</span></span>
   <div class="nav-right-group">
     <div id="lang-switcher">
       <button class="lang-btn active" id="btn-en" onclick="setLang('en')">EN</button>
@@ -2567,24 +2645,24 @@ a{text-decoration:none;color:inherit;}
     </div>
   </div>
 
-  <!-- SUBHEADLINE -->
-  <p class="hero-subhl" data-en="The only stadium-specific safety guide for FIFA 2026 fans — safe transport, emergency protocols, and offline survival tips for Mexico City, Guadalajara &amp; Monterrey." data-es="La única guía de seguridad por estadio para fans del Mundial 2026 — transporte seguro, protocolos de emergencia y guía de supervivencia offline para Ciudad de México, Guadalajara y Monterrey.">The only stadium-specific safety guide for FIFA 2026 fans — safe transport, emergency protocols, and offline survival tips for Mexico City, Guadalajara &amp; Monterrey.</p>
+  <!-- SUBHEADLINE + PILLS + CTA in dark overlay -->
+  <div class="hero-lower-wrap">
+    <p class="hero-subhl" data-en="The only stadium-specific safety guide for FIFA 2026 fans — safe transport, emergency protocols, and offline survival tips for Mexico City, Guadalajara &amp; Monterrey." data-es="La única guía de seguridad por estadio para fans del Mundial 2026 — transporte seguro, protocolos de emergencia y guía offline para Ciudad de México, Guadalajara y Monterrey.">The only stadium-specific safety guide for FIFA 2026 fans — safe transport, emergency protocols, and offline survival tips for Mexico City, Guadalajara &amp; Monterrey.</p>
 
-  <!-- FEATURE PILLS -->
-  <div class="hero-pills-row">
-    <span class="hero-pill">✓ Safe transport</span>
-    <span class="hero-pill">✓ Emergency protocol</span>
-    <span class="hero-pill">✓ Stadium heatmaps</span>
-    <span class="hero-pill">✓ Works offline</span>
-    <span class="hero-pill">✓ 40+ embassies</span>
-  </div>
+    <div class="hero-pills-row">
+      <span class="hero-pill">✓ Safe transport</span>
+      <span class="hero-pill">✓ Emergency protocol</span>
+      <span class="hero-pill">✓ Stadium heatmaps</span>
+      <span class="hero-pill">✓ Works offline</span>
+      <span class="hero-pill">✓ 40+ embassies</span>
+    </div>
 
-  <!-- CTA -->
-  <div class="hero-cta-wrap">
-    <button class="hero-cta-main" onclick="scrollToSelector()">
-      <span class="cta-main-text" data-en="CHOOSE MY CITY — FROM $9.99" data-es="ELEGIR MI CIUDAD — DESDE $9.99">CHOOSE MY CITY — FROM $9.99</span>
-    </button>
-    <p class="hero-trust-line">🔒 Secure · Instant download · 30-day guarantee</p>
+    <div class="hero-cta-wrap">
+      <button class="hero-cta-main" onclick="scrollToSelector()">
+        <span class="cta-main-text" data-en="CHOOSE MY CITY — FROM $9.99" data-es="ELEGIR MI CIUDAD — DESDE $9.99">CHOOSE MY CITY — FROM $9.99</span>
+      </button>
+      <p class="hero-trust-line">🔒 Secure · Instant download · 30-day guarantee</p>
+    </div>
   </div>
 
 </div><!-- /hero-content -->
@@ -3259,7 +3337,8 @@ function updateAllCountdowns(){
   const diff=KICKOFF-Date.now();
   if(diff<=0){['ticker-countdown','ticker-countdown-2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent='LIVE NOW';});return;}
   const s=Math.floor(diff/1000),d=Math.floor(s/86400),h=Math.floor((s%86400)/3600),m=Math.floor((s%3600)/60),sec=s%60,pad=n=>String(n).padStart(2,'0');
-  ['ticker-countdown','ticker-countdown-2'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=d+'d '+pad(h)+'h '+pad(m)+'m';});
+  const cdTxt=d+'d '+pad(h)+'h '+pad(m)+'m';
+  ['ticker-countdown','ticker-countdown-2','nav-mobile-cd'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=cdTxt;});
   ['cd-days','cd-hours','cd-mins','cd-secs'].forEach((id,i)=>{const e=document.getElementById(id);if(e)e.textContent=pad([d,h,m,sec][i]);});
   const dd2=Math.ceil((KICKOFF-Date.now())/86400000);
   ['popup-days-left','final-days-left'].forEach(id=>{const e=document.getElementById(id);if(e)e.textContent=dd2>0?dd2:0;});
