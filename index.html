@@ -10,23 +10,34 @@
 <meta property="og:image" content="https://www.mexicotravelpass.com/og-image.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Mexico Travel Pass — Stadium Safety Guide 2026</title>
-<!-- Meta Pixel — deferred -->
+<!-- Meta Pixel — standard synchronous install (recommended by Meta) -->
 <script>
-window.fbq=window.fbq||function(){(window.fbq.q=window.fbq.q||[]).push(arguments)};
-window.fbq.q=window.fbq.q||[];window.fbq.loaded=true;window.fbq.version='2.0';
-(function(){var fbclid=new URLSearchParams(window.location.search).get('fbclid');if(fbclid)localStorage.setItem('mtp_fbclid',fbclid);})();
-window.addEventListener('load',function(){
-  var t=document.createElement('script');t.async=true;
-  t.src='https://connect.facebook.net/en_US/fbevents.js';
-  document.head.appendChild(t);
-  t.onload=function(){
-    fbq('init','1572885741065144');
-    fbq('track','PageView');
-    fbq('track','ViewContent',{content_name:'Mexico Travel Pass',content_type:'product',content_ids:['cdmx','gdl','mty','all3'],value:9.99,currency:'USD'});
-  };
+// Save fbclid immediately on landing
+(function(){
+  var fbclid=new URLSearchParams(window.location.search).get('fbclid');
+  if(fbclid) localStorage.setItem('mtp_fbclid', fbclid);
+})();
+// Pixel stub — must exist before fbevents.js loads
+!function(f,b,e,v,n,t,s){
+  if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','1572885741065144');
+fbq('track','PageView');
+fbq('track','ViewContent',{
+  content_name:'Mexico Travel Pass',
+  content_type:'product',
+  content_ids:['cdmx','gdl','mty','all3'],
+  value:9.99,
+  currency:'USD'
 });
 </script>
-<noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"/></noscript>
+<noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1572885741065144&ev=PageView&noscript=1"/></noscript>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
