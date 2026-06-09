@@ -3310,16 +3310,54 @@ function getStripe(){if(!_st)_st=Stripe(STRIPE_PK);return _st;}
 function buildLI(){const n=selectedCities.size,it=[];if(n>=3){it.push({price:PRICE_IDS.all3,quantity:1});if(cartStomachAdded)it.push({price:PRICE_IDS.all3_stomach,quantity:1});}else{[...selectedCities].forEach(c=>{it.push({price:PRICE_IDS[c],quantity:1});if(cartStomachAdded)it.push({price:PRICE_IDS[c+'_stomach'],quantity:1});});}return it;}
 function getCV(){const n=selectedCities.size;let b=n>=3?22.99:(n===2?22.99:9.99);if(cartStomachAdded)b+=n>=3?11.97:3.99;return b;}
 async function openEmbeddedCheckout(){
-  const li=buildLI();if(!li.length)return;
+  // Destroy any existing Stripe instance first
+  if(_ac){try{_ac.destroy();}catch(e){}; _ac=null;}
+
+  const li=buildLI();if(!li.length){console.error("No line items!");return;}
+
+  // Ensure modal exists in DOM — create if missing
+  if(!document.getElementById('checkout-modal')){
+    var _m=document.createElement('div');
+    _m.id='checkout-modal';
+    _m.style.cssText='display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;align-items:flex-end;justify-content:center;padding:0;';
+    _m.innerHTML='<div id="checkout-container" style="background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:100%;max-height:92vh;overflow-y:auto;position:relative;padding:20px 16px 32px;">'
+      +'<button onclick="closeEmbeddedCheckout()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:26px;cursor:pointer;color:#888;">×</button>'
+      +'<div id="checkout-loading" style="text-align:center;padding:40px;display:flex;flex-direction:column;align-items:center;gap:14px;">'
+        +'<div style="width:36px;height:36px;border:3px solid rgba(245,197,24,.3);border-top:3px solid #F5C518;border-radius:50%;animation:cspin .8s linear infinite;"></div>'
+        +'Loading secure checkout...'
+      +'</div>'
+      +'<div id="stripe-checkout-element" style="min-height:100px;width:100%;"></div>'
+      +'</div>';
+    _m.onclick=function(e){if(e.target===_m)closeEmbeddedCheckout();};
+    document.body.appendChild(_m);
+    if(!document.getElementById('cspin-kf')){var _s=document.createElement('style');_s.id='cspin-kf';_s.textContent='@keyframes cspin{to{transform:rotate(360deg)}}';document.head.appendChild(_s);}
+    console.log('✅ Modal created dynamically');
+  }
   if(typeof fbq!=='undefined')fbq('track','InitiateCheckout',{value:getCV(),currency:'USD',content_ids:li.map(i=>i.price),content_type:'product'});
   const modal=document.getElementById('checkout-modal'),loading=document.getElementById('checkout-loading'),el=document.getElementById('stripe-checkout-element');
-  if(!modal)return;loading.style.display='flex';el.innerHTML='';modal.classList.add('active');document.body.style.overflow='hidden';
+  if(!modal)return;loading.style.display='flex';el.innerHTML='';modal.classList.add('active');modal.style.display='flex';document.body.style.overflow='hidden';
   try{const res=await fetch(SERVER+'/create-checkout-session',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({lineItems:li})});
     const data=await res.json();if(data.error)throw new Error(data.error);
-    loading.style.display='none';_ac=await getStripe().initEmbeddedCheckout({clientSecret:data.clientSecret});_ac.mount('#stripe-checkout-element');
-  }catch(err){loading.innerHTML='<p style="color:#D42B2B;font-size:14px;font-weight:700;padding:20px;text-align:center;">'+err.message+'</p>';}
+    loading.style.display='none';
+    // Wait for DOM to render the element before mounting
+    await new Promise(resolve => setTimeout(resolve, 50));
+    const mountEl = document.getElementById('stripe-checkout-element');
+    console.log('Mount element:', mountEl);
+    if(!mountEl) throw new Error('stripe-checkout-element not found in DOM after modal creation');
+    _ac=await getStripe().initEmbeddedCheckout({clientSecret:data.clientSecret});
+    _ac.mount('#stripe-checkout-element');
+  }catch(err){console.error('openEmbeddedCheckout error:', err);loading.innerHTML='<p style="color:#D42B2B;font-size:14px;font-weight:700;padding:20px;text-align:center;">'+err.message+'<br><small>Check browser console for details</small></p>';}
 }
-function closeEmbeddedCheckout(){const m=document.getElementById('checkout-modal');if(m)m.classList.remove('active');document.body.style.overflow='';if(_ac){_ac.destroy();_ac=null;}const el=document.getElementById('stripe-checkout-element');if(el)el.innerHTML='';const l=document.getElementById('checkout-loading');if(l){l.style.display='flex';l.innerHTML='<div class="checkout-spinner"></div>Loading secure checkout...';}}
+function closeEmbeddedCheckout(){
+  if(_ac){try{_ac.destroy();}catch(e){}; _ac=null;}
+  const m=document.getElementById('checkout-modal');
+  if(m){m.classList.remove('active');m.style.display='none';}
+  document.body.style.overflow='';
+  const el=document.getElementById('stripe-checkout-element');
+  if(el)el.innerHTML='';
+  const l=document.getElementById('checkout-loading');
+  if(l){l.style.display='flex';l.innerHTML='<div class="checkout-spinner" style="width:36px;height:36px;border:3px solid rgba(245,197,24,.3);border-top:3px solid #F5C518;border-radius:50%;animation:cspin .8s linear infinite;"></div>Loading secure checkout...';}
+}
 cartCheckout=function(){
   const overlay=document.getElementById('email-gate-overlay');
   if(overlay){overlay.classList.add('active');document.body.style.overflow='hidden';setTimeout(function(){const ei=document.getElementById('eg-email');if(ei)ei.focus();},100);}
@@ -3380,6 +3418,61 @@ function applyLang(lang){
 function setLang(lang){_cL=lang;localStorage.setItem('mtp_lang',lang);applyLang(lang);}
 applyLang(_cL);
 </script>
+
+<!-- ════ STRIPE EMBEDDED CHECKOUT MODAL ════ -->
+<div id="checkout-modal" onclick="if(event.target===this)closeEmbeddedCheckout()">
+  <div id="checkout-container">
+    <button id="close-checkout" onclick="closeEmbeddedCheckout()">×</button>
+    <div id="checkout-loading"><div class="checkout-spinner"></div>Loading secure checkout...</div>
+    <div id="stripe-checkout-element"></div>
+  </div>
+</div>
+
+<!-- ════ FLOAT CTA MOBILE ════ -->
+<div id="float-cta-wrap">
+  <button id="float-cta-btn" onclick="scrollToSelector()">GET MY PASS — FROM $9.99 →</button>
+  <button id="float-cta-x">✕</button>
+</div>
+
+<script>
+// ═══ RUNTIME MODAL INJECTION (moved to DOMContentLoaded) ═══
+(function() {
+  if (!document.getElementById('checkout-modal')) {
+    var modal = document.createElement('div');
+    modal.id = 'checkout-modal';
+    modal.style.cssText = 'display:none;position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:99999;align-items:flex-end;justify-content:center;padding:0;';
+    modal.innerHTML = '<div id="checkout-container" style="background:#fff;border-radius:20px 20px 0 0;width:100%;max-width:100%;max-height:92vh;overflow-y:auto;position:relative;padding:20px 16px 32px;">' +
+      '<button id="close-checkout" onclick="closeEmbeddedCheckout()" style="position:absolute;top:12px;right:14px;background:none;border:none;font-size:26px;cursor:pointer;color:#888;width:36px;height:36px;border-radius:50%;">×</button>' +
+      '<div id="checkout-loading" style="text-align:center;padding:40px 20px;font-size:16px;color:#666;display:flex;flex-direction:column;align-items:center;gap:14px;">' +
+        '<div class="checkout-spinner" style="width:36px;height:36px;border:3px solid rgba(245,197,24,.3);border-top:3px solid #F5C518;border-radius:50%;animation:cspin .8s linear infinite;"></div>' +
+        'Loading secure checkout...' +
+      '</div>' +
+      '<div id="stripe-checkout-element" style="min-height:100px;width:100%;"></div>' +
+      '</div>';
+    modal.onclick = function(e) { if(e.target === modal) closeEmbeddedCheckout(); };
+    document.body.appendChild(modal);
+    console.log('✅ Checkout modal injected at runtime');
+  }
+
+  if (!document.getElementById('float-cta-wrap')) {
+    var floatWrap = document.createElement('div');
+    floatWrap.id = 'float-cta-wrap';
+    floatWrap.style.cssText = 'display:none;position:fixed;bottom:80px;left:50%;transform:translateX(-50%);z-index:8000;width:calc(100% - 32px);max-width:360px;align-items:center;gap:8px;';
+    floatWrap.innerHTML = '<button id="float-cta-btn" onclick="scrollToSelector()" style="flex:1;background:#22c55e;color:#fff;font-size:16px;font-weight:800;border:none;border-radius:50px;padding:16px 24px;cursor:pointer;white-space:nowrap;">GET MY PASS — FROM $9.99 →</button>' +
+      '<button id="float-cta-x" style="background:rgba(0,0,0,0.6);color:#fff;border:none;width:36px;height:36px;border-radius:50%;font-size:16px;cursor:pointer;flex-shrink:0;">✕</button>';
+    document.body.appendChild(floatWrap);
+  }
+
+  // Add spinner animation if not present
+  if (!document.getElementById('cspin-style')) {
+    var s = document.createElement('style');
+    s.id = 'cspin-style';
+    s.textContent = '@keyframes cspin{to{transform:rotate(360deg)}}';
+    document.head.appendChild(s);
+  }
+})();
+</script>
+
 </body>
 </html>
 </body>
@@ -3754,36 +3847,18 @@ function renderCart() {
   const titleEl = document.getElementById('cart-title');
   if (titleEl) titleEl.textContent = n === 3 ? 'All 3 Cities Pass' : n === 1 ? CITY_NAMES[[...selectedCities][0]] + ' Pass' : 'Your Pass';
 }
-function cartCheckout() {
-  const n = selectedCities.size;
-  if(n === 0) return;
-  let url;
-  if(n >= 3) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
-  else if(n === 2) url = cartStomachAdded ? CHECKOUT_URLS.all3_stomach : CHECKOUT_URLS.all3;
-  else { const city = [...selectedCities][0]; url = cartStomachAdded ? (CHECKOUT_URLS[city+'_stomach']||CHECKOUT_URLS[city]) : CHECKOUT_URLS[city]; }
-  // Meta Pixel: Purchase (fire on checkout click — Stripe redirect)
-  if(typeof fbq !== 'undefined') {
-    const base = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
-    const sPrice = n >= 3 ? 7.99 : 3.99;
-    fbq('track', 'Purchase', {
-      content_ids: [...selectedCities],
-      content_type: 'product',
-      value: base + (cartStomachAdded ? sPrice : 0),
-      currency: 'USD'
-    });
-  }
-  openEmailGate(url);
-}
+// cartCheckout: handled by ADDON above (opens email gate → Stripe embedded)
 function selectAllAndCheckout() {
   selectedCities = new Set(['cdmx','gdl','mty']);
   updateUI();
-  setTimeout(() => window.open(CHECKOUT_URLS.all3, '_blank'), 150);
+  setTimeout(() => cartCheckout(), 150);
 }
 /* ═══════════════════════════════
    CHECKOUT
 ═══════════════════════════════ */
 function openCheckout(url) {
-  window.open(url, '_blank');
+  // redirect to embedded checkout
+  cartCheckout();
 }
 
 function goCheckout() {
@@ -4145,8 +4220,8 @@ function openEmailGate(url) {
   // Show the modal
   const overlay = document.getElementById('email-gate-overlay');
   if (!overlay) {
-    // Fallback: go straight to Stripe if modal missing
-    window.open(url, '_blank');
+    // Fallback: use embedded checkout if email gate missing
+    if(typeof openEmbeddedCheckout === 'function') openEmbeddedCheckout();
     return;
   }
   overlay.classList.add('active');
@@ -4168,10 +4243,10 @@ function closeEmailGate() {
 
 function submitEmailGate() {
   const email = document.getElementById('eg-email').value.trim();
-  const name  = document.getElementById('eg-name').value.trim();
   const errEl = document.getElementById('eg-error');
   const btn   = document.getElementById('email-gate-submit');
 
+  // Validate email
   if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     errEl.style.display = 'block';
     document.getElementById('eg-email').focus();
@@ -4181,37 +4256,29 @@ function submitEmailGate() {
   errEl.style.display = 'none';
   document.getElementById('eg-email').style.borderColor = '';
 
-  // Save locally
-  localStorage.setItem('mtp_lead_email', email);
-  localStorage.setItem('mtp_lead_name', name);
-  sessionStorage.setItem('mtp_email_captured', '1');
-
-  // Send to Google Sheets (fire and forget)
-  const n = selectedCities.size;
-  const cities = [...selectedCities].map(c => CITY_NAMES[c]).join(', ') || 'Unknown';
-  const value  = n >= 3 ? 22.99 : (n === 2 ? 22.99 : 9.99);
   btn.textContent = 'OPENING CHECKOUT...';
   btn.disabled = true;
 
-  fetch(SHEETS_URL, {
+  // Send lead to server → Brevo list 3 (abandon cart)
+  const cities = [...selectedCities].map(c => CITY_NAMES[c]).join(', ') || 'Unknown';
+  fetch('https://mexico-travel-pass-serve-production-9eab.up.railway.app/capture-lead', {
     method: 'POST',
-    mode: 'no-cors',
     headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ email, name, cities, value })
-  }).catch(() => {}); // silent fail — don't block checkout
+    body: JSON.stringify({ email: email, cities: cities })
+  }).catch(() => {});
 
-  // Fire Meta Pixel Lead event
+  // Meta Pixel Lead
   if (typeof fbq !== 'undefined') {
-    fbq('track', 'Lead', { content_name: 'Email Capture', value: value, currency: 'USD' });
+    const n = selectedCities.size;
+    fbq('track', 'Lead', { value: n >= 3 ? 22.99 : 9.99, currency: 'USD' });
   }
 
-  // Close and redirect
+  // Close email gate
   document.getElementById('email-gate-overlay').classList.remove('active');
   document.body.style.overflow = '';
-  if (_pendingUrl) {
-    window.open(_pendingUrl, '_blank');
-    _pendingUrl = null;
-  }
+
+  // Open Stripe Embedded Checkout
+  openEmbeddedCheckout();
 }
 
 // Close on overlay click
